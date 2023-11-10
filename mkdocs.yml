@@ -7,7 +7,6 @@ theme:
   palette:
     primary: white
     accent: orange
-  favicon: images/nyulogo.png
   icon:
     logo: material/account-school
     
