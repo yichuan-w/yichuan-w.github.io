@@ -4,23 +4,9 @@ hide:
   - toc
 ---
 
-# Yichuan Wang ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 7.5em; margin-top: 0.5em; border-radius: 1em;"}
+# Yichuan Wang 
 
-*:fontawesome-solid-inbox: Work Email: [yichuanjiaoda@sjtu.edu.cn](mailto:yichuanjiaoda@sjtu.edu.cn)*
-
-*:fontawesome-solid-inbox: Personal Email: [yichuanmistygrass@gmail.com](mailto:yichuanmistygrass@gmail.com)*
-
-<span style="font-size:2em;">
-  [:fontawesome-solid-envelope:](mailto:yichuanmistygrass@gmail.com)
-  [:academicons-google-scholar:](https://scholar.google.com/citations?user=N96BY7AAAAAJ&hl=en)
-  [:fontawesome-brands-github:](https://github.com/yichuan520030910320)
-  [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/yichuan-wang-7518b4225/)
-  [:fontawesome-brands-twitter:](https://twitter.com/YichuanM)
-  [:fontawesome-solid-file:](https://docdro.id/gN60WyG) <!-- Your CV link -->
-</span>
-
-
-## Bio
+## Bio ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 7.5em; margin-top: 0.5em; border-radius: 1em;"}
 
 I am a last year undergraduate student in the ACM honor class of Shanghai Jiaotong University, majoring in computer science and technology. I am interested in machine learning systems and high-performance computing (to be more detailed maybe distributed systems for large model training, and memory optimization solutions for AI model training).
 
@@ -38,13 +24,26 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 I like to communicate with different people, so you can feel free to contact me at yichuanjiaoda@sjtu.edu.cn or yichuanmistygrass@gmail.com or wechat:15858459091 or yichuanwang0324 or [twitter](https://twitter.com/YichuanM)
 If you are willing to know more details, you can see my [cv](https://docdro.id/gN60WyG) here.
 
+*:fontawesome-solid-inbox: Work Email: [yichuanjiaoda@sjtu.edu.cn](mailto:yichuanjiaoda@sjtu.edu.cn)*
+
+*:fontawesome-solid-inbox: Personal Email: [yichuanmistygrass@gmail.com](mailto:yichuanmistygrass@gmail.com)*
+
+<span style="font-size:2em;">
+  [:fontawesome-solid-envelope:](mailto:yichuanmistygrass@gmail.com)
+  [:academicons-google-scholar:](https://scholar.google.com/citations?user=N96BY7AAAAAJ&hl=en)
+  [:fontawesome-brands-github:](https://github.com/yichuan520030910320)
+  [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/yichuan-wang-7518b4225/)
+  [:fontawesome-brands-twitter:](https://twitter.com/YichuanM)
+  [:academicons-cv:](https://docdro.id/gN60WyG) <!-- Your CV link -->
+</span>
+
 ## Education
 
 ### Shanghai Jiao Tong University![Image title](images/favicon.png){ align=right style="height:6em; border-radius: 0.5em;"}
 
 *Sept. 2020 -- June 2024*
 
-***B.Eng. in Computer Science at ACM Honors Class**
+**B.Eng. in Computer Science at ACM Honors Class**
 
 
 ### New York University Courant Institute![Image title](images/nyu.png){ align=right style="height:6em; border-radius: 0.5em;"}
@@ -70,7 +69,7 @@ A system that can build its own scene and track the refraction and reflection of
 
 **[:fontawesome-brands-github: Compiler for Mx* Language]([https://github.com/yichuan520030910320/raytracer](https://github.com/yichuan520030910320/compiler\_2021))**
 
-Using the technology of ANTLR, semantic checking, code generation and optimization to develop a compiler that compiles C-and-Java like language $(\mathrm{Mx} *)$ to RV32I Assembly.
+Using the technology of ANTLR, semantic checking, code generation and optimization to develop a compiler that compiles C-and-Java like language to RV32I Assembly from scratch.
 
 **[:fontawesome-brands-github: RISC-V CPU Implemented in Verilog RTL](https://github.com/yichuan520030910320/CPU\_ACM\_2021)**
 
