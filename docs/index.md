@@ -39,29 +39,11 @@ I am a first-year Ph.D. student of Computer Science at [NYU Courant](https://cs.
 
 ## Publications & Manuscripts
 
-**Kosmos-G: Generating Images in Context with Multimodal Large Language Models**
+**Optimizing Dynamic Neural Networks with Brainstorm**
 
-<u>Xichen Pan</u>, [Li Dong](https://dong.li/), [Shaohan Huang](https://buaahsh.github.io/), [Zhiliang Peng](https://pengzhiliang.github.io/), [Wenhu Chen](https://wenhuchen.github.io/), [Furu Wei](https://thegenerality.com/)
+Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo.
 
-*ICLR 2024 Under Review*&nbsp;&nbsp;[:academicons-arxiv: arXiv](https://arxiv.org/abs/2310.02992)&nbsp;&nbsp;[:fontawesome-brands-github: Code](https://aka.ms/Kosmos-G)&nbsp;&nbsp;[:fontawesome-solid-link: Project Page](kosmosg)
-
-**Synthesizing Coherent Story with Auto-Regressive Latent Diffusion Models**
-
-<u>Xichen Pan</u>, [Pengda Qin](https://scholar.google.com/citations?user=n7bubTwAAAAJ&hl=en), [Yuhong Li](https://colfire.github.io/), [Hui Xue](https://scholar.google.com/citations?user=lrf-wkQAAAAJ&hl=en), [Wenhu Chen](https://wenhuchen.github.io/)
-
-*WACV 2024*&nbsp;&nbsp;[:academicons-arxiv: arXiv](http://arxiv.org/abs/2211.10950)&nbsp;&nbsp;[:fontawesome-brands-github: Code](https://github.com/xichenpan/ARLDM)
-
-**Multimodal Audio-Visual Speech Recognition System Based On Pre-trained Models**
-
-<u>Xichen Pan</u>
-
-*Bachelor thesis at Shanghai Jiao Tong University (Best Thesis Award, 1st/150)*&nbsp;&nbsp;[:fontawesome-regular-newspaper: News](http://www.jwc.sjtu.edu.cn/info/1258/11735.htm)&nbsp;&nbsp;[:fontawesome-solid-graduation-cap: Honor Roll](https://sjcg.jwc.sjtu.edu.cn/)
-
-**Leveraging Unimodal Self-Supervised Learning for Multimodal Audio-visual Speech Recognition**
-
-<u>Xichen Pan</u>, [Peiyu Chen](https://www.linkedin.com/in/peiyu-chen-9b407a218/), [Yichen Gong](https://scholar.google.com/citations?user=e3bTLycAAAAJ&hl=en), [Helong Zhou](https://scholar.google.com/citations?user=wkhOMMwAAAAJ&hl=zh-CN), [Xinbing Wang](https://www.cs.sjtu.edu.cn/~wang-xb/), [Zhouhan Lin](https://hantek.github.io/)
-
-*[ACL 2022 Main Conference](https://aclanthology.org/2022.acl-long.308/)*&nbsp;&nbsp;[:academicons-arxiv: arXiv](https://arxiv.org/abs/2203.07996)&nbsp;&nbsp;[:fontawesome-brands-github: Code](https://github.com/LUMIA-Group/Leveraging-Self-Supervised-Learning-for-AVSR)
+*OSDI 2023*
 
 
 ## Selected Projects
