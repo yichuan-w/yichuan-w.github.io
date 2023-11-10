@@ -44,7 +44,7 @@ If you are willing to know more details, you can see my [cv](https://docdro.id/g
 
 *Sept. 2020 -- June 2024*
 
-***B.Eng. in Computer Science at ACM Honors Class**, advised by Prof. [Zhouhan Lin](https://hantek.github.io/)*
+***B.Eng. in Computer Science at ACM Honors Class**
 
 
 ### New York University Courant Institute![Image title](images/nyu.png){ align=right style="height:6em; border-radius: 0.5em;"}
@@ -63,18 +63,22 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 
 
 ## Selected Projects
-**[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)**
+**[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)[![](https://img.shields.io/github/stars/yichuan520030910320/raytracer.svg?style=social)](https://github.com/yichuan520030910320/raytracer/stargazers)**
+
 
 A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
-**[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)**
 
-A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
-**[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)**
+**[:fontawesome-brands-github: Compiler for Mx* Language]([https://github.com/yichuan520030910320/raytracer](https://github.com/yichuan520030910320/compiler\_2021))**
 
-A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
-**[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)**
+Using the technology of ANTLR, semantic checking, code generation and optimization to develop a compiler that compiles C-and-Java like language $(\mathrm{Mx} *)$ to RV32I Assembly.
 
-A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
+**[:fontawesome-brands-github: RISC-V CPU Implemented in Verilog RTL](https://github.com/yichuan520030910320/CPU\_ACM\_2021)**
+
+Designed a RISC-V CPU with Write Buffer, ICache, DCache, and Branch Prediction. Supports RV32I instruction set (2.1-2.6 in RISC-V user Manual). Used Vivado to generate bitstream and program the Basys3 FPGA board.
+
+**[:fontawesome-brands-github: Ticket System ]([https://github.com/yichuan520030910320/raytracer](https://github.com/yichuan520030910320/My\_train))**
+
+Designed a train ticket system with multi-user support and privilege management. I implemented the backend and built a Bplustree storage. All used C++ STL data structures are from scratch (including map, queue).
 
 
 
