@@ -68,7 +68,7 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 
 A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
 
-**[:fontawesome-brands-github: Compiler for Mx* Language]([https://github.com/yichuan520030910320/raytracer](https://github.com/yichuan520030910320/compiler_2021))**
+**[:fontawesome-brands-github: Compiler for Mx* Language](https://github.com/yichuan520030910320/compiler_2021)**
 
 Using the technology of ANTLR, semantic checking, code generation and optimization to develop a compiler that compiles C-and-Java like language to RV32I Assembly from scratch.
 
@@ -76,7 +76,7 @@ Using the technology of ANTLR, semantic checking, code generation and optimizati
 
 Designed a RISC-V CPU with Write Buffer, ICache, DCache, and Branch Prediction. Supports RV32I instruction set (2.1-2.6 in RISC-V user Manual). Used Vivado to generate bitstream and program the Basys3 FPGA board.
 
-**[:fontawesome-brands-github: Ticket System ]([https://github.com/yichuan520030910320/raytracer](https://github.com/yichuan520030910320/My_train))**
+**[:fontawesome-brands-github: Ticket System ](https://github.com/yichuan520030910320/My_train)**
 
 Designed a train ticket system with multi-user support and privilege management. I implemented the backend and built a Bplustree storage. All used C++ STL data structures are from scratch (including map, queue).
 
