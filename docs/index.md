@@ -59,7 +59,7 @@ If you are willing to know more details, you can see my [cv](https://docdro.id/g
 
 Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. Optimizing Dynamic Neural Networks with Brainstorm [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
-*OSDI 2023* 
+**OSDI 2023** 
 
 
 ## Selected Projects
