@@ -10,12 +10,12 @@ hide:
 
 I am a last year undergraduate student in the **ACM honor class of Shanghai Jiaotong University**, majoring in computer science and technology. I am interested in machine learning systems and high-performance computing (to be more detailed maybe distributed systems for large model training, and memory optimization solutions for AI model training).
 
+**! Earnestly looking for Ph.D. position in 2024 Fall!**
+
 Currently, I am also working with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU on a project related with large scale GNN training 
 I will be in NYC for the second half of 2023.
 
 In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
-
-**! Earnestly looking for Ph.D. position in 2024 Fall!**
 
 The most recent work is to complete the construction and optimization of a dynamic neural network reasoning framework with EPCC Lab and Microsoft Research Asia. 
 The paper is accepted by **OSDI23** now.
