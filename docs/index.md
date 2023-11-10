@@ -4,8 +4,7 @@ hide:
   - toc
 ---
 
-# Yichuan Wang ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792)
-
+# Yichuan Wang ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 7.5em; margin-top: 0.5em; border-radius: 1em;"}
 
 *:fontawesome-solid-inbox: Work Email: [yichuanjiaoda@sjtu.edu.cn](mailto:yichuanjiaoda@sjtu.edu.cn)*
 
@@ -64,6 +63,19 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 
 
 ## Selected Projects
+**[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)**
+
+A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
+**[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)**
+
+A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
+**[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)**
+
+A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
+**[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)**
+
+A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
+
 
 
 
