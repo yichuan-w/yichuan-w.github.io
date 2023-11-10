@@ -10,16 +10,17 @@ hide:
 
 I am a last year undergraduate student in the **ACM honor class of Shanghai Jiaotong University**, majoring in computer science and technology. I am interested in machine learning systems and high-performance computing (to be more detailed maybe distributed systems for large model training, and memory optimization solutions for AI model training).
 
-**! Earnestly looking for Ph.D. position in 2024 Fall!**
-
 Currently, I am also working with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU on a project related with large scale GNN training 
 I will be in NYC for the second half of 2023.
 
 In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
+
+**! Earnestly looking for Ph.D. position in 2024 Fall!**
+
 The most recent work is to complete the construction and optimization of a dynamic neural network reasoning framework with EPCC Lab and Microsoft Research Asia. 
 The paper is accepted by **OSDI23** now.
 
-Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. **Optimizing Dynamic Neural Networks with Brainstorm** .[pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
+Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. Optimizing Dynamic Neural Networks with Brainstorm .[pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
 I like to communicate with different people, so you can feel free to contact me via email or wechat:15858459091 or yichuanwang0324 or [twitter](https://twitter.com/YichuanM)
 If you are willing to know more details, you can see my [CV](https://docdro.id/gN60WyG) here.
@@ -67,15 +68,15 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 
 A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
 
-**[:fontawesome-brands-github: Compiler for Mx* Language]([https://github.com/yichuan520030910320/raytracer](https://github.com/yichuan520030910320/compiler\_2021))**
+**[:fontawesome-brands-github: Compiler for Mx* Language]([https://github.com/yichuan520030910320/raytracer](https://github.com/yichuan520030910320/compiler_2021))**
 
 Using the technology of ANTLR, semantic checking, code generation and optimization to develop a compiler that compiles C-and-Java like language to RV32I Assembly from scratch.
 
-**[:fontawesome-brands-github: RISC-V CPU Implemented in Verilog RTL](https://github.com/yichuan520030910320/CPU\_ACM\_2021)**
+**[:fontawesome-brands-github: RISC-V CPU Implemented in Verilog RTL](https://github.com/yichuan520030910320/CPU_ACM_2021)**
 
 Designed a RISC-V CPU with Write Buffer, ICache, DCache, and Branch Prediction. Supports RV32I instruction set (2.1-2.6 in RISC-V user Manual). Used Vivado to generate bitstream and program the Basys3 FPGA board.
 
-**[:fontawesome-brands-github: Ticket System ]([https://github.com/yichuan520030910320/raytracer](https://github.com/yichuan520030910320/My\_train))**
+**[:fontawesome-brands-github: Ticket System ]([https://github.com/yichuan520030910320/raytracer](https://github.com/yichuan520030910320/My_train))**
 
 Designed a train ticket system with multi-user support and privilege management. I implemented the backend and built a Bplustree storage. All used C++ STL data structures are from scratch (including map, queue).
 
