@@ -28,23 +28,23 @@ markdown_extensions:
           - overrides/.icons
 
 extra:
-  social:
-    - icon: fontawesome/solid/envelope 
-      link: mailto:xcpan.mail@gmail.com
-    - icon: academicons/google-scholar
-      link: https://scholar.google.com/citations?user=9wh9VXIAAAAJ&hl=en
-    - icon: academicons/semantic-scholar
-      link: https://www.semanticscholar.org/author/Xichen-Pan/2158877024
-    - icon: academicons/dblp
-      link: https://dblp.org/pid/317/0180.html
-    - icon: fontawesome/brands/github 
-      link: https://github.com/xichenpan
-    - icon: fontawesome/brands/linkedin 
-      link: https://www.linkedin.com/in/xichenpan/
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/xichen_pan
-    - icon: fontawesome/brands/zhihu 
-      link: https://www.zhihu.com/people/xichenpan
+  # social:
+  #   - icon: fontawesome/solid/envelope 
+  #     link: mailto:xcpan.mail@gmail.com
+  #   - icon: academicons/google-scholar
+  #     link: https://scholar.google.com/citations?user=9wh9VXIAAAAJ&hl=en
+  #   - icon: academicons/semantic-scholar
+  #     link: https://www.semanticscholar.org/author/Xichen-Pan/2158877024
+  #   - icon: academicons/dblp
+  #     link: https://dblp.org/pid/317/0180.html
+  #   - icon: fontawesome/brands/github 
+  #     link: https://github.com/xichenpan
+  #   - icon: fontawesome/brands/linkedin 
+  #     link: https://www.linkedin.com/in/xichenpan/
+  #   - icon: fontawesome/brands/twitter
+  #     link: https://twitter.com/xichen_pan
+  #   - icon: fontawesome/brands/zhihu 
+  #     link: https://www.zhihu.com/people/xichenpan
   analytics:
     provider: google
     property: G-KBQPT9Q9MJ
