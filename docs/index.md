@@ -11,7 +11,7 @@ hide:
 
 *:fontawesome-solid-inbox: Personal Email: [yichuanmistygrass@gmail.com](mailto:yichuanmistygrass@gmail.com)*
 
-<span style=font-size:2em;">[:fontawesome-solid-envelope:](mailto:yichuanmistygrass@gmail.com) [:academicons-google-scholar:](https://scholar.google.com/citations?user=9wh9VXIAAAAJ&hl=en) [:academicons-semantic-scholar:](https://www.semanticscholar.org/author/Xichen-Pan/2158877024) [:academicons-dblp:](https://dblp.org/pid/317/0180.html) [:fontawesome-brands-github:](https://github.com/xichenpan) [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/xichenpan/) [:fontawesome-brands-twitter:](https://twitter.com/xichen_pan) [:fontawesome-brands-zhihu:](https://www.zhihu.com/people/xichenpan)</span>
+<span style=font-size:2em;">[:fontawesome-solid-envelope:](mailto:yichuanmistygrass@gmail.com) [:academicons-google-scholar:](https://scholar.google.com/citations?user=N96BY7AAAAAJ&hl=en) [:fontawesome-brands-github:](https://github.com/yichuan520030910320) [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/yichuan-wang-7518b4225/) [:fontawesome-brands-twitter:](https://twitter.com/YichuanM) </span>
 
 ## Bio
 
@@ -94,27 +94,6 @@ I am a first-year Ph.D. student of Computer Science at [NYU Courant](https://cs.
 **[:fontawesome-brands-github: Open CS Application](https://opencs.app/) [![](https://img.shields.io/github/stars/opencsapp/opencsapp.github.io.svg?style=social)](https://github.com/opencsapp/opencsapp.github.io/stargazers)**
 
 An open-source GitHub page built for reference in selecting CS programs in north America. The page is powered by [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and supports collaboration through Pull Requests and GitHub Actions.
-
-## Media Exposures
-
-[Synthesizing Coherent Story with Auto-Regressive Latent Diffusion Models](https://www.jiqizhixin.com/articles/2022-11-27), Synced
-
-## Some of My Friends
-
-??? tip "Click to Expand"
-    Carnegie Mellon University: [Alex Chi](https://www.skyzh.dev/)
-
-    Cornell: [Youming Deng](https://denghilbert.github.io/) 
-
-    Georgia Tech: [Haotian Xue](https://xavihart.github.io/)
-    
-    Shanghai Jiao Tong University: [Xinyu Xu](https://xuxinyu.website/), [Yanjie Ze](https://yanjieze.com/)
-    
-    UC Santa Barbara: [Kexun Zhang](https://zkx06111.github.io/)
-                         
-    University of Washington: [Zihan Li](https://huanglizi.github.io/)
-    
-    USC: [Di Chang](https://boese0601.github.io/)
 
 <div align="center">
     <div align="center">
