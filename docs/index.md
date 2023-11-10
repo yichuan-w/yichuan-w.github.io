@@ -8,14 +8,12 @@ hide:
 
 ## Bio ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
 
-I am a last year undergraduate student in the **ACM honor class of Shanghai Jiaotong University**, majoring in computer science and technology. I am interested in machine learning systems and high-performance computing (to be more detailed maybe distributed systems for large model training, and memory optimization solutions for AI model training).
+I am a last year undergraduate student in the **ACM honor class of Shanghai Jiaotong University**, majoring in computer science and technology. I am interested in machine learning systems and high-performance computing system (to be more detailed maybe distributed systems for large model training, and develop tailored abstractions for unique computational patterns to achieve higher performance).
 
 **! Earnestly looking for Ph.D. position in 2024 Fall!**
 
 Currently, I am also working with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU on a project related with large scale GNN training 
-I will be in NYC for the second half of 2023.
-
-In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
+I will be in NYC for the second half of 2023. In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
 
 The most recent work is to complete the construction and optimization of a dynamic neural network reasoning framework with EPCC Lab and Microsoft Research Asia. 
 The paper is accepted by **OSDI23** now.
