@@ -6,7 +6,7 @@ hide:
 
 # Yichuan Wang 
 
-## Bio ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 7.5em; margin-top: 0.5em; border-radius: 1em;"}
+## Bio ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
 
 I am a last year undergraduate student in the ACM honor class of Shanghai Jiaotong University, majoring in computer science and technology. I am interested in machine learning systems and high-performance computing (to be more detailed maybe distributed systems for large model training, and memory optimization solutions for AI model training).
 
