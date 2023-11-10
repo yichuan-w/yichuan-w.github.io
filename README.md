@@ -1,3 +1,3 @@
-# Xichen Pan's Personal Website
-### [click here to browse](http://xichenpan.com/)
-### [click here to edit](https://github.com/Flash-321/Flash-321.github.io/edit/master/docs/index.md)
+# Yichuan Wang's Personal Website
+### [click here to browse](http://yichuan520030910320.github.io/)
+### [click here to edit](https://github.com/yichuan520030910320/yichuan520030910320.github.io/edit/master/docs/index.md)
