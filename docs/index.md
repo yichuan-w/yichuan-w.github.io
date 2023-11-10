@@ -12,13 +12,11 @@ I am a last year undergraduate student in the **ACM honor class of Shanghai Jiao
 
 **! Earnestly looking for Ph.D. position in 2024 Fall!**
 
-Currently, I am also working with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU on a project related with large scale GNN training 
+Currently, I am also working with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU on a project related with large scale GNN training
 I will be in NYC for the second half of 2023. In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
 
-The most recent work is to complete the construction and optimization of a dynamic neural network reasoning framework with EPCC Lab and Microsoft Research Asia. 
+The most recent work is to complete the construction and optimization of a dynamic neural network inference framework with EPCC Lab and Microsoft Research Asia. 
 The paper is accepted by **OSDI23** now.
-
-Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. Optimizing Dynamic Neural Networks with Brainstorm .[pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
 I like to communicate with different people, so you can feel free to contact me via email or wechat:15858459091 or yichuanwang0324 or [twitter](https://twitter.com/YichuanM)
 If you are willing to know more details, you can see my [CV](https://docdro.id/gN60WyG) here.
@@ -42,7 +40,7 @@ If you are willing to know more details, you can see my [CV](https://docdro.id/g
 
 *Sept. 2020 -- June 2024*
 
-**B.Eng. in Computer Science at ACM Honors Class**, advised by Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/), Prof. [Yong Yu](https://scholar.google.com/citations?user=-84M1m0AAAAJ)
+***B.Eng. in Computer Science at ACM Honors Class**, advised by Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/), Prof. [Yong Yu](https://scholar.google.com/citations?user=-84M1m0AAAAJ)*
 
 
 ### New York University Courant Institute![Image title](images/nyu.png){ align=right style="height:6em; border-radius: 0.5em;"}
