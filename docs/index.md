@@ -15,22 +15,27 @@ hide:
 
 ## Bio
 
+I am a last year undergraduate student in the ACM honor class of Shanghai Jiaotong University, majoring in computer science and technology. I am interested in machine learning systems and high-performance computing (to be more detailed maybe distributed systems for large model training, and memory optimization solutions for AI model training).
+**! Earnestly looking for Ph.D. position in 2024 Fall**
+Currently, I am also working with Prof.Li [Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/) in NYU on a project related with large scale GNN training 
+I will be in NYC for the second half of 2023.
 I am a first-year Ph.D. student of Computer Science at [NYU Courant](https://cs.nyu.edu/home/index.html), advised by Prof. [Saining Xie](https://www.sainingxie.com/). My research interest lies in multimodal learning with a focus on vision, language, and audio modalities. I am especially interested in multimodal representation learning and multimodal generative models. I also interned at Microsoft Research Asia (2022-2023 with Dr. [Li Dong](http://dong.li/)), Alibaba Group (2022 with Dr. [Pengda Qin](https://scholar.google.com/citations?user=n7bubTwAAAAJ&hl=en)), and Horizon Robotics (2021-2022 with [Yichen Gong](https://scholar.google.com/citations?user=e3bTLycAAAAJ&hl=en)). Previously, I obtained my bachelor’s degree in Computer Science from [Shanghai Jiao Tong University (SJTU)](https://en.sjtu.edu.cn/) and won the [Best Thesis Award](http://www.jwc.sjtu.edu.cn/info/1258/11735.htm). I was fortunately advised by and maintain a close connection with Prof. [Zhouhan Lin](https://hantek.github.io/) at SJTU.
 
 
 ## Education
+
+### Shanghai Jiao Tong University![Image title](images/favicon.png){ align=right style="height:6em; border-radius: 0.5em;"}
+
+*Sept. 2020 -- June 2024*
+
+***B.Eng. in Computer Science (Outstanding Graduate of Class 2022)**, advised by Prof. [Zhouhan Lin](https://hantek.github.io/)*
+
 
 ### New York University Courant Institute![Image title](images/nyu.png){ align=right style="height:6em; border-radius: 0.5em;"}
 
 *Sept. 2023 -- Present*
 
 ***Ph.D. in Computer Science**, advised by Prof. [Saining Xie](https://sainingxie.com/)*
-
-### Shanghai Jiao Tong University![Image title](images/favicon.png){ align=right style="height:6em; border-radius: 0.5em;"}
-
-*Sept. 2018 -- June 2022*
-
-***B.Eng. in Computer Science (Outstanding Graduate of Class 2022)**, advised by Prof. [Zhouhan Lin](https://hantek.github.io/)*
 
 ## Publications & Manuscripts
 
@@ -58,36 +63,6 @@ I am a first-year Ph.D. student of Computer Science at [NYU Courant](https://cs.
 
 *[ACL 2022 Main Conference](https://aclanthology.org/2022.acl-long.308/)*&nbsp;&nbsp;[:academicons-arxiv: arXiv](https://arxiv.org/abs/2203.07996)&nbsp;&nbsp;[:fontawesome-brands-github: Code](https://github.com/LUMIA-Group/Leveraging-Self-Supervised-Learning-for-AVSR)
 
-## Experience
-**Microsoft Research Asia**![Image title](images/msra.png){ align=right style="height:5em; border-radius: 0.5em;"}
-
-*Dec. 2022 – Sept. 2023*
-
-*StarBridge Program Research Assistant*
-
-**Alibaba Group**![Image title](images/alibaba.png){ align=right style="height:5em; border-radius: 0.5em;"}
-
-*Sept. – Dec. 2022*
-
-*Research Intern*
-
-**Horizon Robotics**![Image title](images/horizon.png){ align=right style="height:5em; border-radius: 0.5em;"}
-
-*Apr. 2021 – July 2022*
-
-*Research Intern*
-
-**John Hopcroft Center for Computer Science, Shanghai Jiao Tong University**![Image title](images/favicon.png){ align=right style="height:5em; border-radius: 0.5em;"}
-
-*Apr. 2021 – June 2022*
-
-*Research Intern*
-
-**NSF Center for Big Learning, University of Florida**![Image title](images/uf.png){ align=right style="height:5em; border-radius: 0.5em;"}
-
-*July – Sept. 2020*
-
-*Research Intern*
 
 ## Selected Projects
 
