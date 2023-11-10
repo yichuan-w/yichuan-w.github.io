@@ -11,7 +11,7 @@ hide:
 
 *:fontawesome-solid-inbox: Personal Email: [yichuanmistygrass@gmail.com](mailto:yichuanmistygrass@gmail.com)*
 
-<span style=font-size:2em;">[:fontawesome-solid-envelope:](mailto:yichuanmistygrass@gmail.com) [:academicons-google-scholar:](https://scholar.google.com/citations?user=N96BY7AAAAAJ&hl=en) [:fontawesome-brands-github:](https://github.com/yichuan520030910320) [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/yichuan-wang-7518b4225/) [:fontawesome-brands-twitter:](https://twitter.com/YichuanM) </span>
+<span style=font-size:2em;">[:fontawesome-solid-envelope:](mailto:yichuanmistygrass@gmail.com) [:academicons-google-scholar:](https://scholar.google.com/citations?user=N96BY7AAAAAJ&hl=en) [:fontawesome-brands-github:](https://github.com/yichuan520030910320) [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/yichuan-wang-7518b4225/) [:fontawesome-brands-twitter:](https://twitter.com/YichuanM) [:fontawesome-solid-file:](https://docdro.id/gN60WyG) </span>
 
 ## Bio
 
