@@ -8,7 +8,7 @@ hide:
 
 ## Bio ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
 
-I am a last year undergraduate student in the **ACM honor class of Shanghai Jiaotong University**, majoring in computer science and technology. I am interested in machine learning systems and high-performance computing system (to be more detailed maybe distributed systems for large model training, and develop tailored abstractions for unique computational patterns to achieve higher performance).
+I am a last year undergraduate student in the **ACM honor class of Shanghai Jiaotong University**, majoring in computer science and technology. I am interested in **machine learning systems and high-performance computing system** (to be more detailed maybe distributed systems for large ML model training, and develop tailored abstractions for unique ML computational patterns to achieve higher performance).
 
 **! Earnestly looking for Ph.D. position in 2024 Fall!**
 
@@ -42,7 +42,7 @@ If you are willing to know more details, you can see my [CV](https://docdro.id/g
 
 *Sept. 2020 -- June 2024*
 
-**B.Eng. in Computer Science at ACM Honors Class**
+**B.Eng. in Computer Science at ACM Honors Class**, advised by Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/), Prof. [Yong Yu](https://scholar.google.com/citations?user=-84M1m0AAAAJ)
 
 
 ### New York University Courant Institute![Image title](images/nyu.png){ align=right style="height:6em; border-radius: 0.5em;"}
