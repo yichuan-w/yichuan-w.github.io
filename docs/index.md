@@ -4,7 +4,7 @@ hide:
   - toc
 ---
 
-# Xichen Pan ![Image title](images/por.jpg){ align=right style="width:7.5em; margin-left: 7.5em; margin-top: 0.5em; border-radius: 1em;"}
+# Yichuan Wang ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 7.5em; margin-top: 0.5em; border-radius: 1em;"}
 
 *:fontawesome-solid-building: Office: [3rd Floor, 60 5th Ave, New York, NY 10011](https://maps.app.goo.gl/N7m2fM5EbM3TToB79)*
 
