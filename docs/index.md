@@ -12,8 +12,7 @@ I am a last-year undergraduate student in the **ACM honor class of Shanghai Jiao
 
 **! Earnestly looking for a Ph.D. position in 2024 Fall!**
 
-Currently, I am also working with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU on a project related to large-scale GNN training
-I will be in NYC for the second half of 2023. In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
+Currently, I am also working with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU on a project related to large-scale(out-of-core) GNN training(led by myself), and it is prepared for VLDB 2025. In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
 
 The most recent work is to complete the construction and optimization of a dynamic neural network inference framework with EPCC Lab and Microsoft Research Asia. 
 The paper is accepted by **OSDI23** now.
