@@ -10,10 +10,7 @@ hide:
 
 I am an incoming PhD student at UC Berkeley in [SkyLab](https://sky.cs.berkeley.edu/) and the last-year undergraduate student in the **ACM honor class of Shanghai Jiaotong University**, majoring in computer science and technology. I am interested in **machine learning systems and high-performance computing systems** (to be more detailed maybe distributed systems for large ML model training, and develop tailored abstractions for unique ML computational patterns to achieve higher performance).
 
-Currently, I am also collaborating with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU on a project related to large-scale(out-of-core) GNN training(led by myself), and it is prepared for VLDB 2025. In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
-
-The most recent work is to complete the construction and optimization of a dynamic neural network inference framework with EPCC Lab and Microsoft Research Asia. 
-The paper is accepted by **OSDI23** now.
+Currently, I am also collaborating with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU on a project related to scale up GNN training. In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
 
 I like to communicate with different people, so you can feel free to contact me via email wechat:15858459091 or yichuanwang0324 or [twitter](https://twitter.com/YichuanM)
 If you are willing to know more details, you can see my [CV](https://docdro.id/AOZx9dN) here. If you are interested in my motivation, you can also take a look at my [SoP](https://docdro.id/OvdjJ6Q) for application.
@@ -53,6 +50,8 @@ If you are willing to know more details, you can see my [CV](https://docdro.id/A
 Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. Optimizing Dynamic Neural Networks with Brainstorm [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
 **OSDI 2023** 
+
+**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training**
 
 
 ## Selected Projects
