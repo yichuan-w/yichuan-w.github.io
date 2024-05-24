@@ -53,9 +53,9 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 
 **DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/abs/2405.05231)
 
-Renjie Liu*, **Yichuan Wang**\*, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Jiang, Bo Tang, Jinyang Li
+Renjie Liu\*, **Yichuan Wang**\*, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Jiang, Bo Tang, Jinyang Li
 
-*indicates equal contribution
+\*indicates equal contribution
 
 **submitted VLDB 2025** 
 
