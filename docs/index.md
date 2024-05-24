@@ -53,11 +53,12 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 
 **DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/abs/2405.05231)
 
-Renjie Liu\*, **Yichuan Wang**\*, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Jiang, Bo Tang, Jinyang Li
+Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Jiang, Bo Tang, Jinyang Li
 
 \*indicates equal contribution
 
-**submitted VLDB 2025** 
+**submitted VLDB 2025**
+
 
 ## Selected Projects
 **[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)[![](https://img.shields.io/github/stars/yichuan520030910320/raytracer.svg?style=social)](https://github.com/yichuan520030910320/raytracer/stargazers)**
