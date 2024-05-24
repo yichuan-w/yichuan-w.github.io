@@ -45,16 +45,20 @@ If you are willing to know more details, you can see my [CV](https://docdro.id/A
 
 ## Publications
 
-**Optimizing Dynamic Neural Networks with Brainstorm**
+**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
-Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. Optimizing Dynamic Neural Networks with Brainstorm [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
+Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
 
 **OSDI 2023** 
 
-**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training**
+**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/abs/2405.05231)
 
 Renjie Liu*, **Yichuan Wang**\*, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Jiang, Bo Tang, Jinyang Li
+
 *indicates equal contribution
+
+**submitted VLDB 2025** 
+
 ## Selected Projects
 **[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)[![](https://img.shields.io/github/stars/yichuan520030910320/raytracer.svg?style=social)](https://github.com/yichuan520030910320/raytracer/stargazers)**
 
