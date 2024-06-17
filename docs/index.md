@@ -25,7 +25,7 @@ If you are willing to know more details, you can see my [CV](https://docdro.id/A
   [:fontawesome-brands-github:](https://github.com/yichuan520030910320)
   [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/yichuan-wang-7518b4225/)
   [:fontawesome-brands-twitter:](https://twitter.com/YichuanM)
-  [:academicons-cv:](https://docdro.id/AOZx9dN) <!-- Your CV link -->
+  [:academicons-cv:](https://drive.google.com/file/d/16js5Paw6f3G_GA0EqMxWIryiVkEiVPvg/view?usp=sharing) <!-- Your CV link -->
 </span>
 
 ## Education
