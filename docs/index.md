@@ -71,7 +71,7 @@ Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Ji
 
 ## Services
 - [08/2024] Eurosys'25 Artifact Evaluation Committee
-- [07/2024] SIGCOMM'25 Artifact Evaluation Committee
+- [07/2024] SIGCOMM'24 Artifact Evaluation Committee
 - [04/2024] OSDI’24  Artifact Evaluation Committee 
 - [04/2024] USENIX ATC’24  Artifact Evaluation Committee 	
 
