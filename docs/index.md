@@ -49,7 +49,7 @@ If you are willing to know more details, you can see my [CV](https://docdro.id/A
 
 Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
 
-**OSDI 2023** 
+**Accepted by OSDI 2023** 
 
 **DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/pdf/2405.05231)
 
@@ -57,7 +57,7 @@ Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Ji
 
 \*indicates equal contribution
 
-**submitted SIGMOD 2025**
+**Accepted by SIGMOD 2025**
 
 ## Services
 - [08/2024] Eurosys'25 Artifact Evaluation Committee
