@@ -14,7 +14,7 @@ Previously, I collaborated with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~
 I like to communicate with different people, so you can feel free to contact me via email wechat:15858459091 or yichuanwang0324 or [twitter](https://twitter.com/YichuanM)
 If you are willing to know more details, you can see my [CV](https://docdro.id/AOZx9dN) here. If you are interested in my motivation, you can also look at my [SoP](https://docdro.id/OvdjJ6Q) for application.
 
-In my spare time,  I also contribute to open-source projects, like [SGlang](https://github.com/sgl-project/sglang) recently.
+In my spare time,  I also contribute to open-source projects, like [SGLang](https://github.com/sgl-project/sglang) recently.
 
 *:fontawesome-solid-inbox: Work Email: [yichuanjiaoda@sjtu.edu.cn](mailto:yichuanjiaoda@sjtu.edu.cn)*
 
