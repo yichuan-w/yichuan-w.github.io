@@ -8,7 +8,7 @@ hide:
 
 ## Bio ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
 
-I am a first PhD student at UC Berkeley in [SkyLab](https://sky.cs.berkeley.edu/) and received my B.E. in Computer Science and Technology from ACM Honored Class, Shanghai Jiao Tong University. I am interested in **machine learning systems and high-performance computing systems** (to be more detailed maybe distributed systems for large ML model training, and develop tailored abstractions for unique ML computational patterns to achieve higher performance).
+I am a first PhD student at UC Berkeley in **[SkyLab](https://sky.cs.berkeley.edu/)** and received my B.E. in Computer Science and Technology from **ACM Honored Class**, Shanghai Jiao Tong University(**SJTU**). I am interested in **machine learning systems and high-performance computing systems** (to be more detailed maybe distributed systems for large ML model training, and develop tailored abstractions for unique ML computational patterns to achieve higher performance).
 
 Previously, I collaborated with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU and **Dr.[Minjie Wang](https://jermainewang.github.io/)** on a project related to scaling up GNN training. In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
 
@@ -60,8 +60,8 @@ Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Ji
 **submitted SIGMOD 2025**
 
 ## Services
-- [08/2025] Eurosys'25 Artifact Evaluation Committee
-- [07/2025] SIGCOMM'25 Artifact Evaluation Committee
+- [08/2024] Eurosys'25 Artifact Evaluation Committee
+- [07/2024] SIGCOMM'25 Artifact Evaluation Committee
 - [04/2024] OSDI’24  Artifact Evaluation Committee 
 - [04/2024] USENIX ATC’24  Artifact Evaluation Committee 	
 
