@@ -32,10 +32,11 @@ In my spare time,  I also contribute to open-source projects, like [SGLang](http
 ## News
 
 [08/29/2024] After being rejected once, DiskGNN has finally been accepted by SIGMOD25. See you in Berlin! ​:smile:
-​
+
+
 [08/13/2024] Starting my PhD journey at SkyLab—excited. :party_popper:
 
-[05/18/2024] We put DiskGNN on [Arxiv](https://arxiv.org/pdf/2405.05231) If you want to train a super-large-scale GNN while balancing speed and accuracy, you should try it! We will integrate it into DGL asap. :fire:
+[05/08/2024] We put DiskGNN on [Arxiv](https://arxiv.org/pdf/2405.05231) If you want to train a super-large-scale GNN while balancing speed and accuracy, you should try it! We will integrate it into DGL asap. :fire:
 
 ## Education
 
