@@ -8,12 +8,12 @@ hide:
 
 ## Bio ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
 
-I am an incoming PhD student at UC Berkeley in [SkyLab](https://sky.cs.berkeley.edu/) and the last-year undergraduate student in the **ACM honor class of Shanghai Jiaotong University**, majoring in computer science and technology. I am interested in **machine learning systems and high-performance computing systems** (to be more detailed maybe distributed systems for large ML model training, and develop tailored abstractions for unique ML computational patterns to achieve higher performance).
+I am a first PhD student at UC Berkeley in [SkyLab](https://sky.cs.berkeley.edu/) and received my B.E. in Computer Science and Technology from ACM Honored Class, Shanghai Jiao Tong University. I am interested in **machine learning systems and high-performance computing systems** (to be more detailed maybe distributed systems for large ML model training, and develop tailored abstractions for unique ML computational patterns to achieve higher performance).
 
-Currently, I am also collaborating with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU on a project related to scale up GNN training. In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
+Previously, I collaborated with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU and **Dr.[Minjie Wang](https://jermainewang.github.io/)** on a project related to scaling up GNN training. In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
 
 I like to communicate with different people, so you can feel free to contact me via email wechat:15858459091 or yichuanwang0324 or [twitter](https://twitter.com/YichuanM)
-If you are willing to know more details, you can see my [CV](https://docdro.id/AOZx9dN) here. If you are interested in my motivation, you can also take a look at my [SoP](https://docdro.id/OvdjJ6Q) for application.
+If you are willing to know more details, you can see my [CV](https://docdro.id/AOZx9dN) here. If you are interested in my motivation, you can also look at my [SoP](https://docdro.id/OvdjJ6Q) for application.
 
 *:fontawesome-solid-inbox: Work Email: [yichuanjiaoda@sjtu.edu.cn](mailto:yichuanjiaoda@sjtu.edu.cn)*
 
@@ -57,11 +57,13 @@ Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Ji
 
 \*indicates equal contribution
 
-**submitted VLDB 2025**
+**submitted SIGMOD 2025**
 
 ## Services
-- 2025 Eurosys AEC
-- 2024 OSDI,ATC,SIGCOMM AEC
+- [08/2025] Eurosys'25 Artifact Evaluation Committee
+- [07/2025] SIGCOMM'25 Artifact Evaluation Committee
+- [04/2024] OSDI’24  Artifact Evaluation Committee 
+- [04/2024] USENIX ATC’24  Artifact Evaluation Committee 	
 
 ## Selected Projects
 **[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)[![](https://img.shields.io/github/stars/yichuan520030910320/raytracer.svg?style=social)](https://github.com/yichuan520030910320/raytracer/stargazers)**
