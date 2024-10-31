@@ -26,7 +26,7 @@ In my spare time,  I also contribute to open-source projects, like [SGLang](http
   [:fontawesome-brands-github:](https://github.com/yichuan520030910320)
   [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/yichuan-wang-7518b4225/)
   [:fontawesome-brands-twitter:](https://twitter.com/YichuanM)
-  [:academicons-cv:](https://drive.google.com/drive/my-drive?dmr=1&ec=wgc-drive-hero-goto) <!-- Your CV link -->
+  [:academicons-cv:](https://drive.google.com/file/d/1q8bcPEsnj7M3h_5r1iEUJgIFnn008zMO/view?usp=sharing) <!-- Your CV link -->
 </span>
 
 ## News
