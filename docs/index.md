@@ -42,7 +42,7 @@ In my spare time,  I also contribute to open-source projects, like [SGLang](http
 
 ### UC Berkeley ![Image title](images/UCB-Logo.webp){ align=right style="height:6em; border-radius: 0.5em;"}
 
-*Starting from Sept. 2024 *
+*Starting from Sept. 2024*
 
 **PhD in EECS**
 
