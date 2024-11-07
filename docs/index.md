@@ -16,7 +16,7 @@ If you are willing to know more details, you can see my [CV](https://docdro.id/A
 
 In my spare time,  I also contribute to open-source projects, like [SGLang](https://github.com/sgl-project/sglang) recently.
 
-*:fontawesome-solid-inbox: Work Email: [yichuanjiaoda@sjtu.edu.cn](mailto:yichuanjiaoda@sjtu.edu.cn)*
+*:fontawesome-solid-inbox: Work Email: [yichuan_wang@berkeley.edu](mailto:yichuan_wang@berkeley.edu)*
 
 *:fontawesome-solid-inbox: Personal Email: [yichuanmistygrass@gmail.com](mailto:yichuanmistygrass@gmail.com)*
 
