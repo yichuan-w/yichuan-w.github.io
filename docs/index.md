@@ -14,7 +14,7 @@ Previously, I collaborated with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~
 I like to communicate with different people, so you can feel free to contact me via email wechat:15858459091 or yichuanwang0324 or [twitter](https://twitter.com/YichuanM)
 If you are willing to know more details, you can see my [CV](https://docdro.id/AOZx9dN) here. If you are interested in my motivation, you can also look at my [SoP](https://docdro.id/OvdjJ6Q) for application.
 
-In my spare time,  I also contribute to open-source projects, like [SGLang](https://github.com/sgl-project/sglang) recently.
+In my spare time,  I have also contributed to open-source projects, like [SGLang](https://github.com/sgl-project/sglang) recently.
 
 *:fontawesome-solid-inbox: Work Email: [yichuan_wang@berkeley.edu](mailto:yichuan_wang@berkeley.edu)*
 
@@ -62,11 +62,11 @@ In my spare time,  I also contribute to open-source projects, like [SGLang](http
 
 ## Publications
 
-**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
+**Locality-aware Fair Scheduling in LLM Serving** [pdf](https://arxiv.org/pdf/2501.14312)
 
-Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
+Shiyi Cao\*, **Yichuan Wang\***, Ziming Mao, Pin-Lun Hsu, Liangsheng Yin, Tian Xia, Dacheng Li, Shu Liu, Yineng Zhang, Yang Zhou, Ying Sheng, Joseph Gonzalez, Ion Stoica
 
-**Accepted by OSDI 2023** 
+\*indicates equal contribution
 
 **DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/pdf/2405.05231)
 
@@ -75,6 +75,13 @@ Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Ji
 \*indicates equal contribution
 
 **Accepted by SIGMOD 2025**
+**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
+
+Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
+
+**Accepted by OSDI 2023** 
+
+
 
 ## Services
 - [08/2024] Eurosys'25 Artifact Evaluation Committee
