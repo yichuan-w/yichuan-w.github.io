@@ -68,6 +68,8 @@ Shiyi Cao\*, **Yichuan Wang\***, Ziming Mao, Pin-Lun Hsu, Liangsheng Yin, Tian X
 
 \*indicates equal contribution
 
+**Preprint**
+
 **DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/pdf/2405.05231)
 
 Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Jiang, Bo Tang, Jinyang Li
@@ -75,6 +77,7 @@ Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Ji
 \*indicates equal contribution
 
 **Accepted by SIGMOD 2025**
+
 **Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
 Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
