@@ -117,6 +117,7 @@ Designed a train ticket system with multi-user support and privilege management.
 ## Blog Posts
 
 Here are my thoughts and comments on various research papers and topics in systems and ML:
+(Note right now all of these are just placeholders gen by cursor, I will fill them with real content later)
 
 ### Paper Reviews
 - [Serving Large Language Models at Scale: A Comprehensive Review](/blog/llm-serving-review) - My analysis of different LLM serving systems and their trade-offs
