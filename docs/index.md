@@ -89,8 +89,8 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 ## Services
 - [08/2024] Eurosys'25 Artifact Evaluation Committee
 - [07/2024] SIGCOMM'24 Artifact Evaluation Committee
-- [04/2024] OSDI’24  Artifact Evaluation Committee 
-- [04/2024] USENIX ATC’24  Artifact Evaluation Committee 	
+- [04/2024] OSDI'24  Artifact Evaluation Committee 
+- [04/2024] USENIX ATC'24  Artifact Evaluation Committee 	
 
 ## Misc/Hobbies
 
@@ -114,8 +114,20 @@ Designed a RISC-V CPU with Write Buffer, ICache, DCache, and Branch Prediction. 
 
 Designed a train ticket system with multi-user support and privilege management. I implemented the backend and built a Bplustree storage. All used C++ STL data structures are from scratch (including map, and queue).
 
+## Blog Posts
 
+Here are my thoughts and comments on various research papers and topics in systems and ML:
 
+### Paper Reviews
+- [Serving Large Language Models at Scale: A Comprehensive Review](/blog/llm-serving-review) - My analysis of different LLM serving systems and their trade-offs
+- [GraphRAG Systems: Current State and Future Directions](/blog/graphrag-systems) - Deep dive into GraphRAG architectures and optimization opportunities
+- [Distributed Training Systems for LLMs](/blog/distributed-llm-training) - Comparing different approaches for distributed LLM training
+
+### Technical Notes
+- [Building High-Performance ML Systems](/blog/ml-systems-notes) - Key lessons learned from my research experience
+- [Optimizing Large-Scale Graph Neural Networks](/blog/gnn-optimization) - Insights from working on DiskGNN
+
+*[See all blog posts →](/blog)*
 
 <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=vKDFbzvNtdhkO6iWYD25euhaXiT5AUrPPEenMbdR3I0&cl=ffffff&w=a"></script>
 
