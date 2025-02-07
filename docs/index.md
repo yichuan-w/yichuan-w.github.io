@@ -120,13 +120,14 @@ Here are my thoughts and comments on various research papers and topics in syste
 (Note right now all of these are just placeholders gen by cursor, I will fill them with real content later)
 
 ### Paper Reviews
-- [Serving Large Language Models at Scale: A Comprehensive Review](/blog/llm-serving-review) - My analysis of different LLM serving systems and their trade-offs
-- [GraphRAG Systems: Current State and Future Directions](/blog/graphrag-systems) - Deep dive into GraphRAG architectures and optimization opportunities
+- [My Thoughts on RAGCache paper](/blog/ragcache) - My thoughts on RAGCache paper [arxiv](https://arxiv.org/abs/2404.12457)
+
+<!-- - [GraphRAG Systems: Current State and Future Directions](/blog/graphrag-systems) - Deep dive into GraphRAG architectures and optimization opportunities
 - [Distributed Training Systems for LLMs](/blog/distributed-llm-training) - Comparing different approaches for distributed LLM training
 
 ### Technical Notes
 - [Building High-Performance ML Systems](/blog/ml-systems-notes) - Key lessons learned from my research experience
-- [Optimizing Large-Scale Graph Neural Networks](/blog/gnn-optimization) - Insights from working on DiskGNN
+- [Optimizing Large-Scale Graph Neural Networks](/blog/gnn-optimization) - Insights from working on DiskGNN -->
 
 *[See all blog posts →](/blog)*
 
