@@ -117,7 +117,6 @@ Designed a train ticket system with multi-user support and privilege management.
 ## Blog Posts
 
 Here are my thoughts and comments on various research papers and topics in systems and ML:
-(Note right now all of these are just placeholders gen by cursor, I will fill them with real content later)
 
 ### Paper Comments
 - [My Thoughts on RAGCache paper](/blog/ragcache) - My thoughts on RAGCache paper [arxiv](https://arxiv.org/abs/2404.12457)
