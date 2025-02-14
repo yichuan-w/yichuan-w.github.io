@@ -84,6 +84,17 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 
 **Accepted by OSDI 2023** 
 
+4.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://openreview.net/forum?id=Gq7RDMeZi4)
+
+Haitian Jiang, Renjie Liu, Zengfeng Huang, Xiao Yan, **Yichuan Wang**, Zhenkun Cai, Minjie Wang, David Wipf
+
+**Accepted by ICLR 2025** 
+
+5.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
+Alejandro Cuadron, Dacheng Li, Wenjie Ma, Xingyao Wang, **Yichuan Wang**, Siyuan Zhuang, Shu Liu, Luis Gaspar Schroeder, Tian Xia, Huanzhi Mao, Nicholas Thumiger, Aditya Desai, Ion Stoica, Ana Klimovic, Graham Neubig, Joseph E. Gonzalez
+
+**Preprint**
+
 
 
 ## Services
