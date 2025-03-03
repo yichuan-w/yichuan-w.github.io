@@ -86,7 +86,7 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 
 4.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://openreview.net/forum?id=Gq7RDMeZi4)
 
-Haitian Jiang, Renjie Liu, Zengfeng Huang, Xiao Yan, **Yichuan Wang**, Zhenkun Cai, Minjie Wang, David Wipf
+Haitian Jiang, Renjie Liu, Zengfeng Huang, **Yichuan Wang**, Xiao Yan, Zhenkun Cai, Minjie Wang, David Wipf
 
 **Accepted by ICLR 2025** 
 
