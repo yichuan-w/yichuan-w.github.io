@@ -84,7 +84,7 @@ Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxia
 
 **Accepted by OSDI 2023** 
 
-4.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://openreview.net/forum?id=Gq7RDMeZi4)
+4.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
 
 Haitian Jiang, Renjie Liu, Zengfeng Huang, **Yichuan Wang**, Xiao Yan, Zhenkun Cai, Minjie Wang, David Wipf
 
