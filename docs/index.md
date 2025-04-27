@@ -107,6 +107,7 @@ Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wan
 
 
 ## Services
+- [04/2025] SIGMOD'25 Artifact Evaluation Committee
 - [03/2025] MLsys'25 Artifact Evaluation Committee
 - [02/2025] Eurosys'25 Artifact Evaluation Committee
 - [07/2024] SIGCOMM'24 Artifact Evaluation Committee
