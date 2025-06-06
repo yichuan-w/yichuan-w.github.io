@@ -142,6 +142,7 @@ Here are my thoughts and comments on various research papers and topics in syste
 
 ### Paper Comments
 - [My Thoughts on RAGCache paper](/blog/ragcache) - My thoughts on RAGCache paper [arxiv](https://arxiv.org/abs/2404.12457)
+- [My Thoughts on RAGCache paper](/blog/game_eval) - My thoughts on Orak paper, a comprehensive evaluation on Game Plantform [arxiv](https://arxiv.org/abs/2506.03610)
 
 <!-- - [GraphRAG Systems: Current State and Future Directions](/blog/graphrag-systems) - Deep dive into GraphRAG architectures and optimization opportunities
 - [Distributed Training Systems for LLMs](/blog/distributed-llm-training) - Comparing different approaches for distributed LLM training
@@ -150,7 +151,7 @@ Here are my thoughts and comments on various research papers and topics in syste
 - [Building High-Performance ML Systems](/blog/ml-systems-notes) - Key lessons learned from my research experience
 - [Optimizing Large-Scale Graph Neural Networks](/blog/gnn-optimization) - Insights from working on DiskGNN -->
 
-*[See all blog posts →](/blog)*
+<!-- *[See all blog posts →](/blog)* -->
 
 <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=vKDFbzvNtdhkO6iWYD25euhaXiT5AUrPPEenMbdR3I0&cl=ffffff&w=a"></script>
 
