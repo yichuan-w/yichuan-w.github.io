@@ -25,7 +25,7 @@ What surprised me most were the empirical findings: **vision wasn’t as benefic
 
 As shown in Table 6, agents with text-only inputs often performed comparably — or even better — than those with combined vision-text inputs.
 
-In the case of *StarCraft II*, for example, the evaluation pipeline uses [python-sc2](https://github.com/BurnySc2/python-sc2), which provides structured access to game state — bypassing the need for screen parsing entirely. ([See implementation](https://github.com/krafton-ai/Orak/blob/release/src/mcp_game_servers/star_craft/game/utils/bots.py#L44))
+In the case of *StarCraft II*, the evaluation pipeline leverages [`python-sc2`](https://github.com/BurnySc2/python-sc2), a Python wrapper built on top of Blizzard's official [s2client-api](https://github.com/Blizzard/s2client-api). Instead of relying on visual input, this library communicates directly with the game client using protobuf messages over WebSocket connections. It retrieves structured, real-time game state by issuing observation requests and receiving rich responses that include unit positions, resources, map features, and other key gameplay information — effectively bypassing the need for any screen parsing. ([See implementation](https://github.com/krafton-ai/Orak/blob/release/src/mcp_game_servers/star_craft/game/utils/bots.py#L44))
 
 ### 5. Opportunities for Vision-Only Agents
 
