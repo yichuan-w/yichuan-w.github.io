@@ -118,7 +118,7 @@ Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wan
 
 I like playing basketball! (But unfortunately, it seems that there aren't any good basketball courts near Berkeley.) So now, I might (or rather, I can only) play more badminton(I still enjoy). Besides that, I've been an NBA fan for 15 years, and I like Chris Paul! In recent years, I've also become very interested in the Premier League(I love Manchester City, come on Blue Moon!). If you share the same interests, we should chat/hang out!
 
-## Selected Projects
+<!-- ## Selected Projects
 **[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)[![](https://img.shields.io/github/stars/yichuan520030910320/raytracer.svg?style=social)](https://github.com/yichuan520030910320/raytracer/stargazers)**
 
 
@@ -134,7 +134,7 @@ Designed a RISC-V CPU with Write Buffer, ICache, DCache, and Branch Prediction. 
 
 **[:fontawesome-brands-github: Ticket System ](https://github.com/yichuan520030910320/My_train)**
 
-Designed a train ticket system with multi-user support and privilege management. I implemented the backend and built a Bplustree storage. All used C++ STL data structures are from scratch (including map, and queue).
+Designed a train ticket system with multi-user support and privilege management. I implemented the backend and built a Bplustree storage. All used C++ STL data structures are from scratch (including map, and queue). -->
 
 ## Blog Posts
 
@@ -151,7 +151,7 @@ Here are my thoughts and comments on various research papers and topics in syste
 - [Building High-Performance ML Systems](/blog/ml-systems-notes) - Key lessons learned from my research experience
 - [Optimizing Large-Scale Graph Neural Networks](/blog/gnn-optimization) - Insights from working on DiskGNN -->
 
-<!-- *[See all blog posts →](/blog)* -->
+*[See all blog posts →](/blog)*
 
 <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=vKDFbzvNtdhkO6iWYD25euhaXiT5AUrPPEenMbdR3I0&cl=ffffff&w=a"></script>
 
