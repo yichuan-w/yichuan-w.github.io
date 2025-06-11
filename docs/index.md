@@ -62,15 +62,21 @@ In my spare time,  I have also contributed to open-source projects, like [SGLang
 
 ## Publications
 
-1.**Locality-aware Fair Scheduling in LLM Serving** [pdf](https://arxiv.org/pdf/2501.14312)
+1.**LEANN: A Low-Storage Vector Index** [pdf](https://arxiv.org/pdf/2506.08276)
 
-Shiyi Cao\*, **Yichuan Wang\***, Ziming Mao, Pin-Lun Hsu, Liangsheng Yin, Tian Xia, Dacheng Li, Shu Liu, Yineng Zhang, Yang Zhou, Ying Sheng, Joseph Gonzalez, Ion Stoica
+Yichuan Wang, Shu Liu, Zhifei Li, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
+
+**Preprint**
+
+2.**Locality-aware Fair Scheduling in LLM Serving** [pdf](https://arxiv.org/pdf/2501.14312)
+
+Shiyi Cao\*, **Yichuan Wang\***, Ziming Mao, Pin-Lun Hsu, Liangsheng Yin, Tian Xia, Dacheng Li, Shu Liu, Yineng Zhang, Yang Zhou, Ying Sheng,  Joseph E. Gonzalez, Ion Stoica
 
 \*indicates equal contribution
 
 **Preprint**
 
-2.**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/pdf/2405.05231)
+3.**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/pdf/2405.05231)
 
 Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Jiang, Bo Tang, Jinyang Li
 
@@ -78,33 +84,29 @@ Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Ji
 
 **Accepted by SIGMOD 2025**
 
-3.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
+4.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
 Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
 
 **Accepted by OSDI 2023** 
 
-4.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
+5.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
 
 Haitian Jiang, Renjie Liu, Zengfeng Huang, **Yichuan Wang**, Xiao Yan, Zhenkun Cai, Minjie Wang, David Wipf
 
 **Accepted by ICLR 2025** 
 
-5.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
+6.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
 
 Alejandro Cuadron, Dacheng Li, Wenjie Ma, Xingyao Wang, **Yichuan Wang**, Siyuan Zhuang, Shu Liu, Luis Gaspar Schroeder, Tian Xia, Huanzhi Mao, Nicholas Thumiger, Aditya Desai, Ion Stoica, Ana Klimovic, Graham Neubig, Joseph E. Gonzalez
 
 **Preprint**
 
-6.**Autellix: An Efficient Serving Engine for LLM Agents as General Programs** [pdf](https://arxiv.org/abs/2502.13965)
+7.**Autellix: An Efficient Serving Engine for LLM Agents as General Programs** [pdf](https://arxiv.org/abs/2502.13965)
 
 Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wang**, Chi Wang, Yanping Huang, Zhifeng Chen, Joseph E. Gonzalez, Ion Stoica
 
 **Preprint**
-
-
-
-
 
 ## Services
 - [04/2025] SIGMOD'25 Artifact Evaluation Committee
@@ -118,24 +120,6 @@ Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wan
 
 I like playing basketball! (But unfortunately, it seems that there aren't any good basketball courts near Berkeley.) So now, I might (or rather, I can only) play more badminton(I still enjoy). Besides that, I've been an NBA fan for 15 years, and I like Chris Paul! In recent years, I've also become very interested in the Premier League(I love Manchester City, come on Blue Moon!). If you share the same interests, we should chat/hang out!
 
-<!-- ## Selected Projects
-**[:fontawesome-brands-github: RayTracer](https://github.com/yichuan520030910320/raytracer)[![](https://img.shields.io/github/stars/yichuan520030910320/raytracer.svg?style=social)](https://github.com/yichuan520030910320/raytracer/stargazers)**
-
-
-A system that can build its own scene and track the refraction and reflection of light in it. Several compilation-related optimizations were undertaken to enhance the overall performance.
-
-**[:fontawesome-brands-github: Compiler for Mx* Language](https://github.com/yichuan520030910320/compiler_2021)**
-
-Using the technology of ANTLR, semantic checking, code generation, and optimization to develop a compiler that compiles C-and-Java-like language to RV32I Assembly from scratch.
-
-**[:fontawesome-brands-github: RISC-V CPU Implemented in Verilog RTL](https://github.com/yichuan520030910320/CPU_ACM_2021)**
-
-Designed a RISC-V CPU with Write Buffer, ICache, DCache, and Branch Prediction. Supports RV32I instruction set (2.1-2.6 in RISC-V User Manual). Used Vivado to generate bitstream and program the Basys3 FPGA board.
-
-**[:fontawesome-brands-github: Ticket System ](https://github.com/yichuan520030910320/My_train)**
-
-Designed a train ticket system with multi-user support and privilege management. I implemented the backend and built a Bplustree storage. All used C++ STL data structures are from scratch (including map, and queue). -->
-
 ## Blog Posts
 
 Here are my thoughts and comments on various research papers and topics in systems and ML:
@@ -143,13 +127,6 @@ Here are my thoughts and comments on various research papers and topics in syste
 ### Paper Comments
 - [My Thoughts on RAGCache paper](/blog/ragcache) - My thoughts on RAGCache paper [arxiv](https://arxiv.org/abs/2404.12457)
 - [My Thoughts on Exploring Orak: A Unified Benchmark for LLM Agents in Games paper](/blog/game_eval) - My thoughts on Orak paper, a comprehensive evaluation on Game Plantform [arxiv](https://arxiv.org/abs/2506.03610)
-
-<!-- - [GraphRAG Systems: Current State and Future Directions](/blog/graphrag-systems) - Deep dive into GraphRAG architectures and optimization opportunities
-- [Distributed Training Systems for LLMs](/blog/distributed-llm-training) - Comparing different approaches for distributed LLM training
-
-### Technical Notes
-- [Building High-Performance ML Systems](/blog/ml-systems-notes) - Key lessons learned from my research experience
-- [Optimizing Large-Scale Graph Neural Networks](/blog/gnn-optimization) - Insights from working on DiskGNN -->
 
 *[See all blog posts →](/blog)*
 
