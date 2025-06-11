@@ -31,6 +31,8 @@ In my spare time,  I have also contributed to open-source projects, like [SGLang
 
 ## News
 
+[06/20/2025] I will attend SIGMOD in Berlin this year. Let's chat about vector database, RAG, LLM and we can hang around!
+
 [08/29/2024] After being rejected once, DiskGNN has finally been accepted by SIGMOD25. See you in Berlin! ​:smile:
 
 
@@ -64,7 +66,7 @@ In my spare time,  I have also contributed to open-source projects, like [SGLang
 
 1.**LEANN: A Low-Storage Vector Index** [pdf](https://arxiv.org/pdf/2506.08276)
 
-Yichuan Wang, Shu Liu, Zhifei Li, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
+**Yichuan Wang**, Shu Liu, Zhifei Li, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
 
 **Preprint**
 
