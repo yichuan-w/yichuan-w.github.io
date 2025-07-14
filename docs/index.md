@@ -68,7 +68,7 @@ In my spare time,  I have also contributed to open-source projects, like [SGLang
 
 **Yichuan Wang**, Shu Liu, Zhifei Li, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
 
-**Preprint**
+**Preprint** (Short version in [VecDB@ICML2025](hhttps://openreview.net/pdf?id=iVYBpQWGhq))
 
 2.**Locality-aware Fair Scheduling in LLM Serving** [pdf](https://arxiv.org/pdf/2501.14312)
 
