@@ -1,0 +1,2 @@
+RX-399 avoids double-counting trash cans by identifying duplicates across different viewpoints using feature matching
+Give an image similarityn matching to avoid reduandency , we can check theri repo for that

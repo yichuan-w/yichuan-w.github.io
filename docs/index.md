@@ -108,7 +108,7 @@ Alejandro Cuadron, Dacheng Li, Wenjie Ma, Xingyao Wang, **Yichuan Wang**, Siyuan
 
 Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wang**, Chi Wang, Yanping Huang, Zhifeng Chen, Joseph E. Gonzalez, Ion Stoica
 
-**Preprint**
+**Accepted by NSDI 2026**
 
 ## Services
 - [04/2025] SIGMOD'25 Artifact Evaluation Committee
