@@ -12,7 +12,7 @@ I am a first-year PhD student at **UC Berkeley** in **[SkyLab](https://sky.cs.be
 
 During my undergraduate studies, I collaborated with **Prof. [Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** at NYU and **Dr. [Minjie Wang](https://jermainewang.github.io/)** on projects related to scaling up GNN training. At SJTU, I was supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at SJTU. 
 
-I enjoy connecting with researchers and practitioners in the field. Feel free to reach out via email, WeChat (15858459091), or [Twitter](https://twitter.com/YichuanM). For more details about my background, you can view my [CV](https://docdro.id/AOZx9dN) and [Statement of Purpose](https://docdro.id/OvdjJ6Q) from my graduate school applications.
+I enjoy connecting with researchers and practitioners in the field. Feel free to reach out via email, WeChat (15858459091), or [Twitter](https://twitter.com/YichuanM). For more details about my background, you can view my [CV](https://drive.google.com/file/d/1q8bcPEsnj7M3h_5r1iEUJgIFnn008zMO/view?usp=sharing) and [Statement of Purpose](https://docdro.id/OvdjJ6Q) from my graduate school applications.
 
 In my spare time, I contribute to open-source projects, most recently [SGLang](https://github.com/sgl-project/sglang).
 
