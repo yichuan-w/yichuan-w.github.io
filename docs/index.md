@@ -8,13 +8,13 @@ hide:
 
 ## Bio ![微信图片_20230814214647](https://github.com/yichuan-w/yichuan-w.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
 
-I am a first-year PhD student at **UC Berkeley** in **[SkyLab](https://sky.cs.berkeley.edu/)** and received my B.E. in Computer Science and Technology from **ACM Honored Class**, Shanghai Jiao Tong University(**SJTU**). I am interested in **machine learning systems and high-performance computing systems** particularly in distributed systems for large ML model training/serving and developing tailored abstractions for unique ML computational patterns to enhance performance. To be more specific, currently, I am more interested in LLM serving/scheduling, multi-agent systems, large scale RAG and GraphRAG. If you share similar interests, I'd love to chat.
+I am a first-year PhD student at **UC Berkeley** in **[SkyLab](https://sky.cs.berkeley.edu/)** and received my B.E. in Computer Science and Technology from the **ACM Honored Class** at Shanghai Jiao Tong University (**SJTU**). My research focuses on **machine learning systems**, particularly systems for large ML model/LLM training and serving, and developing tailored abstractions for unique ML computational patterns to achieve better performance. Currently, I am most interested in LLM serving/scheduling, agent systems, vector search, retrieval, large-scale RAG, and personalized AI application. If you share similar research interests, I'd love to connect and chat!
 
-Previously, I collaborated with **Prof.[Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** in NYU and **Dr.[Minjie Wang](https://jermainewang.github.io/)** on a project related to scaling up GNN training. In SJTU, I am supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at EPCC. 
-I like to communicate with different people, so you can feel free to contact me via email wechat:15858459091 or yichuanwang0324 or [twitter](https://twitter.com/YichuanM)
-If you are willing to know more details, you can see my [CV](https://docdro.id/AOZx9dN) here. If you are interested in my motivation, you can also look at my [SoP](https://docdro.id/OvdjJ6Q) for application.
+During my undergraduate studies, I collaborated with **Prof. [Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** at NYU and **Dr. [Minjie Wang](https://jermainewang.github.io/)** on projects related to scaling up GNN training. At SJTU, I was supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at SJTU. 
 
-In my spare time,  I have also contributed to open-source projects, like [SGLang](https://github.com/sgl-project/sglang) recently.
+I enjoy connecting with researchers and practitioners in the field. Feel free to reach out via email, WeChat (15858459091), or [Twitter](https://twitter.com/YichuanM). For more details about my background, you can view my [CV](https://docdro.id/AOZx9dN) and [Statement of Purpose](https://docdro.id/OvdjJ6Q) from my graduate school applications.
+
+In my spare time, I contribute to open-source projects, most recently [SGLang](https://github.com/sgl-project/sglang).
 
 *:fontawesome-solid-inbox: Work Email: [yichuan_wang@berkeley.edu](mailto:yichuan_wang@berkeley.edu)*
 
