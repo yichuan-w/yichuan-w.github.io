@@ -78,13 +78,13 @@ Shiyi Cao\*, **Yichuan Wang\***, Ziming Mao, Pin-Lun Hsu, Liangsheng Yin, Tian X
 
 **Preprint**
 
-3.**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/pdf/2405.05231)
+3.**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/pdf/2405.05231) [poster](asset/DiskGNN_poster_yichuan.pdf) [slides](asset/SIGMOD%20Research%202_DiskGNN.pdf)
 
 Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Jiang, Bo Tang, Jinyang Li
 
 \*indicates equal contribution
 
-**Accepted by SIGMOD 2025**
+**Accepted by SIGMOD 2025(Oral)**
 
 4.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
