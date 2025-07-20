@@ -6,7 +6,7 @@ hide:
 
 # Yichuan Wang 
 
-## Bio ![微信图片_20230814214647](https://github.com/yichuan520030910320/yichuan520030910320.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
+## Bio ![微信图片_20230814214647](https://github.com/yichuan-w/yichuan-w.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
 
 I am a first-year PhD student at **UC Berkeley** in **[SkyLab](https://sky.cs.berkeley.edu/)** and received my B.E. in Computer Science and Technology from **ACM Honored Class**, Shanghai Jiao Tong University(**SJTU**). I am interested in **machine learning systems and high-performance computing systems** particularly in distributed systems for large ML model training/serving and developing tailored abstractions for unique ML computational patterns to enhance performance. To be more specific, currently, I am more interested in LLM serving/scheduling, multi-agent systems, large scale RAG and GraphRAG. If you share similar interests, I'd love to chat.
 
@@ -23,7 +23,7 @@ In my spare time,  I have also contributed to open-source projects, like [SGLang
 <span style="font-size:2em;">
   [:fontawesome-solid-envelope:](mailto:yichuanmistygrass@gmail.com)
   [:academicons-google-scholar:](https://scholar.google.com/citations?user=N96BY7AAAAAJ&hl=en)
-  [:fontawesome-brands-github:](https://github.com/yichuan520030910320)
+  [:fontawesome-brands-github:](https://github.com/yichuan-w)
   [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/yichuan-wang-7518b4225/)
   [:fontawesome-brands-twitter:](https://twitter.com/YichuanM)
   [:academicons-cv:](https://drive.google.com/file/d/1q8bcPEsnj7M3h_5r1iEUJgIFnn008zMO/view?usp=sharing) <!-- Your CV link -->
