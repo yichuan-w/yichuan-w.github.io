@@ -6,7 +6,7 @@ hide:
 
 # Yichuan Wang 
 
-## Bio ![微信图片_20230814214647](https://github.com/yichuan-w/yichuan-w.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
+## Bio ![profile](https://github.com/yichuan-w/yichuan-w.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
 
 I am a first-year PhD student at **UC Berkeley** in **[SkyLab](https://sky.cs.berkeley.edu/)** and received my B.E. in Computer Science and Technology from the **ACM Honored Class** at Shanghai Jiao Tong University (**SJTU**). My research focuses on **machine learning systems**, particularly systems for large ML model/LLM training and serving, and developing tailored abstractions for unique ML computational patterns to achieve better performance. Currently, I am most interested in LLM serving/scheduling, agent systems, vector search, retrieval, large-scale RAG, and personalized AI application. If you share similar research interests, I'd love to connect and chat!
 
