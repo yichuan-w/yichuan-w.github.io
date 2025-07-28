@@ -124,7 +124,7 @@ I like playing basketball! (But unfortunately, it seems that there aren't any go
 
 ## Blog Posts
 
-Here are my thoughts and comments on various research papers and topics in systems and ML:
+Here are my thoughts and comments on various research papers and topics in systems and ML, along with practical lessons learned from my development experience:
 
 ### Paper Comments
 - [My Thoughts on RAGCache paper](/blog/ragcache) - My thoughts on RAGCache paper [arxiv](https://arxiv.org/abs/2404.12457)
@@ -132,7 +132,10 @@ Here are my thoughts and comments on various research papers and topics in syste
 - [My Thoughts on Qwen3 Embedding paper](/blog/qwen3embedding) - My thoughts on Qwen3 Embedding paper, advancing text embedding through foundation models
 - [My Thoughts on ReasonIR paper](/blog/reasonir) - My thoughts on ReasonIR paper, reasoning-based information retrieval
 
+### Development Experience & Lessons Learned
+- [Lessons Learned in Development - LEANN Project](/blog/lessons_learned_in_dev_leann) - Practical insights from building RAG systems, including chunk overlap strategies, data format optimization, and embedding model comparisons
+
 *[See all blog posts →](/blog)*
 
-<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=vKDFbzvNtdhkO6iWYD25euhaXiT5AUrPPEenMbdR3I0&cl=ffffff&w=a"></script>
+
 
