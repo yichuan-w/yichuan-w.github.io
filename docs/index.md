@@ -64,13 +64,13 @@ In my spare time, I contribute to open-source projects, most recently [SGLang](h
 
 ## Publications
 
-1.**LEANN: A Low-Storage Vector Index** [pdf](https://arxiv.org/pdf/2506.08276)
+1.**LEANN: A Low-Storage Vector Index** [pdf](https://arxiv.org/pdf/2506.08276) [poster](asset/leann_poster.pdf)
 
 **Yichuan Wang**, Shu Liu, Zhifei Li, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
 
 **Preprint** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
 
-2.**Locality-aware Fair Scheduling in LLM Serving** [pdf](https://arxiv.org/pdf/2501.14312)
+2.**Locality-aware Fair Scheduling in LLM Serving** [pdf](https://arxiv.org/pdf/2501.14312) [poster](asset/DLPM(poster).pdf)
 
 Shiyi Cao\*, **Yichuan Wang\***, Ziming Mao, Pin-Lun Hsu, Liangsheng Yin, Tian Xia, Dacheng Li, Shu Liu, Yineng Zhang, Yang Zhou, Ying Sheng,  Joseph E. Gonzalez, Ion Stoica
 
