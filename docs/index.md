@@ -30,6 +30,7 @@ In my spare time, I contribute to open-source projects, most recently [SGLang](h
 </span>
 
 ## News
+[08/10/2025] We release [LEANN](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social), a fully local RAG with 97% storage savings. One of the first open-source engines to bring semantic search to Claude Code, all with zero cloud cost and full privacy. Drop me an email if you’d like to contribute — we’re on a mission to build an engine that understands every piece of data on your PC.
 
 [06/20/2025] I will attend SIGMOD in Berlin this year. Let's chat about vector database, RAG, LLM and we can hang around!
 
