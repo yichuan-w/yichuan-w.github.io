@@ -119,6 +119,12 @@ Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wan
 - [04/2024] OSDI'24  Artifact Evaluation Committee 
 - [04/2024] USENIX ATC'24  Artifact Evaluation Committee 	
 
+## Invited Talks
+- [10/2025] **Lightspeed interview** - LEANN: Towards Lightweight Vector Search and RAG Everything on PC
+- [09/2025] **Bytedance Data Team** - [LEANN: Towards Lightweight Vector Search and RAG Everything on PC](https://docs.google.com/presentation/d/1JTiob6NWVzC_irqY0W9_fpnnYS-Ns6msh_O2IIXmOD8/edit?slide=id.g37d4d20d110_0_22#slide=id.g37d4d20d110_0_22)
+- [07/2025] **SIGMOD 2025** - [DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training](https://docs.google.com/presentation/d/1QBVBRG2H1SIQPHLdntPPqw8rfbBgbNgnkqxfUW4kGSQ/edit?slide=id.g3aed71a66f8_2_75#slide=id.g3aed71a66f8_2_75)
+- [01/2025] **LMsys** - [SGLang-FLPM](https://docs.google.com/presentation/d/1VYXJoLwn1V1zxNnZol_bbAbPD4YAHcjZOUd0_UdrXko/edit?slide=id.g32e771aa8e9_0_0#slide=id.g32e771aa8e9_0_0) [[Video]](https://www.youtube.com/watch?v=KwCrPPiRwso)
+
 ## Misc/Hobbies
 
 I like playing basketball! (But unfortunately, it seems that there aren't any good basketball courts near Berkeley.) So now, I might (or rather, I can only) play more badminton(I still enjoy). Besides that, I've been an NBA fan for 15 years, and I like Chris Paul! In recent years, I've also become very interested in the Premier League(I love Manchester City, come on Blue Moon!). If you share the same interests, we should chat/hang out!
