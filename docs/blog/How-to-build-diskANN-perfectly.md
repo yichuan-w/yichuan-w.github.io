@@ -14,7 +14,7 @@ This bug haunted me for two weeks while developing DS-serve. Our initial QA perf
 
 ![L2 Distance Issues](../asset/diskann-l2.jpg)
 
-Thanks to a hint from Rulin, we finally identified the culprit: **The Build Metric.**
+Thanks to a hint from Rulin, [Jinjian](https://github.com/berkeleyljj) and I finally identified the culprit: **The Build Metric.**
 We had assumed that L2, MIPS (Maximum Inner Product Search), and Cosine distance were interchangeable enough. **They are not.**
 
 ### The Root Cause: Training-Inference Mismatch
@@ -61,6 +61,7 @@ Building the index for DS-serve took nearly a week on a 1TB RAM machine.
 
 *   **The Good News:** DiskANN supports building on arbitrary RAM sizes by partitioning data and merging subgraphs.
 *   **The Gotcha:** In the actual implementation, the build process often consumes **2x the RAM** specified in the `--build-mem` flag. If you are planning a build, make sure to provision extra memory!
+    *   **Pro Tip:** There is a high chance of OOM (Out of Memory) errors during the Vamana graph construction. To avoid an immediate crash if you hit the RAM limit, **ensure you have configured sufficient swap memory**. It might be slower, but it prevents the build from failing entirely.
 
 ## 4. What's Beyond?
 
