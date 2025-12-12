@@ -30,6 +30,8 @@ In my spare time, I contribute to open-source projects, most recently [SGLang](h
 </span>
 
 ## News
+[12/12/2025] Happy to release [DS SERVE](https://berkeley-large-rag.github.io/RAG-DS-Serve/), a framework for efficient and scalable neural retrieval and the largest open vector store over pre-trained data. Check out our [live demo](http://api.ds-serve.org:30888/ui)! Fun fact: Jinjian is the first undergraduate I mentored at Berkeley—it was a wonderful collaboration!
+
 [08/10/2025] We release [LEANN](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social), a fully local RAG with 97% storage savings. One of the first open-source engines to bring semantic search to Claude Code, all with zero cloud cost and full privacy. Drop me an email if you’d like to contribute — we’re on a mission to build an engine that understands every piece of data on your PC.
 
 [06/20/2025] I will attend SIGMOD in Berlin this year. Let's chat about vector database, RAG, LLM and we can hang around!
@@ -71,7 +73,15 @@ In my spare time, I contribute to open-source projects, most recently [SGLang](h
 
 **Preprint** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
 
-2.**Locality-aware Fair Scheduling in LLM Serving** [pdf](https://arxiv.org/pdf/2501.14312) [poster](asset/DLPM(poster).pdf)
+2.**DS SERVE: A Framework for Efficient and Scalable Neural Retrieval** [pdf](https://berkeley-large-rag.github.io/RAG-DS-Serve/assets/DS_SERVE_Camera_Ready.pdf) [website](https://berkeley-large-rag.github.io/RAG-DS-Serve/)
+
+Jinjian Liu\*, **Yichuan Wang\***, Xinxi Lyu, Rulin Shao, Joseph E. Gonzalez, Matei Zaharia, Sewon Min
+
+\*indicates equal contribution
+
+**Accepted by AAAI 2026 Demo**
+
+3.**Locality-aware Fair Scheduling in LLM Serving** [pdf](https://arxiv.org/pdf/2501.14312) [poster](asset/DLPM(poster).pdf)
 
 Shiyi Cao\*, **Yichuan Wang\***, Ziming Mao, Pin-Lun Hsu, Liangsheng Yin, Tian Xia, Dacheng Li, Shu Liu, Yineng Zhang, Yang Zhou, Ying Sheng,  Joseph E. Gonzalez, Ion Stoica
 
@@ -79,7 +89,7 @@ Shiyi Cao\*, **Yichuan Wang\***, Ziming Mao, Pin-Lun Hsu, Liangsheng Yin, Tian X
 
 **Preprint**
 
-3.**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/pdf/2405.05231) [poster](asset/DiskGNN_poster_yichuan.pdf) [slides](asset/SIGMOD%20Research%202_DiskGNN.pdf)
+4.**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/pdf/2405.05231) [poster](asset/DiskGNN_poster_yichuan.pdf) [slides](asset/SIGMOD%20Research%202_DiskGNN.pdf)
 
 Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Jiang, Bo Tang, Jinyang Li
 
@@ -87,25 +97,25 @@ Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Ji
 
 **Accepted by SIGMOD 2025(Oral)**
 
-4.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
+5.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
 Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
 
 **Accepted by OSDI 2023** 
 
-5.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
+6.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
 
 Haitian Jiang, Renjie Liu, Zengfeng Huang, **Yichuan Wang**, Xiao Yan, Zhenkun Cai, Minjie Wang, David Wipf
 
 **Accepted by ICLR 2025** 
 
-6.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
+7.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
 
 Alejandro Cuadron, Dacheng Li, Wenjie Ma, Xingyao Wang, **Yichuan Wang**, Siyuan Zhuang, Shu Liu, Luis Gaspar Schroeder, Tian Xia, Huanzhi Mao, Nicholas Thumiger, Aditya Desai, Ion Stoica, Ana Klimovic, Graham Neubig, Joseph E. Gonzalez
 
 **Preprint**
 
-7.**Autellix: An Efficient Serving Engine for LLM Agents as General Programs** [pdf](https://arxiv.org/abs/2502.13965)
+8.**Autellix: An Efficient Serving Engine for LLM Agents as General Programs** [pdf](https://arxiv.org/abs/2502.13965)
 
 Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wang**, Chi Wang, Yanping Huang, Zhifeng Chen, Joseph E. Gonzalez, Ion Stoica
 
