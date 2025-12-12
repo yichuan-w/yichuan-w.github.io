@@ -140,6 +140,7 @@ Here are my thoughts and comments on various research papers and topics in syste
 - [My Thoughts on ReasonIR paper](/blog/reasonir) - My thoughts on ReasonIR paper, reasoning-based information retrieval
 
 ### Development Experience & Lessons Learned
+- [Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems](/blog/How-to-build-diskANN-perfectly) - Practical recipes for configuring DiskANN, from optimal compression rates to avoiding hidden metric pitfalls, based on experience building LEANN and DS-serve.
 - [Lessons Learned in Development - LEANN Project](/blog/lessons_learned_in_dev_leann) - Practical insights from building RAG systems, including chunk overlap strategies, data format optimization, and embedding model comparisons
 
 *[See all blog posts →](/blog)*
