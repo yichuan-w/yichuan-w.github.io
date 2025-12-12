@@ -27,6 +27,8 @@ Many modern models (including Contriver) use **contrastive learning with MIPS**,
 
 (Sorry Matei for giving you this example twice haha!)
 
+
+*   **Pro Tip:** For further reading, a recent [VLDB '24 paper](https://www.vldb.org/pvldb/vol18/p1770-ke.pdf) explores similar phenomena but offers a different perspective—definitely worth checking out!
 ## 2. Finding the Sweet Spot for Search RAM
 
 One of the most common questions is: *What is the optimal compression rate for vectors in RAM?*
