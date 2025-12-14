@@ -143,6 +143,9 @@ I like playing basketball! (But unfortunately, it seems that there aren't any go
 
 Here are my thoughts and comments on various research papers and topics in systems and ML, along with practical lessons learned from my development experience:
 
+### Research Vision
+- [Rethinking the Search Stack for the AI Era](/blog/build-search-engine-for-AI) - Why we need to move beyond traditional search APIs for LLM agents and build native retrieval stacks.
+
 ### Paper Comments
 - [My Thoughts on RAGCache paper](/blog/ragcache) - My thoughts on RAGCache paper [arxiv](https://arxiv.org/abs/2404.12457)
 - [My Thoughts on Exploring Orak: A Unified Benchmark for LLM Agents in Games paper](/blog/game_eval) - My thoughts on Orak paper, a comprehensive evaluation on Game Plantform [arxiv](https://arxiv.org/abs/2506.03610)

@@ -8,6 +8,9 @@ Here are my thoughts and comments on various research papers and topics in syste
 
 ## Latest Posts
 
+### Research Vision
+- [Rethinking the Search Stack for the AI Era](build-search-engine-for-AI.md) - Recent
+
 ### Paper Reviews
 - [My Thoughts on RAGCache paper](ragcache.md) - February 7, 2025
 - [Exploring Orak: A Unified Benchmark for LLM Agents in Games](game_eval.md) - Recent
