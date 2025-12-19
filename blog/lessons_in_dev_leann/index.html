@@ -1,0 +1,959 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yichuan Wang">
+      
+      
+      
+        <link rel="prev" href="../game_eval/">
+      
+      
+        <link rel="next" href="../lessons_learned_in_dev_leann/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Lessons1 Learned in Development: Chunk Overlap Size in RAG - Yichuan Wang's Homepage</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-KBQPT9Q9MJ"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-KBQPT9Q9MJ",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-KBQPT9Q9MJ",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lessons1-learned-in-development-chunk-overlap-size-in-rag" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-header__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yichuan Wang's Homepage
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lessons1 Learned in Development: Chunk Overlap Size in RAG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-nav__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    Yichuan Wang's Homepage
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yichuan Wang
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog Posts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../How-to-build-diskANN-perfectly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-search-engine-for-AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking the Search Stack for the AI Era
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-search-enigine-for-AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking the Search Stack for the AI Era
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game_eval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploring Orak: A Unified Benchmark for LLM Agents in Games
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons1 Learned in Development: Chunk Overlap Size in RAG
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons1 Learned in Development: Chunk Overlap Size in RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Finding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#effects-of-chunk-overlap-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effects of Chunk Overlap Size
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Effects of Chunk Overlap Size">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#too-small-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Too Small Overlap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#too-large-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Too Large Overlap
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons_learned_in_dev_leann/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons Learned in Development - LEANN Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta_query/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta query
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onetwo_vla_and_pi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onetwo vla and pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qwen3embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ragcache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    My Thoughts on RAGCache paper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reasonir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finally, a retriever that can actually reason
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Finding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#effects-of-chunk-overlap-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effects of Chunk Overlap Size
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Effects of Chunk Overlap Size">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#too-small-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Too Small Overlap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#too-large-overlap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Too Large Overlap
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lessons1-learned-in-development-chunk-overlap-size-in-rag">Lessons1 Learned in Development: Chunk Overlap Size in RAG</h1>
+<h2 id="key-finding">Key Finding</h2>
+<p><strong>Chunk overlap size really matters</strong> in Retrieval-Augmented Generation (RAG) systems.</p>
+<h2 id="effects-of-chunk-overlap-size">Effects of Chunk Overlap Size</h2>
+<h3 id="too-small-overlap">Too Small Overlap</h3>
+<ul>
+<li>❌ <strong>Risks cutting off important context</strong>, reducing retrieval accuracy</li>
+<li>❌ <strong>Leads to fragmented chunks</strong>, weaker embeddings, and lower generation quality  </li>
+<li>⚠️ <strong>Often causes missing or inconsistent answers</strong> in downstream tasks like QA</li>
+</ul>
+<h3 id="too-large-overlap">Too Large Overlap</h3>
+<ul>
+<li>❌ <strong>Causes high redundancy</strong> and increases storage and compute cost</li>
+<li>❌ <strong>May reduce retrieval diversity</strong> due to overlapping content dominating top-k results</li>
+<li>⚠️ <strong>Adds latency</strong> without proportional gains in performance</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Finding the optimal chunk overlap size is crucial for RAG system performance. The overlap should be large enough to preserve important context across chunk boundaries, but not so large that it creates excessive redundancy and computational overhead.</p>
+<h1 id="lessons2-learned-data-format-really-matters">Lessons2 Learned: Data Format Really Matters</h1>
+<h2 id="key-finding_1">Key Finding</h2>
+<p><strong>Data format and metadata preservation</strong> are critical when chunking documents for RAG systems.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>After chunking, key information often gets lost because important metadata may lie at the beginning of paragraphs. When documents are split into chunks, crucial context like contact names, document sources, or other metadata can be separated from the relevant content.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>When applying splitters using LlamaIndex, <strong>always attach important metadata at the beginning of each chunk</strong> to ensure critical information is preserved.</p>
+<h2 id="example-implementation">Example Implementation</h2>
+<div class="highlight"><pre><span></span><code><span class="n">text_splitter</span> <span class="o">=</span> <span class="n">SentenceSplitter</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">192</span><span class="p">,</span> <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+
+<span class="c1"># Convert Documents to text strings and chunk them</span>
+<span class="n">all_texts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">all_documents</span><span class="p">:</span>
+    <span class="c1"># Split the document into chunks</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">get_nodes_from_documents</span><span class="p">([</span><span class="n">doc</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="c1"># Always prepend metadata to preserve important context</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;[Contact] means the message is from: &#39;</span> <span class="o">+</span> <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;contact_name&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="n">get_content</span><span class="p">()</span>
+        <span class="n">all_texts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="key-takeaway">Key Takeaway</h2>
+<p>By keeping the contact name (or any important metadata) always appearing before the chat history in each chunk, we ensure that the important information is attached and preserved throughout the retrieval process.</p>
+<h1 id="lessons3-learned-openai-embedding-model-performance-issues">Lessons3 Learned: OpenAI Embedding Model Performance Issues</h1>
+<h2 id="key-finding_2">Key Finding</h2>
+<p><strong>OpenAI's embedding model shows surprisingly poor performance</strong> compared to older, open-source alternatives in specific retrieval scenarios.</p>
+<h2 id="the-problem_1">The Problem</h2>
+<p>When comparing embedding models for retrieval tasks, OpenAI's embedding model consistently fails to identify the correct document even when the intent is clear, while older models like Facebook's Contriever perform correctly.</p>
+<h2 id="evidence-from-leann-project">Evidence from LEANN Project</h2>
+<p>Reference: <a href="https://github.com/yichuan-w/LEANN/blob/main/docs/code/embedding_model_compare.py">Embedding Model Comparison Code</a></p>
+<h3 id="test-scenario">Test Scenario</h3>
+<div class="highlight"><pre><span></span><code><span class="n">conference_text</span> <span class="o">=</span> <span class="s2">&quot;[Title]: COLING 2025 Conference</span><span class="se">\n</span><span class="s2">[URL]: https://coling2025.org/&quot;</span>
+<span class="n">browser_text</span> <span class="o">=</span> <span class="s2">&quot;[Title]: Browser Use Tool</span><span class="se">\n</span><span class="s2">[URL]: https://github.com/browser-use&quot;</span>
+
+<span class="c1"># Two queries with same intent but different wording</span>
+<span class="n">query1</span> <span class="o">=</span> <span class="s2">&quot;Tell me my browser history about some conference i often visit&quot;</span>
+<span class="n">query2</span> <span class="o">=</span> <span class="s2">&quot;browser history about conference I often visit&quot;</span>
+</code></pre></div>
+<h3 id="expected-vs-actual-results">Expected vs Actual Results</h3>
+<ul>
+<li><strong>Expected</strong>: Both queries should retrieve <code>conference_text</code> (the conference-related document)</li>
+<li><strong>Facebook/Contriever</strong> (4-year-old model): ✅ <strong>Always correct</strong></li>
+<li><strong>OpenAI Embedding</strong>: ❌ <strong>Always wrong</strong></li>
+</ul>
+<h2 id="key-takeaway_1">Key Takeaway</h2>
+<p>This surprising result suggests that <strong>OpenAI's embedding model training techniques may not be as advanced as expected</strong> for certain retrieval tasks, especially when compared to specialized open-source alternatives.</p>
+<p><em>Credit: This finding was originally discovered by <a href="https://github.com/andylizf">@andylizf</a></em></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2022-2023 Yichuan Wang
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

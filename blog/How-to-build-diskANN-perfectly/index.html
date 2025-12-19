@@ -1,0 +1,984 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yichuan Wang">
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../build-search-engine-for-AI/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems - Yichuan Wang's Homepage</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-KBQPT9Q9MJ"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-KBQPT9Q9MJ",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-KBQPT9Q9MJ",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mastering-diskann-practical-lessons-from-building-large-scale-vector-search-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-header__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yichuan Wang's Homepage
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-nav__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    Yichuan Wang's Homepage
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yichuan Wang
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog Posts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-hidden-trap-distance-metrics-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The Hidden Trap: Distance Metrics Matter!
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. The Hidden Trap: Distance Metrics Matter!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-root-cause-training-inference-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Root Cause: Training-Inference Mismatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-finding-the-sweet-spot-for-search-ram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Finding the Sweet Spot for Search RAM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Finding the Sweet Spot for Search RAM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-from-the-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation from the Community
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-reality-of-index-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Reality of Index Building
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-whats-beyond" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. What's Beyond?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-search-engine-for-AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking the Search Stack for the AI Era
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-search-enigine-for-AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking the Search Stack for the AI Era
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game_eval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploring Orak: A Unified Benchmark for LLM Agents in Games
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons_in_dev_leann/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons1 Learned in Development: Chunk Overlap Size in RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons_learned_in_dev_leann/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons Learned in Development - LEANN Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta_query/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta query
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onetwo_vla_and_pi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onetwo vla and pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qwen3embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ragcache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    My Thoughts on RAGCache paper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reasonir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finally, a retriever that can actually reason
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-the-hidden-trap-distance-metrics-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The Hidden Trap: Distance Metrics Matter!
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. The Hidden Trap: Distance Metrics Matter!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-root-cause-training-inference-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Root Cause: Training-Inference Mismatch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-finding-the-sweet-spot-for-search-ram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Finding the Sweet Spot for Search RAM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Finding the Sweet Spot for Search RAM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-from-the-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation from the Community
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-reality-of-index-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Reality of Index Building
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-whats-beyond" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. What's Beyond?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="mastering-diskann-practical-lessons-from-building-large-scale-vector-search-systems">Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems</h1>
+<p><em>By Yichuan Wang, Dec 11, 2025</em></p>
+<p>I've spent a lot of time working with <a href="https://github.com/microsoft/DiskANN">DiskANN</a>, utilizing it extensively in projects like <a href="https://github.com/yichuan-w/LEANN">LEANN</a> and <a href="https://github.com/Berkeley-Large-RAG/RAG-DS-Serve">DS-serve</a>. It is a powerful system, but like any precision tool, getting the best performance requires some "craftsmanship." After nearly a year of tuning and experiments, here are some insights and recipes for configuring DiskANN perfectly.</p>
+<h2 id="1-the-hidden-trap-distance-metrics-matter">1. The Hidden Trap: Distance Metrics Matter!</h2>
+<p>This bug haunted me for two weeks while developing DS-serve. Our initial QA performance was surprisingly poor (see figure below), and we couldn't figure out why.</p>
+<p><img alt="L2 Distance Issues" src="../../asset/diskann-l2.jpg" /></p>
+<p>Thanks to a hint from Rulin, <a href="https://github.com/berkeleyljj">Jinjian</a> and I finally identified the culprit: <strong>The Build Metric.</strong>
+We had assumed that L2, MIPS (Maximum Inner Product Search), and Cosine distance were interchangeable enough. <strong>They are not.</strong></p>
+<h3 id="the-root-cause-training-inference-mismatch">The Root Cause: Training-Inference Mismatch</h3>
+<p>Many modern models (including Contriver) use <strong>contrastive learning with MIPS</strong>, not L2. If you build your index using L2 but your model was trained for MIPS, you create a fundamental mismatch. This is a common pitfall (I know many RL folks suffer from similar metric mismatches!).</p>
+<p><strong>Recommendation:</strong> For unnormalized embeddings, <strong>always use MIPS</strong>. We encountered this again when deploying LEANN—OpenAI embeddings required specific metric handling. You can see how we handled it in our <a href="https://github.com/yichuan-w/LEANN/blob/3629ccf8f7dd7c765441e599d44f67eeab24cb27/packages/leann-core/src/leann/embedding_compute.py#L699">codebase</a>.</p>
+<p><img alt="MIPS Performance" src="../../asset/diskann-mips.jpg" />
+<em>Correcting the metric instantly fixed the performance gap.</em></p>
+<p>(Sorry Matei for giving you this example twice haha!)</p>
+<ul>
+<li><strong>Pro Tip:</strong> For further reading, a recent <a href="https://www.vldb.org/pvldb/vol18/p1770-ke.pdf">VLDB '24 paper</a> explores similar phenomena but offers a different perspective—definitely worth checking out!</li>
+</ul>
+<h2 id="2-finding-the-sweet-spot-for-search-ram">2. Finding the Sweet Spot for Search RAM</h2>
+<p>One of the most common questions is: <em>What is the optimal compression rate for vectors in RAM?</em></p>
+<p>After extensive testing, I've found that for <strong>text data</strong>, <strong>compressing vectors by 20-30x</strong> is the sweet spot for balancing RAM cost against the accuracy/latency trade-off.</p>
+<p><strong>Why is this the case?</strong>
+Typically, applying Product Quantization (PQ) aggressively makes it hard to maintain high accuracy. However, DiskANN's <strong>implicit re-ranking</strong> mechanism changes the game. It allows us to achieve significantly better accuracy by loading exact embeddings from disk to RAM during the final verification step.</p>
+<p>As shown in the figure below (where the original vector size is 180GB):</p>
+<ul>
+<li><strong>Blue/Red lines (PQ only):</strong> Accuracy drops significantly if we compress even less than 10x.</li>
+<li><strong>Purple/Green lines (DiskANN):</strong> We can maintain SOTA accuracy even with <strong>20x compression</strong>. However, pushing to 40x starts to hurt accuracy.</li>
+</ul>
+<p>In <strong>DS-serve</strong>, where we handle <strong>4.4T raw vectors</strong>, allocating roughly <strong>200GB of RAM</strong> (approx. 20x compression) proved to be the optimal choice.</p>
+<p><img alt="DiskANN Configuration" src="../../asset/diskann_config.png" />
+<em>Figure: Recall (x-axis) vs Downstream Accuracy (y-axis). Higher and to the right is better.</em></p>
+<h3 id="validation-from-the-community">Validation from the Community</h3>
+<p>These findings align with recent research from my friend <a href="https://yinpeiqi.github.io/">Peiqi Yin</a>'s <a href="https://arxiv.org/abs/2508.15290">paper</a>. For Wiki-like data (Fig. a), <strong>20-40x compression</strong> consistently emerges as the efficiency frontier.
+*   <strong>Under-compression:</strong> Wastes RAM and requires more computation in memory.
+*   <strong>Over-compression:</strong> Hurts accuracy significantly, requiring more search steps to compensate, which ultimately kills QPS.</p>
+<p><strong>Interesting Insight:</strong> For <strong>cross-modal encoders</strong> like CLIP (e.g., text-to-image), the optimal compression rate tends to be <em>lower</em>!</p>
+<p><img alt="Peiqi Paper Findings" src="../../asset/peiqi-paper.jpg" /></p>
+<h2 id="3-the-reality-of-index-building">3. The Reality of Index Building</h2>
+<p>Building the index for DS-serve took nearly a week on a 1TB RAM machine.</p>
+<ul>
+<li><strong>The Good News:</strong> DiskANN supports building on arbitrary RAM sizes by partitioning data and merging subgraphs.</li>
+<li><strong>The Gotcha:</strong> In the actual implementation, the build process often consumes <strong>2x the RAM</strong> specified in the <code>--build-mem</code> flag. If you are planning a build, make sure to provision extra memory!<ul>
+<li><strong>Pro Tip:</strong> There is a high chance of OOM (Out of Memory) errors during the Vamana graph construction. To avoid an immediate crash if you hit the RAM limit, <strong>ensure you have configured sufficient swap memory</strong>. It might be slower, but it prevents the build from failing entirely.</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-whats-beyond">4. What's Beyond?</h2>
+<p>There is still plenty of room for innovation in this space:</p>
+<ol>
+<li><strong>Zero RAM Overhead?</strong> <a href="https://arxiv.org/abs/2404.06004">AiSAQ</a> proposes saving PQ codes on disk to eliminate RAM overhead. The challenge is throughput: if the PQ size + exact embedding + adjacency graph exceeds 4KB (typical page size), IOPS becomes the bottleneck, potentially dropping throughput by 50%.</li>
+<li><strong>Checkpointing:</strong> Building indices on terabytes of data takes days. We failed internally many times during the week-long build for DS-serve. Implementing checkpointing for partial graphs (similar to model training checkpoints) would allow us to use spot instances and recover from failures.</li>
+<li><strong>Distributed DiskANN:</strong> As mentioned, DiskANN is still bounded by the machine's RAM (allowing roughly 40x the RAM size in storage). To scale further, we need distributed solutions. I'm glad to see <a href="https://arxiv.org/abs/2509.06046">new work</a> exploring this direction!</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2022-2023 Yichuan Wang
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
