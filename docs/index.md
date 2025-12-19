@@ -12,7 +12,7 @@ I am a first-year PhD student fortunate to be advised by **[Joseph E. Gonzalez](
 
 During my undergraduate studies, I collaborated with **Prof. [Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** at NYU and **Dr. [Minjie Wang](https://jermainewang.github.io/)** on projects related to scaling up GNN training. At SJTU, I was supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at SJTU. 
 
-I enjoy connecting with researchers and practitioners in the field. Feel free to reach out via email, WeChat (15858459091), or [Twitter](https://twitter.com/YichuanM). For more details about my background, you can view my [CV](https://drive.google.com/file/d/1q8bcPEsnj7M3h_5r1iEUJgIFnn008zMO/view?usp=sharing) and [Statement of Purpose](https://docdro.id/OvdjJ6Q) from my graduate school applications.
+I enjoy connecting with researchers and practitioners in the field. Feel free to reach out via email, WeChat (15858459091), or [Twitter](https://twitter.com/YichuanM). For more details about my background, you can view my [CV](asset/CV/YichuanCV.pdf) and [Statement of Purpose](https://docdro.id/OvdjJ6Q) from my graduate school applications.
 
 In my spare time, I contribute to open-source projects like [SGLang](https://github.com/sgl-project/sglang).
 More recently, I have dedicated significant time to maintaining [LEANN](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social), evolving it from a research prototype into an open-source community project with over 20 active contributors and 40k+ downloads.
@@ -27,7 +27,7 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
   [:fontawesome-brands-github:](https://github.com/yichuan-w)
   [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/yichuan-wang-7518b4225/)
   [:fontawesome-brands-twitter:](https://twitter.com/YichuanM)
-  [:academicons-cv:](https://drive.google.com/file/d/1q8bcPEsnj7M3h_5r1iEUJgIFnn008zMO/view?usp=sharing) <!-- Your CV link -->
+  [:academicons-cv:](asset/CV/YichuanCV.pdf) <!-- Your CV link -->
 </span>
 
 ## News
