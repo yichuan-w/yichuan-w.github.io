@@ -8,7 +8,8 @@ hide:
 
 ## Bio ![profile](https://github.com/yichuan-w/yichuan-w.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
 
-I am a first-year PhD student fortunate to be advised by **[Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/)** and **[Matei Zaharia](https://people.eecs.berkeley.edu/~matei/)** at **UC Berkeley** in **[SkyLab](https://sky.cs.berkeley.edu/)**. I also collaborate closely with **[Sewon Min](https://www.sewonmin.com/)**. I received my B.E. in Computer Science and Technology from the **ACM Honored Class** at Shanghai Jiao Tong University (**SJTU**). My research focuses on **machine learning systems**, particularly systems for LLM training and serving, and developing tailored abstractions for unique ML computational patterns to achieve better performance. Currently, I am most interested in LLM traning/serving/scheduling, agent systems, vector search, retrieval, large-scale RAG, and personalized AI application. If you share similar research interests, I'd love to connect and chat!
+I am a first-year PhD student fortunate to be advised by **[Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/)** and **[Matei Zaharia](https://people.eecs.berkeley.edu/~matei/)** at **UC Berkeley** in **[SkyLab](https://sky.cs.berkeley.edu/)**. I also collaborate closely with **[Sewon Min](https://www.sewonmin.com/)**. I received my B.E. in Computer Science and Technology from the **ACM Honored Class** at Shanghai Jiao Tong University (**SJTU**). My research focuses on **machine learning systems**, particularly systems for LLM training and serving, and developing tailored abstractions for unique ML computational patterns to achieve better performance. Currently, I am most interested in LLM traning/
+serving/scheduling, agent systems, vector search, retrieval, large-scale RAG, and personalized AI application. If you share similar research interests, I'd love to connect and chat!
 
 During my undergraduate studies, I collaborated with **Prof. [Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** at NYU and **Dr. [Minjie Wang](https://jermainewang.github.io/)** on projects related to scaling up GNN training. At SJTU, I was supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at SJTU. 
 
@@ -68,13 +69,13 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 
 ## Publications
 
-1.**LEANN: A Low-Storage Vector Index** [pdf](https://arxiv.org/pdf/2506.08276) [poster](asset/leann_poster.pdf)
+1.**LEANN: A Low-Storage Vector Index** [pdf](https://arxiv.org/pdf/2506.08276) [poster](asset/leann_poster.pdf) [repo](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social)
 
 **Yichuan Wang**, Shu Liu, Zhifei Li, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
 
 **Preprint** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
 
-2.**DS SERVE: A Framework for Efficient and Scalable Neural Retrieval** [pdf](https://berkeley-large-rag.github.io/RAG-DS-Serve/assets/DS_SERVE_Camera_Ready.pdf) [website](https://berkeley-large-rag.github.io/RAG-DS-Serve/)
+2.**DS SERVE: A Framework for Efficient and Scalable Neural Retrieval** [pdf](https://berkeley-large-rag.github.io/RAG-DS-Serve/assets/DS_SERVE_Camera_Ready.pdf) [website](https://berkeley-large-rag.github.io/RAG-DS-Serve/) [poster](asset/AAAI_Poster_Draft.pdf) [repo](https://github.com/Berkeley-Large-RAG/RAG-DS-Serve) ![GitHub Repo stars](https://img.shields.io/github/stars/Berkeley-Large-RAG/RAG-DS-Serve?style=social)
 
 Jinjian Liu\*, **Yichuan Wang\***, Xinxi Lyu, Rulin Shao, Joseph E. Gonzalez, Matei Zaharia, Sewon Min
 
