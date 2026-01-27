@@ -16,7 +16,7 @@ During my undergraduate studies, I collaborated with **Prof. [Jinyang Li](http:/
 I enjoy connecting with researchers and practitioners in the field. Feel free to reach out via email, WeChat (15858459091), or [Twitter](https://twitter.com/YichuanM). For more details about my background, you can view my [CV](asset/CV/YichuanCV.pdf) and [Statement of Purpose](https://docdro.id/OvdjJ6Q) from my graduate school applications.
 
 In my spare time, I contribute to open-source projects like [SGLang](https://github.com/sgl-project/sglang).
-More recently, I have dedicated significant time to maintaining [LEANN](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social), evolving it from a research prototype into an open-source community project with over 20 active contributors and 40k+ downloads.
+More recently, I have dedicated significant time to maintaining [LEANN](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social), a system that manages every piece of your context on device and enables seamless interaction with LLMs. It has evolved from a research prototype into an open-source community project with over 20 active contributors.
 
 *:fontawesome-solid-inbox: Work Email: [yichuan_wang@berkeley.edu](mailto:yichuan_wang@berkeley.edu)*
 
@@ -32,6 +32,8 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 </span>
 
 ## News
+[01/26/2026] LEANN is accepted in MLsys, see you in Bellevue!
+
 [12/12/2025] Happy to release [DS SERVE](https://berkeley-large-rag.github.io/RAG-DS-Serve/), a framework for efficient and scalable neural retrieval and the largest open vector store over pre-trained data. Check out our [live demo](http://api.ds-serve.org:30888/ui)! Fun fact: Jinjian is the first undergraduate I mentored at Berkeley—it was a wonderful collaboration!
 
 [08/10/2025] We release [LEANN](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social), a fully local RAG with 97% storage savings. One of the first open-source engines to bring semantic search to Claude Code, all with zero cloud cost and full privacy. Drop me an email if you’d like to contribute — we’re on a mission to build an engine that understands every piece of data on your PC.
@@ -73,7 +75,7 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 
 **Yichuan Wang**, Zhifei Li, Shu Liu, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
 
-**Preprint** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
+**Accepted by MLsys 2026** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
 
 2.**DS SERVE: A Framework for Efficient and Scalable Neural Retrieval** [pdf](https://berkeley-large-rag.github.io/RAG-DS-Serve/assets/DS_SERVE_Camera_Ready.pdf) [website](https://berkeley-large-rag.github.io/RAG-DS-Serve/) [poster](asset/AAAI_Poster_Draft.pdf) [repo](https://github.com/Berkeley-Large-RAG/RAG-DS-Serve) ![GitHub Repo stars](https://img.shields.io/github/stars/Berkeley-Large-RAG/RAG-DS-Serve?style=social)
 
