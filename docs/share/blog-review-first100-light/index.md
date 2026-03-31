@@ -12,6 +12,39 @@ This page is shared via direct link and is intentionally not listed in the publi
 
 ---
 
+## Clearly Not Self-Contained Queries
+
+The following queries are not fully self-contained and depend on screenshot layout, table context, or missing subject details.
+
+- `#7` Which historic mission church in Monterey County is listed in the screenshot?
+  Reason: Depends on "the screenshot" and is also potentially multi-answer.
+- `#11` What is the occupation of Shmuel Kamenetsky according to his infobox?
+  Reason: Depends on layout-specific context (`infobox`) rather than being phrased as a standalone question.
+- `#21` In what year did Rideaux start the photo agency PicturePerfect?
+  Reason: Refers to the person only by surname (`Rideaux`), so the subject is underspecified.
+- `#31` On what date was Lerew awarded the Distinguished Flying Cross?
+  Reason: Refers to the person only by surname (`Lerew`), so the subject is underspecified.
+- `#58` Which specific medication is listed as a nonsteroidal SARMs in the provided table?
+  Reason: Explicitly depends on "the provided table".
+- `#61` Which character did the actress play in the 2013 film Horns?
+  Reason: "the actress" is not identified, so the question is incomplete on its own.
+- `#63` Who was the recipient of the award for the 1933 season in the provided table?
+  Reason: Explicitly depends on "the provided table".
+- `#67` Which former Cleveland Indians player did the Seattle Mariners sign on December 20?
+  Reason: Missing the year, so the event is underspecified.
+- `#69` Who was Kesha Rogers' opponent in the general election for the U.S. House of Representatives?
+  Reason: Missing the year and district/race context, so it is underspecified.
+- `#78` Which cyclist representing France placed second in the Tempo race?
+  Reason: Missing the event context; "the Tempo race" is too ambiguous on its own.
+- `#87` Who are listed as the writers for Hauntology in the infobox?
+  Reason: Depends on layout-specific context (`infobox`) rather than being standalone.
+- `#94` On what date was the SMN founded?
+  Reason: Uses an unexplained acronym (`SMN`), so the subject is not self-contained.
+- `#97` Who was the spouse of John Houston?
+  Reason: The name is too ambiguous without additional identifying context.
+
+---
+
 This lightweight export is optimized for blog use. Each example includes the positive screenshot and the first hard-negative screenshot. Confirmed false-negative cases include extra screenshots.
 
 ## Summary
