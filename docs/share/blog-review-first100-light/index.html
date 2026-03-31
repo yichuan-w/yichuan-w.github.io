@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Review First 100 Light</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #ea580c;
+      --accent-hover: #c2410c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 16px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    article {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      line-height: 1.15;
+    }
+
+    p {
+      margin: 0 0 16px;
+      font-size: 1.05rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.15s ease;
+    }
+
+    .button:hover {
+      background: var(--accent-hover);
+    }
+
+    .secondary {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 12px 0;
+    }
+
+    code {
+      font-family: ui-monospace, "SFMono-Regular", SFMono-Regular, Menlo, monospace;
+      background: #f3f4f6;
+      padding: 0.15em 0.4em;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article>
+      <p class="eyebrow">Private Share</p>
+      <h1>Blog Review First 100 Light</h1>
+      <p class="meta">Updated March 31, 2026</p>
+      <p>
+        This page hosts a lightweight shared bundle for the first 100 blog reviews.
+        It is intentionally published as a direct-link page rather than listed in the public blog index.
+      </p>
+      <p>
+        You can download the archive directly below:
+      </p>
+      <div class="actions">
+        <a class="button" href="./blog_review_first100_light.zip">Download ZIP</a>
+        <a class="secondary" href="/">Back to homepage</a>
+      </div>
+      <p class="meta" style="margin-top: 24px;">
+        File: <code>blog_review_first100_light.zip</code>
+      </p>
+    </article>
+  </main>
+</body>
+</html>
