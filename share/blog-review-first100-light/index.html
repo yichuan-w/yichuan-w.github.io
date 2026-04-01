@@ -1,0 +1,4359 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yichuan Wang">
+      
+      
+      
+        <link rel="prev" href="../../blog/virl/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>First 100 Examples from train_hn_skip1.jsonl (Light Package) - Yichuan Wang's Homepage</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-KBQPT9Q9MJ"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-KBQPT9Q9MJ",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-KBQPT9Q9MJ",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#first-100-examples-from-train_hn_skip1jsonl-light-package" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-header__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yichuan Wang's Homepage
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              First 100 Examples from train_hn_skip1.jsonl (Light Package)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-nav__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    Yichuan Wang's Homepage
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yichuan Wang
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog Posts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/How-to-build-diskANN-perfectly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/build-search-engine-for-AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking the Search Stack for the AI Era
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/build-search-enigine-for-AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking the Search Stack for the AI Era
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/game_eval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploring Orak: A Unified Benchmark for LLM Agents in Games
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/lessons_in_dev_leann/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons1 Learned in Development: Chunk Overlap Size in RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/lessons_learned_in_dev_leann/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons Learned in Development - LEANN Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/meta_query/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta query
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/onetwo_vla_and_pi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onetwo vla and pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/qwen3embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/ragcache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    My Thoughts on RAGCache paper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/reasonir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finally, a retriever that can actually reason
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/virl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Share
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Share
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog review first100 light
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog review first100 light
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First 100 Examples from train_hn_skip1.jsonl (Light Package)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First 100 Examples from train_hn_skip1.jsonl (Light Package)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clearly-not-self-contained-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clearly Not Self-Contained Queries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potential-false-negatives-in-top-1-hard-negatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Potential False Negatives in Top-1 Hard Negatives
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Potential False Negatives in Top-1 Hard Negatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flagged-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flagged Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlap-with-non-self-contained-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overlap With Non-Self-Contained Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 7
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 8
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 9
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 10
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 11
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 12
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 13
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 14
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 15
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 16
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 17
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 18
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 19
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 20
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 21
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 22
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 23
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 24
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 25
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 26
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 27
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 28
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 29
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 30
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 31
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 32
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 33
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 34
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 35
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 36
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 37
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 38
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 39
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 40
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 41
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 42
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 43
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 44
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 45
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 46
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 47
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 48
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-49" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 49
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-50" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 50
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 51
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 52
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 53
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 54
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 55
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-56" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 56
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-57" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 57
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 58
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 59
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 60
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 61
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 62
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 63
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 64
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 65
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-66" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 66
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-67" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 67
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-68" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 68
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-69" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 69
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-70" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 70
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 71
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 72
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 73
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 74
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 75
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 76
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-77" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 77
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-78" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 78
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-79" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 79
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 80
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 81
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 82
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 83
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 84
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-85" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 85
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-86" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 86
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-87" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 87
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 88
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-89" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 89
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-90" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 90
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 91
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 92
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 93
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 94
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 95
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-96" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 96
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-97" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 97
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-98" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 98
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-99" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 99
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 100
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clearly-not-self-contained-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clearly Not Self-Contained Queries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potential-false-negatives-in-top-1-hard-negatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Potential False Negatives in Top-1 Hard Negatives
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Potential False Negatives in Top-1 Hard Negatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flagged-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flagged Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlap-with-non-self-contained-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overlap With Non-Self-Contained Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 7
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 8
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 9
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 10
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 11
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 12
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 13
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 14
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 15
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 16
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 17
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 18
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 19
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 20
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 21
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 22
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 23
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 24
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 25
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 26
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 27
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 28
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 29
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 30
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 31
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 32
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 33
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 34
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 35
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 36
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 37
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 38
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 39
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 40
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 41
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 42
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 43
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 44
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 45
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 46
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 47
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 48
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-49" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 49
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-50" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 50
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 51
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 52
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 53
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-54" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 54
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 55
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-56" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 56
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-57" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 57
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 58
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 59
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 60
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 61
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 62
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 63
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 64
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 65
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-66" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 66
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-67" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 67
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-68" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 68
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-69" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 69
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-70" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 70
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 71
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 72
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 73
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 74
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 75
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 76
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-77" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 77
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-78" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 78
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-79" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 79
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 80
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 81
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 82
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 83
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 84
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-85" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 85
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-86" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 86
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-87" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 87
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 88
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-89" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 89
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-90" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 90
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-91" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 91
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-92" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 92
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-93" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 93
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-94" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 94
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 95
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-96" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 96
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-97" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 97
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-98" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 98
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-99" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 99
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 100
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="first-100-examples-from-train_hn_skip1jsonl-light-package">First 100 Examples from <code>train_hn_skip1.jsonl</code> (Light Package)</h1>
+<p>This page is shared via direct link and is intentionally not listed in the public blog index.</p>
+<p><a href="blog_review_first100_light.zip">Download the ZIP bundle</a></p>
+<hr />
+<h2 id="clearly-not-self-contained-queries">Clearly Not Self-Contained Queries</h2>
+<p>The following queries are not fully self-contained and depend on screenshot layout, table context, or missing subject details.</p>
+<ul>
+<li><code>#7</code> Which historic mission church in Monterey County is listed in the screenshot?
+  Reason: Depends on "the screenshot" and is also potentially multi-answer.</li>
+<li><code>#11</code> What is the occupation of Shmuel Kamenetsky according to his infobox?
+  Reason: Depends on layout-specific context (<code>infobox</code>) rather than being phrased as a standalone question.</li>
+<li><code>#21</code> In what year did Rideaux start the photo agency PicturePerfect?
+  Reason: Refers to the person only by surname (<code>Rideaux</code>), so the subject is underspecified.</li>
+<li><code>#31</code> On what date was Lerew awarded the Distinguished Flying Cross?
+  Reason: Refers to the person only by surname (<code>Lerew</code>), so the subject is underspecified.</li>
+<li><code>#58</code> Which specific medication is listed as a nonsteroidal SARMs in the provided table?
+  Reason: Explicitly depends on "the provided table".</li>
+<li><code>#61</code> Which character did the actress play in the 2013 film Horns?
+  Reason: "the actress" is not identified, so the question is incomplete on its own.</li>
+<li><code>#63</code> Who was the recipient of the award for the 1933 season in the provided table?
+  Reason: Explicitly depends on "the provided table".</li>
+<li><code>#67</code> Which former Cleveland Indians player did the Seattle Mariners sign on December 20?
+  Reason: Missing the year, so the event is underspecified.</li>
+<li><code>#69</code> Who was Kesha Rogers' opponent in the general election for the U.S. House of Representatives?
+  Reason: Missing the year and district/race context, so it is underspecified.</li>
+<li><code>#78</code> Which cyclist representing France placed second in the Tempo race?
+  Reason: Missing the event context; "the Tempo race" is too ambiguous on its own.</li>
+<li><code>#87</code> Who are listed as the writers for Hauntology in the infobox?
+  Reason: Depends on layout-specific context (<code>infobox</code>) rather than being standalone.</li>
+<li><code>#94</code> On what date was the SMN founded?
+  Reason: Uses an unexplained acronym (<code>SMN</code>), so the subject is not self-contained.</li>
+<li><code>#97</code> Who was the spouse of John Houston?
+  Reason: The name is too ambiguous without additional identifying context.</li>
+</ul>
+<hr />
+<h2 id="potential-false-negatives-in-top-1-hard-negatives">Potential False Negatives in Top-1 Hard Negatives</h2>
+<p>Using the first 100 examples from <code>train_hn_skip1.jsonl</code>, we ran the same VQA check on the positive image and the top-1 hard negative image. The positive image was judged <code>CORRECT</code> in 98/100 cases, while the top-1 hard negative was judged <code>CORRECT</code> in 19/100 cases. These 19 cases are strong candidates for false negatives, because the top-1 hard negative appears to contain enough information to answer the query.</p>
+<p>Important note: these are VQA-flagged candidate false negatives, not all manually confirmed annotation errors.</p>
+<h3 id="flagged-cases">Flagged Cases</h3>
+<ul>
+<li><code>#7</code> Query: Which historic mission church in Monterey County is listed in the screenshot?
+  Top-1 negative answer: <code>Mission Nuestra Señora de la Soledad</code></li>
+<li><code>#8</code> Query: What is another name for training simulation?
+  Top-1 negative answer: <code>simulation-based training</code></li>
+<li><code>#19</code> Query: Who served as the President of the National Senators of Argentina for the 2011–2013 term?
+  Top-1 negative answer: <code>Amado Boudou</code></li>
+<li><code>#23</code> Query: On what date was the album "Madame X" by Madonna released?
+  Top-1 negative answer: <code>October 8, 2021</code></li>
+<li><code>#30</code> Query: What is the minimum age required to be elected President of the Republic of Albania?
+  Top-1 negative answer: <code>40 years of age</code></li>
+<li><code>#34</code> Query: Which doctrine became linked in syncretic form with the tathāgatagarbha doctrine?
+  Top-1 negative answer: <code>Pure Land Buddhism</code></li>
+<li><code>#38</code> Query: Which Hungarian violinist did Clara Ward elope with in December 1896?
+  Top-1 negative answer: <code>Rigó</code></li>
+<li><code>#45</code> Query: What is the codename for the Fall Creators Update introduced in Windows 10?
+  Top-1 negative answer: <code>Redstone 3</code></li>
+<li><code>#50</code> Query: When did City Hearts (UK) become financially and legally separate from Hope City Church?
+  Top-1 negative answer: <code>March 2020</code></li>
+<li><code>#58</code> Query: Which specific medication is listed as a nonsteroidal SARMs in the provided table?
+  Top-1 negative answer: <code>Andarine (acetamidoxolutamide, androxolutamide, GTx-007, S-4)</code></li>
+<li><code>#60</code> Query: Who were the French Open women's doubles champions in 1929?
+  Top-1 negative answer: <code>Lili Álvarez / Kea Bouman</code></li>
+<li><code>#63</code> Query: Who was the recipient of the award for the 1933 season in the provided table?
+  Top-1 negative answer: <code>Bobo Newsom</code></li>
+<li><code>#66</code> Query: Which country does the judoka Stéphane Traineau represent in the 95 kg category?
+  Top-1 negative answer: <code>France</code></li>
+<li><code>#73</code> Query: What virus strain was responsible for the 1972 Yugoslav smallpox outbreak?
+  Top-1 negative answer: <code>Variola Vera</code></li>
+<li><code>#74</code> Query: Which band is listed as a spinoff of the Australian band XL Capris?
+  Top-1 negative answer: <code>Sweet and Sour</code></li>
+<li><code>#82</code> Query: Where was the Super heavyweight competition at the 2021 AIBA World Boxing Championships held?
+  Top-1 negative answer: <code>Belgrade, Serbia</code></li>
+<li><code>#85</code> Query: Which military unit is the current garrison at Irwin Barracks?
+  Top-1 negative answer: <code>20 Logistic Support Squadron, Royal Logistic Corps, 21 Special Air Service Regiment (Artists) (Reserve), Queen's Royal Hussars</code></li>
+<li><code>#89</code> Query: On what date did the Joint Typhoon Warning Center initiate advisories on Tropical Depression 28W?
+  Top-1 negative answer: <code>December 12, 2021</code></li>
+<li><code>#97</code> Query: Who was the spouse of John Houston?
+  Top-1 negative answer: <code>Elizabeth Blackadder</code></li>
+</ul>
+<h3 id="overlap-with-non-self-contained-queries">Overlap With Non-Self-Contained Queries</h3>
+<p>Four of the 13 clearly not self-contained queries also appear in the VQA-flagged false-negative set: <code>#7</code>, <code>#58</code>, <code>#63</code>, and <code>#97</code>. This suggests that ambiguous or context-dependent query wording may be one factor that makes false negatives more likely.</p>
+<p>This lightweight export is optimized for blog use. Each example includes the positive screenshot and the first hard-negative screenshot. Confirmed false-negative cases include extra screenshots.</p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Included per example: <code>positive</code> + <code>top-1 hard negative</code></li>
+<li>Confirmed false-negative entries: <code>#7</code>, <code>#19</code></li>
+<li>Borderline but unconfirmed: <code>#87</code></li>
+</ul>
+<hr />
+<h2 id="example-1">Example 1</h2>
+<p><strong>Query:</strong> What is the place of birth of Nolan Mbemba?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_661/shard_00002/5478377.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_302/shard_00002/2504584.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 1 positive" src="assets/pos_001.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 1 top hard negative" src="assets/topneg_001.png" /></p>
+<hr />
+<h2 id="example-2">Example 2</h2>
+<p><strong>Query:</strong> Which university appointed Derek Burney as its 8th Chancellor on January 24, 2013?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_265/shard_00009/2198035.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_265/shard_00009/2198036.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 2 positive" src="assets/pos_002.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 2 top hard negative" src="assets/topneg_002.png" /></p>
+<hr />
+<h2 id="example-3">Example 3</h2>
+<p><strong>Query:</strong> Which team finished in first place in the 1912 PCL standings?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_008/shard_00012/73090.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_009/shard_00001/75969.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 3 positive" src="assets/pos_003.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 3 top hard negative" src="assets/topneg_003.png" /></p>
+<hr />
+<h2 id="example-4">Example 4</h2>
+<p><strong>Query:</strong> Which members performed the song "Hashire! Penguin" for the 2020 BNK48 and CGM48 release?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_183/shard_00000/1516198.png.tiles/chunk_0000_05.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_743/shard_00003/6158388.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 4 positive" src="assets/pos_004.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 4 top hard negative" src="assets/topneg_004.png" /></p>
+<hr />
+<h2 id="example-5">Example 5</h2>
+<p><strong>Query:</strong> On what date did a hurricane sweep over New Orleans, damaging the Spanish fleet?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_191/shard_00010/1586469.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_734/shard_00005/6086363.png.tiles/chunk_0001_06.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 5 positive" src="assets/pos_005.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 5 top hard negative" src="assets/topneg_005.png" /></p>
+<hr />
+<h2 id="example-6">Example 6</h2>
+<p><strong>Query:</strong> In what year was the Rockaway Quarry sold to Howard Marks?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_775/shard_00002/6422565.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_173/shard_00009/1436293.png.tiles/chunk_0000_07.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 6 positive" src="assets/pos_006.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 6 top hard negative" src="assets/topneg_006.png" /></p>
+<hr />
+<h2 id="example-7">Example 7</h2>
+<p><strong>Query:</strong> Which historic mission church in Monterey County is listed in the screenshot?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_565/shard_00002/4683218.png.tiles/chunk_0000_06.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_551/shard_00004/4569325.png.tiles/chunk_0000_06.png</code>  </p>
+<p><strong>Review note:</strong> Confirmed false negatives caused by a multi-answer mission-list query.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 7 positive" src="assets/pos_007.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 7 top hard negative" src="assets/topneg_007.png" /></p>
+<p><strong>Confirmed false-negative screenshots</strong></p>
+<ul>
+<li><code>/opt/dlami/nvme/kiwix_tiles/shard_551/shard_00004/4569325.png.tiles/chunk_0000_06.png</code><br />
+  Reason: This negative still lists Monterey County mission churches, including valid answers.</li>
+</ul>
+<p><img alt="Example 7 false negative 1" src="assets/false_neg_007_1.png" /></p>
+<ul>
+<li><code>/opt/dlami/nvme/kiwix_tiles/shard_735/shard_00006/6094896.png.tiles/chunk_0000_05.png</code><br />
+  Reason: This negative also directly contains Monterey County mission church answers.</li>
+</ul>
+<p><img alt="Example 7 false negative 2" src="assets/false_neg_007_2.png" /></p>
+<ul>
+<li><code>/opt/dlami/nvme/kiwix_tiles/shard_619/shard_00007/5135420.png.tiles/chunk_0000_04.png</code><br />
+  Reason: This continuation chunk still exposes a valid mission answer.</li>
+</ul>
+<p><img alt="Example 7 false negative 3" src="assets/false_neg_007_3.png" /></p>
+<ul>
+<li><code>/opt/dlami/nvme/kiwix_tiles/shard_619/shard_00007/5135410.png.tiles/chunk_0000_03.png</code><br />
+  Reason: This continuation chunk still exposes a valid mission answer.</li>
+</ul>
+<p><img alt="Example 7 false negative 4" src="assets/false_neg_007_4.png" /></p>
+<hr />
+<h2 id="example-8">Example 8</h2>
+<p><strong>Query:</strong> What is another name for training simulation?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_915/shard_00006/7586258.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_826/shard_00000/6842784.png.tiles/chunk_0002_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 8 positive" src="assets/pos_008.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 8 top hard negative" src="assets/topneg_008.png" /></p>
+<hr />
+<h2 id="example-9">Example 9</h2>
+<p><strong>Query:</strong> In which city is the bronze torso of Pedubast I currently located?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_700/shard_00000/5799140.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_035/shard_00001/291157.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 9 positive" src="assets/pos_009.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 9 top hard negative" src="assets/topneg_009.png" /></p>
+<hr />
+<h2 id="example-10">Example 10</h2>
+<p><strong>Query:</strong> Who wrote a letter in July 1754 mentioning the Windham frog incident to his nephew, Ezra Stiles?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_143/shard_00001/1185970.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_143/shard_00001/1185970.png.tiles/chunk_0001_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 10 positive" src="assets/pos_010.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 10 top hard negative" src="assets/topneg_010.png" /></p>
+<hr />
+<h2 id="example-11">Example 11</h2>
+<p><strong>Query:</strong> What is the occupation of Shmuel Kamenetsky according to his infobox?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_820/shard_00005/6798520.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_349/shard_00002/2894089.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 11 positive" src="assets/pos_011.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 11 top hard negative" src="assets/topneg_011.png" /></p>
+<hr />
+<h2 id="example-12">Example 12</h2>
+<p><strong>Query:</strong> What was the population of the village of Güngören in 2022?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_381/shard_00006/3163328.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_381/shard_00004/3161453.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 12 positive" src="assets/pos_012.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 12 top hard negative" src="assets/topneg_012.png" /></p>
+<hr />
+<h2 id="example-13">Example 13</h2>
+<p><strong>Query:</strong> Who was the referee for the 1987 rugby match between New Zealand and France?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_021/shard_00006/180127.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_017/shard_00004/145197.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 13 positive" src="assets/pos_013.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 13 top hard negative" src="assets/topneg_013.png" /></p>
+<hr />
+<h2 id="example-14">Example 14</h2>
+<p><strong>Query:</strong> How many votes did Jana Papuckoski receive in the 2018 Ontario general election for the Northumberland—Peterborough South district?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_257/shard_00001/2130801.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_861/shard_00001/7134472.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 14 positive" src="assets/pos_014.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 14 top hard negative" src="assets/topneg_014.png" /></p>
+<hr />
+<h2 id="example-15">Example 15</h2>
+<p><strong>Query:</strong> What is the birth date of the Lebanese football manager Moussa Hojeij?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_630/shard_00003/5222343.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_630/shard_00003/5222343.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 15 positive" src="assets/pos_015.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 15 top hard negative" src="assets/topneg_015.png" /></p>
+<hr />
+<h2 id="example-16">Example 16</h2>
+<p><strong>Query:</strong> In what month and year was the Palmiet Nature Reserve founded?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_689/shard_00002/5709779.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_931/shard_00002/7714884.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 16 positive" src="assets/pos_016.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 16 top hard negative" src="assets/topneg_016.png" /></p>
+<hr />
+<h2 id="example-17">Example 17</h2>
+<p><strong>Query:</strong> Who is the current mayor of the resort village of B-Say-Tah?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_130/shard_00006/1082950.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_957/shard_00001/7929537.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 17 positive" src="assets/pos_017.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 17 top hard negative" src="assets/topneg_017.png" /></p>
+<hr />
+<h2 id="example-18">Example 18</h2>
+<p><strong>Query:</strong> Who awarded the 5 km run prize to Mailloux at the 2012 Army Run in Ottawa?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_825/shard_00004/6838965.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_825/shard_00004/6838965.png.tiles/chunk_0000_04.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 18 positive" src="assets/pos_018.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 18 top hard negative" src="assets/topneg_018.png" /></p>
+<hr />
+<h2 id="example-19">Example 19</h2>
+<p><strong>Query:</strong> Who served as the President of the National Senators of Argentina for the 2011–2013 term?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_144/shard_00012/1199479.png.tiles/chunk_0000_07.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_144/shard_00012/1199479.png.tiles/chunk_0001_07.png</code>  </p>
+<p><strong>Review note:</strong> Confirmed false negative caused by a continuation chunk that still contains the answer.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 19 positive" src="assets/pos_019.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 19 top hard negative" src="assets/topneg_019.png" /></p>
+<p><strong>Confirmed false-negative screenshots</strong></p>
+<ul>
+<li><code>/opt/dlami/nvme/kiwix_tiles/shard_144/shard_00012/1199479.png.tiles/chunk_0001_07.png</code><br />
+  Reason: This continuation chunk still shows "President: Amado Boudou" for the 2011-2013 term.</li>
+</ul>
+<p><img alt="Example 19 false negative 1" src="assets/false_neg_019_1.png" /></p>
+<hr />
+<h2 id="example-20">Example 20</h2>
+<p><strong>Query:</strong> In what year did Manfred Mölgg retire from his professional skiing career?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_581/shard_00000/4813951.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_464/shard_00004/3848742.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 20 positive" src="assets/pos_020.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 20 top hard negative" src="assets/topneg_020.png" /></p>
+<hr />
+<h2 id="example-21">Example 21</h2>
+<p><strong>Query:</strong> In what year did Rideaux start the photo agency PicturePerfect?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_994/shard_00000/8234993.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_495/shard_00002/4102798.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 21 positive" src="assets/pos_021.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 21 top hard negative" src="assets/topneg_021.png" /></p>
+<hr />
+<h2 id="example-22">Example 22</h2>
+<p><strong>Query:</strong> Who made a cameo appearance as the photographer in the music video for "Obsessed"?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_669/shard_00005/5547710.png.tiles/chunk_0000_07.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_315/shard_00010/2614839.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 22 positive" src="assets/pos_022.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 22 top hard negative" src="assets/topneg_022.png" /></p>
+<hr />
+<h2 id="example-23">Example 23</h2>
+<p><strong>Query:</strong> On what date was the album "Madame X" by Madonna released?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_045/shard_00014/380416.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_574/shard_00006/4761064.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 23 positive" src="assets/pos_023.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 23 top hard negative" src="assets/topneg_023.png" /></p>
+<hr />
+<h2 id="example-24">Example 24</h2>
+<p><strong>Query:</strong> Which ship did Samuel Brannan charter to evacuate the eastern Mormons to California?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_797/shard_00001/6603762.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_953/shard_00005/7899847.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 24 positive" src="assets/pos_024.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 24 top hard negative" src="assets/topneg_024.png" /></p>
+<hr />
+<h2 id="example-25">Example 25</h2>
+<p><strong>Query:</strong> Who was the head coach of the 2012–13 Grambling State Tigers men's basketball team?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_037/shard_00003/309564.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_047/shard_00001/390397.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 25 positive" src="assets/pos_025.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 25 top hard negative" src="assets/topneg_025.png" /></p>
+<hr />
+<h2 id="example-26">Example 26</h2>
+<p><strong>Query:</strong> How many household viewers watched the original American broadcast of the Brooklyn Nine-Nine episode "Sabotage"?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_791/shard_00001/6554319.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_321/shard_00000/2660040.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 26 positive" src="assets/pos_026.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 26 top hard negative" src="assets/topneg_026.png" /></p>
+<hr />
+<h2 id="example-27">Example 27</h2>
+<p><strong>Query:</strong> How many total appearances did the football club Doncaster Rovers record for the 2014-15 season?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_568/shard_00002/4708221.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_531/shard_00004/4403729.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 27 positive" src="assets/pos_027.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 27 top hard negative" src="assets/topneg_027.png" /></p>
+<hr />
+<h2 id="example-28">Example 28</h2>
+<p><strong>Query:</strong> Who created the 1788 mezzotint of Henry Hope?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_399/shard_00004/3309691.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_399/shard_00007/3313095.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 28 positive" src="assets/pos_028.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 28 top hard negative" src="assets/topneg_028.png" /></p>
+<hr />
+<h2 id="example-29">Example 29</h2>
+<p><strong>Query:</strong> Which island is considered the largest and most populous of the Grenadines?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_375/shard_00006/3113507.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_793/shard_00004/6573878.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 29 positive" src="assets/pos_029.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 29 top hard negative" src="assets/topneg_029.png" /></p>
+<hr />
+<h2 id="example-30">Example 30</h2>
+<p><strong>Query:</strong> What is the minimum age required to be elected President of the Republic of Albania?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_693/shard_00005/5746550.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_042/shard_00003/351001.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 30 positive" src="assets/pos_030.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 30 top hard negative" src="assets/topneg_030.png" /></p>
+<hr />
+<h2 id="example-31">Example 31</h2>
+<p><strong>Query:</strong> On what date was Lerew awarded the Distinguished Flying Cross?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_468/shard_00005/3882115.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_544/shard_00001/4508446.png.tiles/chunk_0001_06.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 31 positive" src="assets/pos_031.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 31 top hard negative" src="assets/topneg_031.png" /></p>
+<hr />
+<h2 id="example-32">Example 32</h2>
+<p><strong>Query:</strong> In what year did the fleet renewal programme to replace the ageing Sulisker type vessels begin?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_807/shard_00002/6687778.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_814/shard_00004/6748228.png.tiles/chunk_0000_04.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 32 positive" src="assets/pos_032.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 32 top hard negative" src="assets/topneg_032.png" /></p>
+<hr />
+<h2 id="example-33">Example 33</h2>
+<p><strong>Query:</strong> Which racing team won the GTX class at the 2020 12 Hours of Monza?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_128/shard_00002/1062744.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_028/shard_00003/235336.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 33 positive" src="assets/pos_033.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 33 top hard negative" src="assets/topneg_033.png" /></p>
+<hr />
+<h2 id="example-34">Example 34</h2>
+<p><strong>Query:</strong> Which doctrine became linked in syncretic form with the tathāgatagarbha doctrine?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_873/shard_00003/7235893.png.tiles/chunk_0000_06.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_097/shard_00004/807968.png.tiles/chunk_0001_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 34 positive" src="assets/pos_034.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 34 top hard negative" src="assets/topneg_034.png" /></p>
+<hr />
+<h2 id="example-35">Example 35</h2>
+<p><strong>Query:</strong> In the game show segment Grocery Bowl, what object do the chefs roll toward the soda bottles?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_380/shard_00002/3150151.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_239/shard_00001/1981932.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 35 positive" src="assets/pos_035.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 35 top hard negative" src="assets/topneg_035.png" /></p>
+<hr />
+<h2 id="example-36">Example 36</h2>
+<p><strong>Query:</strong> Which airport is the nearest to Martigues?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_590/shard_00006/4894268.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_591/shard_00012/4900830.png.tiles/chunk_0002_03.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 36 positive" src="assets/pos_036.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 36 top hard negative" src="assets/topneg_036.png" /></p>
+<hr />
+<h2 id="example-37">Example 37</h2>
+<p><strong>Query:</strong> What is the broadcast frequency of CBO-FM?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_182/shard_00004/1512205.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_182/shard_00004/1512205.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 37 positive" src="assets/pos_037.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 37 top hard negative" src="assets/topneg_037.png" /></p>
+<hr />
+<h2 id="example-38">Example 38</h2>
+<p><strong>Query:</strong> Which Hungarian violinist did Clara Ward elope with in December 1896?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_220/shard_00002/1825074.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_220/shard_00002/1825074.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 38 positive" src="assets/pos_038.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 38 top hard negative" src="assets/topneg_038.png" /></p>
+<hr />
+<h2 id="example-39">Example 39</h2>
+<p><strong>Query:</strong> How many points were awarded for a win in the 1989 Copa América?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_022/shard_00009/184898.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_221/shard_00003/1834004.png.tiles/chunk_0000_06.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 39 positive" src="assets/pos_039.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 39 top hard negative" src="assets/topneg_039.png" /></p>
+<hr />
+<h2 id="example-40">Example 40</h2>
+<p><strong>Query:</strong> Who was the first husband of the actress Joan Woodbury?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_462/shard_00005/3832562.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_694/shard_00008/5757363.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 40 positive" src="assets/pos_040.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 40 top hard negative" src="assets/topneg_040.png" /></p>
+<hr />
+<h2 id="example-41">Example 41</h2>
+<p><strong>Query:</strong> Who is the founder of the kickboxing promotion World version W5?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_979/shard_00003/8114032.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_979/shard_00000/8110443.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 41 positive" src="assets/pos_041.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 41 top hard negative" src="assets/topneg_041.png" /></p>
+<hr />
+<h2 id="example-42">Example 42</h2>
+<p><strong>Query:</strong> What is the name of the railway station located in Chandwa?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_203/shard_00002/1683669.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_203/shard_00001/1682925.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 42 positive" src="assets/pos_042.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 42 top hard negative" src="assets/topneg_042.png" /></p>
+<hr />
+<h2 id="example-43">Example 43</h2>
+<p><strong>Query:</strong> Who did the character L. N. Tondon represent in the 2011 film Chillar Party?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_752/shard_00007/6237463.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_732/shard_00004/6068821.png.tiles/chunk_0000_06.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 43 positive" src="assets/pos_043.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 43 top hard negative" src="assets/topneg_043.png" /></p>
+<hr />
+<h2 id="example-44">Example 44</h2>
+<p><strong>Query:</strong> How many votes did Sandeep Yadav receive in the 2022 Allahabad North Legislative Assembly election?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_091/shard_00006/759975.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_574/shard_00006/4761202.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 44 positive" src="assets/pos_044.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 44 top hard negative" src="assets/topneg_044.png" /></p>
+<hr />
+<h2 id="example-45">Example 45</h2>
+<p><strong>Query:</strong> What is the codename for the Fall Creators Update introduced in Windows 10?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_975/shard_00004/8080969.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_975/shard_00003/8080672.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 45 positive" src="assets/pos_045.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 45 top hard negative" src="assets/topneg_045.png" /></p>
+<hr />
+<h2 id="example-46">Example 46</h2>
+<p><strong>Query:</strong> Who was the referee for the 9 February 2016 match between Nyíregyháza and Debrecen?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_040/shard_00006/338287.png.tiles/chunk_0001_04.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_034/shard_00002/283856.png.tiles/chunk_0001_04.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 46 positive" src="assets/pos_046.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 46 top hard negative" src="assets/topneg_046.png" /></p>
+<hr />
+<h2 id="example-47">Example 47</h2>
+<p><strong>Query:</strong> On what date did Tohitapu die?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_909/shard_00002/7532952.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_922/shard_00001/7639522.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 47 positive" src="assets/pos_047.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 47 top hard negative" src="assets/topneg_047.png" /></p>
+<hr />
+<h2 id="example-48">Example 48</h2>
+<p><strong>Query:</strong> Who plays the character of Old Lady Hackmore in the film Ernest Scared Stupid?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_308/shard_00010/2556010.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_402/shard_00007/3337343.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 48 positive" src="assets/pos_048.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 48 top hard negative" src="assets/topneg_048.png" /></p>
+<hr />
+<h2 id="example-49">Example 49</h2>
+<p><strong>Query:</strong> In which year did Yoshinobu Yamamoto win the Japan Series champion award?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_987/shard_00003/8179620.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_632/shard_00007/5243481.png.tiles/chunk_0000_05.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 49 positive" src="assets/pos_049.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 49 top hard negative" src="assets/topneg_049.png" /></p>
+<hr />
+<h2 id="example-50">Example 50</h2>
+<p><strong>Query:</strong> When did City Hearts (UK) become financially and legally separate from Hope City Church?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_414/shard_00009/3431195.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_219/shard_00011/1817628.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 50 positive" src="assets/pos_050.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 50 top hard negative" src="assets/topneg_050.png" /></p>
+<hr />
+<h2 id="example-51">Example 51</h2>
+<p><strong>Query:</strong> What is the ZIP code for the census-designated place of Talmage?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_870/shard_00006/7213422.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_870/shard_00006/7213403.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 51 positive" src="assets/pos_051.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 51 top hard negative" src="assets/topneg_051.png" /></p>
+<hr />
+<h2 id="example-52">Example 52</h2>
+<p><strong>Query:</strong> What is the estimated number of speakers for Western Egyptian Bedawi Arabic as of 2022?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_965/shard_00006/8000832.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_068/shard_00000/563342.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 52 positive" src="assets/pos_052.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 52 top hard negative" src="assets/topneg_052.png" /></p>
+<hr />
+<h2 id="example-53">Example 53</h2>
+<p><strong>Query:</strong> On what date did the Schoharie Creek Bridge collapse?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_805/shard_00004/6673489.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_805/shard_00004/6673489.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 53 positive" src="assets/pos_053.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 53 top hard negative" src="assets/topneg_053.png" /></p>
+<hr />
+<h2 id="example-54">Example 54</h2>
+<p><strong>Query:</strong> Which architectural firm designed the Valimo station?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_939/shard_00008/7786764.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_940/shard_00002/7789013.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 54 positive" src="assets/pos_054.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 54 top hard negative" src="assets/topneg_054.png" /></p>
+<hr />
+<h2 id="example-55">Example 55</h2>
+<p><strong>Query:</strong> In which town is Du Mâle Lake located?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_282/shard_00012/2341580.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_517/shard_00006/4288832.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 55 positive" src="assets/pos_055.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 55 top hard negative" src="assets/topneg_055.png" /></p>
+<hr />
+<h2 id="example-56">Example 56</h2>
+<p><strong>Query:</strong> Who was the Flemish contemporary art historian and artist that serves as the principal source on the life of Joos van Winghe?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_473/shard_00009/3921275.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_446/shard_00009/3696225.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 56 positive" src="assets/pos_056.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 56 top hard negative" src="assets/topneg_056.png" /></p>
+<hr />
+<h2 id="example-57">Example 57</h2>
+<p><strong>Query:</strong> Who nominated Arifin Zakaria for the position of 7th Chief Justice of Malaysia?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_115/shard_00004/956877.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_990/shard_00007/8209043.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 57 positive" src="assets/pos_057.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 57 top hard negative" src="assets/topneg_057.png" /></p>
+<hr />
+<h2 id="example-58">Example 58</h2>
+<p><strong>Query:</strong> Which specific medication is listed as a nonsteroidal SARMs in the provided table?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_658/shard_00004/5454939.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_684/shard_00006/5673041.png.tiles/chunk_0001_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 58 positive" src="assets/pos_058.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 58 top hard negative" src="assets/topneg_058.png" /></p>
+<hr />
+<h2 id="example-59">Example 59</h2>
+<p><strong>Query:</strong> Who wrote the review for the July 19, 2021 episode of WWE Raw?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_461/shard_00007/3825947.png.tiles/chunk_0001_07.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_956/shard_00005/7924725.png.tiles/chunk_0001_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 59 positive" src="assets/pos_059.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 59 top hard negative" src="assets/topneg_059.png" /></p>
+<hr />
+<h2 id="example-60">Example 60</h2>
+<p><strong>Query:</strong> Who were the French Open women's doubles champions in 1929?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_018/shard_00005/154279.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_023/shard_00013/198282.png.tiles/chunk_0000_05.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 60 positive" src="assets/pos_060.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 60 top hard negative" src="assets/topneg_060.png" /></p>
+<hr />
+<h2 id="example-61">Example 61</h2>
+<p><strong>Query:</strong> Which character did the actress play in the 2013 film Horns?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_492/shard_00002/4078151.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_439/shard_00003/3639687.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 61 positive" src="assets/pos_061.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 61 top hard negative" src="assets/topneg_061.png" /></p>
+<hr />
+<h2 id="example-62">Example 62</h2>
+<p><strong>Query:</strong> Who is considered the father of City Park in Denver?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_219/shard_00011/1817879.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_791/shard_00003/6556411.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 62 positive" src="assets/pos_062.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 62 top hard negative" src="assets/topneg_062.png" /></p>
+<hr />
+<h2 id="example-63">Example 63</h2>
+<p><strong>Query:</strong> Who was the recipient of the award for the 1933 season in the provided table?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_846/shard_00003/7011854.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_011/shard_00000/91871.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 63 positive" src="assets/pos_063.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 63 top hard negative" src="assets/topneg_063.png" /></p>
+<hr />
+<h2 id="example-64">Example 64</h2>
+<p><strong>Query:</strong> Who is the Métis artist that initiated the Walking With Our Sisters project?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_958/shard_00000/7936833.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_619/shard_00007/5134863.png.tiles/chunk_0002_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 64 positive" src="assets/pos_064.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 64 top hard negative" src="assets/topneg_064.png" /></p>
+<hr />
+<h2 id="example-65">Example 65</h2>
+<p><strong>Query:</strong> Which book did Mildred Valley Thornton publish in 1966?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_614/shard_00006/5092743.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_154/shard_00010/1279928.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 65 positive" src="assets/pos_065.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 65 top hard negative" src="assets/topneg_065.png" /></p>
+<hr />
+<h2 id="example-66">Example 66</h2>
+<p><strong>Query:</strong> Which country does the judoka Stéphane Traineau represent in the 95 kg category?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_023/shard_00013/198101.png.tiles/chunk_0000_04.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_024/shard_00008/206845.png.tiles/chunk_0000_04.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 66 positive" src="assets/pos_066.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 66 top hard negative" src="assets/topneg_066.png" /></p>
+<hr />
+<h2 id="example-67">Example 67</h2>
+<p><strong>Query:</strong> Which former Cleveland Indians player did the Seattle Mariners sign on December 20?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_018/shard_00006/155375.png.tiles/chunk_0002_07.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_036/shard_00004/302496.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 67 positive" src="assets/pos_067.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 67 top hard negative" src="assets/topneg_067.png" /></p>
+<hr />
+<h2 id="example-68">Example 68</h2>
+<p><strong>Query:</strong> Who wrote the episode "I, Monster" of the Teenage Mutant Ninja Turtles series?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_875/shard_00003/7252499.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_543/shard_00000/4498284.png.tiles/chunk_0000_07.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 68 positive" src="assets/pos_068.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 68 top hard negative" src="assets/topneg_068.png" /></p>
+<hr />
+<h2 id="example-69">Example 69</h2>
+<p><strong>Query:</strong> Who was Kesha Rogers' opponent in the general election for the U.S. House of Representatives?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_497/shard_00001/4118840.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_497/shard_00006/4123984.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 69 positive" src="assets/pos_069.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 69 top hard negative" src="assets/topneg_069.png" /></p>
+<hr />
+<h2 id="example-70">Example 70</h2>
+<p><strong>Query:</strong> Which club did Moreno Torricelli join in January 2003?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_627/shard_00000/5194105.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_301/shard_00004/2499189.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 70 positive" src="assets/pos_070.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 70 top hard negative" src="assets/topneg_070.png" /></p>
+<hr />
+<h2 id="example-71">Example 71</h2>
+<p><strong>Query:</strong> Who was the president of Whitefield F.C.?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_968/shard_00001/8020372.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_172/shard_00001/1426813.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 71 positive" src="assets/pos_071.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 71 top hard negative" src="assets/topneg_071.png" /></p>
+<hr />
+<h2 id="example-72">Example 72</h2>
+<p><strong>Query:</strong> At which venue did the original Broadway production of Three Men on a Horse premiere?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_903/shard_00006/7487412.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_529/shard_00006/4389184.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 72 positive" src="assets/pos_072.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 72 top hard negative" src="assets/topneg_072.png" /></p>
+<hr />
+<h2 id="example-73">Example 73</h2>
+<p><strong>Query:</strong> What virus strain was responsible for the 1972 Yugoslav smallpox outbreak?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_017/shard_00003/144785.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_017/shard_00003/144785.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 73 positive" src="assets/pos_073.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 73 top hard negative" src="assets/topneg_073.png" /></p>
+<hr />
+<h2 id="example-74">Example 74</h2>
+<p><strong>Query:</strong> Which band is listed as a spinoff of the Australian band XL Capris?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_981/shard_00004/8130632.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_501/shard_00002/4152976.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 74 positive" src="assets/pos_074.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 74 top hard negative" src="assets/topneg_074.png" /></p>
+<hr />
+<h2 id="example-75">Example 75</h2>
+<p><strong>Query:</strong> Which South Vietnamese official served as the 8th Prime Minister of South Vietnam from 1969 to 1975?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_524/shard_00000/4343479.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_420/shard_00002/3482655.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 75 positive" src="assets/pos_075.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 75 top hard negative" src="assets/topneg_075.png" /></p>
+<hr />
+<h2 id="example-76">Example 76</h2>
+<p><strong>Query:</strong> What hyperparasitic fungus is known to parasitize Puccinia striiformis f. sp. tritici?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_107/shard_00012/892492.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_966/shard_00007/8010103.png.tiles/chunk_0000_04.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 76 positive" src="assets/pos_076.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 76 top hard negative" src="assets/topneg_076.png" /></p>
+<hr />
+<h2 id="example-77">Example 77</h2>
+<p><strong>Query:</strong> What is the local name for the circular road in Thrissur that surrounds the Thekkinkadu Maidan?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_862/shard_00005/7146191.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_683/shard_00005/5663293.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 77 positive" src="assets/pos_077.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 77 top hard negative" src="assets/topneg_077.png" /></p>
+<hr />
+<h2 id="example-78">Example 78</h2>
+<p><strong>Query:</strong> Which cyclist representing France placed second in the Tempo race?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_050/shard_00007/421396.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_044/shard_00003/368054.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 78 positive" src="assets/pos_078.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 78 top hard negative" src="assets/topneg_078.png" /></p>
+<hr />
+<h2 id="example-79">Example 79</h2>
+<p><strong>Query:</strong> On what date did the 2024 delivery robbery occur in Vila Império?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_946/shard_00007/7843984.png.tiles/chunk_0000_04.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_907/shard_00002/7516192.png.tiles/chunk_0002_02.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 79 positive" src="assets/pos_079.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 79 top hard negative" src="assets/topneg_079.png" /></p>
+<hr />
+<h2 id="example-80">Example 80</h2>
+<p><strong>Query:</strong> Who was the Spanish shipbuilder who further developed the galleass for usage in the Atlantic?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_348/shard_00006/2889049.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_750/shard_00001/6214283.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 80 positive" src="assets/pos_080.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 80 top hard negative" src="assets/topneg_080.png" /></p>
+<hr />
+<h2 id="example-81">Example 81</h2>
+<p><strong>Query:</strong> Who produced the Steely Dan song "Time Out of Mind"?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_906/shard_00002/7508052.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_906/shard_00002/7508049.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 81 positive" src="assets/pos_081.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 81 top hard negative" src="assets/topneg_081.png" /></p>
+<hr />
+<h2 id="example-82">Example 82</h2>
+<p><strong>Query:</strong> Where was the Super heavyweight competition at the 2021 AIBA World Boxing Championships held?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_047/shard_00002/391988.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_047/shard_00002/391985.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 82 positive" src="assets/pos_082.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 82 top hard negative" src="assets/topneg_082.png" /></p>
+<hr />
+<h2 id="example-83">Example 83</h2>
+<p><strong>Query:</strong> What is the type of technology used in AMD PowerPlay?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_064/shard_00010/533731.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_588/shard_00008/4879200.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 83 positive" src="assets/pos_083.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 83 top hard negative" src="assets/topneg_083.png" /></p>
+<hr />
+<h2 id="example-84">Example 84</h2>
+<p><strong>Query:</strong> In what year was John D. Altenburg Jr. born?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_466/shard_00003/3863881.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_428/shard_00000/3546228.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 84 positive" src="assets/pos_084.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 84 top hard negative" src="assets/topneg_084.png" /></p>
+<hr />
+<h2 id="example-85">Example 85</h2>
+<p><strong>Query:</strong> Which military unit is the current garrison at Irwin Barracks?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_438/shard_00005/3635386.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_760/shard_00001/6297588.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 85 positive" src="assets/pos_085.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 85 top hard negative" src="assets/topneg_085.png" /></p>
+<hr />
+<h2 id="example-86">Example 86</h2>
+<p><strong>Query:</strong> Who was the Russian peacekeeping commander in Abkhazia who declared that Georgian military forces in the Zugdidi district must lay down their arms?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_143/shard_00001/1186061.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_735/shard_00001/6089921.png.tiles/chunk_0002_07.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 86 positive" src="assets/pos_086.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 86 top hard negative" src="assets/topneg_086.png" /></p>
+<hr />
+<h2 id="example-87">Example 87</h2>
+<p><strong>Query:</strong> Who are listed as the writers for Hauntology in the infobox?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_393/shard_00003/3259166.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_393/shard_00003/3259166.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> Borderline query during manual review because nearby chunks were semantically very close, but not confirmed as a false negative.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 87 positive" src="assets/pos_087.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 87 top hard negative" src="assets/topneg_087.png" /></p>
+<hr />
+<h2 id="example-88">Example 88</h2>
+<p><strong>Query:</strong> Who is the current chairman of the football club FC Alay?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_317/shard_00011/2633190.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_836/shard_00001/6927205.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 88 positive" src="assets/pos_088.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 88 top hard negative" src="assets/topneg_088.png" /></p>
+<hr />
+<h2 id="example-89">Example 89</h2>
+<p><strong>Query:</strong> On what date did the Joint Typhoon Warning Center initiate advisories on Tropical Depression 28W?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_925/shard_00001/7664584.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_925/shard_00002/7665125.png.tiles/chunk_0001_06.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 89 positive" src="assets/pos_089.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 89 top hard negative" src="assets/topneg_089.png" /></p>
+<hr />
+<h2 id="example-90">Example 90</h2>
+<p><strong>Query:</strong> Who succeeded Mukhtar Abbas Naqvi as the Minister of Minority Affairs?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_632/shard_00002/5237517.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_503/shard_00001/4168439.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 90 positive" src="assets/pos_090.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 90 top hard negative" src="assets/topneg_090.png" /></p>
+<hr />
+<h2 id="example-91">Example 91</h2>
+<p><strong>Query:</strong> In what year was the Enoggera Remount Depot built?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_761/shard_00006/6310956.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_304/shard_00010/2521794.png.tiles/chunk_0000_02.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 91 positive" src="assets/pos_091.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 91 top hard negative" src="assets/topneg_091.png" /></p>
+<hr />
+<h2 id="example-92">Example 92</h2>
+<p><strong>Query:</strong> Who served as the President of Rangers F.C. during the 1898–99 season?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_007/shard_00005/63243.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_007/shard_00009/60210.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 92 positive" src="assets/pos_092.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 92 top hard negative" src="assets/topneg_092.png" /></p>
+<hr />
+<h2 id="example-93">Example 93</h2>
+<p><strong>Query:</strong> Which cover album by Easy Star All-Stars features a cover of the Radiohead song "Let Down"?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_529/shard_00006/4388923.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_529/shard_00006/4389079.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 93 positive" src="assets/pos_093.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 93 top hard negative" src="assets/topneg_093.png" /></p>
+<hr />
+<h2 id="example-94">Example 94</h2>
+<p><strong>Query:</strong> On what date was the SMN founded?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_651/shard_00001/5394076.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_400/shard_00001/3314778.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 94 positive" src="assets/pos_094.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 94 top hard negative" src="assets/topneg_094.png" /></p>
+<hr />
+<h2 id="example-95">Example 95</h2>
+<p><strong>Query:</strong> Which song was featured in the initial television ad campaign for the Subaru Tribeca in the United States?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_856/shard_00004/7095377.png.tiles/chunk_0000_03.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_578/shard_00008/4796346.png.tiles/chunk_0001_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 95 positive" src="assets/pos_095.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 95 top hard negative" src="assets/topneg_095.png" /></p>
+<hr />
+<h2 id="example-96">Example 96</h2>
+<p><strong>Query:</strong> Who served as the director of the Wheelhouse Maritime Museum?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_967/shard_00000/8011052.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_645/shard_00003/5346675.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 96 positive" src="assets/pos_096.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 96 top hard negative" src="assets/topneg_096.png" /></p>
+<hr />
+<h2 id="example-97">Example 97</h2>
+<p><strong>Query:</strong> Who was the spouse of John Houston?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_467/shard_00012/3876725.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_467/shard_00012/3876727.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 97 positive" src="assets/pos_097.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 97 top hard negative" src="assets/topneg_097.png" /></p>
+<hr />
+<h2 id="example-98">Example 98</h2>
+<p><strong>Query:</strong> For which film did Lizzy Gardiner and Tim Chappel design the dress made of 254 expired American Express gold cards?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_558/shard_00000/4625933.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_159/shard_00001/1318767.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 98 positive" src="assets/pos_098.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 98 top hard negative" src="assets/topneg_098.png" /></p>
+<hr />
+<h2 id="example-99">Example 99</h2>
+<p><strong>Query:</strong> In what Puerto Rican municipality is the Piedra del Indio located?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_304/shard_00005/2523971.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_710/shard_00008/5889687.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 99 positive" src="assets/pos_099.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 99 top hard negative" src="assets/topneg_099.png" /></p>
+<hr />
+<h2 id="example-100">Example 100</h2>
+<p><strong>Query:</strong> What is the elevation of Panjgur?  </p>
+<p><strong>Positive chunk:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_690/shard_00002/5718612.png.tiles/chunk_0000_00.png</code>  </p>
+<p><strong>Top-1 hard negative:</strong> <code>/opt/dlami/nvme/kiwix_tiles/shard_689/shard_00009/5713870.png.tiles/chunk_0000_01.png</code>  </p>
+<p><strong>Review note:</strong> No clear false negative identified during the manual review.  </p>
+<p><strong>Positive screenshot</strong></p>
+<p><img alt="Example 100 positive" src="assets/pos_100.png" /></p>
+<p><strong>Top-1 hard negative screenshot</strong></p>
+<p><img alt="Example 100 top hard negative" src="assets/topneg_100.png" /></p>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2022-2023 Yichuan Wang
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
