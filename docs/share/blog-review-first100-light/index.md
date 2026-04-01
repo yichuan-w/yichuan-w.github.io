@@ -45,6 +45,58 @@ The following queries are not fully self-contained and depend on screenshot layo
 
 ---
 
+## Potential False Negatives in Top-1 Hard Negatives
+
+Using the first 100 examples from `train_hn_skip1.jsonl`, we ran the same VQA check on the positive image and the top-1 hard negative image. The positive image was judged `CORRECT` in 98/100 cases, while the top-1 hard negative was judged `CORRECT` in 19/100 cases. These 19 cases are strong candidates for false negatives, because the top-1 hard negative appears to contain enough information to answer the query.
+
+Important note: these are VQA-flagged candidate false negatives, not all manually confirmed annotation errors.
+
+### Flagged Cases
+
+- `#7` Query: Which historic mission church in Monterey County is listed in the screenshot?
+  Top-1 negative answer: `Mission Nuestra Señora de la Soledad`
+- `#8` Query: What is another name for training simulation?
+  Top-1 negative answer: `simulation-based training`
+- `#19` Query: Who served as the President of the National Senators of Argentina for the 2011–2013 term?
+  Top-1 negative answer: `Amado Boudou`
+- `#23` Query: On what date was the album "Madame X" by Madonna released?
+  Top-1 negative answer: `October 8, 2021`
+- `#30` Query: What is the minimum age required to be elected President of the Republic of Albania?
+  Top-1 negative answer: `40 years of age`
+- `#34` Query: Which doctrine became linked in syncretic form with the tathāgatagarbha doctrine?
+  Top-1 negative answer: `Pure Land Buddhism`
+- `#38` Query: Which Hungarian violinist did Clara Ward elope with in December 1896?
+  Top-1 negative answer: `Rigó`
+- `#45` Query: What is the codename for the Fall Creators Update introduced in Windows 10?
+  Top-1 negative answer: `Redstone 3`
+- `#50` Query: When did City Hearts (UK) become financially and legally separate from Hope City Church?
+  Top-1 negative answer: `March 2020`
+- `#58` Query: Which specific medication is listed as a nonsteroidal SARMs in the provided table?
+  Top-1 negative answer: `Andarine (acetamidoxolutamide, androxolutamide, GTx-007, S-4)`
+- `#60` Query: Who were the French Open women's doubles champions in 1929?
+  Top-1 negative answer: `Lili Álvarez / Kea Bouman`
+- `#63` Query: Who was the recipient of the award for the 1933 season in the provided table?
+  Top-1 negative answer: `Bobo Newsom`
+- `#66` Query: Which country does the judoka Stéphane Traineau represent in the 95 kg category?
+  Top-1 negative answer: `France`
+- `#73` Query: What virus strain was responsible for the 1972 Yugoslav smallpox outbreak?
+  Top-1 negative answer: `Variola Vera`
+- `#74` Query: Which band is listed as a spinoff of the Australian band XL Capris?
+  Top-1 negative answer: `Sweet and Sour`
+- `#82` Query: Where was the Super heavyweight competition at the 2021 AIBA World Boxing Championships held?
+  Top-1 negative answer: `Belgrade, Serbia`
+- `#85` Query: Which military unit is the current garrison at Irwin Barracks?
+  Top-1 negative answer: `20 Logistic Support Squadron, Royal Logistic Corps, 21 Special Air Service Regiment (Artists) (Reserve), Queen's Royal Hussars`
+- `#89` Query: On what date did the Joint Typhoon Warning Center initiate advisories on Tropical Depression 28W?
+  Top-1 negative answer: `December 12, 2021`
+- `#97` Query: Who was the spouse of John Houston?
+  Top-1 negative answer: `Elizabeth Blackadder`
+
+### Overlap With Non-Self-Contained Queries
+
+Four of the 13 clearly not self-contained queries also appear in the VQA-flagged false-negative set: `#7`, `#58`, `#63`, and `#97`. This suggests that ambiguous or context-dependent query wording may be one factor that makes false negatives more likely.
+
+
 This lightweight export is optimized for blog use. Each example includes the positive screenshot and the first hard-negative screenshot. Confirmed false-negative cases include extra screenshots.
 
 ## Summary
