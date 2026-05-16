@@ -36,9 +36,13 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 
 [12/12/2025] Happy to release [DS SERVE](https://berkeley-large-rag.github.io/RAG-DS-Serve/), a framework for efficient and scalable neural retrieval and the largest open vector store over pre-trained data. Check out our [live demo](http://api.ds-serve.org:30888/ui)! Fun fact: Jinjian is the first undergraduate I mentored at Berkeley—it was a wonderful collaboration!
 
+[09/22/2025] DLPM is verified to work on real workload at [Yandex](https://github.com/tazjin/sglang/pull/1)!
+
 [08/10/2025] We release [LEANN](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social), a fully local RAG with 97% storage savings. One of the first open-source engines to bring semantic search to Claude Code, all with zero cloud cost and full privacy. Drop me an email if you’d like to contribute — we’re on a mission to build an engine that understands every piece of data on your PC.
 
 [06/20/2025] I will attend SIGMOD in Berlin this year. Let's chat about vector database, RAG, LLM and we can hang around!
+
+[01/01/2025] Happy to share my first work at Berkeley, [DLPM](https://arxiv.org/abs/2501.14312) — an efficient, fair, and load-balanced LLM serving engine. Thanks to all collaborators from LMSys!
 
 [08/29/2024] After being rejected once, DiskGNN has finally been accepted by SIGMOD25. See you in Berlin! ​:smile:
 
