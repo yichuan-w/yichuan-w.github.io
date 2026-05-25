@@ -73,7 +73,6 @@ Many systems questions are still not fully solved:
 - How do we handle train-inference mismatch?
 - How should training, rollout, and evaluation autoscale together?
 - How should sandbox and environment systems be optimized?
-- How do we make agent rollouts reliable, cheap, and reproducible?
 - What is the right abstraction for data, reward, environment, and policy iteration?
 
 There is still a lot of room to improve.
