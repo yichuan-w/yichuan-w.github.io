@@ -168,7 +168,7 @@ Here are my thoughts and comments on various research papers and topics in syste
 - [Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems](/blog/How-to-build-diskANN-perfectly) - Practical recipes for configuring DiskANN, from optimal compression rates to avoiding hidden metric pitfalls, based on experience building LEANN and DS-serve.
 - [Lessons Learned in Development - LEANN Project](/blog/lessons_learned_in_dev_leann) - Practical insights from building RAG systems, including chunk overlap strategies, data format optimization, and embedding model comparisons
 
-<details>
+<details markdown="1">
 <summary><strong>Paper Comments</strong></summary>
 
 - [My Thoughts on RAGCache paper](/blog/ragcache) - My thoughts on RAGCache paper [arxiv](https://arxiv.org/abs/2404.12457)
