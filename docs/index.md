@@ -8,8 +8,7 @@ hide:
 
 ## Bio ![profile](https://github.com/yichuan-w/yichuan-w.github.io/assets/73766326/9129f24b-aa5e-4674-a918-4b2160887792){align=right style="width:7.5em; margin-left: 0.5em; margin-top: 0.5em; border-radius: 1em;"}
 
-I am a second-year PhD student fortunate to be advised by **[Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/)** and **[Matei Zaharia](https://people.eecs.berkeley.edu/~matei/)** at **UC Berkeley** in **[SkyLab](https://sky.cs.berkeley.edu/)**. I also collaborate closely with **[Sewon Min](https://www.sewonmin.com/)**. I received my B.E. in Computer Science and Technology from the **ACM Honored Class** at Shanghai Jiao Tong University (**SJTU**). My research focuses on **machine learning systems**, particularly systems for LLM training and serving, and developing tailored abstractions for unique ML computational patterns to achieve better performance. Currently, I am most interested in LLM traning/
-serving/scheduling, agent systems, vector search, retrieval, large-scale RAG, and personalized AI application. If you share similar research interests, I'd love to connect and chat!
+I am a second-year PhD student fortunate to be advised by **[Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/)** and **[Matei Zaharia](https://people.eecs.berkeley.edu/~matei/)** at **UC Berkeley** in **[SkyLab](https://sky.cs.berkeley.edu/)**. I also collaborate closely with **[Sewon Min](https://www.sewonmin.com/)** and **[Ion Stoica](https://people.eecs.berkeley.edu/~istoica/)**. I received my B.E. in Computer Science and Technology from the **ACM Honored Class** at Shanghai Jiao Tong University (**SJTU**). My research focuses on **machine learning systems**, particularly agent infrastructure, especially search infrastructure, LLM serving, and LLM post-training. My research has received **best-paper awards at MLSys**. If you share similar research interests, I'd love to connect and chat!
 
 During my undergraduate studies, I collaborated with **Prof. [Jinyang Li](http://www.news.cs.nyu.edu/~jinyang/)** at NYU and **Dr. [Minjie Wang](https://jermainewang.github.io/)** on projects related to scaling up GNN training. At SJTU, I was supervised by **Prof. [Quan Chen](https://www.cs.sjtu.edu.cn/~chen-quan/)** at SJTU. 
 
@@ -32,7 +31,11 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 </span>
 
 ## News
-[01/26/2026] LEANN is accepted in MLsys, see you in Bellevue!
+[05/25/2026] I joined the Meta MSL Infra PyTorch team as a Research Scientist Intern, working on post-training infrastructure.
+
+[05/20/2026] LEANN received the **MLSys 2026 Best Paper Award**!
+
+[01/26/2026] LEANN is accepted in MLSys, see you in Bellevue!
 
 [12/12/2025] Happy to release [DS SERVE](https://berkeley-large-rag.github.io/RAG-DS-Serve/), a framework for efficient and scalable neural retrieval and the largest open vector store over pre-trained data. Check out our [live demo](http://api.ds-serve.org:30888/ui)! Fun fact: Jinjian is the first undergraduate I mentored at Berkeley—it was a wonderful collaboration!
 
@@ -77,9 +80,9 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 
 1.**LEANN: A Low-Storage Vector Index** [pdf](https://arxiv.org/pdf/2506.08276) [poster](asset/leann_poster.pdf) [repo](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social)
 
-**Yichuan Wang**, Zhifei Li, Shu Liu, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
+**Yichuan Wang**, Shu Liu, Zhifei Li, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
 
-**Accepted by MLsys 2026** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
+**MLSys 2026, Best Paper Award** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
 
 2.**DS SERVE: A Framework for Efficient and Scalable Neural Retrieval** [pdf](https://berkeley-large-rag.github.io/RAG-DS-Serve/assets/DS_SERVE_Camera_Ready.pdf) [website](https://berkeley-large-rag.github.io/RAG-DS-Serve/) [poster](asset/AAAI_Poster_Draft.pdf) [repo](https://github.com/Berkeley-Large-RAG/RAG-DS-Serve) ![GitHub Repo stars](https://img.shields.io/github/stars/Berkeley-Large-RAG/RAG-DS-Serve?style=social)
 
@@ -158,15 +161,22 @@ Here are my thoughts and comments on various research papers and topics in syste
 ### Research Vision
 - [Rethinking the Search Stack for the AI Era](/blog/build-search-engine-for-AI) - Why we need to move beyond traditional search APIs for LLM agents and build native retrieval stacks.
 
-### Paper Comments
+### Production & Entrepreneurship Thoughts
+- [Rethinking RL as a Service and the Position of RL Infrastructure](/blog/rethinking-rl-as-a-service) - Why RL infrastructure is a compelling systems direction, but RL as a generic enterprise service is still a difficult business in May 2026.
+
+### Development Experience & Lessons Learned
+- [Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems](/blog/How-to-build-diskANN-perfectly) - Practical recipes for configuring DiskANN, from optimal compression rates to avoiding hidden metric pitfalls, based on experience building LEANN and DS-serve.
+- [Lessons Learned in Development - LEANN Project](/blog/lessons_learned_in_dev_leann) - Practical insights from building RAG systems, including chunk overlap strategies, data format optimization, and embedding model comparisons
+
+<details>
+<summary><strong>Paper Comments</strong></summary>
+
 - [My Thoughts on RAGCache paper](/blog/ragcache) - My thoughts on RAGCache paper [arxiv](https://arxiv.org/abs/2404.12457)
 - [My Thoughts on Exploring Orak: A Unified Benchmark for LLM Agents in Games paper](/blog/game_eval) - My thoughts on Orak paper, a comprehensive evaluation on Game Plantform [arxiv](https://arxiv.org/abs/2506.03610)
 - [My Thoughts on Qwen3 Embedding paper](/blog/qwen3embedding) - My thoughts on Qwen3 Embedding paper, advancing text embedding through foundation models
 - [My Thoughts on ReasonIR paper](/blog/reasonir) - My thoughts on ReasonIR paper, reasoning-based information retrieval
 
-### Development Experience & Lessons Learned
-- [Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems](/blog/How-to-build-diskANN-perfectly) - Practical recipes for configuring DiskANN, from optimal compression rates to avoiding hidden metric pitfalls, based on experience building LEANN and DS-serve.
-- [Lessons Learned in Development - LEANN Project](/blog/lessons_learned_in_dev_leann) - Practical insights from building RAG systems, including chunk overlap strategies, data format optimization, and embedding model comparisons
+</details>
 
 *[See all blog posts →](/blog)*
 
