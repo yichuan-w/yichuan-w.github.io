@@ -82,7 +82,7 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 
 **Yichuan Wang**, Shu Liu, Zhifei Li, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
 
-**MLSys 2026, Best Paper Award** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
+**[MLSys 2026, Best Paper Award](https://mlsys.org/media/mlsys-2026/best-papers/Best-Research-Paper-LEANN.pdf)** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
 
 2.**DS SERVE: A Framework for Efficient and Scalable Neural Retrieval** [pdf](https://berkeley-large-rag.github.io/RAG-DS-Serve/assets/DS_SERVE_Camera_Ready.pdf) [website](https://berkeley-large-rag.github.io/RAG-DS-Serve/) [poster](asset/AAAI_Poster_Draft.pdf) [repo](https://github.com/Berkeley-Large-RAG/RAG-DS-Serve) ![GitHub Repo stars](https://img.shields.io/github/stars/Berkeley-Large-RAG/RAG-DS-Serve?style=social)
 
