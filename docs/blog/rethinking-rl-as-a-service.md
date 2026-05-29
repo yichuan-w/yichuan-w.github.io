@@ -63,6 +63,8 @@ These two cases are real. But they are narrower than the broad claim that every 
 
 ## The Unsolved Problem for Both RL and Prompt Optimization
 
+This section is partially inspired by conversations with [Matei Zaharia](https://people.eecs.berkeley.edu/~matei/).
+
 Although I have said many positive things about prompt optimization (even though I am not working on it myself), it does bring specification to elicit the general knowledge already inside LLMs. But for many use cases, especially in enterprise settings, designing a clear reward signal is very hard — for both prompt optimization and RL.
 This is the part people might need to focus on more. At an abstract level, the core question is the same: how do you find or define the right reward? That problem is important for prompt optimization and RL alike, and it remains largely unsolved.
 
@@ -78,10 +80,11 @@ Many systems questions are still not fully solved:
 
 - How do we handle train-inference mismatch?
 - How should training, rollout, and evaluation autoscale together?
+    - Especially as rollouts become longer during training.
 - How should sandbox and environment systems be optimized?
 - What is the right abstraction for data, reward, environment, and policy iteration?
 
-There is still a lot of room to improve.
+There is still a lot of room to improve. I am actively working in this area starting May 2026, and plan to write a separate blog post diving deeper into these systems challenges.
 
 If we eventually run out of easy static data, interaction data will matter much more. At that point, the ability to run scalable, efficient, and reliable RL pipelines may become a core advantage.
 
