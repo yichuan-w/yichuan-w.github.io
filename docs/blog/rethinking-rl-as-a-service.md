@@ -48,7 +48,7 @@ I do not think a Tinker-like product is naturally a great enterprise product tod
 
 The same logic applies to many cloud and data companies. At the current point, companies like Databricks and Snowflake seem to spend more energy designing agents, optimizing product workflows, and improving the service experience for their own customers. In other words, they are doing application and harness engineering around models.
 
-They are not obviously the ideal customers for a general-purpose RL-as-a-service platform.
+They are not obviously the ideal customers for a general-purpose RL-as-a-service platform. Their customers also seem to gain more value from optimizing workloads than from post-training models.
 
 ## When Could This Business Work?
 
@@ -59,6 +59,12 @@ The first case is sensitive data. If a company has extremely sensitive internal 
 The second case is inference cost. Frontier model inference is still expensive. If a company serves a high-volume workload, a smaller post-trained model that matches the target domain can reduce cost. In that case, the value is not only quality improvement, but also serving economics.
 
 These two cases are real. But they are narrower than the broad claim that every enterprise will want RL as a service.
+
+
+## The Unsolved Problem for Both RL and Prompt Optimization
+
+Although I have said many positive things about prompt optimization (even though I am not working on it myself), it does bring specification to elicit the general knowledge already inside LLMs. But for many use cases, especially in enterprise settings, designing a clear reward signal is very hard — for both prompt optimization and RL.
+This is the part people might need to focus on more. At an abstract level, the core question is the same: how do you find or define the right reward? That problem is important for prompt optimization and RL alike, and it remains largely unsolved.
 
 ## So Why Work on RL Infrastructure?
 
