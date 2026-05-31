@@ -39,7 +39,7 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 
 [12/12/2025] Happy to release [DS SERVE](https://berkeley-large-rag.github.io/RAG-DS-Serve/), a framework for efficient and scalable neural retrieval and the largest open vector store over pre-trained data. Check out our [live demo](http://api.ds-serve.org:30888/ui)! Fun fact: Jinjian is the first undergraduate I mentored at Berkeley—it was a wonderful collaboration!
 
-[09/22/2025] DLPM is verified to work on real workload at [Yandex](https://github.com/tazjin/sglang/pull/1)!
+[09/22/2025] DLPM is verified to work on real workload at [Yandex LLM serving stack](https://github.com/tazjin/sglang/pull/1)!
 
 [08/10/2025] We release [LEANN](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social), a fully local RAG with 97% storage savings. One of the first open-source engines to bring semantic search to Claude Code, all with zero cloud cost and full privacy. Drop me an email if you’d like to contribute — we’re on a mission to build an engine that understands every piece of data on your PC.
 
@@ -133,6 +133,9 @@ Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wan
 **Accepted by NSDI 2026**
 
 ## Services
+- [2026] ACM CAIS 2026 Workshop AID-Wild Reviewer
+- [2026] NeurIPS 2026 Conference Reviewer
+- [2026] ICML 2026 Workshop EMM-QA Reviewer
 - [04/2025] SIGMOD'25 Artifact Evaluation Committee
 - [03/2025] MLsys'25 Artifact Evaluation Committee
 - [02/2025] Eurosys'25 Artifact Evaluation Committee
