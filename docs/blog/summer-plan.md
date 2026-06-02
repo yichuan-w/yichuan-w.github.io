@@ -57,9 +57,13 @@ For sync colocated RL, the tradeoff is different: colocating saves machines but 
 
 Precision issues in RL training deserve more attention than they currently receive.
 
-Training with lower numerical precision (e.g., BF16 or FP8) is more prone to instability in RL than in supervised fine-tuning. Async RL makes this worse — the combination of stale gradients and reduced precision makes training more likely to diverge.
+The core problem is that every existing RL framework uses **separate models for serving (rollout) and training** — typically vLLM/SGLang for inference and FSDP/Megatron for training. These two systems use different model implementations, different kernels, and different numerical paths. As a result, the log-probabilities computed by the serving engine during rollout do not exactly match the log-probabilities computed by the trainer's forward pass on the same input. This **training-inference mismatch** is a significant source of instability.
 
-In practice, precision checking often functions more as a debugging and CI validation tool than a scientifically studied topic. There is not yet a solid body of work studying when and why precision matters in RL training, what the failure modes look like, and how to mitigate them systematically. This is an open area.
+A major contributor to this mismatch is [batch invariance](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/) — the same input can produce different outputs depending on batch composition and padding, due to floating-point non-associativity in attention and normalization kernels. When the serving engine and trainer handle batching differently, the mismatch compounds.
+
+This is precisely why building RL on a **unified model** (e.g., TorchTitan RL, where the same model definition is used for both training and inference) is valuable. A unified model avoids many of these issues by construction: consistent model definitions, consistent kernel behavior, and easier control over numerical precision across the entire pipeline.
+
+In practice, precision checking often functions more as a debugging and CI validation tool than a scientifically studied topic. There is not yet a solid body of work studying when and why the training-inference mismatch matters, what the failure modes look like, and how to mitigate them systematically. This is an open area.
 
 ## Anatomy of an RL Framework
 
