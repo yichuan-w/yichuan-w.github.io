@@ -1,2 +1,6 @@
 blog_review_first100_light.zip
 docs/blog/summer-plan-raw-notes.md
+.DS_Store
+*.docx
+~$*.docx
+My_new_cv_1page*.pdf
