@@ -80,7 +80,7 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 
 1.**LEANN: A Low-Storage Vector Index** [pdf](asset/leann_paper.pdf) [poster](asset/leann_poster.pdf) [repo](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social)
 
-**Yichuan Wang**, Shu Liu, Zhifei Li, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
+**Yichuan Wang**, Zhifei Li, Shu Liu, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
 
 **[MLSys 2026, Best Paper Award](https://mlsys.org/media/mlsys-2026/best-papers/Best-Research-Paper-LEANN.pdf)** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
 
