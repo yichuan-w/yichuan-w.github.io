@@ -78,13 +78,21 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 
 ## Publications
 
-1.**LEANN: A Low-Storage Vector Index** [pdf](https://arxiv.org/pdf/2506.08276) [poster](asset/leann_poster.pdf) [repo](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social)
+1.**LEANN: A Low-Storage Vector Index** [pdf](asset/leann_paper.pdf) [poster](asset/leann_poster.pdf) [repo](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social)
 
 **Yichuan Wang**, Shu Liu, Zhifei Li, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
 
 **[MLSys 2026, Best Paper Award](https://mlsys.org/media/mlsys-2026/best-papers/Best-Research-Paper-LEANN.pdf)** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
 
-2.**DS SERVE: A Framework for Efficient and Scalable Neural Retrieval** [pdf](https://berkeley-large-rag.github.io/RAG-DS-Serve/assets/DS_SERVE_Camera_Ready.pdf) [website](https://berkeley-large-rag.github.io/RAG-DS-Serve/) [poster](asset/AAAI_Poster_Draft.pdf) [repo](https://github.com/Berkeley-Large-RAG/RAG-DS-Serve) ![GitHub Repo stars](https://img.shields.io/github/stars/Berkeley-Large-RAG/RAG-DS-Serve?style=social)
+2.**PixelRAG: Visually Grounded Retrieval-Augmented Generation with Screenshot Rendering** [pdf](https://github.com/StarTrail-org/PixelRAG/blob/main/assets/pixelrag-paper.pdf) [repo](https://github.com/StarTrail-org/PixelRAG) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/PixelRAG?style=social) [playground](https://pixelrag.ai/)
+
+**Yichuan Wang\***, Zhifei Li\*, Zirui Wang, Paul Teiletche, Lesheng Jin, Matei Zaharia<sup>†</sup>, Joseph E. Gonzalez<sup>†</sup>, Sewon Min<sup>†</sup>
+
+\*indicates equal contribution, <sup>†</sup>indicates equal advising
+
+**Preprint**
+
+3.**DS SERVE: A Framework for Efficient and Scalable Neural Retrieval** [pdf](https://berkeley-large-rag.github.io/RAG-DS-Serve/assets/DS_SERVE_Camera_Ready.pdf) [website](https://berkeley-large-rag.github.io/RAG-DS-Serve/) [poster](asset/AAAI_Poster_Draft.pdf) [repo](https://github.com/Berkeley-Large-RAG/RAG-DS-Serve) ![GitHub Repo stars](https://img.shields.io/github/stars/Berkeley-Large-RAG/RAG-DS-Serve?style=social)
 
 Jinjian Liu\*, **Yichuan Wang\***, Xinxi Lyu, Rulin Shao, Joseph E. Gonzalez, Matei Zaharia, Sewon Min
 
@@ -92,7 +100,7 @@ Jinjian Liu\*, **Yichuan Wang\***, Xinxi Lyu, Rulin Shao, Joseph E. Gonzalez, Ma
 
 **Accepted by AAAI 2026 Demo**
 
-3.**Locality-aware Fair Scheduling in LLM Serving** [pdf](https://arxiv.org/pdf/2501.14312) [poster](asset/DLPM(poster).pdf)
+4.**Locality-aware Fair Scheduling in LLM Serving** [pdf](https://arxiv.org/pdf/2501.14312) [poster](asset/DLPM(poster).pdf)
 
 Shiyi Cao\*, **Yichuan Wang\***, Ziming Mao, Pin-Lun Hsu, Liangsheng Yin, Tian Xia, Dacheng Li, Shu Liu, Yineng Zhang, Yang Zhou, Ying Sheng,  Joseph E. Gonzalez, Ion Stoica
 
@@ -100,7 +108,7 @@ Shiyi Cao\*, **Yichuan Wang\***, Ziming Mao, Pin-Lun Hsu, Liangsheng Yin, Tian X
 
 **Preprint**
 
-4.**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](https://arxiv.org/pdf/2405.05231) [poster](asset/DiskGNN_poster_yichuan.pdf) [slides](asset/SIGMOD%20Research%202_DiskGNN.pdf)
+5.**DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training** [pdf](asset/diskgnn_paper.pdf) [poster](asset/DiskGNN_poster_yichuan.pdf) [slides](asset/SIGMOD%20Research%202_DiskGNN.pdf)
 
 Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Jiang, Bo Tang, Jinyang Li
 
@@ -108,25 +116,25 @@ Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Ji
 
 **Accepted by SIGMOD 2025(Oral)**
 
-5.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
+6.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
 Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
 
 **Accepted by OSDI 2023** 
 
-6.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
+7.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
 
 Haitian Jiang, Renjie Liu, Zengfeng Huang, **Yichuan Wang**, Xiao Yan, Zhenkun Cai, Minjie Wang, David Wipf
 
 **Accepted by ICLR 2025** 
 
-7.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
+8.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
 
 Alejandro Cuadron, Dacheng Li, Wenjie Ma, Xingyao Wang, **Yichuan Wang**, Siyuan Zhuang, Shu Liu, Luis Gaspar Schroeder, Tian Xia, Huanzhi Mao, Nicholas Thumiger, Aditya Desai, Ion Stoica, Ana Klimovic, Graham Neubig, Joseph E. Gonzalez
 
 **Preprint**
 
-8.**Autellix: An Efficient Serving Engine for LLM Agents as General Programs** [pdf](https://arxiv.org/abs/2502.13965)
+9.**Autellix: An Efficient Serving Engine for LLM Agents as General Programs** [pdf](https://arxiv.org/abs/2502.13965)
 
 Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wang**, Chi Wang, Yanping Huang, Zhifeng Chen, Joseph E. Gonzalez, Ion Stoica
 
