@@ -14,6 +14,9 @@ Here are my thoughts and comments on various research papers and topics in syste
 ### Production & Entrepreneurship Thoughts
 - [Rethinking RL as a Service and the Position of RL Infrastructure](rethinking-rl-as-a-service.md) - May 25, 2026
 
+### RL Reproductions
+- [Reproducing OSS Agentic-RL Recipes — Status Summary](oss-agentic-rl-reproduction.md) - June 9, 2026
+
 ### Paper Reviews
 - [My Thoughts on RAGCache paper](ragcache.md) - February 7, 2025
 - [Exploring Orak: A Unified Benchmark for LLM Agents in Games](game_eval.md) - Recent
