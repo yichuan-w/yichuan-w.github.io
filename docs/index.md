@@ -85,7 +85,7 @@ More recently, I have dedicated significant time to maintaining [LEANN](https://
 **[MLSys 2026, Best Paper Award](https://mlsys.org/media/mlsys-2026/best-papers/Best-Research-Paper-LEANN.pdf)** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
 
 2.**PIXELRAG: Web Screenshots Beat Text for
-Retrieval-Augmented Generation** [pdf](https://github.com/StarTrail-org/PixelRAG/blob/main/assets/pixelrag-paper.pdf) [repo](https://github.com/StarTrail-org/PixelRAG) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/PixelRAG?style=social) [playground](https://pixelrag.ai/)
+Retrieval-Augmented Generation** [pdf](https://arxiv.org/pdf/2505.20411) [repo](https://github.com/StarTrail-org/PixelRAG) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/PixelRAG?style=social) [playground](https://pixelrag.ai/)
 
 **Yichuan Wang\***, Zhifei Li\*, Zirui Wang, Paul Teiletche, Lesheng Jin, Matei Zaharia<sup>†</sup>, Joseph E. Gonzalez<sup>†</sup>, Sewon Min<sup>†</sup>
 
