@@ -1,0 +1,2482 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yichuan Wang">
+      
+      
+      
+        <link rel="prev" href="../onetwo_vla_and_pi/">
+      
+      
+        <link rel="next" href="../qwen3embedding/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Reproducing OSS Agentic-RL Recipes — Status Summary - Yichuan Wang's Homepage</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-KBQPT9Q9MJ"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-KBQPT9Q9MJ",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-KBQPT9Q9MJ",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reproducing-oss-agentic-rl-recipes-status-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-header__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yichuan Wang's Homepage
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reproducing OSS Agentic-RL Recipes — Status Summary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-nav__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    Yichuan Wang's Homepage
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yichuan Wang
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog Posts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../How-to-build-diskANN-perfectly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-search-engine-for-AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking the Search Stack for the AI Era
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-code-experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    My Experience Using Claude Code: AI-Powered Coding from Anywhere
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game_eval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploring Orak: A Unified Benchmark for LLM Agents in Games
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons_learned_in_dev_leann/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons Learned in Development - LEANN Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta_query/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta query
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onetwo_vla_and_pi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onetwo vla and pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducing OSS Agentic-RL Recipes — Status Summary
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducing OSS Agentic-RL Recipes — Status Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TL;DR comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-endless-terminals-most-successful" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Endless Terminals — ✅ most successful
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Endless Terminals — ✅ most successful">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainer-rollout-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trainer / rollout strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caveat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caveat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-echo-grpo-baseline-reproduces-echo-variant-infra-crashed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Echo — ⚠️ GRPO baseline reproduces; ECHO variant infra-crashed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Echo — ⚠️ GRPO baseline reproduces; ECHO variant infra-crashed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainer-rollout-strategy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trainer / rollout strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results-run2-small-ab-completed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results — run2 (small A/B, completed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-slime-coding_agent_rl-not-runnable-as-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. slime coding_agent_rl — ❌ not runnable as-is
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. slime coding_agent_rl — ❌ not runnable as-is">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-polar-agent-ran-but-abandoned-too-many-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Polar Agent — ❌ ran but abandoned (too many bugs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Polar Agent — ❌ ran but abandoned (too many bugs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework-three-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework — three layers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainer-rollout-strategy-async-grpo-rollout-as-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trainer / rollout strategy — Async GRPO + Rollout-as-a-Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#known-problems-why-we-stopped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known problems (why we stopped)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tau-bench-retail-works-learns-but-too-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. tau-bench (retail) — ⚠️ works &amp; learns, but too slow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. tau-bench (retail) — ⚠️ works &amp; learns, but too slow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainer-rollout-strategy_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trainer / rollout strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-caveat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status / caveat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-search-r1-fast-clean-curve-a-good-reproduction-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Search-R1 — ✅ fast, clean curve, a good reproduction target
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Search-R1 — ✅ fast, clean curve, a good reproduction target">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-bug-found-pr-to-slime-soon-stop-at-the-toolanswer-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key bug found (PR to slime soon) — stop at the tool/answer boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainer-rollout-strategy_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trainer / rollout strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-its-a-good-reproduction-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why it's a good reproduction target
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-cutting-lessons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-cutting lessons
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qwen3embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ragcache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    My Thoughts on RAGCache paper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reasonir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finally, a retriever that can actually reason
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rethinking-rl-as-a-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking RL as a Service and the Position of RL Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slime-coding-agent-rl-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    slime coding_agent_rl: Status of the Official Script
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summer-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opportunities in the Open-Source Agentic RL Landscape
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Share
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Share
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog review first100 light
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog review first100 light
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../share/blog-review-first100-light/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First 100 Examples from train_hn_skip1.jsonl (Light Package)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TL;DR comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-endless-terminals-most-successful" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Endless Terminals — ✅ most successful
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Endless Terminals — ✅ most successful">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainer-rollout-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trainer / rollout strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caveat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caveat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-echo-grpo-baseline-reproduces-echo-variant-infra-crashed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Echo — ⚠️ GRPO baseline reproduces; ECHO variant infra-crashed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Echo — ⚠️ GRPO baseline reproduces; ECHO variant infra-crashed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainer-rollout-strategy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trainer / rollout strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results-run2-small-ab-completed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results — run2 (small A/B, completed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-slime-coding_agent_rl-not-runnable-as-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. slime coding_agent_rl — ❌ not runnable as-is
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. slime coding_agent_rl — ❌ not runnable as-is">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-polar-agent-ran-but-abandoned-too-many-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Polar Agent — ❌ ran but abandoned (too many bugs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Polar Agent — ❌ ran but abandoned (too many bugs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework-three-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework — three layers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainer-rollout-strategy-async-grpo-rollout-as-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trainer / rollout strategy — Async GRPO + Rollout-as-a-Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#known-problems-why-we-stopped" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known problems (why we stopped)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tau-bench-retail-works-learns-but-too-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. tau-bench (retail) — ⚠️ works &amp; learns, but too slow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. tau-bench (retail) — ⚠️ works &amp; learns, but too slow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainer-rollout-strategy_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trainer / rollout strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-caveat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status / caveat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-search-r1-fast-clean-curve-a-good-reproduction-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Search-R1 — ✅ fast, clean curve, a good reproduction target
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Search-R1 — ✅ fast, clean curve, a good reproduction target">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-bug-found-pr-to-slime-soon-stop-at-the-toolanswer-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key bug found (PR to slime soon) — stop at the tool/answer boundary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rl-framework_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RL framework
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainer-rollout-strategy_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trainer / rollout strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-its-a-good-reproduction-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why it's a good reproduction target
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-cutting-lessons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-cutting lessons
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="reproducing-oss-agentic-rl-recipes-status-summary">Reproducing OSS Agentic-RL Recipes — Status Summary</h1>
+<p>A running log of our attempts to reproduce open-source <strong>agentic reinforcement
+learning</strong> recipes (LLM agents trained with RL on real, verifiable, multi-turn
+environments: terminals, SWE-bench, etc.). For each recipe we record the model,
+RL framework, hardware, rollout strategy, data, and what actually happened.</p>
+<blockquote>
+<p>Scope note: "agentic" here means the policy interacts with a real environment
+over many turns (run a shell command / edit code → observe stdout/test result →
+act again), and the reward comes from an objective verifier (pytest /
+FAIL_TO_PASS), not a learned reward model.</p>
+</blockquote>
+<hr />
+<h2 id="tldr-comparison">TL;DR comparison</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Recipe</th>
+<th>Paper / Code</th>
+<th>Model</th>
+<th>Framework</th>
+<th>GPUs</th>
+<th>Result</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Endless Terminals</strong></td>
+<td><a href="https://arxiv.org/pdf/2601.16443">arxiv 2601.16443</a> · <a href="https://github.com/kanishkg/endless-terminals">kanishkg/endless-terminals</a></td>
+<td>Qwen2.5-7B-Instruct</td>
+<td>SkyRL v0.4 + Ray + vLLM, <strong>PPO</strong></td>
+<td>4×H100</td>
+<td>held-out pass@1 <strong>~15.5% → ~51%</strong> (<a href="https://meta.wandb.io/yichuan/simrl-sky-endless/runs/78ddk7ri">W&amp;B</a>)</td>
+<td>✅ <strong>Success</strong> (clear eval gain)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Echo</strong></td>
+<td><a href="https://github.com/microsoft/echo-rl">microsoft/echo-rl</a> (follow-up to #1)</td>
+<td>Qwen3-8B</td>
+<td>SkyRL + echo-rl patch, <strong>GRPO</strong></td>
+<td>8×H100</td>
+<td>GRPO baseline pass@1 <strong>0.254 → 0.308</strong>; ECHO led at the one comparable point then crashed</td>
+<td>⚠️ <strong>Partial</strong> (baseline works; ECHO infra-crash; data loss)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>slime coding_agent_rl</strong></td>
+<td><a href="https://github.com/THUDM/slime/tree/main/examples/coding_agent_rl">THUDM/slime example</a> · <a href="https://yichuan-w.github.io/blog/slime-coding-agent-rl-status/">our notes</a></td>
+<td>Qwen3.6-35B-A3B (MoE)</td>
+<td>slime (Megatron + SGLang + Ray)</td>
+<td>64×H100 (official)</td>
+<td>never trained</td>
+<td>❌ <strong>Not runnable</strong> (no E2B sandbox, no training data)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Polar Agent</strong></td>
+<td>Polar + Codex-CLI scaffold, SWE-Gym</td>
+<td>Qwen3.5-4B</td>
+<td>slime + Megatron + SGLang + <strong>Polar</strong>, <strong>GRPO</strong></td>
+<td>8×H100</td>
+<td>ran but reward kept oscillating; abandoned</td>
+<td>❌ <strong>Abandoned</strong> (too many infra bugs)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>tau-bench (retail)</strong></td>
+<td><a href="https://github.com/yichuan-w/slime">yichuan-w/slime</a> · <code>examples/tau-bench</code></td>
+<td>Qwen3-4B-Instruct-2507</td>
+<td>slime (Megatron + SGLang + Ray), <strong>GRPO</strong></td>
+<td>4×H100 (2 train + 2 serve)</td>
+<td>eval/retail-dev <strong>0.739 → 0.791</strong>, but <strong>~20 min/step</strong></td>
+<td>⚠️ <strong>Works &amp; learns, too slow</strong> (MetaGen user-sim bottleneck)</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Search-R1</strong></td>
+<td><a href="https://github.com/yichuan-w/slime">yichuan-w/slime</a> · <code>examples/search-r1</code></td>
+<td>Qwen2.5-3B</td>
+<td>slime (Megatron + SGLang + Ray), <strong>GRPO</strong></td>
+<td>4×H100 (2 train + 2 rollout)</td>
+<td>clean rising curve (<a href="https://meta.wandb.io/yichuan/slime-search-r1">W&amp;B</a>)</td>
+<td>✅ <strong>Fast &amp; reproducible</strong> (found a stop-token bug → PR to slime soon)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>One-line takeaways</strong>
+- <strong>#1 Endless Terminals is the clearest win</strong> — RL visibly lifts held-out pass@1.
+- <strong>#2 Echo's GRPO baseline reproduces the trend</strong>; the ECHO variant only crashed on infra, and its single aligned data point already led the baseline.
+- <strong>#3 and #4 are blocked by infrastructure / data</strong>, not by the RL idea itself.</p>
+<hr />
+<h2 id="1-endless-terminals-most-successful">1. Endless Terminals — ✅ most successful</h2>
+<p><strong>Paper:</strong> https://arxiv.org/pdf/2601.16443 · <strong>Code:</strong> https://github.com/kanishkg/endless-terminals ·
+<strong>W&amp;B:</strong> https://meta.wandb.io/yichuan/simrl-sky-endless/runs/78ddk7ri</p>
+<p>Headline result: a clear, near-monotone eval improvement — held-out pass@1 roughly
+<strong>triples</strong> over training.</p>
+<blockquote>
+<p><strong>held-out pass@1 (<code>eval/endless/pass_at_1</code>): base ~15.5% → ~0.235 @ step 50 →
+~0.51 @ step 550</strong> (eval every 50 steps).</p>
+</blockquote>
+<p><img alt="Endless Terminals — held-out eval/endless/pass_at_1 climbing from ~0.235 (step 50) to ~0.51 (step 550)" src="../oss-agentic-rl-assets/endless-eval-pass_at_1.png" /></p>
+<p><em>W&amp;B <code>eval/endless/pass_at_1</code>: steady climb 0.235 → 0.51 across steps 50–550 (the
+two dips at 300 and 500 are normal RL noise; the trend is clearly up).</em></p>
+<h3 id="model">Model</h3>
+<ul>
+<li><strong>Qwen2.5-7B-Instruct</strong> (7.6B params).</li>
+<li>Three copies live on the GPUs during training: <strong>Policy</strong> (training, with Adam),
+  <strong>Critic</strong> (PPO value network, also 7B, with its own optimizer), and <strong>Ref</strong>
+  (frozen, for KL).</li>
+</ul>
+<h3 id="rl-framework">RL framework</h3>
+<ul>
+<li><strong>SkyRL v0.4</strong> (installed from the <code>skyrl_train-v0.4.0</code> tag) + <strong>Ray</strong> orchestration</li>
+<li><strong>vLLM 0.13</strong> for inference.</li>
+<li>Algorithm: <strong>vanilla PPO</strong> straight from the paper — GAE γ=1.0 / λ=1.0,
+  asymmetric clip 0.2 / 0.28, <strong>no KL penalty</strong>.</li>
+</ul>
+<h3 id="hardware">Hardware</h3>
+<ul>
+<li><strong>4× H100 (98 GB).</strong> All 4 cards simultaneously hold the training shards
+  (FSDP2 full shard) <strong>and</strong> a vLLM inference engine (1 per card, TP=1),
+  time-shared via sleep/wake.</li>
+</ul>
+<h3 id="trainer-rollout-strategy">Trainer / rollout strategy</h3>
+<p>SkyRL <strong>colocate + sleep/wake</strong>:
+- <strong>Generate:</strong> vLLM wakes, takes the GPUs, runs the rollout (<strong>256 trajectories =
+  16 prompts × 16 samples</strong>, each up to <strong>16 turns</strong> of terminal interaction); the
+  training side yields its memory.
+- <strong>Train:</strong> vLLM sleeps and frees memory; FSDP does forward / critic_train /
+  policy_train.
+- <strong>Weight sync:</strong> after training, push new weights to vLLM over <strong>NCCL</strong> (never
+  hits disk).
+- <strong>~8–9 min / step</strong> (rollout ≈ 45%, because each turn really executes shell
+  commands + <code>pytest</code> inside an Apptainer container).</p>
+<h3 id="data">Data</h3>
+<ul>
+<li>Source: HuggingFace <code>obiwan96/endless-terminals</code> — <strong>2,492 tasks</strong> pre-generated
+  by the authors and already filtered with o3 pass@16. We downloaded and used them
+  directly (did <strong>not</strong> re-run the generation pipeline).</li>
+<li>Funnel:
+  <div class="highlight"><pre><span></span><code>2492  (HF original)
+  └─ 5.5% (138) build failures  ← IPv6 proxy wall, missing sqlite3/jq, etc.
+2354  (containers built)
+  ├─ 2162  train
+  └─  192  val / held-out dev   (never touched in training, zero overlap)
+</code></pre></div></li>
+<li>Each task = a natural-language ops instruction (parse an INI and emit a report,
+  configure iptables, create an SSH key, …) + an Apptainer container (pre-seeded
+  initial state) + a terminal <code>pytest</code> that byte-checks the final state for a
+  <strong>binary reward</strong>.</li>
+<li>vs paper: paper used 3,255 tasks; we have 2,162 (fewer — no self-generation +
+  5.5% build loss). Slightly fewer steps / possibly a slightly lower ceiling, but
+  it does <strong>not</strong> change the "RL works" conclusion.</li>
+</ul>
+<h3 id="caveat">Caveat</h3>
+<ul>
+<li>The eval is <strong>in-distribution with training</strong> (held-out split of the same
+  generator). We did <strong>not</strong> run the final, harder evaluation on the real
+  Terminal-Bench.</li>
+</ul>
+<hr />
+<h2 id="2-echo-grpo-baseline-reproduces-echo-variant-infra-crashed">2. Echo — ⚠️ GRPO baseline reproduces; ECHO variant infra-crashed</h2>
+<p><strong>Code:</strong> https://github.com/microsoft/echo-rl (a follow-up to Endless Terminals)</p>
+<p>Outcome: we got it running. The <strong>GRPO baseline trend reproduced cleanly</strong>; the
+<strong>ECHO</strong> variant (adds a world-model loss) only died on an infrastructure error,
+and at the single comparable step it was already ahead. Full reproduction is
+<strong>blocked by data loss</strong>, but GRPO is still climbing.</p>
+<h3 id="model_1">Model</h3>
+<ul>
+<li><strong>Qwen3-8B</strong> (dense 8B), with a custom chat template
+  <code>qwen3_xml_tool_calling.jinja</code> (XML-style tool calling).</li>
+</ul>
+<h3 id="rl-framework_1">RL framework</h3>
+<ul>
+<li><strong>SkyRL (NovaSky) + echo-rl patch</strong> (adds the world-model loss).</li>
+<li>Training backend <strong>FSDP2</strong> (8-card shard); inference <strong>vLLM</strong>; weight sync
+  <strong>NCCL</strong> (train → vLLM).</li>
+<li>Algorithm: <strong>GRPO</strong> (group-normalized advantage, normalized by std, <strong>no critic</strong>).</li>
+<li>Environment: <strong>Harbor + podman</strong> containers running terminal tasks. <em>(Harbor is
+  the env format used in the original code; podman is basically Docker.)</em></li>
+</ul>
+<h3 id="hardware_1">Hardware</h3>
+<ul>
+<li><strong>8× H100 (single node)</strong>, <code>colocate_all: true</code> — policy / ref / vLLM all packed
+  onto the same 8 cards (vLLM woken for generation, switched back for training).
+  Same order of magnitude as the paper's 8×B200/A100.</li>
+</ul>
+<h3 id="trainer-rollout-strategy_1">Trainer / rollout strategy</h3>
+<p>A GRPO <strong>generate → score → update</strong> loop, fully <strong>colocated</strong> (FSDP2 trainer and
+vLLM share the cards).
+- <strong>Rollout side:</strong> vLLM with <code>tensor_parallel_size=1</code> → 8 data-parallel replicas
+  (1 engine/card), mem util 0.8. Each step takes <strong>16 prompts × 16 samples = 256
+  rollouts</strong>. Each rollout is a full multi-turn terminal episode (model emits a
+  command → executed in Harbor/podman → stdout/error fed back as the next
+  observation), <strong>max 16 turns</strong>, <strong>16k</strong> context, <strong>≤2048 tokens/turn</strong>, temp 0.8.
+  A validation script in the container yields the <strong>0/1 reward</strong>.
+- <strong>Trainer side:</strong> the 256 trajectories get GRPO group-normalized advantages
+  (16 per task, normalized &amp; divided by std, no critic, no KL), then FSDP2 backward
+  across 8 cards — mini-batch 16, micro-batch 1/card, <strong>lr 1e-6 constant (no
+  warmup)</strong>, clip ε=0.2. <strong>ECHO vs baseline differ only in the loss:</strong> baseline
+  computes <code>L_GRPO</code> on action tokens only; ECHO adds a cross-entropy term on the
+  <em>environment-observation</em> tokens (λ=0.05), reusing the same forward pass — <strong>no
+  extra rollout</strong>. New weights sync back to vLLM over NCCL.
+- Bottleneck is <strong>rollout, not GPU compute</strong> (running commands in containers is
+  CPU/IO-bound) → <strong>~17 min / step</strong>, generation dominates.</p>
+<h3 id="results-run2-small-ab-completed">Results — run2 (small A/B, completed)</h3>
+<p>A small controlled run: 238 tasks, n=8, ~56 steps; val 60 tasks ×4; goal was to
+get the pipeline working and see the direction.
+- <strong>GRPO baseline succeeded:</strong> pass@1 from base <strong>~0.254</strong>, a small dip to 0.242,
+  then <strong>0.292 @ step 28</strong> and <strong>0.308 @ step 42</strong> — net <strong>+~6 pts</strong>, smooth curve.
+  Confirms reward signal, container execution, and de-noised eval are all correct;
+  GRPO learns at this scale.
+- <strong>ECHO did not finish:</strong> it crashed at <strong>step 23</strong> from a vLLM colocate-wake
+  <code>aiohttp 500</code> — an <strong>infra</strong> problem unrelated to the world-model loss (baseline
+  just never hit it). Before crashing it produced base (0.258) and step 14 (0.279).
+  At step 14 — the only point alignable with baseline — <strong>ECHO pass@1 0.279 vs
+  baseline 0.242</strong>, <strong>pass@4 0.533 vs 0.450</strong>: ECHO leads on both, consistent with
+  the paper's "ECHO pulls ahead earlier."</p>
+<h3 id="data_1">Data</h3>
+<ul>
+<li><strong>1,536 tasks</strong> (<code>run3_train.parquet</code>) + <strong>val 60</strong> (<code>run2_val</code>, ×8 eval).</li>
+<li>vs paper's <strong>8,770</strong> (of which <strong>6,170 are unpublished</strong>). We converted 1,616
+  from Endless Terminals and pre-built 1,536 images.</li>
+<li>Conclusion: <strong>substantial data is missing → cannot fully reproduce</strong>, but GRPO is
+  still growing on what we have.</li>
+</ul>
+<hr />
+<h2 id="3-slime-coding_agent_rl-not-runnable-as-is">3. slime <code>coding_agent_rl</code> — ❌ not runnable as-is</h2>
+<p><strong>Code:</strong> https://github.com/THUDM/slime/tree/main/examples/coding_agent_rl ·
+<strong>Our notes:</strong> https://yichuan-w.github.io/blog/slime-coding-agent-rl-status/</p>
+<p>We did <strong>not</strong> train this — only read the README and had Claude Code walk through it.</p>
+<blockquote>
+<p>In one sentence: it borrows the <strong>claude-code CLI</strong> as the agent "body", but swaps
+the brain for the model you're training, and uses "<strong>do the tests pass?</strong>" as the
+reward.</p>
+</blockquote>
+<p><strong>Why it doesn't run for us:</strong>
+1. It needs the <strong>E2B</strong> sandbox service — we have no sandbox service.
+2. <strong>No training data is prepared</strong> — only the data <em>format</em> is provided.</p>
+<h3 id="model_2">Model</h3>
+<ul>
+<li><strong>Qwen3.6-35B-A3B</strong> — MoE: ~35B total, ~3B active (256 experts, top-k 8, 40
+  layers, shared expert). hidden 2048 / ffn 512 / moe-ffn 512, vocab 248320, rope
+  base 1e7. Qwen3.5/3.6 features: <code>--use-gated-attention</code>,
+  <code>--attention-output-gate</code>, <code>--moe-shared-expert-gate</code>, <code>--qk-layernorm</code>. Wired
+  into Megatron via the <code>slime_plugins.models.qwen3_5</code> spec.</li>
+</ul>
+<h3 id="rl-framework_2">RL framework</h3>
+<ul>
+<li><strong>slime</strong> (THUDM / Z.ai — the RL framework behind GLM-4.5/4.6/4.7/5): training =
+  <strong>Megatron-LM</strong>, rollout = <strong>SGLang</strong>, orchestration = <strong>Ray</strong>, all on one
+  train/rollout/data-buffer dataflow. The example injects a custom rollout via
+  <code>--custom-generate-function-path</code> (the claude-code + E2B sandbox loop).</li>
+</ul>
+<h3 id="hardware_2">Hardware</h3>
+<ul>
+<li>Official <strong>64× H100 (8 nodes × 8)</strong>, <code>--colocate</code>.</li>
+<li>⚠️ 64 is <strong>not</strong> a hard requirement — it reflects Z.ai's cluster scale +
+  throughput + 96k long context (CP=8). The model itself fits in 8 cards.</li>
+</ul>
+<hr />
+<h2 id="4-polar-agent-ran-but-abandoned-too-many-bugs">4. Polar Agent — ❌ ran but abandoned (too many bugs)</h2>
+<p>Trained with a <strong>scaffold (Codex CLI)</strong> in the loop. (The slime example above also
+trains with claude-code, so the two aren't very different in spirit.)</p>
+<p>TL;DR: we got it running, but <strong>reward keeps oscillating</strong> — likely several causes
+compounding — and there were too many infra bugs, so we <strong>gave up</strong>.</p>
+<blockquote>
+<p>Config quirk: <code>harness: "codex"</code>, <code>model_name: "gpt-5.4"</code>, but requests are
+proxied by the Polar gateway to a <strong>local SGLang engine running Qwen3.5-4B</strong>.</p>
+</blockquote>
+<h3 id="model_3">Model</h3>
+<ul>
+<li><strong>Qwen3.5-4B</strong> (4B VLM). Hybrid attention: per 4 layers, 1 full-attention layer +
+  3 <strong>GatedDeltaNet</strong> (linear-attention) layers. The paper used <strong>Qwen3-32B</strong> (8×
+  bigger); we use 4B because 8×H100 can't fit 32B training. HF weights converted to
+  Megatron <code>torch_dist</code>.</li>
+</ul>
+<h3 id="rl-framework-three-layers">RL framework — three layers</h3>
+<p><div class="highlight"><pre><span></span><code>Slime (THUDM)            — RL framework: GRPO + manages SGLang
+  ├── Megatron-LM        — distributed training backend (TP=2)
+  ├── SGLang 0.5.10      — inference engine (6 engines, 1 GPU each)
+  └── Polar              — rollout orchestration (agents in containers)
+       ├── Gateway        — schedules Docker containers, proxies LLM requests
+       └── Rollout Server — task dispatch + result collection
+</code></pre></div>
+- <strong>GRPO</strong>: leave-one-out advantage; KL <code>low_var_kl</code> coef=0.001; PPO clip
+  eps=0.2 / eps_high=0.28; <strong>LR=1e-7</strong> (paper used 1e-6 — lowered because of NaN
+  gradients); grad clip 0.5; bf16.</p>
+<h3 id="hardware_3">Hardware</h3>
+<p><strong>8× H100 95GB</strong></p>
+<table>
+<thead>
+<tr>
+<th>GPU</th>
+<th>Use</th>
+<th>Memory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–1</td>
+<td>Megatron GRPO training (TP=2)</td>
+<td>~70 GB</td>
+</tr>
+<tr>
+<td>2–7</td>
+<td>SGLang inference (6 × TP=1)</td>
+<td>~81 GB/card</td>
+</tr>
+</tbody>
+</table>
+<p>Weight sync: NCCL GPU-to-GPU, broadcast from GPU 0–1 → 2–7 every step.</p>
+<h3 id="trainer-rollout-strategy-async-grpo-rollout-as-a-service">Trainer / rollout strategy — Async GRPO + Rollout-as-a-Service</h3>
+<ol>
+<li><strong>Rollout:</strong> Slime sends <strong>4 prompts</strong> (<code>rollout-batch-size=4</code>) to Polar; each
+   prompt → <strong>8 rollouts</strong> (<code>n-samples-per-prompt=8</code>) → <strong>32 agent sessions</strong>. Each
+   session: Polar starts a Docker container → runs the <strong>Codex CLI agent</strong> → the
+   agent reaches SGLang <strong>through the Polar gateway</strong> → multi-turn bug fixing →
+   <strong>SWE-bench harness</strong> evaluates the patch → reward 0/1. <code>dynamic-history</code>: every
+   turn of every agent interaction is a training sample.</li>
+<li><strong>Train:</strong> after collecting 32 rollouts, Slime does the GRPO update — Megatron
+   forward/backward on GPU 0–1 → NCCL broadcast new weights to the 6 SGLang
+   engines. <code>max-tokens-per-gpu=20000</code> bounds batch memory.</li>
+<li><strong>Async:</strong> rollout and train run asynchronously;
+   <code>polar_allow_weight_update_overlap=true</code>;
+   <code>polar_min_complete_accept_fraction=0.25</code> (accept once 25% of sessions finish).</li>
+</ol>
+<h3 id="data_2">Data</h3>
+<ul>
+<li><strong>293 SWE-Gym tasks</strong> (<code>NovaSky-AI/SkyRL-v0-293-data</code>).</li>
+<li>Real GitHub bug reports (moto, pandas, dask, mypy, conan, iterative/dvc, bokeh,
+  pydicom, …). Each task: <code>problem_statement</code>, target repo commit, <code>FAIL_TO_PASS</code></li>
+<li><code>PASS_TO_PASS</code> tests, and a Docker image (1–3 GB each, ~500 GB total) carrying
+  the repo code + conda env + all deps.</li>
+<li>Paper used <strong>4,500 R2E-Gym tasks</strong> (15× more). <em>(This data is also our lab's
+  work.)</em></li>
+</ul>
+<h3 id="known-problems-why-we-stopped">Known problems (why we stopped)</h3>
+<p><strong>Fatal</strong>
+1. <strong>Agent timeout doesn't fire</strong> — Polar can't detect a stuck agent (zombie git,
+   502 reconnect loop), so it can't kill it.
+2. <strong>Weight update can hang</strong> — <code>pause_generation</code> waits for the agent to release
+   the engine (added a 120s timeout, not yet verified).</p>
+<p><strong>Medium</strong>
+3. <strong>GPU OOM</strong> — after ~60 steps PyTorch memory creeps to 95 GB and crashes;
+   dropping to 20000 tokens/gpu may help.
+4. <strong>GatedDeltaNet NaN gradients</strong> — Qwen3.5 backward is unstable on H100; worked
+   around by skipping NaN steps.</p>
+<hr />
+<h2 id="5-tau-bench-retail-works-learns-but-too-slow">5. tau-bench (retail) — ⚠️ works &amp; learns, but too slow</h2>
+<p><strong>Code:</strong> https://github.com/yichuan-w/slime · <code>examples/tau-bench</code></p>
+<p>Outcome: the pipeline is correct and reward goes up, but it is <strong>impractically
+slow — ~20 min/step</strong> — mainly because the user-simulator runs on the <strong>MetaGen
+API</strong>, which is slow, plus a few compounding factors. The bottleneck is the
+<strong>user-mimic (customer simulation)</strong>, not GPU compute.</p>
+<h3 id="model_4">Model</h3>
+<ul>
+<li><strong>Qwen3-4B-Instruct-2507</strong> (the agent / policy being trained).</li>
+</ul>
+<h3 id="rl-framework_3">RL framework</h3>
+<ul>
+<li><strong>slime</strong> (Megatron-LM training + SGLang rollout + Ray), algorithm <strong>GRPO</strong>.</li>
+<li>Runs in a <strong>self-built venv</strong> (torch 2.11+cu129 / sglang 0.5.12.post1 / TE 2.10 /
+  apex / flash-attn2 / Megatron), reproducible via <code>examples/tau-bench/build_venv_uv.sh</code>.</li>
+</ul>
+<h3 id="hardware_4">Hardware</h3>
+<ul>
+<li><strong>4× H100, NON-colocate: 2 GPUs train (Megatron TP=2) + 2 GPUs serve (SGLang).</strong></li>
+</ul>
+<h3 id="trainer-rollout-strategy_2">Trainer / rollout strategy</h3>
+<ul>
+<li>Each step rolls out <strong>32 prompts × 8 samples = 256 trajectories</strong>. Each trajectory
+  is a multi-turn retail customer-service dialog: the trained agent talks to a
+  <strong>user-simulator</strong> (an LLM playing the customer) and calls retail tools, until
+  the tau-bench verifier scores the episode <strong>0/1</strong>.</li>
+<li><strong>User-sim = MetaGen <code>gemini-3-flash</code> via an OpenAI-compatible endpoint.</strong></li>
+<li><strong>Bottleneck = user-sim round-trips.</strong> During rollout the serving GPUs sit at
+  <strong>~0% util</strong> — the trajectories spend their time waiting on the MetaGen API, not
+  generating. Steps land at <strong>~20 min</strong> (rollout dominates; train is only ~4 min).</li>
+<li>Speedups attempted (helped eval, not the training step):</li>
+<li><strong>Disable user-sim "thinking"</strong> (<code>thinking_budget=0</code>): gemini-flash is a
+    reasoning model burning ~180 reasoning tokens/turn; turning it off cut per-turn
+    latency ~40% and <strong>eval 5.5 min → 2.1 min (~2.5×) with identical reward</strong>.</li>
+<li><strong>Concurrency 256</strong> (= the 256 trajectories). But measured <em>effective</em> agent
+    concurrency stayed low (median 2, bursts to ~190) because the 256 trajectories
+    phase-lock (all wait on the user-sim, then all generate) — so raising
+    concurrency didn't shorten the training step.</li>
+</ul>
+<h3 id="results">Results</h3>
+<ul>
+<li><strong>eval/retail-dev: 0.739 → 0.791</strong> over the first few steps (direction is right).</li>
+<li>Training <code>raw_reward</code> ~0.66–0.70, noisy with a slight upward drift.</li>
+</ul>
+<h3 id="status-caveat">Status / caveat</h3>
+<ul>
+<li><strong>Paused.</strong> It learns, but at ~20 min/step on 4 GPUs it's too slow to push to a
+  full curve, and the limiter is an external slow API (MetaGen user-sim) rather
+  than anything we can fix on-box. With only 2 serving engines (vs the usual 4) the
+  per-step cost is also structurally higher.</li>
+</ul>
+<hr />
+<h2 id="6-search-r1-fast-clean-curve-a-good-reproduction-target">6. Search-R1 — ✅ fast, clean curve, a good reproduction target</h2>
+<p><strong>Code:</strong> https://github.com/yichuan-w/slime · <code>examples/search-r1</code> ·
+<strong>W&amp;B:</strong> https://meta.wandb.io/yichuan/slime-search-r1</p>
+<p>Outcome: <strong>the best "easy win" of the slime-based attempts</strong> — fast steps, a clean
+rising curve, and a relatively simple environment. Along the way we found a <strong>key
+multi-turn/tool-calling bug</strong> (below) that we'll <strong>submit to slime soon</strong>.</p>
+<h3 id="key-bug-found-pr-to-slime-soon-stop-at-the-toolanswer-boundary">Key bug found (PR to slime soon) — stop at the tool/answer boundary</h3>
+<p>In multi-turn tool-calling, the inference engine <strong>did not stop at the
+<code>&lt;/search&gt;</code> / <code>&lt;/answer&gt;</code> boundary</strong>. Without an explicit stop, SGLang keeps
+emitting tokens <em>after</em> the closing tag, which:
+1. get appended to the trajectory and <strong>trained on</strong> (<code>loss_mask=1</code>), and
+2. <strong>break <code>is_valid_sequence</code></strong> (token/logp arrays no longer align with the
+   intended turn boundary).</p>
+<p><strong>Fix:</strong> add <code>&lt;/search&gt;</code> and <code>&lt;/answer&gt;</code> as <strong>stop strings</strong> in the sampling params
+(slime already sets <code>no_stop_trim=True</code>, so the closing tag is <em>kept</em> in the
+output). This stops generation exactly at the tool/answer boundary and keeps
+token/logp alignment natively — no post-hoc truncation needed.</p>
+<h3 id="model_5">Model</h3>
+<ul>
+<li><strong>Qwen2.5-3B</strong> (<code>--hf-checkpoint Qwen2.5-3B</code>).</li>
+</ul>
+<h3 id="rl-framework_4">RL framework</h3>
+<ul>
+<li><strong>slime</strong> (Megatron-LM + SGLang + Ray), <strong>GRPO</strong>: <code>--use-kl-loss</code>, PPO clip
+  0.2 / 0.28, <strong>lr 1e-6</strong>.</li>
+<li>Custom rollout <code>generate_with_search.generate</code> + reward <code>generate_with_search.reward_func</code>.</li>
+</ul>
+<h3 id="hardware_5">Hardware</h3>
+<ul>
+<li><strong>4× H100, NON-colocate: 2 train (actor TP=2) + 2 rollout (SGLang TP=2, 1 engine).</strong></li>
+<li>Infra note: a wrapper (<code>run_search_r1_autorestart.sh</code>) resumes from the latest
+  checkpoint when <code>oomd</code> reaps the run under memory pressure (the run is healthy,
+  it just gets reaped); the local retriever is a separate process and untouched.</li>
+</ul>
+<h3 id="trainer-rollout-strategy_3">Trainer / rollout strategy</h3>
+<ul>
+<li><strong>Multi-turn + tool-calling</strong>, where the "tool" is a <strong>local dense retriever</strong>
+  (<code>local_dense_retriever</code> / <code>local_search_server.py</code>) — no heavy container or
+  external sandbox. Each rollout: the model emits <code>&lt;search&gt;query&lt;/search&gt;</code> → the
+  retriever returns documents as the next observation → … → <code>&lt;answer&gt;…&lt;/answer&gt;</code>.</li>
+<li><strong>32 prompts × 8 samples = 256 trajectories</strong>, max <strong>512 tokens/turn</strong>,
+  global batch 256. Reward = <strong>QA exact-match</strong> (<code>qa_em_format</code>).</li>
+<li><strong>Fast</strong>: simple local retriever + short responses → steps are quick (no
+  container exec, no slow external API), and the curve is clean.</li>
+</ul>
+<h3 id="data_3">Data</h3>
+<ul>
+<li><strong>Search-R1 NQ + HotpotQA</strong> (<code>nq_hotpotqa_train/train.parquet</code>), eval on
+  <code>nq_test</code> (first 500 of the test split).</li>
+</ul>
+<h3 id="why-its-a-good-reproduction-target">Why it's a good reproduction target</h3>
+<ul>
+<li>Environment is <strong>relatively simple</strong> (local retriever, no sandbox/containers),
+  yet it's genuinely <strong>multi-turn with tool-calls</strong> — so it exercises the same
+  agentic-RL machinery as the harder recipes but <strong>fast and reproducible</strong>, with a
+  <strong>clean rising W&amp;B curve</strong>.</li>
+</ul>
+<hr />
+<h2 id="cross-cutting-lessons">Cross-cutting lessons</h2>
+<ul>
+<li><strong>The RL idea reproduces; the <em>infrastructure</em> is the hard part.</strong> Where data and
+  sandboxing were solid (#1, #2-baseline) we saw clear learning. Where they
+  weren't (#3 data/sandbox, #4 orchestration bugs) the run stalled — not the
+  algorithm.</li>
+<li><strong>Data availability is the gating factor.</strong> #2 and #4 are both partially
+  unreproducible purely because a large fraction of the training tasks are
+  unpublished.</li>
+<li><strong>Rollout, not GPU compute, is the bottleneck</strong> for every container/terminal
+  recipe — episodes are CPU/IO-bound on real command execution, so steps land at
+  ~8–17 min regardless of card count.</li>
+<li><strong>Colocate (sleep/wake) is the common pattern</strong> for fitting trainer + inference
+  on a single node; its main failure mode is the vLLM/SGLang wake path (see #2's
+  aiohttp 500 and #4's pause_generation hang).</li>
+<li><strong>Simple, <em>local</em> environments are the most reproducible.</strong> Search-R1 (#6) wins
+  precisely because its "tool" is a local retriever — no container, no sandbox, no
+  external API — so steps are fast and the curve is clean. The harder recipes are
+  gated by exactly those external pieces.</li>
+<li><strong>An external API in the rollout loop is a bottleneck you can't fix on-box.</strong>
+  tau-bench (#5) is limited by the MetaGen user-sim latency; no amount of local GPU
+  or concurrency tuning removes the network round-trips that dominate each step.</li>
+<li><strong>Watch for silent multi-turn/tool-boundary bugs.</strong> Search-R1's stop-token issue
+  (#6) trained on out-of-boundary tokens and corrupted token/logp alignment without
+  obviously crashing — the kind of bug that quietly caps a curve. Verify the engine
+  stops exactly at your tool/answer tags.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2022-2023 Yichuan Wang
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

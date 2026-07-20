@@ -1,0 +1,1185 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yichuan Wang">
+      
+      
+      
+        <link rel="prev" href="../reasonir/">
+      
+      
+        <link rel="next" href="../slime-coding-agent-rl-status/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Rethinking RL as a Service and the Position of RL Infrastructure - Yichuan Wang's Homepage</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-KBQPT9Q9MJ"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-KBQPT9Q9MJ",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-KBQPT9Q9MJ",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rethinking-rl-as-a-service-and-the-position-of-rl-infrastructure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-header__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yichuan Wang's Homepage
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Rethinking RL as a Service and the Position of RL Infrastructure
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-nav__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    Yichuan Wang's Homepage
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yichuan Wang
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog Posts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../How-to-build-diskANN-perfectly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-search-engine-for-AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking the Search Stack for the AI Era
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-code-experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    My Experience Using Claude Code: AI-Powered Coding from Anywhere
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game_eval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploring Orak: A Unified Benchmark for LLM Agents in Games
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons_learned_in_dev_leann/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons Learned in Development - LEANN Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meta_query/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta query
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../onetwo_vla_and_pi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onetwo vla and pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oss-agentic-rl-reproduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducing OSS Agentic-RL Recipes — Status Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qwen3embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ragcache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    My Thoughts on RAGCache paper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reasonir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finally, a retriever that can actually reason
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking RL as a Service and the Position of RL Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking RL as a Service and the Position of RL Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-enterprise-roi-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Enterprise ROI Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-training-is-still-too-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-Training Is Still Too Slow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-business-model-is-hard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Business Model Is Hard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-could-this-business-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When Could This Business Work?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-unsolved-problem-for-both-rl-and-prompt-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Unsolved Problem for Both RL and Prompt Optimization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-why-work-on-rl-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        So Why Work on RL Infrastructure?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slime-coding-agent-rl-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    slime coding_agent_rl: Status of the Official Script
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summer-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opportunities in the Open-Source Agentic RL Landscape
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Share
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Share
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog review first100 light
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog review first100 light
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../share/blog-review-first100-light/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First 100 Examples from train_hn_skip1.jsonl (Light Package)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-enterprise-roi-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Enterprise ROI Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-training-is-still-too-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-Training Is Still Too Slow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-business-model-is-hard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Business Model Is Hard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-could-this-business-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When Could This Business Work?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-unsolved-problem-for-both-rl-and-prompt-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Unsolved Problem for Both RL and Prompt Optimization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-why-work-on-rl-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        So Why Work on RL Infrastructure?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rethinking-rl-as-a-service-and-the-position-of-rl-infrastructure">Rethinking RL as a Service and the Position of RL Infrastructure</h1>
+<p><em>By Yichuan Wang</em></p>
+<p><em>May 2026</em></p>
+<p>My current view is simple: <strong>RL as a service is probably not a good business model at this exact time point</strong>.</p>
+<p>This does not mean RL, post-training, or RL infrastructure is unimportant. Quite the opposite. I think RL infrastructure is one of the most interesting systems areas to work on. But the business case for selling "RL as a service" to enterprise users is much weaker than many people assume.</p>
+<h2 id="the-enterprise-roi-problem">The Enterprise ROI Problem</h2>
+<p>Suppose I am an enterprise user. I want to improve model capability in my own domain using my own data. What is the highest-ROI path today?</p>
+<p>In most cases, it is still:</p>
+<blockquote>
+<p>prompt engineering, RAG pipelines, and specialized agent harnesses around frontier models.</p>
+</blockquote>
+<p>This is the most practical way to adapt models to a specific workload, data source, and product environment. Compared with harness engineering on top of frontier models, post-training has several drawbacks.</p>
+<p>First, base model ability still matters a lot. The gap between open-source and closed-source frontier models remains significant for many enterprise workloads. RL or post-training on a weak prior usually does not magically produce a strong result.</p>
+<p>Second, frontier models change too quickly. A new model, or a meaningfully better variant, appears roughly every few weeks. Enterprises can often get a large quality jump by switching to a better frontier model and adjusting the harness, rather than running a new post-training workflow.</p>
+<p>Third, there are multiple strong model providers. This gives users optionality. If the goal is production quality, it is often easier to compare several frontier APIs and adapt the application layer than to commit to a custom post-trained model.</p>
+<h2 id="post-training-is-still-too-slow">Post-Training Is Still Too Slow</h2>
+<p>The second issue is speed.</p>
+<p>Post-training a model is still not fast enough for many enterprise iteration loops. It is usually time-consuming, operationally complex, and hard to integrate into normal product development. An "RL as a service" business becomes much more attractive only if the post-training loop becomes dramatically faster, maybe by 100x.</p>
+<p>This is why I think lightweight continual learning pipelines are a very good research direction. If the cost and latency of post-training change fundamentally, the business equation also changes.</p>
+<p>Today, however, non-parametric methods are usually the fastest and cheapest adaptation strategy. Skills, RAG, memory, tool use, and agent harnesses are all ways of changing model behavior without changing model weights.</p>
+<p>To some extent, these methods can also be viewed as a kind of test-time or semi-parametric adaptation. They change the context, retrieval state, tool state, or even KV-cache behavior during inference. The boundary between "post-training" and "inference-time adaptation" may become blurrier over time.</p>
+<h2 id="the-business-model-is-hard">The Business Model Is Hard</h2>
+<p>The third question is: how does an RL-as-a-service company make money?</p>
+<p>I do not think a Tinker-like product is naturally a great enterprise product today. Researchers may pay to try different RL ideas, run experiments, and prototype new training algorithms. But most real enterprise users will be skeptical because the ROI is low compared with prompt engineering, RAG, and agent design.</p>
+<p>The same logic applies to many cloud and data companies. At the current point, companies like Databricks and Snowflake seem to spend more energy designing agents, optimizing product workflows, and improving the service experience for their own customers. In other words, they are doing application and harness engineering around models.</p>
+<p>They are not obviously the ideal customers for a general-purpose RL-as-a-service platform. Their customers also seem to gain more value from optimizing workloads than from post-training models.</p>
+<h2 id="when-could-this-business-work">When Could This Business Work?</h2>
+<p>There are still cases where post-training-as-a-service can make sense.</p>
+<p>The first case is sensitive data. If a company has extremely sensitive internal data and does not want to share it with OpenAI, Anthropic, Google, or another frontier model provider, then a special post-trained model becomes more attractive.</p>
+<p>The second case is inference cost. Frontier model inference is still expensive. If a company serves a high-volume workload, a smaller post-trained model that matches the target domain can reduce cost. In that case, the value is not only quality improvement, but also serving economics.</p>
+<p>These two cases are real. But they are narrower than the broad claim that every enterprise will want RL as a service.</p>
+<h2 id="the-unsolved-problem-for-both-rl-and-prompt-optimization">The Unsolved Problem for Both RL and Prompt Optimization</h2>
+<p>This section is partially inspired by conversations with <a href="https://people.eecs.berkeley.edu/~matei/">Matei Zaharia</a>.</p>
+<p>Although I have said many positive things about prompt optimization (even though I am not working on it myself), it does bring specification to elicit the general knowledge already inside LLMs. But for many use cases, especially in enterprise settings, designing a clear reward signal is very hard — for both prompt optimization and RL.
+This is the part people might need to focus on more. At an abstract level, the core question is the same: how do you find or define the right reward? That problem is important for prompt optimization and RL alike, and it remains largely unsolved.</p>
+<h2 id="so-why-work-on-rl-infrastructure">So Why Work on RL Infrastructure?</h2>
+<p>Even though I have written a lot of pessimistic thoughts about post-training as a service, I still think RL and post-training infrastructure are worth working on.</p>
+<p>The first reason is a lesson I learned from Tianqi Chen: build a complex pipeline that is useful enough for yourself. If the infrastructure directly enables your own research, iteration speed, and systems understanding, it is already valuable.</p>
+<p>The second reason is that post-training is definitely useful inside frontier labs. Large teams run many expert models, RL pipelines, online policy distillation pipelines, and large-scale data/rollout systems. Smaller teams are also continuously using PPO, REINFORCE, and related methods to train more general agents.</p>
+<p>Many systems questions are still not fully solved:</p>
+<ul>
+<li>How do we handle train-inference mismatch?</li>
+<li>How should training, rollout, and evaluation autoscale together?<ul>
+<li>Especially as rollouts become longer during training.</li>
+</ul>
+</li>
+<li>How should sandbox and environment systems be optimized?</li>
+<li>What is the right abstraction for data, reward, environment, and policy iteration?</li>
+</ul>
+<p>There is still a lot of room to improve. I plan to write a separate blog post diving deeper into these systems challenges.</p>
+<p>If we eventually run out of easy static data, interaction data will matter much more. At that point, the ability to run scalable, efficient, and reliable RL pipelines may become a core advantage.</p>
+<p>So my view is not "RL infra is useless." My view is:</p>
+<blockquote>
+<p>RL infrastructure is a very important research and systems direction, but RL as a generic enterprise service is not yet an obviously good business.</p>
+</blockquote>
+<p>The research opportunity is real. The business model just needs a much sharper wedge.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2022-2023 Yichuan Wang
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
