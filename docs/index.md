@@ -91,7 +91,7 @@ Retrieval-Augmented Generation** [pdf](https://arxiv.org/pdf/2505.20411) [repo](
 
 \*indicates equal contribution, <sup>†</sup>indicates equal advising
 
-**Preprint**
+**Preprint** (Short version accepted by [EMM-QA@ICML2026](https://qanta-org.github.io/competition/2026/icml/): Efficient Multimodal Question Answering)
 
 3.**DS SERVE: A Framework for Efficient and Scalable Neural Retrieval** [pdf](https://berkeley-large-rag.github.io/RAG-DS-Serve/assets/DS_SERVE_Camera_Ready.pdf) [website](https://berkeley-large-rag.github.io/RAG-DS-Serve/) [poster](asset/AAAI_Poster_Draft.pdf) [repo](https://github.com/Berkeley-Large-RAG/RAG-DS-Serve) ![GitHub Repo stars](https://img.shields.io/github/stars/Berkeley-Large-RAG/RAG-DS-Serve?style=social)
 
