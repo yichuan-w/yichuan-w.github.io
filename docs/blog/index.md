@@ -4,29 +4,42 @@ title: Blog Posts
 
 # Blog Posts
 
-Here are my thoughts and comments on various research papers and topics in systems and ML, along with practical lessons learned from my development experience.
+Here are my thoughts and comments on various research papers and topics in systems and ML, along with practical lessons learned from my development experience. Posts are grouped into four buckets — pick the one you care about.
 
-## Latest Posts
+## Research Vision
 
-### Research Vision
-- [Rethinking the Search Stack for the AI Era](build-search-engine-for-AI.md) - Recent
+Where I think the field is going, and what is worth building.
 
-### Production & Entrepreneurship Thoughts
-- [Rethinking RL as a Service and the Position of RL Infrastructure](rethinking-rl-as-a-service.md) - May 25, 2026
+- [Rethinking the Search Stack for the AI Era](build-search-engine-for-AI.md) — Why we need to move beyond traditional search APIs and build retrieval stacks native to LLM agents and deep research.
+- [Opportunities in the Open-Source Agentic RL Landscape](summer-plan.md) — June 2026. The missing end-to-end open-source pipeline: domain-specialized RL plus on-policy distillation, and where the highest-impact contributions are.
 
-### RL Reproductions
-- [Reproducing OSS Agentic-RL Recipes — Status Summary](oss-agentic-rl-reproduction.md) - June 9, 2026
+## Production & Entrepreneurship Thoughts
 
-### Paper Reviews
-- [My Thoughts on RAGCache paper](ragcache.md) - February 7, 2025
-- [Exploring Orak: A Unified Benchmark for LLM Agents in Games](game_eval.md) - Recent
+Business and productization angles on ML systems.
 
-### Tools & Workflow
-- [My Experience Using Claude Code: AI-Powered Coding from Anywhere](claude-code-experience.md) - March 8, 2026
+- [Rethinking RL as a Service and the Position of RL Infrastructure](rethinking-rl-as-a-service.md) — May 2026. RL infrastructure is a compelling systems direction, but RL as a generic enterprise service is still a hard business today.
 
-### Development Experience & Lessons Learned
-- [Lessons Learned in Development - LEANN Project](lessons_learned_in_dev_leann.md) - Recent
+## Tech Development Experience
+
+Hands-on lessons, reproduction logs, and tuning recipes from building real systems.
+
+- [Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems](How-to-build-diskANN-perfectly.md) — Dec 11, 2025. Compression rates, hidden distance-metric traps, and tuning recipes from LEANN and DS-serve.
+- [Lessons Learned in Development — LEANN Project](lessons_learned_in_dev_leann.md) — Chunk overlap strategies, data format choices, and embedding model comparisons for RAG.
+- [Reproducing OSS Agentic-RL Recipes — Status Summary](oss-agentic-rl-reproduction.md) — June 9, 2026. A running log of six open-source agentic-RL recipes: model, framework, hardware, rollout strategy, and what actually happened.
+- [slime `coding_agent_rl`: Status of the Official Script](slime-coding-agent-rl-status.md) — June 4, 2026. What THUDM/Z.ai's SWE coding-agent RL example really requires to run, what it does not ship, and a sandbox/GPU cost estimate.
+- [My Experience Using Claude Code: AI-Powered Coding from Anywhere](claude-code-experience.md) — March 8, 2026. How an AI CLI became a core part of my development workflow.
+
+## Paper Reads
+
+Notes and takeaways from papers I have read.
+
+- [Finally, a Retriever That Can Actually Reason (ReasonIR)](reasonir.md) — Retrieval for long, reasoning-heavy queries instead of short keyword lookups.
+- [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](qwen3embedding.md) — Multi-stage training, synthetic data, and the 0.6B/4B/8B trade-off space.
+- [My Thoughts on RAGCache](ragcache.md) — February 7, 2025. Caching popular document KV cache in CPU memory to avoid recomputation.
+- [Exploring Orak: A Unified Benchmark for LLM Agents in Games](game_eval.md) — Unifying video games behind one interface for training and evaluating agents.
+- [Reasoning Traces in VLA Policies (OneTwo-VLA, pi)](onetwo_vla_and_pi.md) — Raw notes on co-training reasoning traces with DiT policies.
+- [Duplicate Handling in V-IRL Style Embodied Agents](virl.md) — Raw notes on avoiding double-counting across viewpoints via feature matching.
 
 ## About
 
-This blog is where I share my thoughts on research papers, system design, and technical insights from my work in machine learning systems and high-performance computing. I also document practical lessons learned from building real-world systems, including the challenges and surprises encountered during development. 
+This blog is where I share my thoughts on research papers, system design, and technical insights from my work in machine learning systems and high-performance computing. I also document practical lessons learned from building real-world systems, including the challenges and surprises encountered during development.

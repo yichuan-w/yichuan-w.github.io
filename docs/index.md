@@ -176,17 +176,34 @@ Here are my thoughts and comments on various research papers and topics in syste
 ### Production & Entrepreneurship Thoughts
 - [Rethinking RL as a Service and the Position of RL Infrastructure](/blog/rethinking-rl-as-a-service) - Why RL infrastructure is a compelling systems direction, but RL as a generic enterprise service is still a difficult business in May 2026.
 
-### Development Experience & Lessons Learned
+### Tech Development Experience
 - [Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems](/blog/How-to-build-diskANN-perfectly) - Practical recipes for configuring DiskANN, from optimal compression rates to avoiding hidden metric pitfalls, based on experience building LEANN and DS-serve.
 - [Lessons Learned in Development - LEANN Project](/blog/lessons_learned_in_dev_leann) - Practical insights from building RAG systems, including chunk overlap strategies, data format optimization, and embedding model comparisons
 
 <details markdown="1">
-<summary><strong>Paper Comments</strong></summary>
+<summary><strong>More posts</strong></summary>
 
+**Research Vision**
+
+- [Opportunities in the Open-Source Agentic RL Landscape](/blog/summer-plan) - The missing end-to-end open-source pipeline: domain-specialized RL plus on-policy distillation, and where the highest-impact contributions are.
+
+**Tech Development Experience**
+
+- [Reproducing OSS Agentic-RL Recipes — Status Summary](/blog/oss-agentic-rl-reproduction) - A running log of six open-source agentic-RL recipes: model, framework, hardware, rollout strategy, and what actually happened.
+- [slime `coding_agent_rl`: Status of the Official Script](/blog/slime-coding-agent-rl-status) - What THUDM/Z.ai's SWE coding-agent RL example really requires to run, and a sandbox/GPU cost estimate.
+- [My Experience Using Claude Code: AI-Powered Coding from Anywhere](/blog/claude-code-experience) - How an AI CLI became a core part of my development workflow.
+
+</details>
+
+<details markdown="1">
+<summary><strong>Paper Reads</strong></summary>
+
+- [My Thoughts on ReasonIR paper](/blog/reasonir) - My thoughts on ReasonIR paper, reasoning-based information retrieval
+- [My Thoughts on Qwen3 Embedding paper](/blog/qwen3embedding) - My thoughts on Qwen3 Embedding paper, advancing text embedding through foundation models
 - [My Thoughts on RAGCache paper](/blog/ragcache) - My thoughts on RAGCache paper [arxiv](https://arxiv.org/abs/2404.12457)
 - [My Thoughts on Exploring Orak: A Unified Benchmark for LLM Agents in Games paper](/blog/game_eval) - My thoughts on Orak paper, a comprehensive evaluation on Game Plantform [arxiv](https://arxiv.org/abs/2506.03610)
-- [My Thoughts on Qwen3 Embedding paper](/blog/qwen3embedding) - My thoughts on Qwen3 Embedding paper, advancing text embedding through foundation models
-- [My Thoughts on ReasonIR paper](/blog/reasonir) - My thoughts on ReasonIR paper, reasoning-based information retrieval
+- [Reasoning Traces in VLA Policies (OneTwo-VLA, pi)](/blog/onetwo_vla_and_pi) - Raw notes on co-training reasoning traces with DiT policies.
+- [Duplicate Handling in V-IRL Style Embodied Agents](/blog/virl) - Raw notes on avoiding double-counting across viewpoints via feature matching.
 
 </details>
 

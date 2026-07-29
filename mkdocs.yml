@@ -9,7 +9,32 @@ theme:
     accent: orange
   icon:
     logo: material/account-school
-    
+  features:
+    - navigation.indexes
+
+nav:
+  - Home: index.md
+  - Blog:
+      - blog/index.md
+      - Research Vision:
+          - Rethinking the Search Stack for the AI Era: blog/build-search-engine-for-AI.md
+          - Opportunities in the Open-Source Agentic RL Landscape: blog/summer-plan.md
+      - Production & Entrepreneurship Thoughts:
+          - Rethinking RL as a Service and the Position of RL Infrastructure: blog/rethinking-rl-as-a-service.md
+      - Tech Development Experience:
+          - Mastering DiskANN - Practical Lessons from Large-Scale Vector Search: blog/How-to-build-diskANN-perfectly.md
+          - Lessons Learned in Development - LEANN Project: blog/lessons_learned_in_dev_leann.md
+          - Reproducing OSS Agentic-RL Recipes — Status Summary: blog/oss-agentic-rl-reproduction.md
+          - slime coding_agent_rl - Status of the Official Script: blog/slime-coding-agent-rl-status.md
+          - My Experience Using Claude Code: blog/claude-code-experience.md
+      - Paper Reads:
+          - Finally, a Retriever That Can Actually Reason (ReasonIR): blog/reasonir.md
+          - Qwen3 Embedding: blog/qwen3embedding.md
+          - My Thoughts on RAGCache: blog/ragcache.md
+          - Exploring Orak - A Benchmark for LLM Agents in Games: blog/game_eval.md
+          - Reasoning Traces in VLA Policies (OneTwo-VLA, pi): blog/onetwo_vla_and_pi.md
+          - Duplicate Handling in V-IRL Style Embodied Agents: blog/virl.md
+
 plugins:
   []
   
