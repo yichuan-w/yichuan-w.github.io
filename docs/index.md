@@ -16,6 +16,7 @@ I enjoy connecting with researchers and practitioners in the field. Feel free to
 
 In my spare time, I contribute to open-source projects like [SGLang](https://github.com/sgl-project/sglang).
 More recently, I have dedicated significant time to maintaining [LEANN](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social), a system that manages every piece of your context on device and enables seamless interaction with LLMs. It has evolved from a research prototype into an open-source community project with over 20 active contributors.
+I also maintain [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/PixelRAG?style=social), a multimodal RAG system that retrieves directly over web *screenshots* instead of extracted text — keeping the layout, tables, and figures that text-only pipelines throw away. You can try it in the [live playground](https://pixelrag.ai/).
 
 *:fontawesome-solid-inbox: Work Email: [yichuan_wang@berkeley.edu](mailto:yichuan_wang@berkeley.edu)*
 
