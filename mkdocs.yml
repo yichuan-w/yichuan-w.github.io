@@ -29,7 +29,6 @@ nav:
           - My Thoughts on RAGCache: blog/ragcache.md
           - Exploring Orak - A Benchmark for LLM Agents in Games: blog/game_eval.md
       - Misc:
-          - Reproducing OSS Agentic-RL Recipes — Status Summary: blog/oss-agentic-rl-reproduction.md
           - Opportunities in the Open-Source Agentic RL Landscape: blog/summer-plan.md
 
 plugins:

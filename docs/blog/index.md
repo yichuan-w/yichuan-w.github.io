@@ -38,7 +38,6 @@ Notes and takeaways from papers I have read.
 
 Longer running logs and notes that do not fit the buckets above.
 
-- [Reproducing OSS Agentic-RL Recipes — Status Summary](oss-agentic-rl-reproduction.md) — June 9, 2026. A running log of six open-source agentic-RL recipes: model, framework, hardware, rollout strategy, and what actually happened.
 - [Opportunities in the Open-Source Agentic RL Landscape](summer-plan.md) — June 2026. The missing end-to-end open-source pipeline: domain-specialized RL plus on-policy distillation, and where the highest-impact contributions are.
 
 ## About

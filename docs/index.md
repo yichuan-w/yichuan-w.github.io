@@ -183,7 +183,6 @@ Here are my thoughts and comments on various research papers and topics in syste
 <details markdown="1">
 <summary><strong>Misc</strong></summary>
 
-- [Reproducing OSS Agentic-RL Recipes — Status Summary](/blog/oss-agentic-rl-reproduction) - A running log of six open-source agentic-RL recipes: model, framework, hardware, rollout strategy, and what actually happened.
 - [Opportunities in the Open-Source Agentic RL Landscape](/blog/summer-plan) - The missing end-to-end open-source pipeline: domain-specialized RL plus on-policy distillation, and where the highest-impact contributions are.
 
 </details>

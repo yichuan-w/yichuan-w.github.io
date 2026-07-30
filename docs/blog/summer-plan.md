@@ -42,12 +42,15 @@ The choice between synchronous and asynchronous RL training reveals interesting 
 
 **Asynchronous RL** separates the trainer and rollout workers onto different machines, allowing rollout generation to overlap with gradient updates. This improves throughput but introduces staleness — the model being rolled out may be several gradient steps behind the model being trained.
 
-Here is how major labs have chosen:
+<details markdown="1">
+<summary><strong>Here is how major labs have chosen</strong></summary>
 
 - **Kimi / GLM:** Synchronous, colocated RL. Domestic Chinese labs generally favor sync RL for training stability.
 - **Tencent:** Asynchronous, but precision/convergence issues are not fully resolved. The priority has been to start training and iterate.
 - **OpenAI:** Fully asynchronous. This enables maximum throughput but requires careful engineering to manage staleness.
-- **Thinking Machine Lab (TML):** Pure REINFORCE — a simpler algorithmic choice that sidesteps some of the complexity of PPO-style methods.
+- **Thinking Machine Lab (TML):** Careful management of the training–inference mismatch — keeping the sampler and the trainer numerically aligned instead of letting that discrepancy quietly corrupt the gradient signal.
+
+</details>
 
 **The elastic scheduling problem.** In async RL, balancing the ratio of trainer machines to rollout machines is non-trivial. As training progresses and the model improves, rollouts tend to get longer (the agent takes more turns, explores more). To maintain the same throughput, the system needs to elastically scale rollout workers — otherwise the trainer starves for data. This is a real infrastructure problem that few systems handle gracefully.
 
@@ -107,7 +110,7 @@ The availability of open-source data and benchmarks varies significantly across 
 - **Kernel Optimization ([KernelBench](https://arxiv.org/abs/2502.10517)):** Tasks involve optimizing ML kernels (e.g., ResNet kernel fusing). Not fully realistic production tasks, but excellent for RL research because they allow many iterations with long-horizon feedback loops. Related: [TritonForge](https://github.com/RLsys-Foundation/TritonForge) applies RL to Triton kernel writing, developed on the Slime framework. There is also recent work on [kernel post-training](https://arxiv.org/abs/2602.14293).
 - **Terminal-Bench:** Agents interact with a full terminal environment. Long rollouts, complex state management. [ECHO](https://arxiv.org/abs/2605.24517) recently demonstrated strong results by learning world models for terminal agents, but has not open-sourced their code. [Endless Terminals](https://arxiv.org/pdf/2601.16443) is open-source and worth checking out and reproducing as a starting point for terminal agent RL.
 - **Office / Finance Bench:** A rising domain. Hunyuan is actively training on these benchmarks.
-- **Program Bench:** Claude Opus 4.8 performs very well, but open-source models lag significantly behind. This is an area where focused RL training could close the gap — see section below.
+- **Program Bench:** Claude Opus 4.8 performs very well, but open-source models lag significantly behind. This is an area where focused RL training could close the gap.
 
 ## Open-Source RL Framework Survey
 
@@ -149,20 +152,6 @@ Agent RL requires sandboxed execution environments — the model's generated cod
 
 However, the infrastructure challenges introduced by sandboxing are under-studied. Each rollout may need its own isolated container, filesystem state, and network environment. At scale, this means thousands of concurrent sandboxes, each with potentially long-running processes. The resource contention this creates — especially in shared corporate GPU clusters — is a real operational problem that few papers or frameworks address directly.
 
-## A Concrete Opportunity: Program Bench
-
-One area that is ripe for focused effort is improving open-source model performance on programming benchmarks.
-
-The current situation: Claude Opus 4.8 achieves strong results on program benchmarks, but open-source models are significantly behind. This gap suggests that targeted RL training could yield large improvements.
-
-A practical approach:
-
-1. **Start with Nemotron 30B** as the base model.
-2. **Fix the harness first.** Use a well-tested harness like OpenHands or Claude Code as the evaluation environment. Validate that the data quality is acceptable before attempting to change the harness.
-3. **SFT with thinking traces.** If the SFT stage requires chain-of-thought / thinking traces, use open-source models (e.g., GLM) to generate them, following the construction methodology used by the benchmark authors.
-4. **Avoid MiniMax.** MiniMax models exhibit severe overfitting (poor out-of-distribution generalization). Most practitioners have moved away from using them.
-5. **Use the same data for RL and SFT.** There is no strong reason to construct separate datasets — the same task distribution works for both stages.
-
 ## Landscape Summary
 
 The table below summarizes concrete projects and their status across domains:
@@ -190,8 +179,6 @@ To summarize the key opportunities I see in this space:
 3. **Elastic scheduling for async RL.** As rollouts get longer during training, the system must adapt. This is a systems problem with clear metrics (throughput, GPU utilization) and no dominant solution.
 
 4. **Closing the sandbox gap.** Scalable, low-overhead sandboxing for agent RL is an infrastructure primitive that does not yet exist as a well-packaged open-source solution.
-
-5. **Program bench for open-source models.** A focused effort starting from Nemotron 30B, with validated data and harness, could meaningfully close the gap with frontier closed-source models.
 
 ---
 
