@@ -14,7 +14,7 @@ During my undergraduate studies, I collaborated with **Prof. [Jinyang Li](http:/
 
 I enjoy connecting with researchers and practitioners in the field. Feel free to reach out via email, WeChat (15858459091), or [Twitter](https://twitter.com/YichuanM). For more details about my background, you can view my [CV](asset/CV/YichuanCV.pdf) and [Statement of Purpose](https://docdro.id/OvdjJ6Q) from my graduate school applications.
 
-In my spare time, I contribute to open-source projects like [SGLang](https://github.com/sgl-project/sglang) and [torchtitan](https://github.com/pytorch/torchtitan), where I work especially on the RL side.
+In my spare time, I contribute to open-source projects like [SGLang](https://github.com/sgl-project/sglang) and [torchtitan](https://github.com/pytorch/torchtitan).
 More recently, I have dedicated significant time to maintaining [LEANN](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social), a system that manages every piece of your context on device and enables seamless interaction with LLMs. It has evolved from a research prototype into an open-source community project with over 20 active contributors.
 I also maintain [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/PixelRAG?style=social), a multimodal RAG system that retrieves directly over web *screenshots* instead of extracted text — keeping the layout, tables, and figures that text-only pipelines throw away. You can try it in the [live playground](https://pixelrag.ai/).
 
