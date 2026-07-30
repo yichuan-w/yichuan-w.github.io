@@ -37,8 +37,6 @@ Notes and takeaways from papers I have read.
 - [Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models](qwen3embedding.md) — Multi-stage training, synthetic data, and the 0.6B/4B/8B trade-off space.
 - [My Thoughts on RAGCache](ragcache.md) — February 7, 2025. Caching popular document KV cache in CPU memory to avoid recomputation.
 - [Exploring Orak: A Unified Benchmark for LLM Agents in Games](game_eval.md) — Unifying video games behind one interface for training and evaluating agents.
-- [Reasoning Traces in VLA Policies (OneTwo-VLA, pi)](onetwo_vla_and_pi.md) — Raw notes on co-training reasoning traces with DiT policies.
-- [Duplicate Handling in V-IRL Style Embodied Agents](virl.md) — Raw notes on avoiding double-counting across viewpoints via feature matching.
 
 ## About
 

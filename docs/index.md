@@ -202,8 +202,6 @@ Here are my thoughts and comments on various research papers and topics in syste
 - [My Thoughts on Qwen3 Embedding paper](/blog/qwen3embedding) - My thoughts on Qwen3 Embedding paper, advancing text embedding through foundation models
 - [My Thoughts on RAGCache paper](/blog/ragcache) - My thoughts on RAGCache paper [arxiv](https://arxiv.org/abs/2404.12457)
 - [My Thoughts on Exploring Orak: A Unified Benchmark for LLM Agents in Games paper](/blog/game_eval) - My thoughts on Orak paper, a comprehensive evaluation on Game Plantform [arxiv](https://arxiv.org/abs/2506.03610)
-- [Reasoning Traces in VLA Policies (OneTwo-VLA, pi)](/blog/onetwo_vla_and_pi) - Raw notes on co-training reasoning traces with DiT policies.
-- [Duplicate Handling in V-IRL Style Embodied Agents](/blog/virl) - Raw notes on avoiding double-counting across viewpoints via feature matching.
 
 </details>
 

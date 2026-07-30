@@ -32,8 +32,6 @@ nav:
           - Qwen3 Embedding: blog/qwen3embedding.md
           - My Thoughts on RAGCache: blog/ragcache.md
           - Exploring Orak - A Benchmark for LLM Agents in Games: blog/game_eval.md
-          - Reasoning Traces in VLA Policies (OneTwo-VLA, pi): blog/onetwo_vla_and_pi.md
-          - Duplicate Handling in V-IRL Style Embodied Agents: blog/virl.md
 
 plugins:
   []
