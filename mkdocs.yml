@@ -18,18 +18,19 @@ nav:
       - blog/index.md
       - Research Vision:
           - Rethinking the Search Stack for the AI Era: blog/build-search-engine-for-AI.md
-          - Opportunities in the Open-Source Agentic RL Landscape: blog/summer-plan.md
       - Production & Entrepreneurship Thoughts:
           - Rethinking RL as a Service and the Position of RL Infrastructure: blog/rethinking-rl-as-a-service.md
       - Tech Development Experience:
           - Mastering DiskANN - Practical Lessons from Large-Scale Vector Search: blog/How-to-build-diskANN-perfectly.md
           - Lessons Learned in Development - LEANN Project: blog/lessons_learned_in_dev_leann.md
-          - Reproducing OSS Agentic-RL Recipes — Status Summary: blog/oss-agentic-rl-reproduction.md
       - Paper Reads:
           - Finally, a Retriever That Can Actually Reason (ReasonIR): blog/reasonir.md
           - Qwen3 Embedding: blog/qwen3embedding.md
           - My Thoughts on RAGCache: blog/ragcache.md
           - Exploring Orak - A Benchmark for LLM Agents in Games: blog/game_eval.md
+      - Misc:
+          - Reproducing OSS Agentic-RL Recipes — Status Summary: blog/oss-agentic-rl-reproduction.md
+          - Opportunities in the Open-Source Agentic RL Landscape: blog/summer-plan.md
 
 plugins:
   []
