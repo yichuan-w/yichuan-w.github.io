@@ -25,8 +25,6 @@ nav:
           - Mastering DiskANN - Practical Lessons from Large-Scale Vector Search: blog/How-to-build-diskANN-perfectly.md
           - Lessons Learned in Development - LEANN Project: blog/lessons_learned_in_dev_leann.md
           - Reproducing OSS Agentic-RL Recipes — Status Summary: blog/oss-agentic-rl-reproduction.md
-          - slime coding_agent_rl - Status of the Official Script: blog/slime-coding-agent-rl-status.md
-          - My Experience Using Claude Code: blog/claude-code-experience.md
       - Paper Reads:
           - Finally, a Retriever That Can Actually Reason (ReasonIR): blog/reasonir.md
           - Qwen3 Embedding: blog/qwen3embedding.md

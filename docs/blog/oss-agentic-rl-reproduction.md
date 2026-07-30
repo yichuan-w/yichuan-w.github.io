@@ -24,7 +24,7 @@ RL framework, hardware, rollout strategy, data, and what actually happened.
 |---|--------|--------------|-------|-----------|------|--------|--------|
 | 1 | **Endless Terminals** | [arxiv 2601.16443](https://arxiv.org/pdf/2601.16443) · [kanishkg/endless-terminals](https://github.com/kanishkg/endless-terminals) | Qwen2.5-7B-Instruct | SkyRL v0.4 + Ray + vLLM, **PPO** | 4×H100 | held-out pass@1 **~15.5% → ~51%** ([W&B](https://meta.wandb.io/yichuan/simrl-sky-endless/runs/78ddk7ri)) | ✅ **Success** (clear eval gain) |
 | 2 | **Echo** | [microsoft/echo-rl](https://github.com/microsoft/echo-rl) (follow-up to #1) | Qwen3-8B | SkyRL + echo-rl patch, **GRPO** | 8×H100 | GRPO baseline pass@1 **0.254 → 0.308**; ECHO led at the one comparable point then crashed | ⚠️ **Partial** (baseline works; ECHO infra-crash; data loss) |
-| 3 | **slime coding_agent_rl** | [THUDM/slime example](https://github.com/THUDM/slime/tree/main/examples/coding_agent_rl) · [our notes](https://yichuan-w.github.io/blog/slime-coding-agent-rl-status/) | Qwen3.6-35B-A3B (MoE) | slime (Megatron + SGLang + Ray) | 64×H100 (official) | never trained | ❌ **Not runnable** (no E2B sandbox, no training data) |
+| 3 | **slime coding_agent_rl** | [THUDM/slime example](https://github.com/THUDM/slime/tree/main/examples/coding_agent_rl) | Qwen3.6-35B-A3B (MoE) | slime (Megatron + SGLang + Ray) | 64×H100 (official) | never trained | ❌ **Not runnable** (no E2B sandbox, no training data) |
 | 4 | **Polar Agent** | Polar + Codex-CLI scaffold, SWE-Gym | Qwen3.5-4B | slime + Megatron + SGLang + **Polar**, **GRPO** | 8×H100 | ran but reward kept oscillating; abandoned | ❌ **Abandoned** (too many infra bugs) |
 | 5 | **tau-bench (retail)** | [yichuan-w/slime](https://github.com/yichuan-w/slime) · `examples/tau-bench` | Qwen3-4B-Instruct-2507 | slime (Megatron + SGLang + Ray), **GRPO** | 4×H100 (2 train + 2 serve) | eval/retail-dev **0.739 → 0.791**, but **~20 min/step** | ⚠️ **Works & learns, too slow** (MetaGen user-sim bottleneck) |
 | 6 | **Search-R1** | [yichuan-w/slime](https://github.com/yichuan-w/slime) · `examples/search-r1` | Qwen2.5-3B | slime (Megatron + SGLang + Ray), **GRPO** | 4×H100 (2 train + 2 rollout) | clean rising curve ([W&B](https://meta.wandb.io/yichuan/slime-search-r1)) | ✅ **Fast & reproducible** (found a stop-token bug → PR to slime soon) |
@@ -178,8 +178,7 @@ get the pipeline working and see the direction.
 
 ## 3. slime `coding_agent_rl` — ❌ not runnable as-is
 
-**Code:** https://github.com/THUDM/slime/tree/main/examples/coding_agent_rl ·
-**Our notes:** https://yichuan-w.github.io/blog/slime-coding-agent-rl-status/
+**Code:** https://github.com/THUDM/slime/tree/main/examples/coding_agent_rl
 
 We did **not** train this — only read the README and had Claude Code walk through it.
 

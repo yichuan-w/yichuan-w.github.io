@@ -26,8 +26,6 @@ Hands-on lessons, reproduction logs, and tuning recipes from building real syste
 - [Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems](How-to-build-diskANN-perfectly.md) — Dec 11, 2025. Compression rates, hidden distance-metric traps, and tuning recipes from LEANN and DS-serve.
 - [Lessons Learned in Development — LEANN Project](lessons_learned_in_dev_leann.md) — Chunk overlap strategies, data format choices, and embedding model comparisons for RAG.
 - [Reproducing OSS Agentic-RL Recipes — Status Summary](oss-agentic-rl-reproduction.md) — June 9, 2026. A running log of six open-source agentic-RL recipes: model, framework, hardware, rollout strategy, and what actually happened.
-- [slime `coding_agent_rl`: Status of the Official Script](slime-coding-agent-rl-status.md) — June 4, 2026. What THUDM/Z.ai's SWE coding-agent RL example really requires to run, what it does not ship, and a sandbox/GPU cost estimate.
-- [My Experience Using Claude Code: AI-Powered Coding from Anywhere](claude-code-experience.md) — March 8, 2026. How an AI CLI became a core part of my development workflow.
 
 ## Paper Reads
 

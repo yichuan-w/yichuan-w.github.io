@@ -190,8 +190,6 @@ Here are my thoughts and comments on various research papers and topics in syste
 **Tech Development Experience**
 
 - [Reproducing OSS Agentic-RL Recipes — Status Summary](/blog/oss-agentic-rl-reproduction) - A running log of six open-source agentic-RL recipes: model, framework, hardware, rollout strategy, and what actually happened.
-- [slime `coding_agent_rl`: Status of the Official Script](/blog/slime-coding-agent-rl-status) - What THUDM/Z.ai's SWE coding-agent RL example really requires to run, and a sandbox/GPU cost estimate.
-- [My Experience Using Claude Code: AI-Powered Coding from Anywhere](/blog/claude-code-experience) - How an AI CLI became a core part of my development workflow.
 
 </details>
 
