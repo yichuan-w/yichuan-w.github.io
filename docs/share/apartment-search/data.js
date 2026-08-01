@@ -24,7 +24,7 @@ const DATA = [
   { mine: true, id: 'hollis-oak', name: 'Hollis Oak', area: 'Emeryville',
     addr: '3250 Hollis St, Oakland 94608', rent: 2314, rentHi: 2680, sqft: 445, conf: 'feed',
     drive: 12, bike: 20, phone: '(510) 350-8224', sat: '9–5 open house',
-    tour: 'walkin', tourTime: 'walk in ~3:50', avail: '#234 now · only ~2 units left', availGood: true,
+    tour: 'walkin', tourTime: 'walk in ~10:00', avail: '#234 now · only ~2 units left', availGood: true,
     book: 'https://www.rentcafe.com/apartments/ca/oakland/hollis-oak/default.aspx', bookLabel: 'RentCafe (unverified)',
     url: 'https://www.hollisoak.com/',
     note: 'NO BOOKING NEEDED — their own site says "Open House Saturday 9am to 5pm," corroborated by three sources, so 3:50 PM is inside the window and you can just walk in. Sunday is appointment-only. Best phone is (510) 350-8224 (from the property site; the (510) 584-5994 I had earlier was aggregator-listed). No leasing email is published anywhere — their contact widget hides the address server-side. If you want a booking anyway, the RentCafe listing has a "Request a tour" widget with 10-minute slots (so a literal 3:50 exists) — ⚠ but I could NOT reproduce that myself, RentCafe began returning 403 to me, so treat it as reported-not-verified. Madison Park Financial; their corporate site is currently down (502). Bigger 826–921 sqft studios exist at $2,450–$2,680 but all leased.' },
@@ -53,9 +53,9 @@ const DATA = [
   { id: 'the-emery', name: 'The Emery', area: 'Emeryville',
     addr: '4510 Hubbard St, Emeryville', rent: 3166, rentHi: 3166, sqft: 504, conf: 'feed',
     drive: 14, bike: 22, phone: '(510) 902-4266', sat: '10–6',
-    tour: null, avail: '#227 Sep 10 — over budget', availGood: false,
+    tour: 'booked', tourTime: '4:00 PM', avail: 'studio #227 Sep 10 · five 2BRs Aug 12–Sep 12', availGood: true,
     url: 'https://www.rentable.co/emeryville-ca/the-emery',
-    note: 'Above your $3k ceiling. But rented studios here were $2,560–$2,635, so a re-list could land in budget. $0-deposit promo.' },
+    note: 'STUDIO: only #227 at $3,166, Sep 10 — over your ceiling. 2BR (five units, all 2bd/2ba): #526 $4,647/1,141sf Aug 12 · #313 $4,892/1,381sf Aug 26 · #632 $4,567/1,167sf Sep 2 · #214 $4,527/1,141sf Sep 4 · #308 $4,532/1,186sf Sep 12. Split two ways that is $2,264–$2,446 each — the WEAKEST per-person value of anything nearby, so push hard on price. Upsides: income requirement is only 2.3x rent (lowest found anywhere) and app fee is $50. Also has a 3BR #302 at $5,505 now = $1,835/person if you find a third. ⚠ Bring government photo ID for everyone 18+. ⚠ Their site liveattheemery.com was returning 503 all day, so all of this is feed-sourced — reconfirm on site. Promo conflict: FAQ says no specials, listing says "$0 ZERO DEPOSIT MOVE-IN". Office Mon–Sat 10–6, closed Sunday.' },
 
   { id: 'avenue-64', name: 'Avenue 64', area: 'Emeryville',
     addr: '6399 Christie Ave, Emeryville', rent: 1969, rentHi: 2389, sqft: 549, conf: 'feed',
@@ -117,7 +117,7 @@ const DATA = [
   { id: 'the-shattuck', name: 'The Shattuck', area: 'Berkeley',
     addr: '2701 Shattuck Ave, Berkeley', rent: 2395, rentHi: 2595, sqft: 330, conf: 'feed',
     drive: 10, bike: 12, phone: '(510) 692-4214', sat: 'Calendly 9–5',
-    tour: 'online', tourTime: 'book 5:00 PM', avail: '7 studios: 4 now, Aug 3, Aug 24, Aug 25', availGood: true,
+    tour: 'booked', tourTime: '1:30 PM', avail: '7 studios: 4 now, Aug 3, Aug 24, Aug 25', availGood: true,
     book: 'https://calendly.com/nadiams/30min', bookLabel: 'Calendly ✓verified',
     url: 'https://www.rentable.co/berkeley-ca/the-shattuck',
     note: 'BOOK ONLINE TONIGHT — no phone needed. SG\'s weekend tour scheduler is <a href="https://calendly.com/nadiams/30min" target="_blank" rel="noopener">calendly.com/nadiams/30min</a> (Nadia Morales-Saleh, 510-692-4214, nadiam@sgrealestateco.com). I queried the live Calendly API myself: Sat Aug 1 has 13 open slots, 9:00–5:00 PT. ⚠ Slots are :00/:30 only, so 4:45 is NOT bookable — take 5:00 PM. ⚠ The account timezone is America/New_York, so check the picker says Pacific. ⚠ The event is generically named "30 Minute Meeting" — type "The Shattuck, 2701 Shattuck, unit 211/311/312/505" in the notes so she brings the right keys. ⚠ 10+ min late = automatic cancellation. Units confirmed live: #211 $2,395/310sf now · #311 $2,495/310sf now · #312 $2,495/319sf now · #505 $2,550/311sf now · #212 Aug 3 · #314 Aug 24 · #509 $2,595/347sf Aug 25. Extra costs: water/garbage $75/mo, parking $200/mo, internet included. FICO ≥650 each applicant, 3x income, $40/adult, $1,000 deposit. Weekday-only alternative with a Shattuck-specific calendar: calendly.com/jonathan-sgrealestateco/30min (first slot Mon Aug 3).' },
@@ -181,7 +181,7 @@ const DATA = [
   { id: '26fifty', name: '26Fifty', area: 'Berkeley',
     addr: '2650 Telegraph Ave, Berkeley', rent: 2195, rentHi: 3045, sqft: 382, conf: 'feed',
     drive: 10, bike: 12, phone: '(628) 233-5026', sat: '11–3',
-    tour: 'booked', tourTime: '1:30 PM', avail: '⚠ feeds showed 0 studios — you booked anyway', availGood: false,
+    tour: null, avail: '0 studios — tour cancelled', availGood: false,
     url: 'https://www.rentable.co/berkeley-ca/26fifty',
     note: '⚠ As of July 31 every studio here showed RENTED (only vacancy was a 1BR on Nov 30). Your 1:30 booking suggests something opened — confirm on the phone which unit you are seeing. Also note their Saturday window is only 11–3, so 1:30 is close to closing. Six studio plans, 382–566 sqft, $2,195–$3,045. Deposit $1,000.' },
 
@@ -328,36 +328,36 @@ const DATA = [
 ];
 
 // ---------------------------------------------------------------- Saturday plan
-// 4 confirmed appointments: MacArthur Commons 11:00, Atlas 12:00, 26Fifty 1:30, Emme 3:00.
-// Those are fixed, so the day is built around them. Everything else is optional filler.
+// 4 confirmed: MacArthur Commons 11:00, Atlas 12:00, The Shattuck 1:30, Emme 3:00, The Emery 4:00.
+// 26Fifty (was 1:30) cancelled. Ke Lin joins from 2:30; Emme and The Emery are 2BR conversations.
 const PLAN = [
-  { time: '8:45 AM', kind: 'drive', html: 'Leave. <b>Bring a government photo ID</b> — Atlas requires it for everyone 18+ and will turn you away without it. Also bring pay stubs / offer letter, bank statement, and a card for app fees ($35–$59 each).' },
+  { time: '8:45 AM', kind: 'drive', html: 'Leave. <b>Bring a government photo ID</b> — both Atlas and The Emery require one for everyone 18+ and will turn you away without it. <span class="w">Ke Lin needs one too for the 4:00. Also bring pay stubs / offer letter, bank statement, and a card for app fees ($35–$59 each).</span>' },
 
-  { time: '9:15 AM', kind: 'tentative', html: '<b>Bakery Lofts</b> — 4700 Adeline St, Emeryville · <span class="w">$2,020–$2,090 · 514 sqft · walk-in, opens 9:00</span><br><span class="w">Optional but I would protect this one — cheapest large studio in the whole search, and cheaper than all four of your booked tours.</span>' },
+  { time: '9:15 AM', kind: 'tentative', html: '<b>Bakery Lofts</b> — 4700 Adeline St, Emeryville · <span class="w">$2,020–$2,090 · 514 sqft · walk-in, opens 9:00</span><br><span class="w">Cheapest large studio in the search. Optional, but the morning is otherwise empty.</span>' },
 
-  { time: '10:15 AM', kind: 'drive', html: 'Drive Emeryville → MacArthur BART, ~8 min. <span class="w">Slack built in on purpose; the next three stops are back-to-back.</span>' },
+  { time: '10:00 AM', kind: 'tentative', html: '<b>Hollis Oak</b> — 3250 Hollis St · <span class="w">$2,314 · 445 sqft · ~5 min from Bakery Lofts</span><br><span class="w">Moved here from the afternoon — 3:50 no longer works now that The Emery is at 4:00. Open house 9–5, just walk in. Only ~2 units left.</span>' },
 
-  { time: '11:00 AM', html: '<b>MacArthur Commons</b> ✅ — 540 39th St, Oakland · <span class="w">$2,732–$3,143 · 563 sqft · <a href="https://schedule.tours/m/nElopr" target="_blank" rel="noopener">directions</a></span><br><span class="w">Best August-timing match you have: three studios landing Aug 23 / Sep 15 / Sep 21. Ask which one you are seeing, and about the $1,000 look-and-lease.</span>' },
+  { time: '10:45 AM', kind: 'drive', html: 'Drive to MacArthur BART, ~8 min.' },
 
-  { time: '11:45 AM', kind: 'drive', html: '⚠ <b>TIGHTEST LINK OF THE DAY.</b> MacArthur → Atlas is ~10–12 min and Atlas starts at 12:00 sharp with only a 30-min slot. <span class="w">If the MacArthur tour runs long, text Atlas rather than just arriving late.</span>' },
+  { time: '11:00 AM', html: '<b>MacArthur Commons</b> ✅ — 540 39th St, Oakland · <span class="w">studio $2,732–$3,143 · 563 sqft · <a href="https://schedule.tours/m/nElopr" target="_blank" rel="noopener">directions</a></span><br><span class="w">Three studios landing Aug 23 / Sep 15 / Sep 21. ⚠ They have SEVEN 2BR plans but zero available — ask to be waitlisted, the location (MacArthur BART, 11 min to Soda) is good.</span>' },
 
-  { time: '12:00 PM', html: '<b>Atlas</b> ✅ — 385 14th St, Oakland · <span class="w">30 min · available studios $3,416–$4,084</span><br><span class="w">⚠ Every available studio here is over your ceiling and it is ~19 min to Soda Hall. Call first and ask if anything is under $3,000 — if not, cancel and take a real lunch, or walk into Monogram instead (421 25th St, $2,350–$2,519, 520 sqft, open 9–6, 1.5 mi away).</span>' },
+  { time: '11:45 AM', kind: 'drive', html: '⚠ <b>TIGHTEST LINK OF THE DAY.</b> MacArthur → Atlas is ~10–12 min and Atlas starts at 12:00 sharp with only a 30-min slot. <span class="w">If MacArthur runs long, text Atlas rather than just arriving late.</span>' },
 
-  { time: '12:35 PM', kind: 'drive', html: 'Lunch in Downtown/Uptown Oakland, then drive to Berkeley (~18 min). <span class="w">Log your notes in the table above while the first three are still fresh.</span>' },
+  { time: '12:00 PM', html: '<b>Atlas</b> ✅ — 385 14th St, Oakland · <span class="w">30 min · available studios $3,416–$4,084</span><br><span class="w">⚠ Still your weakest booking — every available studio is over your ceiling and it is ~19 min to Soda Hall. Ask if anything is under $3,000; if not, this is a 30-min courtesy visit at best.</span>' },
 
-  { time: '1:30 PM', html: '<b>26Fifty</b> ✅ — 2650 Telegraph Ave, Berkeley · <span class="w">$2,195–$3,045 · 382–566 sqft · 10 min to Soda Hall</span><br><span class="w">⚠ Their Saturday hours are only 11–3, so you are near closing — do not run late from Atlas. Also: as of yesterday every studio showed rented, so confirm which unit exists.</span>' },
+  { time: '12:35 PM', kind: 'drive', html: 'Lunch in Downtown/Uptown Oakland, then drive to Berkeley (~15–18 min). <span class="w">Plenty of slack here — the 1:30 is only ~4.5 mi away.</span>' },
 
-  { time: '2:20 PM', kind: 'drive', html: 'Berkeley → Emeryville, ~14 min.' },
+  { time: '1:30 PM', html: '<b>The Shattuck</b> ✅ — 2701 Shattuck Ave, Berkeley · <span class="w">$2,395–$2,595 · 310–347 sqft · 30 min slot</span><br><span class="w">⚠ SG cancels automatically if you are 10+ min late. Four units ready now: #211 $2,395/310sf · #311 $2,495/310sf · #312 $2,495/319sf · #505 $2,550/311sf. Real cost adds water/garbage $75 and parking $200. Ask Nadia whether SG has any 2BR in their portfolio.</span>' },
 
-  { time: '3:00 PM', html: '<b>Emme</b> ✅ — 6350 Christie Ave, Emeryville · <span class="w">$1,859–$2,487 · 423–573 sqft</span><br><span class="w">⚠ Still unresolved: every aggregator shows all 25 studios leased. Call before you drive out — this is your most likely wasted slot.</span>' },
+  { time: '2:10 PM', kind: 'drive', html: '2701 Shattuck → Spruce St, ~8–10 min. <span class="w">You will be early; that is fine.</span>' },
 
-  { time: '3:50 PM', html: '<b>Hollis Oak</b> — 3250 Hollis St · <span class="w">$2,314 · 445 sqft · ~7 min from Emme</span><br><span class="w">✅ NO BOOKING NEEDED — their site says "Open House Saturday 9am to 5pm," so just walk in. Cheaper AND bigger than all four of your booked tours. Only ~2 units left. Best phone if you want to call from the car: (510) 350-8224.</span>' },
+  { time: '2:30 PM', kind: 'tentative', html: '<b>Pick up Ke Lin</b> — Spruce St, Berkeley · <span class="w">then ~15–18 min to Emeryville</span><br><span class="w">Leave by 2:45 to make the 3:00 comfortably.</span>' },
 
-  { time: '4:40 PM', kind: 'drive', html: 'Hollis Oak → 2701 Shattuck, ~10–12 min. <span class="w">⚠ SG automatically cancels any appointment 10+ min late, so leave Hollis Oak by 4:30.</span>' },
+  { time: '3:00 PM', html: '<b>Emme</b> ✅ — 6350 Christie Ave, Emeryville · <span class="w">with Ke Lin</span><br><span class="w"><b>Ask about the 2BR:</b> exactly one exists — unit 319, $3,479, 967 sqft, 2bd/2ba, available <b>Sep 18</b>. That is $1,740 each, genuinely competitive. ⚠ Studios are all leased, so the 2BR is the real conversation here. Also ask about a listing feed showing "$3,456–$3,641 available now" that I could not confirm.</span>' },
 
-  { time: '5:00 PM', html: '<b>The Shattuck</b> — 2701 Shattuck Ave, Berkeley · <span class="w">$2,395–$2,595 · 310–347 sqft</span><br><span class="w">✅ BOOK THIS TONIGHT, no phone needed: <a href="https://calendly.com/nadiams/30min" target="_blank" rel="noopener">calendly.com/nadiams/30min</a>. I checked the live calendar — Sat Aug 1 has 13 open slots and 5:00 PM is free. Slots are :00/:30 only so 4:45 does not exist. Set the timezone picker to <b>Pacific</b> (her account is Eastern) and put "The Shattuck, 2701 Shattuck, unit 211/311/312/505" in the notes. Seven studios available — your best odds of actually signing something.</span>' },
+  { time: '4:00 PM', html: '<b>The Emery</b> ✅ — 4510 Hubbard St, Emeryville · <span class="w">~5 min from Emme · <a href="http://nest.io/sched/1gtysf-grt3/" target="_blank" rel="noopener">reschedule link</a></span><br><span class="w"><b>2BR here is expensive:</b> five units $4,527–$4,892 at 1,141–1,381 sqft, Aug 12 / Aug 26 / Sep 2 / Sep 4 / Sep 12. Split that is $2,264–$2,446 each — the weakest per-person value of anything nearby, so negotiate. Two real upsides: income requirement is only <b>2.3x rent</b> (lowest anywhere) and there is a 3BR #302 at $5,505 now = $1,835/person with a third roommate. ⚠ Photo ID required for both of you.</span>' },
 
-  { time: '5:30 PM', kind: 'drive', html: 'Done. <span class="w">If anything clicked, apply that evening — MacArthur Commons has a $1,000 look-and-lease, Atlas $250. Ask every building; most will match if you apply within 48h of touring.</span>' },
+  { time: '4:50 PM', kind: 'drive', html: 'Done. <span class="w">If a 2BR clicked, move fast — 14 buildings have 2BR available right now, but the good per-person deals (Oak Walk at $1,575/person, Grand at Rockridge at $1,200) will not sit. MacArthur has a $1,000 look-and-lease, Atlas $250; ask everyone else to match within 48h.</span>' },
 ];
 
 // ---------------------------------------------------------------- Call list
@@ -379,25 +379,15 @@ const CALLS = [
     ],
     script: '"I have a 3 PM tour tomorrow. Can you confirm which studio unit I\'ll be seeing and the current price? I want to be sure it\'s still available."' },
 
-  { name: '3. 26Fifty — confirm the unit exists, and watch the clock', phone: '(628) 233-5026',
+  { name: '3. Oak Walk — the best 2BR value I found, and it is not on your route', phone: '(510) 319-8189',
     lines: [
-      'As of July 31 <b>all six studio plans showed rented</b> — the only vacancy was a 1BR on Nov 30. Your booking suggests something turned over, so ask which unit and what price.',
-      '⚠ Their Saturday hours are <b>11:00–3:00 only</b>. A 1:30 tour is close to closing, so do not run late from Atlas.',
-      'Prices range $2,195 (382 sqft) to $3,045 (566 sqft) — ask where your unit sits in that band.',
+      '4098 San Pablo Ave, Emeryville — ~11 min to Soda Hall. <b>Best per-person value at a real amenity building.</b>',
+      '#214 is a <b>1,405 sqft 2bd/2.5ba townhome at $3,150</b> = <b>$1,575 each</b>, Sep 6. Also #312 1,327 sqft + den $3,460 Aug 16, and #1099 1,140 sqft $3,200 Sep 16.',
+      'For comparison: that is ~700 sqft of personal space each for less than the studios you are touring.',
+      '⚠ Their listing says "pricing changes daily." App fee $53/applicant, deposit $500–800, 3/6/12-month leases available.',
+      'Nothing is booked here — worth squeezing in Sunday if the 2BR idea sticks.',
     ],
-    script: '"I have a 1:30 tour tomorrow — which studio unit will I be seeing, and what\'s the rent? I saw everything listed as rented."' },
-
-  { name: '4. The Shattuck — book it online right now, no call needed', phone: '(510) 692-4214',
-    lines: [
-      '✅ <b><a href="https://calendly.com/nadiams/30min" target="_blank" rel="noopener">calendly.com/nadiams/30min</a></b> — SG\'s weekend tour scheduler (Nadia Morales-Saleh). I queried the live calendar myself: <b>Sat Aug 1 has 13 open slots</b> from 9:00 to 5:00 PT, and <b>5:00 PM is free</b>.',
-      '⚠ Slots are on :00/:30 only — <b>4:45 does not exist</b>. Book <b>5:00 PM</b> so you have buffer after Hollis Oak.',
-      '⚠ Her Calendly account is set to <b>Eastern</b> time. Check the timezone picker says Pacific or you will book the wrong hour.',
-      '⚠ The event is generically named "30 Minute Meeting" — type <b>"The Shattuck, 2701 Shattuck Ave, unit 211/311/312/505"</b> in the notes so she brings the right keys.',
-      '⚠ <b>10+ minutes late = automatic cancellation.</b>',
-      'Four units are available right now: #211 $2,395/310sf · #311 $2,495/310sf · #312 $2,495/319sf · #505 $2,550/311sf. Real cost adds water/garbage $75 and parking $200.',
-      'Belt-and-suspenders: also submit the guest card at <a href="https://sgrealestate.appfolio.com/listings/detail/7c941a1c-6432-4c44-9280-36d386c53292/contact_us_form" target="_blank" rel="noopener">unit 211\'s contact form</a>, or email leasing@sgrealestateco.com / nadiam@sgrealestateco.com.',
-    ],
-    script: 'Nothing to say — just book the 5:00 PM slot and note the building and unit numbers.' },
+    script: '"Do you have any 2-bedrooms I could see this weekend? I saw unit 214, the townhome at $3,150."' },
 
   { name: '5. Bakery Lofts — confirm Saturday hours and hold 9:15', phone: '(510) 715-2599',
     lines: [
