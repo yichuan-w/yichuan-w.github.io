@@ -17,6 +17,7 @@ const tourPill = t =>
   t === 'booked' ? '<span class="pill p-booked">Booked</span>'
   : t === 'walkin' ? '<span class="pill p-walkin">Walk-in</span>'
   : t === 'appt'   ? '<span class="pill p-callme">Appt req.</span>'
+  : t === 'online' ? '<span class="pill p-online">Book online</span>'
   : '<span class="pill p-na">?</span>';
 
 let hideDone = false, budgetOnly = false, availOnly = false, mineOnly = false;
@@ -68,7 +69,8 @@ function render() {
       <td class="${d.availGood ? 'good' : 'bad'}">${esc(d.avail || '—')}</td>
       <td>${d.phone ? `<a class="tel" href="tel:${tel(d.phone)}">${esc(d.phone)}</a>` : '—'}</td>
       <td>${esc(d.sat || '—')}</td>
-      <td>${tourPill(d.tour)}${d.tourTime ? `<br><b>${esc(d.tourTime)}</b>` : ''}</td>
+      <td>${tourPill(d.tour)}${d.tourTime ? `<br><b>${esc(d.tourTime)}</b>` : ''}${
+        d.book ? `<br><a class="booklink" href="${esc(d.book)}" target="_blank" rel="noopener">${esc(d.bookLabel || 'Book')}</a>` : ''}</td>
       <td><select class="apt-status" data-id="${d.id}">${opts}</select></td>
       <td><textarea class="apt-note" data-id="${d.id}" placeholder="…">${esc(nt)}</textarea></td>
     </tr>` + (isOpen

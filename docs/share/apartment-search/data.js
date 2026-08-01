@@ -23,10 +23,11 @@ const DATA = [
 
   { mine: true, id: 'hollis-oak', name: 'Hollis Oak', area: 'Emeryville',
     addr: '3250 Hollis St, Oakland 94608', rent: 2314, rentHi: 2680, sqft: 445, conf: 'feed',
-    drive: 12, bike: 20, phone: '(510) 584-5994', sat: '9–5',
-    tour: 'walkin', avail: '#234 now · only ~2 units left', availGood: true,
+    drive: 12, bike: 20, phone: '(510) 350-8224', sat: '9–5 open house',
+    tour: 'walkin', tourTime: 'walk in ~3:50', avail: '#234 now · only ~2 units left', availGood: true,
+    book: 'https://www.rentcafe.com/apartments/ca/oakland/hollis-oak/default.aspx', bookLabel: 'RentCafe (unverified)',
     url: 'https://www.hollisoak.com/',
-    note: 'Madison Park Financial. Open 7 days 9–5. Bigger 826–921 sqft studios exist at $2,450–$2,680 but all leased.' },
+    note: 'NO BOOKING NEEDED — their own site says "Open House Saturday 9am to 5pm," corroborated by three sources, so 3:50 PM is inside the window and you can just walk in. Sunday is appointment-only. Best phone is (510) 350-8224 (from the property site; the (510) 584-5994 I had earlier was aggregator-listed). No leasing email is published anywhere — their contact widget hides the address server-side. If you want a booking anyway, the RentCafe listing has a "Request a tour" widget with 10-minute slots (so a literal 3:50 exists) — ⚠ but I could NOT reproduce that myself, RentCafe began returning 403 to me, so treat it as reported-not-verified. Madison Park Financial; their corporate site is currently down (502). Bigger 826–921 sqft studios exist at $2,450–$2,680 but all leased.' },
 
   { id: 'artistry', name: 'Artistry Emeryville', area: 'Emeryville',
     addr: '6401 Shellmound St, Emeryville', rent: 2363, rentHi: 2620, sqft: 575, conf: 'feed',
@@ -115,10 +116,11 @@ const DATA = [
 
   { id: 'the-shattuck', name: 'The Shattuck', area: 'Berkeley',
     addr: '2701 Shattuck Ave, Berkeley', rent: 2395, rentHi: 2595, sqft: 330, conf: 'feed',
-    drive: 10, bike: 12, phone: '(510) 704-1240', sat: 'Appt only (SG)',
-    tour: 'appt', avail: '7 studios: 4 now, Aug 3, Aug 24, Aug 25', availGood: true,
+    drive: 10, bike: 12, phone: '(510) 692-4214', sat: 'Calendly 9–5',
+    tour: 'online', tourTime: 'book 5:00 PM', avail: '7 studios: 4 now, Aug 3, Aug 24, Aug 25', availGood: true,
+    book: 'https://calendly.com/nadiams/30min', bookLabel: 'Calendly ✓verified',
     url: 'https://www.rentable.co/berkeley-ca/the-shattuck',
-    note: 'DEEPEST in-budget inventory in Berkeley. SG Real Estate — appointment-only via guest card, central office at 2105 MLK Jr Way. Small units (310–347 sqft). $40/adult app, FICO ≥650, 3x income.' },
+    note: 'BOOK ONLINE TONIGHT — no phone needed. SG\'s weekend tour scheduler is <a href="https://calendly.com/nadiams/30min" target="_blank" rel="noopener">calendly.com/nadiams/30min</a> (Nadia Morales-Saleh, 510-692-4214, nadiam@sgrealestateco.com). I queried the live Calendly API myself: Sat Aug 1 has 13 open slots, 9:00–5:00 PT. ⚠ Slots are :00/:30 only, so 4:45 is NOT bookable — take 5:00 PM. ⚠ The account timezone is America/New_York, so check the picker says Pacific. ⚠ The event is generically named "30 Minute Meeting" — type "The Shattuck, 2701 Shattuck, unit 211/311/312/505" in the notes so she brings the right keys. ⚠ 10+ min late = automatic cancellation. Units confirmed live: #211 $2,395/310sf now · #311 $2,495/310sf now · #312 $2,495/319sf now · #505 $2,550/311sf now · #212 Aug 3 · #314 Aug 24 · #509 $2,595/347sf Aug 25. Extra costs: water/garbage $75/mo, parking $200/mo, internet included. FICO ≥650 each applicant, 3x income, $40/adult, $1,000 deposit. Weekday-only alternative with a Shattuck-specific calendar: calendly.com/jonathan-sgrealestateco/30min (first slot Mon Aug 3).' },
 
   { id: 'aquatic-ashby', name: 'Aquatic Ashby', area: 'Berkeley',
     addr: '3006 San Pablo Ave, Berkeley 94710', rent: 2495, rentHi: 2495, sqft: 434, conf: 'feed',
@@ -349,9 +351,11 @@ const PLAN = [
 
   { time: '3:00 PM', html: '<b>Emme</b> ✅ — 6350 Christie Ave, Emeryville · <span class="w">$1,859–$2,487 · 423–573 sqft</span><br><span class="w">⚠ Still unresolved: every aggregator shows all 25 studios leased. Call before you drive out — this is your most likely wasted slot.</span>' },
 
-  { time: '3:50 PM', kind: 'tentative', html: '<b>Hollis Oak</b> — 3250 Hollis St · <span class="w">$2,314 · 445 sqft · ~7 min from Emme · closes 5:00</span><br><span class="w">Optional. Only ~2 units left, and it is cheaper AND bigger than anything you have booked.</span>' },
+  { time: '3:50 PM', html: '<b>Hollis Oak</b> — 3250 Hollis St · <span class="w">$2,314 · 445 sqft · ~7 min from Emme</span><br><span class="w">✅ NO BOOKING NEEDED — their site says "Open House Saturday 9am to 5pm," so just walk in. Cheaper AND bigger than all four of your booked tours. Only ~2 units left. Best phone if you want to call from the car: (510) 350-8224.</span>' },
 
-  { time: '4:45 PM', kind: 'tentative', html: '<b>The Shattuck</b> — 2701 Shattuck Ave, Berkeley · <span class="w">$2,395–$2,595 · 310–347 sqft · ~10 min</span><br><span class="w">Optional, needs an SG appointment booked tonight. Seven studios available — by far your best odds of actually signing something, though the units are small.</span>' },
+  { time: '4:40 PM', kind: 'drive', html: 'Hollis Oak → 2701 Shattuck, ~10–12 min. <span class="w">⚠ SG automatically cancels any appointment 10+ min late, so leave Hollis Oak by 4:30.</span>' },
+
+  { time: '5:00 PM', html: '<b>The Shattuck</b> — 2701 Shattuck Ave, Berkeley · <span class="w">$2,395–$2,595 · 310–347 sqft</span><br><span class="w">✅ BOOK THIS TONIGHT, no phone needed: <a href="https://calendly.com/nadiams/30min" target="_blank" rel="noopener">calendly.com/nadiams/30min</a>. I checked the live calendar — Sat Aug 1 has 13 open slots and 5:00 PM is free. Slots are :00/:30 only so 4:45 does not exist. Set the timezone picker to <b>Pacific</b> (her account is Eastern) and put "The Shattuck, 2701 Shattuck, unit 211/311/312/505" in the notes. Seven studios available — your best odds of actually signing something.</span>' },
 
   { time: '5:30 PM', kind: 'drive', html: 'Done. <span class="w">If anything clicked, apply that evening — MacArthur Commons has a $1,000 look-and-lease, Atlas $250. Ask every building; most will match if you apply within 48h of touring.</span>' },
 ];
@@ -383,14 +387,17 @@ const CALLS = [
     ],
     script: '"I have a 1:30 tour tomorrow — which studio unit will I be seeing, and what\'s the rent? I saw everything listed as rented."' },
 
-  { name: '4. SG Real Estate — books The Shattuck for the 4:45 slot', phone: '(510) 704-1240',
+  { name: '4. The Shattuck — book it online right now, no call needed', phone: '(510) 692-4214',
     lines: [
-      '<b>The Shattuck</b> has seven studios at $2,395–$2,595 — the deepest in-budget inventory anywhere in this search. Ask for ~4:45 PM.',
-      'SG is appointment-only with no per-building office; they will not take a walk-in.',
-      'Same call covers <b>Aquatic Ashby</b> ($2,495, 434 sqft, available now) and <b>Aquatic Shattuck</b> (#509, Aug 18) as backups.',
-      'Their bar: FICO ≥ 650, 3× income, $40 per adult application.',
+      '✅ <b><a href="https://calendly.com/nadiams/30min" target="_blank" rel="noopener">calendly.com/nadiams/30min</a></b> — SG\'s weekend tour scheduler (Nadia Morales-Saleh). I queried the live calendar myself: <b>Sat Aug 1 has 13 open slots</b> from 9:00 to 5:00 PT, and <b>5:00 PM is free</b>.',
+      '⚠ Slots are on :00/:30 only — <b>4:45 does not exist</b>. Book <b>5:00 PM</b> so you have buffer after Hollis Oak.',
+      '⚠ Her Calendly account is set to <b>Eastern</b> time. Check the timezone picker says Pacific or you will book the wrong hour.',
+      '⚠ The event is generically named "30 Minute Meeting" — type <b>"The Shattuck, 2701 Shattuck Ave, unit 211/311/312/505"</b> in the notes so she brings the right keys.',
+      '⚠ <b>10+ minutes late = automatic cancellation.</b>',
+      'Four units are available right now: #211 $2,395/310sf · #311 $2,495/310sf · #312 $2,495/319sf · #505 $2,550/311sf. Real cost adds water/garbage $75 and parking $200.',
+      'Belt-and-suspenders: also submit the guest card at <a href="https://sgrealestate.appfolio.com/listings/detail/7c941a1c-6432-4c44-9280-36d386c53292/contact_us_form" target="_blank" rel="noopener">unit 211\'s contact form</a>, or email leasing@sgrealestateco.com / nadiam@sgrealestateco.com.',
     ],
-    script: '"I\'m looking for a studio for August. Could I tour The Shattuck tomorrow around 4:45? I can submit a guest card now."' },
+    script: 'Nothing to say — just book the 5:00 PM slot and note the building and unit numbers.' },
 
   { name: '5. Bakery Lofts — confirm Saturday hours and hold 9:15', phone: '(510) 715-2599',
     lines: [
@@ -400,13 +407,15 @@ const CALLS = [
     ],
     script: '"Are you open tomorrow morning? I\'d like to see the 514 sqft studio around 9:15."' },
 
-  { name: '6. Hollis Oak — hold #234 for ~3:50', phone: '(510) 584-5994',
+  { name: '6. Hollis Oak — nothing to do, it is an open house', phone: '(510) 350-8224',
+    done: true,
     lines: [
-      '$2,314 for 445 sqft — cheaper and bigger than MacArthur, Atlas, or 26Fifty. Down to ~2 units.',
-      'Open 9–5 all seven days so a walk-in should work, but call to hold it.',
-      'Phone is aggregator-listed and was not verifiable on hollisoak.com, so it may not connect — fall back to the site form.',
+      '✅ Their own site says <b>"Open House Saturday 9am to 5pm"</b> (three sources agree), so 3:50 PM is inside the window — <b>just walk in</b>. Sunday is appointment-only.',
+      '$2,314 for 445 sqft, unit #234, available now, down to ~2 units. Cheaper and bigger than MacArthur, Atlas, or 26Fifty.',
+      'This number is from the property site and supersedes the (510) 584-5994 I gave you earlier, which was aggregator-listed. No leasing email is published anywhere.',
+      'If you want a booking anyway, the <a href="https://www.rentcafe.com/apartments/ca/oakland/hollis-oak/default.aspx" target="_blank" rel="noopener">RentCafe listing</a> has a "Request a tour" widget with 10-minute slots — ⚠ but I could not load that page myself to confirm, so it is reported-not-verified.',
     ],
-    script: '"Is unit 234 still available? Could I come by around 3:50 tomorrow?"' },
+    script: '"Hi, I saw your Saturday open house — I\'m interested in unit 234. Is it still available?"' },
 
   { name: '7. 3900 Adeline — no longer fits Saturday, book another day', phone: '(510) 653-3900',
     done: true,
