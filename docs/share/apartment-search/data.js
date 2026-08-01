@@ -339,38 +339,68 @@ const DATA = [
 // 4 confirmed: MacArthur Commons 11:00, Atlas 12:00, The Shattuck 1:30, Emme 3:00, The Emery 4:00.
 // 26Fifty (was 1:30) cancelled. Ke Lin joins from 2:30; Emme and The Emery are 2BR conversations.
 const PLAN = [
-  { time: '8:45 AM', kind: 'drive', html: 'Leave. <b>Bring a government photo ID</b> — both Atlas and The Emery require one for everyone 18+ and will turn you away without it. <span class="w">Ke Lin needs one too for the 4:00. Also bring pay stubs / offer letter, bank statement, and a card for app fees ($35–$59 each).</span>' },
+  { time: '7:30 AM', kind: 'drive', html: '<b>Wake up.</b> <span class="w">Long day — first walk-in at 9:15, last stop closes at 6:00. If you would rather sleep, the one droppable item is Bakery Lofts; skip it and you can wake at 8:15 and start at Hollis Oak instead.</span>' },
 
-  { time: '9:15 AM', kind: 'tentative', html: '<b>Bakery Lofts</b> — 4700 Adeline St, Emeryville · <span class="w">$2,020–$2,090 · 514 sqft · walk-in, opens 9:00</span><br><span class="w">Cheapest large studio in the search. Optional, but the morning is otherwise empty.</span>' },
+  { time: '8:00 AM', kind: 'drive', html: '<b>Pack the folder.</b> <span class="w">Government photo ID (Atlas AND The Emery both require it and will turn you away without one — Ke Lin needs hers too for the 4:00) · pay stubs or offer letter · bank statement · a card for app fees, budget ~$250 if you apply anywhere ($62 Mayfair, $55 Atlas, $50 Emery, $48 Emme, $40 Shattuck) · phone charger and a car charger · water. Screenshot this page in case you lose signal.</span>' },
 
-  { time: '10:00 AM', kind: 'tentative', html: '<b>Hollis Oak</b> — 3250 Hollis St · <span class="w">$2,314 · 445 sqft · ~5 min from Bakery Lofts</span><br><span class="w">Moved here from the afternoon — 3:50 no longer works now that The Emery is at 4:00. Open house 9–5, just walk in. Only ~2 units left.</span>' },
+  { time: '8:45 AM', kind: 'drive', html: 'Leave Berkeley → 4700 Adeline St, Emeryville, ~12–15 min.' },
+
+  { time: '9:00 AM', kind: 'tentative', html: '📞 <b>CALL MAYFAIR STATION — (510) 519-5681</b> · <span class="w">the moment they open</span><br><span class="w">Book <b>~5:15 PM today</b>. They close at 6:00 and are CLOSED Sunday, so today is the only option. Call from the car before you walk into Bakery Lofts — the 5 PM slot is most likely free right at opening. <b>Lead with "do you have any 2-bedrooms coming up?"</b> — they have ZERO 2BR right now and only one studio (#513, Aug 22), so if the 2BR answer is no, consider spending 5:15 somewhere better. Backup call window if you miss 9:00: the 12:35 lunch break.</span>' },
+
+  { time: '9:15 AM', kind: 'tentative', html: '<b>Bakery Lofts</b> — 4700 Adeline St, Emeryville · <span class="w">$2,020–$2,090 · 514 sqft · walk-in, opens 9:00</span><br><span class="w">Cheapest large studio in the search. Droppable if you want the extra sleep.</span>' },
+
+  { time: '10:00 AM', kind: 'tentative', html: '<b>Hollis Oak</b> — 3250 Hollis St · <span class="w">$2,314 · 445 sqft · ~5 min away</span><br><span class="w">Open house 9–5, just walk in. Only ~2 units left.</span>' },
 
   { time: '10:45 AM', kind: 'drive', html: 'Drive to MacArthur BART, ~8 min.' },
 
-  { time: '11:00 AM', html: '<b>MacArthur Commons</b> ✅ — 540 39th St, Oakland · <span class="w">studio $2,732–$3,143 · 563 sqft · <a href="https://schedule.tours/m/nElopr" target="_blank" rel="noopener">directions</a></span><br><span class="w">Three studios landing Aug 23 / Sep 15 / Sep 21. ⚠ They have SEVEN 2BR plans but zero available — ask to be waitlisted, the location (MacArthur BART, 11 min to Soda) is good.</span>' },
+  { time: '11:00 AM', html: '<b>MacArthur Commons</b> ✅ — 540 39th St, Oakland · <span class="w">studio $2,732–$3,143 · 563 sqft · <a href="https://schedule.tours/m/nElopr" target="_blank" rel="noopener">directions</a></span><br><span class="w">Three studios landing Aug 23 / Sep 15 / Sep 21. They have seven 2BR plans but zero available — ask to be waitlisted, the location is good (11 min to Soda). $1,000 look-and-lease.</span>' },
 
   { time: '11:45 AM', kind: 'drive', html: '⚠ <b>TIGHTEST LINK OF THE DAY.</b> MacArthur → Atlas is ~10–12 min and Atlas starts at 12:00 sharp with only a 30-min slot. <span class="w">If MacArthur runs long, text Atlas rather than just arriving late.</span>' },
 
-  { time: '12:00 PM', html: '<b>Atlas</b> ✅ — 385 14th St, Oakland · <span class="w">30 min · available studios $3,416–$4,084</span><br><span class="w">⚠ Still your weakest booking — every available studio is over your ceiling and it is ~19 min to Soda Hall. Ask if anything is under $3,000; if not, this is a 30-min courtesy visit at best.</span>' },
+  { time: '12:00 PM', html: '<b>Atlas</b> ✅ — 385 14th St, Oakland · <span class="w">30 min · available studios $3,416–$4,084</span><br><span class="w">⚠ Your weakest booking — everything available is over your ceiling and it is ~19 min to Soda Hall. Ask if anything is under $3,000; if not, treat it as a 30-min courtesy visit.</span>' },
 
-  { time: '12:35 PM', kind: 'drive', html: 'Lunch in Downtown/Uptown Oakland, then drive to Berkeley (~15–18 min). <span class="w">Plenty of slack here — the 1:30 is only ~4.5 mi away.</span>' },
+  { time: '12:35 PM', kind: 'drive', html: '<b>Lunch</b> in Downtown/Uptown Oakland, then drive to Berkeley (~15–18 min). <span class="w">Backup window for the Mayfair call. Also log your morning notes in the table above while they are fresh.</span>' },
 
-  { time: '1:30 PM', html: '<b>The Shattuck</b> ✅ — 2701 Shattuck Ave, Berkeley · <span class="w">$2,395–$2,595 · 310–347 sqft · 30 min slot</span><br><span class="w">⚠ SG cancels automatically if you are 10+ min late. Four units ready now: #211 $2,395/310sf · #311 $2,495/310sf · #312 $2,495/319sf · #505 $2,550/311sf. Real cost adds water/garbage $75 and parking $200. Ask Nadia whether SG has any 2BR in their portfolio.</span>' },
+  { time: '1:30 PM', html: '<b>The Shattuck</b> ✅ — 2701 Shattuck Ave, Berkeley · <span class="w">$2,395–$2,595 · 310–347 sqft · 30-min slot</span><br><span class="w">⚠ SG cancels automatically if you are 10+ min late. Ready now: #211 $2,395/310sf · #311 $2,495/310sf · #312 $2,495/319sf · #505 $2,550/311sf. Add water/garbage $75 and parking $200. Ask Nadia if SG has any 2BR in their portfolio.</span>' },
 
-  { time: '2:10 PM', kind: 'drive', html: '2701 Shattuck → Spruce St, ~8–10 min. <span class="w">You will be early; that is fine.</span>' },
+  { time: '2:10 PM', kind: 'drive', html: '2701 Shattuck → Spruce St, ~8–10 min. <span class="w">You will be early. Fine.</span>' },
 
-  { time: '2:30 PM', kind: 'tentative', html: '<b>Pick up Ke Lin</b> — Spruce St, Berkeley · <span class="w">then ~15–18 min to Emeryville</span><br><span class="w">Leave by 2:45 to make the 3:00 comfortably.</span>' },
+  { time: '2:30 PM', kind: 'tentative', html: '<b>Pick up Ke Lin</b> — Spruce St, Berkeley · <span class="w">leave by 2:45 to make the 3:00 comfortably</span><br><span class="w">Remind her to bring photo ID for the 4:00 at The Emery.</span>' },
 
-  { time: '3:00 PM', html: '<b>Emme</b> ✅ — 6350 Christie Ave, Emeryville · <span class="w">with Ke Lin</span><br><span class="w"><b>Ask about the 2BR:</b> exactly one exists — unit 319, $3,479, 967 sqft, 2bd/2ba, available <b>Sep 18</b>. That is $1,740 each, genuinely competitive. ⚠ Studios are all leased, so the 2BR is the real conversation here. Also ask about a listing feed showing "$3,456–$3,641 available now" that I could not confirm.</span>' },
+  { time: '3:00 PM', html: '<b>Emme</b> ✅ — 6350 Christie Ave, Emeryville · <span class="w">with Ke Lin</span><br><span class="w"><b>2BR:</b> exactly one exists — #319, $3,479, 967 sqft, 2bd/2ba, available <b>Sep 18</b>. That is $1,740 each. Studios are all leased, so the 2BR is the only real conversation. Also ask about a feed row showing "$3,456–$3,641 available now" that I could not confirm.</span>' },
 
-  { time: '4:00 PM', html: '<b>The Emery</b> ✅ — 4510 Hubbard St, Emeryville · <span class="w">~5 min from Emme · <a href="http://nest.io/sched/1gtysf-grt3/" target="_blank" rel="noopener">reschedule link</a></span><br><span class="w"><b>2BR here is expensive:</b> five units $4,527–$4,892 at 1,141–1,381 sqft, Aug 12 / Aug 26 / Sep 2 / Sep 4 / Sep 12. Split that is $2,264–$2,446 each — the weakest per-person value of anything nearby, so negotiate. Two real upsides: income requirement is only <b>2.3x rent</b> (lowest anywhere) and there is a 3BR #302 at $5,505 now = $1,835/person with a third roommate. ⚠ Photo ID required for both of you.</span>' },
+  { time: '4:00 PM', html: '<b>The Emery</b> ✅ — 4510 Hubbard St, Emeryville · <span class="w">~5 min from Emme · <a href="http://nest.io/sched/1gtysf-grt3/" target="_blank" rel="noopener">reschedule link</a></span><br><span class="w"><b>Five 2BRs</b> $4,527–$4,892 at 1,141–1,381 sqft, Aug 12 / Aug 26 / Sep 2 / Sep 4 / Sep 12 — but that is $2,264–$2,446 each, the weakest per-person value nearby, so negotiate hard. Upsides: income requirement only <b>2.3x rent</b> and a 3BR #302 at $5,505 now = $1,835/person with a third roommate. ⚠ Photo ID for both of you.</span>' },
 
-  { time: '4:50 PM', kind: 'drive', html: 'Done. <span class="w">If a 2BR clicked, move fast — 14 buildings have 2BR available right now, but the good per-person deals (Oak Walk at $1,575/person, Grand at Rockridge at $1,200) will not sit. MacArthur has a $1,000 look-and-lease, Atlas $250; ask everyone else to match within 48h.</span>' },
+  { time: '4:45 PM', kind: 'drive', html: 'Emeryville → El Cerrito, ~15–18 min up San Pablo Ave or I-80.' },
+
+  { time: '5:15 PM', kind: 'tentative', html: '<b>Mayfair Station</b> — 11600 San Pablo Ave, El Cerrito · <span class="w">needs the 9:00 AM phone call · they close at 6:00</span><br><span class="w">⚠ Go only if the morning call turned up a 2BR. As of last night: <b>zero 2BR</b>, and one studio (#513, 387 sqft, $2,341, <b>Aug 22</b>) priced at the top of this building\'s own historical range. Commute is 20–30 min real-world, outside your target. If a 2BR does open, historical 2x2s were $2,269–$3,432 for 898–1,097 sqft = <b>$1,135–$1,716 each</b>, which would be the best value anywhere — that is the whole reason to bother. Pre-screen tonight via their <a href="https://my.matterport.com/show/?m=A9KVekUkwCt" target="_blank" rel="noopener">2BR Matterport tour</a>.</span>' },
+
+  { time: '6:00 PM', kind: 'drive', html: '<b>Done — 8 properties.</b> <span class="w">If a 2BR clicked, move tonight: 14 buildings have 2BR available right now and the good per-person deals will not sit. MacArthur has a $1,000 look-and-lease, Atlas $250, and most others will match within 48h of a tour if you ask. Tomorrow (Sunday) Mayfair is closed but Oak Walk is worth chasing — $3,150 for a 1,405 sqft townhome is $1,575 each.</span>' },
 ];
 
 // ---------------------------------------------------------------- Call list
 const CALLS = [
-  { name: '1. Atlas — decide whether this slot is worth keeping', phone: '(341) 201-5804',
+  { name: '1. Mayfair Station — call at 9:00 AM sharp, today is the only day', phone: '(510) 519-5681',
+    lines: [
+      '⏰ <b>Office opens 9:00, closes 6:00, and is CLOSED Sunday.</b> There is no online scheduler — all three "Schedule a Tour" buttons on their site just scroll to a contact form with no date field, and the landlord has switched off third-party tour requests too. The phone is the only route.',
+      'Ask for <b>5:15 PM today</b>. That leaves you 45 min before close, and ~30 min of slack after The Emery.',
+      '🎯 <b>Lead with "do you have any 2-bedrooms coming up?"</b> — not the studio. They have <b>zero 2BR available</b> and only one studio (#513, 387 sqft, $2,341, not ready until Aug 22) priced at the very top of this building\'s own historical range. If the 2BR answer is no, the trip is probably not worth 40 minutes of driving.',
+      'If a 2BR is or becomes available, historical 2x2 rents were $2,269–$3,432 for 898–1,097 sqft = <b>$1,135–$1,716 per person</b> — the best value in this entire search. Ask to be put on a list either way.',
+      'Also ask: income requirement (not published anywhere) and confirm parking, since sources conflict — their official PDF says lift $100 / stationary $200, a feed says garage $200 / surface $50.',
+      '⚠ Commute reality check: 15–16 min free-flow, <b>20–30 min</b> with real traffic. Outside your 10–15 min rule.',
+    ],
+    script: '"Hi — do you have any 2-bedrooms available or coming up in the next month? And could I tour at 5:15 this afternoon?"' },
+
+  { name: '2. Oak Walk — call at 9:00 too, this may be a better use of 5:15', phone: '(510) 319-8189',
+    lines: [
+      '4098 San Pablo Ave, Emeryville — ~11 min to Soda Hall, and the <b>best 2BR value at a real amenity building</b>.',
+      '#214 is a <b>1,405 sqft 2bd/2.5ba townhome at $3,150</b> = <b>$1,575 each</b> (Sep 6). Also #312 1,327 sqft + den $3,460 (Aug 16) and #1099 1,140 sqft $3,200 (Sep 16).',
+      'I could not find their Saturday hours anywhere, so this is the one unknown. If they can take you late this afternoon, <b>go here instead of Mayfair</b> — it is closer, cheaper per person, and actually has 2BR inventory.',
+      '⚠ Their listing warns "pricing changes daily." App fee $53/applicant, deposit $500–800, 3/6/12-month leases.',
+    ],
+    script: '"Are you open today? I\'d like to see your 2-bedrooms — unit 214, the townhome at $3,150. Anything late this afternoon?"' },
+
+  { name: '3. Atlas — decide whether this slot is worth keeping', phone: '(341) 201-5804',
     lines: [
       '⚠ All three available studios are <b>$3,416–$4,084</b>. The "from $2,462" figure on their Rockridge plan does not match any real unit right now.',
       'At ~19 min it is also outside your 10–15 min target. This is your weakest booking.',
@@ -379,23 +409,13 @@ const CALLS = [
     ],
     script: '"I have a noon tour tomorrow. Do you have any studio available under $3,000? The listings I see are all $3,400+."' },
 
-  { name: '2. Emme — reconfirm before you drive out', phone: '(510) 757-1506',
+  { name: '4. Emme — reconfirm before you drive out', phone: '(510) 757-1506',
     lines: [
       '⚠ You have 3:00 PM booked, but <b>every aggregator shows all 25 studio units leased.</b>',
       'Get the specific unit number and price confirmed, or you will burn the slot.',
       'If they have nothing: ask to be waitlisted here <i>and</i> at <b>Avenue 64</b> (same Essex management, 6399 Christie, $1,969–$2,389 for 545–553 sqft — better value than Emme).',
     ],
     script: '"I have a 3 PM tour tomorrow. Can you confirm which studio unit I\'ll be seeing and the current price? I want to be sure it\'s still available."' },
-
-  { name: '3. Oak Walk — the best 2BR value I found, and it is not on your route', phone: '(510) 319-8189',
-    lines: [
-      '4098 San Pablo Ave, Emeryville — ~11 min to Soda Hall. <b>Best per-person value at a real amenity building.</b>',
-      '#214 is a <b>1,405 sqft 2bd/2.5ba townhome at $3,150</b> = <b>$1,575 each</b>, Sep 6. Also #312 1,327 sqft + den $3,460 Aug 16, and #1099 1,140 sqft $3,200 Sep 16.',
-      'For comparison: that is ~700 sqft of personal space each for less than the studios you are touring.',
-      '⚠ Their listing says "pricing changes daily." App fee $53/applicant, deposit $500–800, 3/6/12-month leases available.',
-      'Nothing is booked here — worth squeezing in Sunday if the 2BR idea sticks.',
-    ],
-    script: '"Do you have any 2-bedrooms I could see this weekend? I saw unit 214, the townhome at $3,150."' },
 
   { name: '5. Bakery Lofts — confirm Saturday hours and hold 9:15', phone: '(510) 715-2599',
     lines: [
