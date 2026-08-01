@@ -23,6 +23,7 @@ hide:
     <option>Emeryville</option>
     <option>Berkeley</option>
     <option>North Oakland</option>
+    <option>El Cerrito</option>
   </select>
   <select id="sort">
     <option value="rent">Sort: rent ↑</option>

@@ -106,6 +106,14 @@ const DATA = [
     url: 'https://www.rentcafe.com/apartments/ca/oakland/atlas-1/default.aspx',
     note: '⚠ I originally left this off the list: every actually-available studio is $3,416–$4,084, i.e. 14–36% over your ceiling, and at ~19 min it is outside your commute window. The Rockridge plan advertises "from $2,462" but no unit at that price exists right now. Greystar. Tour is 30 min and they REQUIRE a government photo ID for everyone 18+. Deposit $600, app $55, $250 look-and-lease.' },
 
+  { id: 'mayfair-station', name: 'Mayfair Station', area: 'El Cerrito',
+    addr: '11600 San Pablo Ave, El Cerrito 94530', rent: 2341, rentHi: null, sqft: 392, conf: 'site',
+    drive: 18, bike: 30, phone: '(510) 519-5681', sat: '9–6 · Sun CLOSED',
+    tour: 'appt', avail: 'Studio from $2,341 · 2BR ask', availGood: true,
+    url: 'https://www.mayfairstation.com/station-mayfair-station-el-cerrito-ca/floorplans',
+    book: 'https://www.mayfairstation.com/station-mayfair-station-el-cerrito-ca/contact#contact', bookLabel: 'Form only',
+    note: '⚠ NO REAL ONLINE SCHEDULER. Both "Schedule a Tour" buttons on their site just anchor to <code>#contact</code> — the same plain contact form, no time slots. I verified this in the page source myself. ⚠ SUNDAY IS CLOSED (their site: "Monday-Saturday: 9 AM- 6 PM / Sunday: Closed"), so a Sunday tour is impossible. Sat 5 PM works since they close at 6. They also offer SELF-GUIDED tours (phone unlocks the unit) — easiest thing to arrange last-minute, ask for that. Pricing from their own floorplans page: Studio 387–396sf from $2,341 · Junior 1BR 455sf ask · <b>1BR 668–826sf from $2,373</b> · 2BR Corner 898–1,049sf ask · 2BR Large 1,065–1,097sf ask. 🎯 The 1BR is only $32/mo more than the studio for roughly double the space — that is the real find here. 2BR is not priced publicly, so you must ask. Fees (from their official PDF): app $62/adult · deposit $500 studio-1BR / $750 2BR · parking $100 lift or $200 stationary · trash $45/$55/$65 by size · renters insurance $17 · Esusu $5 · pet $50/mo + $400. Water/sewer/gas metered, electric via PG&E. Managed by Cornerstone Residential. ⚠ Drive time is my geometric estimate and this is the FARTHEST thing on your list — outside your 10–15 min target. But it sits right at El Cerrito Plaza BART, which is ~7 min to Downtown Berkeley.' },
+
   // ---------------------------------------------------------------- Berkeley
   { id: '1817-oxford', name: '1817 Oxford St', area: 'Berkeley',
     addr: '1817 Oxford St, Berkeley 94709', rent: 1895, rentHi: 2095, sqft: 407, conf: 'feed',

@@ -2,7 +2,7 @@ const KEY = 'aptsearch.v1';
 const store = JSON.parse(localStorage.getItem(KEY) || '{}');
 const save = () => localStorage.setItem(KEY, JSON.stringify(store));
 
-const areaClass = a => a === 'Emeryville' ? 'p-emv' : a === 'Berkeley' ? 'p-bky' : 'p-oak';
+const areaClass = a => a === 'Emeryville' ? 'p-emv' : a === 'Berkeley' ? 'p-bky' : a === 'El Cerrito' ? 'p-elc' : 'p-oak';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const tel = p => (p || '').replace(/[^0-9+]/g, '');
 
