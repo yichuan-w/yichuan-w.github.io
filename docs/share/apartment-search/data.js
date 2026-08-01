@@ -339,19 +339,13 @@ const DATA = [
 // 4 confirmed: MacArthur Commons 11:00, Atlas 12:00, The Shattuck 1:30, Emme 3:00, The Emery 4:00.
 // 26Fifty (was 1:30) cancelled. Ke Lin joins from 2:30; Emme and The Emery are 2BR conversations.
 const PLAN = [
-  { time: '7:30 AM', kind: 'drive', html: '<b>Wake up.</b> <span class="w">Long day — first walk-in at 9:15, last stop closes at 6:00. If you would rather sleep, the one droppable item is Bakery Lofts; skip it and you can wake at 8:15 and start at Hollis Oak instead.</span>' },
+  { time: 'TONIGHT', kind: 'drive', html: '<b>Pack the folder before bed.</b> <span class="w">Do this now and a 10:00 wake-up actually works; leave it to the morning and it does not. Government photo ID (Atlas AND The Emery both require it and will turn you away — Ke Lin needs hers too for the 4:00) · pay stubs or offer letter · bank statement · a card for app fees (~$250 if you apply anywhere: $62 Mayfair, $55 Atlas, $50 Emery, $48 Emme, $40 Shattuck) · car charger · water. Optional: pre-screen Mayfair\'s <a href="https://my.matterport.com/show/?m=A9KVekUkwCt" target="_blank" rel="noopener">2BR Matterport tour</a> so you can decide about the 5:15 before you commit to driving to El Cerrito.</span>' },
 
-  { time: '8:00 AM', kind: 'drive', html: '<b>Pack the folder.</b> <span class="w">Government photo ID (Atlas AND The Emery both require it and will turn you away without one — Ke Lin needs hers too for the 4:00) · pay stubs or offer letter · bank statement · a card for app fees, budget ~$250 if you apply anywhere ($62 Mayfair, $55 Atlas, $50 Emery, $48 Emme, $40 Shattuck) · phone charger and a car charger · water. Screenshot this page in case you lose signal.</span>' },
+  { time: '9:30 AM', kind: 'drive', html: '<b>Wake up.</b> <span class="w">Bakery Lofts and Hollis Oak are cancelled, so the morning is free — but your first appointment is still 11:00 and MacArthur is ~15–18 min away. 9:30 gives you real margin. 10:00 works ONLY if the folder is already packed, and it leaves you almost none: you would be walking out at 10:40 for an 11:00. That matters because the very next link (MacArthur → Atlas, 12:00 sharp, 30-min slot) has no slack either — being late to the first cascades into losing the second.</span>' },
 
-  { time: '8:45 AM', kind: 'drive', html: 'Leave Berkeley → 4700 Adeline St, Emeryville, ~12–15 min.' },
+  { time: '10:00 AM', kind: 'tentative', html: '📞 <b>Two calls, both before you drive</b> — do them at home where you can write things down.<br><span class="w"><b>Mayfair Station (510) 519-5681</b> — ask for <b>5:15 PM today</b>. Open 9–6, closed Sunday, no online booking, so this is the only shot. Lead with "any 2-bedrooms coming up?" — they have zero 2BR and one studio (Aug 22). If the answer is no, skip the 5:15.<br><b>Oak Walk (510) 319-8189</b> — 4098 San Pablo Ave, Emeryville. #214 is a 1,405 sqft 2bd/2.5ba townhome at $3,150 = <b>$1,575 each</b>. If they can take you late today, <b>go here instead of Mayfair</b> — closer, cheaper per person, and it actually has 2BR stock. Their Saturday hours are the one thing I could not find anywhere.</span>' },
 
-  { time: '9:00 AM', kind: 'tentative', html: '📞 <b>CALL MAYFAIR STATION — (510) 519-5681</b> · <span class="w">the moment they open</span><br><span class="w">Book <b>~5:15 PM today</b>. They close at 6:00 and are CLOSED Sunday, so today is the only option. Call from the car before you walk into Bakery Lofts — the 5 PM slot is most likely free right at opening. <b>Lead with "do you have any 2-bedrooms coming up?"</b> — they have ZERO 2BR right now and only one studio (#513, Aug 22), so if the 2BR answer is no, consider spending 5:15 somewhere better. Backup call window if you miss 9:00: the 12:35 lunch break.</span>' },
-
-  { time: '9:15 AM', kind: 'tentative', html: '<b>Bakery Lofts</b> — 4700 Adeline St, Emeryville · <span class="w">$2,020–$2,090 · 514 sqft · walk-in, opens 9:00</span><br><span class="w">Cheapest large studio in the search. Droppable if you want the extra sleep.</span>' },
-
-  { time: '10:00 AM', kind: 'tentative', html: '<b>Hollis Oak</b> — 3250 Hollis St · <span class="w">$2,314 · 445 sqft · ~5 min away</span><br><span class="w">Open house 9–5, just walk in. Only ~2 units left.</span>' },
-
-  { time: '10:45 AM', kind: 'drive', html: 'Drive to MacArthur BART, ~8 min.' },
+  { time: '10:30 AM', kind: 'drive', html: 'Leave Berkeley → 540 39th St, Oakland, ~15–18 min.' },
 
   { time: '11:00 AM', html: '<b>MacArthur Commons</b> ✅ — 540 39th St, Oakland · <span class="w">studio $2,732–$3,143 · 563 sqft · <a href="https://schedule.tours/m/nElopr" target="_blank" rel="noopener">directions</a></span><br><span class="w">Three studios landing Aug 23 / Sep 15 / Sep 21. They have seven 2BR plans but zero available — ask to be waitlisted, the location is good (11 min to Soda). $1,000 look-and-lease.</span>' },
 
@@ -375,8 +369,20 @@ const PLAN = [
 
   { time: '5:15 PM', kind: 'tentative', html: '<b>Mayfair Station</b> — 11600 San Pablo Ave, El Cerrito · <span class="w">needs the 9:00 AM phone call · they close at 6:00</span><br><span class="w">⚠ Go only if the morning call turned up a 2BR. As of last night: <b>zero 2BR</b>, and one studio (#513, 387 sqft, $2,341, <b>Aug 22</b>) priced at the top of this building\'s own historical range. Commute is 20–30 min real-world, outside your target. If a 2BR does open, historical 2x2s were $2,269–$3,432 for 898–1,097 sqft = <b>$1,135–$1,716 each</b>, which would be the best value anywhere — that is the whole reason to bother. Pre-screen tonight via their <a href="https://my.matterport.com/show/?m=A9KVekUkwCt" target="_blank" rel="noopener">2BR Matterport tour</a>.</span>' },
 
-  { time: '6:00 PM', kind: 'drive', html: '<b>Done — 8 properties.</b> <span class="w">If a 2BR clicked, move tonight: 14 buildings have 2BR available right now and the good per-person deals will not sit. MacArthur has a $1,000 look-and-lease, Atlas $250, and most others will match within 48h of a tour if you ask. Tomorrow (Sunday) Mayfair is closed but Oak Walk is worth chasing — $3,150 for a 1,405 sqft townhome is $1,575 each.</span>' },
+  { time: '6:00 PM', kind: 'drive', html: '<b>Done — 6 properties.</b> <span class="w">If a 2BR clicked, move tonight: 14 buildings have 2BR available right now and the good per-person deals will not sit. MacArthur has a $1,000 look-and-lease, Atlas $250, and most others will match within 48h of a tour if you ask. See the Sunday list below — the two cheapest things in this whole search are the ones you just cancelled, and both are still reachable tomorrow.</span>' },
 ];
+
+// ---------------------------------------------------------------- Sunday backfill
+const SUNDAY = [
+  { time: '9:00–4:00', html: '<b>Bakery Lofts</b> — 4700 Adeline St, Emeryville · <span class="w">$2,020–$2,090 · 514 sqft · (510) 715-2599</span><br><span class="w">✅ <b>Open Sunday 9–4, no appointment needed</b> — just walk in. This is the <b>cheapest large studio in the entire search</b> and $312–$700/mo less than anything you toured Saturday. Three units: 514 sqft now, 518 sqft Aug 22, 791 sqft Sep 6. Do not let this one go.</span>' },
+
+  { time: 'by appt', html: '<b>Hollis Oak</b> — 3250 Hollis St · <span class="w">$2,314 · 445 sqft · (510) 350-8224</span><br><span class="w">⚠ Saturday was their open house; <b>Sunday is appointment-only</b>, so you have to call. Down to ~2 units (#234 available now). Still cheaper AND bigger than MacArthur, Atlas, or The Emery.</span>' },
+
+  { time: 'call first', html: '<b>Oak Walk</b> — 4098 San Pablo Ave, Emeryville · <span class="w">(510) 319-8189 · ~11 min to Soda Hall</span><br><span class="w">🎯 <b>Best 2BR value found anywhere.</b> #214 is a 1,405 sqft 2bd/2.5ba townhome at $3,150 = <b>$1,575 each</b> (Sep 6). Also #312 1,327 sqft + den $3,460 (Aug 16), #1099 1,140 sqft $3,200 (Sep 16). Sunday hours unknown — call. If you only do one thing Sunday, do this.</span>' },
+
+  { time: 'weekday', html: '<b>3900 Adeline</b> — 3900 Adeline St, Emeryville · <span class="w">$2,280–$2,380 · 326 sqft · (510) 653-3900</span><br><span class="w">Office is M–F 8–5 and weekends are appointment-only, so this is easiest on a weekday evening. #213 $2,280 and #206 $2,380 both available now. Free high-speed internet, EV garage.</span>' },
+];
+
 
 // ---------------------------------------------------------------- Call list
 const CALLS = [

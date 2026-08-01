@@ -141,6 +141,9 @@ document.getElementById('export').onclick = () => {
 document.getElementById('plan').innerHTML = '<ul class="sched">' + PLAN.map(p =>
   `<li class="${esc(p.kind || '')}"><span class="t">${esc(p.time)}</span> ${p.html}</li>`).join('') + '</ul>';
 
+document.getElementById('sunday').innerHTML = '<ul class="sched">' + SUNDAY.map(p =>
+  `<li><span class="t">${esc(p.time)}</span> ${p.html}</li>`).join('') + '</ul>';
+
 document.getElementById('calls').innerHTML = CALLS.map((c, i) => {
   const ck = 'call' + i;
   const checked = store[ck]?.done ? ' checked' : '';
