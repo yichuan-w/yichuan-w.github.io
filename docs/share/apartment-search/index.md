@@ -11,7 +11,8 @@ hide:
 # Apartment Search — Berkeley · Emeryville · North Oakland
 
 **Target:** studio · $2,000–$3,000/mo · ≤15 min drive to Soda Hall  
-**Tour day:** Saturday, August 1, 2026 · **Researched:** July 31, 2026
+**Tour day:** Saturday, August 1, 2026 — **4 tours confirmed** (11:00 MacArthur Commons · 12:00 Atlas · 1:30 26Fifty · 3:00 Emme)  
+**Researched:** July 31, 2026
 
 <div class="apt-stats" id="stats"></div>
 

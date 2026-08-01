@@ -15,6 +15,8 @@
 /* ---- stats ---- */
 .apt-stats { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px; }
 .apt-stat { background: #f6f8fb; border: 1px solid #e6eaf0; border-radius: 8px; padding: 8px 16px; }
+.apt-stat.booked { background: #ecfdf5; border-color: #a7f3d0; }
+.apt-stat.booked b { color: #15803d; }
 .apt-stat b { display: block; font-size: 1.2rem; color: #0f172a; line-height: 1.2; }
 .apt-stat span { font-size: .64rem; color: #64748b; text-transform: uppercase; letter-spacing: .05em; }
 

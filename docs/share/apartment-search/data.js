@@ -98,6 +98,13 @@ const DATA = [
     url: 'https://prometheusapartments.com/ca/emeryville-apartments/icon-at-park',
     note: 'Prometheus. Floor-plan module is JS-rendered so nothing could be read. Phone IS verified from the official site — just call.' },
 
+  { id: 'atlas', name: 'Atlas', area: 'North Oakland',
+    addr: '385 14th St, Oakland 94612', rent: 3416, rentHi: 3532, sqft: 460, conf: 'feed',
+    drive: 19, bike: 26, phone: '(341) 201-5804', sat: '10–6',
+    tour: 'booked', tourTime: '12:00 PM', avail: '3 studios now — ALL over $3,400', availGood: false,
+    url: 'https://www.rentcafe.com/apartments/ca/oakland/atlas-1/default.aspx',
+    note: '⚠ I originally left this off the list: every actually-available studio is $3,416–$4,084, i.e. 14–36% over your ceiling, and at ~19 min it is outside your commute window. The Rockridge plan advertises "from $2,462" but no unit at that price exists right now. Greystar. Tour is 30 min and they REQUIRE a government photo ID for everyone 18+. Deposit $600, app $55, $250 look-and-lease.' },
+
   // ---------------------------------------------------------------- Berkeley
   { id: '1817-oxford', name: '1817 Oxford St', area: 'Berkeley',
     addr: '1817 Oxford St, Berkeley 94709', rent: 1895, rentHi: 2095, sqft: 407, conf: 'feed',
@@ -172,9 +179,9 @@ const DATA = [
   { id: '26fifty', name: '26Fifty', area: 'Berkeley',
     addr: '2650 Telegraph Ave, Berkeley', rent: 2195, rentHi: 3045, sqft: 382, conf: 'feed',
     drive: 10, bike: 12, phone: '(628) 233-5026', sat: '11–3',
-    tour: null, avail: '0 studios · 1BR Nov 30', availGood: false,
+    tour: 'booked', tourTime: '1:30 PM', avail: '⚠ feeds showed 0 studios — you booked anyway', availGood: false,
     url: 'https://www.rentable.co/berkeley-ca/26fifty',
-    note: 'Six studio plans $2,195–$3,045. All rented, but ask about August turnover. Narrow Saturday window (11–3).' },
+    note: '⚠ As of July 31 every studio here showed RENTED (only vacancy was a 1BR on Nov 30). Your 1:30 booking suggests something opened — confirm on the phone which unit you are seeing. Also note their Saturday window is only 11–3, so 1:30 is close to closing. Six studio plans, 382–566 sqft, $2,195–$3,045. Deposit $1,000.' },
 
   { id: 'panoramic-northside', name: 'Panoramic Northside', area: 'Berkeley',
     addr: '1752 Shattuck Ave, Berkeley', rent: 2521, rentHi: 2888, sqft: null, conf: 'feed',
@@ -264,7 +271,7 @@ const DATA = [
   { id: 'macarthur-commons', name: 'MacArthur Commons', area: 'North Oakland',
     addr: '540 39th St, Oakland 94609', rent: 2732, rentHi: 3143, sqft: 563, conf: 'feed',
     drive: 14, bike: 19, phone: '(341) 218-2084', sat: 'Not published — call',
-    tour: null, avail: '3 studios: Aug 23 · Sep 15 · Sep 21', availGood: true,
+    tour: 'booked', tourTime: '11:00 AM', avail: '3 studios: Aug 23 · Sep 15 · Sep 21', availGood: true,
     url: 'https://www.apartmentlist.com/ca/oakland/macarthur-commons--2',
     note: 'BEST August-timing match — three studios landing in your window at 563 sqft. Right at MacArthur BART. Plan is confusingly labelled "Jr. 1 Bedroom B" but listed as a studio. $1,000 look-and-lease. Hours unpublished everywhere.' },
 
@@ -319,68 +326,103 @@ const DATA = [
 ];
 
 // ---------------------------------------------------------------- Saturday plan
+// 4 confirmed appointments: MacArthur Commons 11:00, Atlas 12:00, 26Fifty 1:30, Emme 3:00.
+// Those are fixed, so the day is built around them. Everything else is optional filler.
 const PLAN = [
-  { time: '8:45 AM', kind: 'drive', html: 'Leave Berkeley. Coffee somewhere on Adeline. <span class="w">Bring: photo ID, pay stubs / offer letter, bank statement, and a card for app fees ($35–$59 each).</span>' },
-  { time: '9:30 AM', html: '<b>Bakery Lofts</b> — 4700 Adeline St, Emeryville · <span class="w">$2,020–$2,090 · 514 sqft · opens 9:00</span><br><span class="w">Cheapest real option. Ask: what is parking, and is the 514 sqft unit the one available now?</span>' },
-  { time: '10:45 AM', html: '<b>3900 Adeline</b> — 3900 Adeline St, Emeryville · <span class="w">$2,280–$2,380 · 326 sqft · 4 min drive</span><br><span class="w">⚠ Weekend is appointment-only — this one does NOT work as a walk-in. Must be booked tonight.</span>' },
-  { time: '12:00 PM', html: '<b>Hollis Oak</b> — 3250 Hollis St · <span class="w">$2,314 · 445 sqft · 5 min drive</span><br><span class="w">Only ~2 units left. Ask about the big 826–921 sqft studios and when they turn over.</span>' },
-  { time: '12:45 PM', kind: 'drive', html: 'Lunch — Emeryville Public Market or Temescal. <span class="w">Use this window to log notes in the table above while it is fresh.</span>' },
-  { time: '1:45 PM', html: '<b>The Shattuck</b> — 2701 Shattuck Ave, Berkeley · <span class="w">$2,395–$2,595 · 310–347 sqft · 10 min drive</span><br><span class="w">Seven studios available — your best odds of actually signing something. SG Real Estate, appointment required.</span>' },
-  { time: '3:00 PM', html: '<b>Emme</b> — 6350 Christie Ave, Emeryville · <span class="w">already booked ✅ · 12 min drive</span><br><span class="w">⚠ Call first: every aggregator shows all 25 studios leased. Confirm the studio exists before you burn the slot.</span>' },
-  { time: '4:15 PM', kind: 'tentative', html: '<b>Aquatic Ashby</b> — 3006 San Pablo Ave · <span class="w">$2,495 · 434 sqft · 8 min drive</span><br><span class="w">Optional 6th. Same SG phone call as The Shattuck, so it costs you nothing to add. Drop it if you are tired.</span>' },
-  { time: '5:00 PM', kind: 'drive', html: 'Done. <span class="w">If anything felt right, apply that evening — 19th &amp; Harrison, MacArthur Commons and Assembly all have 48-hour look-and-lease bonuses of $500–$1,000, and other buildings likely do too if you ask.</span>' },
+  { time: '8:45 AM', kind: 'drive', html: 'Leave. <b>Bring a government photo ID</b> — Atlas requires it for everyone 18+ and will turn you away without it. Also bring pay stubs / offer letter, bank statement, and a card for app fees ($35–$59 each).' },
+
+  { time: '9:15 AM', kind: 'tentative', html: '<b>Bakery Lofts</b> — 4700 Adeline St, Emeryville · <span class="w">$2,020–$2,090 · 514 sqft · walk-in, opens 9:00</span><br><span class="w">Optional but I would protect this one — cheapest large studio in the whole search, and cheaper than all four of your booked tours.</span>' },
+
+  { time: '10:15 AM', kind: 'drive', html: 'Drive Emeryville → MacArthur BART, ~8 min. <span class="w">Slack built in on purpose; the next three stops are back-to-back.</span>' },
+
+  { time: '11:00 AM', html: '<b>MacArthur Commons</b> ✅ — 540 39th St, Oakland · <span class="w">$2,732–$3,143 · 563 sqft · <a href="https://schedule.tours/m/nElopr" target="_blank" rel="noopener">directions</a></span><br><span class="w">Best August-timing match you have: three studios landing Aug 23 / Sep 15 / Sep 21. Ask which one you are seeing, and about the $1,000 look-and-lease.</span>' },
+
+  { time: '11:45 AM', kind: 'drive', html: '⚠ <b>TIGHTEST LINK OF THE DAY.</b> MacArthur → Atlas is ~10–12 min and Atlas starts at 12:00 sharp with only a 30-min slot. <span class="w">If the MacArthur tour runs long, text Atlas rather than just arriving late.</span>' },
+
+  { time: '12:00 PM', html: '<b>Atlas</b> ✅ — 385 14th St, Oakland · <span class="w">30 min · available studios $3,416–$4,084</span><br><span class="w">⚠ Every available studio here is over your ceiling and it is ~19 min to Soda Hall. Call first and ask if anything is under $3,000 — if not, cancel and take a real lunch, or walk into Monogram instead (421 25th St, $2,350–$2,519, 520 sqft, open 9–6, 1.5 mi away).</span>' },
+
+  { time: '12:35 PM', kind: 'drive', html: 'Lunch in Downtown/Uptown Oakland, then drive to Berkeley (~18 min). <span class="w">Log your notes in the table above while the first three are still fresh.</span>' },
+
+  { time: '1:30 PM', html: '<b>26Fifty</b> ✅ — 2650 Telegraph Ave, Berkeley · <span class="w">$2,195–$3,045 · 382–566 sqft · 10 min to Soda Hall</span><br><span class="w">⚠ Their Saturday hours are only 11–3, so you are near closing — do not run late from Atlas. Also: as of yesterday every studio showed rented, so confirm which unit exists.</span>' },
+
+  { time: '2:20 PM', kind: 'drive', html: 'Berkeley → Emeryville, ~14 min.' },
+
+  { time: '3:00 PM', html: '<b>Emme</b> ✅ — 6350 Christie Ave, Emeryville · <span class="w">$1,859–$2,487 · 423–573 sqft</span><br><span class="w">⚠ Still unresolved: every aggregator shows all 25 studios leased. Call before you drive out — this is your most likely wasted slot.</span>' },
+
+  { time: '3:50 PM', kind: 'tentative', html: '<b>Hollis Oak</b> — 3250 Hollis St · <span class="w">$2,314 · 445 sqft · ~7 min from Emme · closes 5:00</span><br><span class="w">Optional. Only ~2 units left, and it is cheaper AND bigger than anything you have booked.</span>' },
+
+  { time: '4:45 PM', kind: 'tentative', html: '<b>The Shattuck</b> — 2701 Shattuck Ave, Berkeley · <span class="w">$2,395–$2,595 · 310–347 sqft · ~10 min</span><br><span class="w">Optional, needs an SG appointment booked tonight. Seven studios available — by far your best odds of actually signing something, though the units are small.</span>' },
+
+  { time: '5:30 PM', kind: 'drive', html: 'Done. <span class="w">If anything clicked, apply that evening — MacArthur Commons has a $1,000 look-and-lease, Atlas $250. Ask every building; most will match if you apply within 48h of touring.</span>' },
 ];
 
 // ---------------------------------------------------------------- Call list
 const CALLS = [
-  { name: '1. SG Real Estate — books TWO stops in one call', phone: '(510) 704-1240',
+  { name: '1. Atlas — decide whether this slot is worth keeping', phone: '(341) 201-5804',
     lines: [
-      'Books <b>The Shattuck</b> (1:45 PM) and <b>Aquatic Ashby</b> (4:15 PM). Both are SG properties with no per-building office, so one call covers both.',
-      'SG requires a guest card / appointment — they explicitly will not take walk-ins.',
-      'While you have them: ask about <b>Aquatic Shattuck</b> (#509, Aug 18) and <b>The Kittredge</b> too.',
-      'Their screening bar: FICO ≥ 650, 3× income, $40 per adult application fee.',
+      '⚠ All three available studios are <b>$3,416–$4,084</b>. The "from $2,462" figure on their Rockridge plan does not match any real unit right now.',
+      'At ~19 min it is also outside your 10–15 min target. This is your weakest booking.',
+      'If they have nothing under $3,000, cancel via <a href="http://nest.io/sched/1gty4f-kfqb/" target="_blank" rel="noopener">their reschedule link</a> and either take a real lunch or walk into <b>Monogram</b> (421 25th St, $2,350–$2,519 for 520 sqft, open 9–6 seven days, no appointment needed).',
+      'If you do go: government photo ID is mandatory for everyone 18+.',
     ],
-    script: '"Hi, I\'m looking for a studio for an August move-in. I\'d like to tour The Shattuck and Aquatic Ashby tomorrow, Saturday — could I get 1:45 and 4:15? I can submit a guest card right now."' },
+    script: '"I have a noon tour tomorrow. Do you have any studio available under $3,000? The listings I see are all $3,400+."' },
 
-  { name: '2. 3900 Adeline — mandatory, weekends are appointment-only', phone: '(510) 653-3900',
+  { name: '2. Emme — reconfirm before you drive out', phone: '(510) 757-1506',
     lines: [
-      'Office is M–F 8–5 and <b>"weekends by appointment only."</b> If you do not book tonight, tomorrow\'s 10:45 slot does not exist.',
-      'Two units are showing available now: #213 at $2,280 and #206 at $2,380, both 326 sqft.',
-      'Ask what the garage costs — it is not published, and 326 sqft is tight enough that fees matter.',
-      'Alternate line if the main one fails: 341-999-5567.',
+      '⚠ You have 3:00 PM booked, but <b>every aggregator shows all 25 studio units leased.</b>',
+      'Get the specific unit number and price confirmed, or you will burn the slot.',
+      'If they have nothing: ask to be waitlisted here <i>and</i> at <b>Avenue 64</b> (same Essex management, 6399 Christie, $1,969–$2,389 for 545–553 sqft — better value than Emme).',
     ],
-    script: '"I saw units 213 and 206 listed as available. Can I book a Saturday morning appointment around 10:45? And what does parking run per month?"' },
+    script: '"I have a 3 PM tour tomorrow. Can you confirm which studio unit I\'ll be seeing and the current price? I want to be sure it\'s still available."' },
 
-  { name: '3. Emme — reconfirm before you drive out', phone: '(510) 757-1506',
+  { name: '3. 26Fifty — confirm the unit exists, and watch the clock', phone: '(628) 233-5026',
     lines: [
-      '⚠ You have 3:00 PM on the books, but <b>every aggregator shows all 25 studio units leased.</b> Either your info is fresher than theirs, or the unit is gone.',
-      'Confirm the specific unit number and price before you spend an hour on it.',
-      'If it genuinely has nothing: ask to be waitlisted here <i>and</i> at <b>Avenue 64</b> (same Essex management, 6399 Christie, studios $1,969–$2,389 at 545–553 sqft — better value than Emme if one opens).',
+      'As of July 31 <b>all six studio plans showed rented</b> — the only vacancy was a 1BR on Nov 30. Your booking suggests something turned over, so ask which unit and what price.',
+      '⚠ Their Saturday hours are <b>11:00–3:00 only</b>. A 1:30 tour is close to closing, so do not run late from Atlas.',
+      'Prices range $2,195 (382 sqft) to $3,045 (566 sqft) — ask where your unit sits in that band.',
     ],
-    script: '"I have a 3 PM tour tomorrow. Can you confirm which studio unit I\'ll be seeing and the current price? I want to make sure it\'s still available before I come out."' },
+    script: '"I have a 1:30 tour tomorrow — which studio unit will I be seeing, and what\'s the rent? I saw everything listed as rented."' },
 
-  { name: '4. Bakery Lofts — confirm the 9:30 and the Saturday hours', phone: '(510) 715-2599',
+  { name: '4. SG Real Estate — books The Shattuck for the 4:45 slot', phone: '(510) 704-1240',
     lines: [
-      'Saturday 9–5 is aggregator-sourced, not from their own site. Worth one call to be sure before you build the morning around it.',
-      'Three studios showing: 514 sqft now, 518 sqft Aug 22, 791 sqft Sep 6, at $2,020–$2,090.',
-      'This is the cheapest genuinely-available option in the whole search — protect the slot.',
+      '<b>The Shattuck</b> has seven studios at $2,395–$2,595 — the deepest in-budget inventory anywhere in this search. Ask for ~4:45 PM.',
+      'SG is appointment-only with no per-building office; they will not take a walk-in.',
+      'Same call covers <b>Aquatic Ashby</b> ($2,495, 434 sqft, available now) and <b>Aquatic Shattuck</b> (#509, Aug 18) as backups.',
+      'Their bar: FICO ≥ 650, 3× income, $40 per adult application.',
     ],
-    script: '"Are you open tomorrow Saturday morning? I\'d like to see the 514 sqft studio at 9:30 if possible."' },
+    script: '"I\'m looking for a studio for August. Could I tour The Shattuck tomorrow around 4:45? I can submit a guest card now."' },
 
-  { name: '5. Hollis Oak — confirm the noon slot', phone: '(510) 584-5994',
+  { name: '5. Bakery Lofts — confirm Saturday hours and hold 9:15', phone: '(510) 715-2599',
     lines: [
-      'Listed as open 9–5 all seven days, so a walk-in should work — but they are down to ~2 units, so call and get your name on one.',
-      'Unit #234, 445 sqft, $2,314, available now.',
-      'Phone is aggregator-listed and was not verifiable on hollisoak.com, so it may not connect. Fall back to the website form.',
+      '<b>$2,020–$2,090 for 514 sqft</b> — best price-per-sqft in the entire search, and cheaper than all four of your booked tours.',
+      'Saturday 9–5 is aggregator-sourced, not from their own site, so confirm before you build the morning around it.',
+      'Three studios: 514 sqft now, 518 sqft Aug 22, 791 sqft Sep 6.',
     ],
-    script: '"Is unit 234 still available? Can I come see it around noon tomorrow?"' },
+    script: '"Are you open tomorrow morning? I\'d like to see the 514 sqft studio around 9:15."' },
+
+  { name: '6. Hollis Oak — hold #234 for ~3:50', phone: '(510) 584-5994',
+    lines: [
+      '$2,314 for 445 sqft — cheaper and bigger than MacArthur, Atlas, or 26Fifty. Down to ~2 units.',
+      'Open 9–5 all seven days so a walk-in should work, but call to hold it.',
+      'Phone is aggregator-listed and was not verifiable on hollisoak.com, so it may not connect — fall back to the site form.',
+    ],
+    script: '"Is unit 234 still available? Could I come by around 3:50 tomorrow?"' },
+
+  { name: '7. 3900 Adeline — no longer fits Saturday, book another day', phone: '(510) 653-3900',
+    done: true,
+    lines: [
+      'Your four appointments squeezed this out. It is <b>weekends by appointment only</b> (office M–F 8–5), so it cannot be a drop-in.',
+      'Still worth seeing: #213 ($2,280) and #206 ($2,380) available now, 326 sqft, free high-speed internet, EV garage.',
+      'Ask for Sunday or a weekday evening. Also ask what the garage costs — 326 sqft is tight enough that fees matter.',
+    ],
+    script: '"I can\'t make Saturday — could I see units 213 or 206 on Sunday or one evening this week? And what does parking run per month?"' },
 
   { name: 'Optional — waitlist calls, no tour needed', phone: '(510) 480-3489',
     done: true,
     lines: [
-      'These three have the best studio <i>pricing</i> in Emeryville but zero current inventory — roughly 44 studio units between them, so turnover is regular. Two minutes each to get listed.',
-      '<b>Avenue 64</b> (510) 480-3489 · <b>Parc on Powell</b> via Equity site · <b>Panoramic Northside</b> (510) 306-7408 — the last one is a 6-minute drive to Soda Hall.',
-      'Also worth it: <b>Jones Berkeley</b> (877) 384-9981 has 170 units and all 16 studios leased, so something will open.',
+      'Best studio <i>pricing</i> in the area but zero current inventory — ~44 studio units between them, so turnover is regular. Two minutes each.',
+      '<b>Avenue 64</b> (510) 480-3489 · <b>Parc on Powell</b> via the Equity site · <b>Panoramic Northside</b> (510) 306-7408, only a 6-min drive to Soda Hall.',
+      'Also <b>Jones Berkeley</b> (877) 384-9981 — 170 units with all 16 studios leased, so something will open.',
     ],
-    script: '"I\'m not looking to tour today — I just want to be notified the moment a studio opens up. Can you add me to the waitlist?"' },
+    script: '"I don\'t need a tour today — I just want to be notified the moment a studio opens. Can you add me to the waitlist?"' },
 ];

@@ -82,7 +82,8 @@ function render() {
     <div class="apt-stat"><b>${rows.length}</b><span>shown</span></div>
     <div class="apt-stat"><b>${med ? '$' + med.toLocaleString() : '—'}</b><span>median studio</span></div>
     <div class="apt-stat"><b>${rows.filter(r => r.availGood).length}</b><span>with real availability</span></div>
-    <div class="apt-stat"><b>${rows.filter(r => r.tour === 'walkin').length}</b><span>walk-in friendly</span></div>`;
+    <div class="apt-stat"><b>${rows.filter(r => r.tour === 'walkin').length}</b><span>walk-in friendly</span></div>
+    <div class="apt-stat booked"><b>${DATA.filter(r => r.tour === 'booked').length}</b><span>tours booked</span></div>`;
 
   document.querySelectorAll('.apt-status').forEach(el => el.onchange = e => {
     (store[e.target.dataset.id] ||= {}).status = e.target.value; save(); render();
