@@ -44,8 +44,10 @@ Three lines in both plots:
 - ⚪ **grey** — the same unified model, **plus batch-invariant kernels** (BI).
 
 The ordering is the same on both sides: grey has the **lowest** logprob gap and the
-**highest** reward. Closing the numerical mismatch is not just cosmetic — it buys
-real reward on a linear-attention model under async RL.
+**highest** reward. **In this configuration**, closing the numerical mismatch does
+show a reward gain. Whether it holds up across other off-policy windows and other
+workloads — and what it costs — is the rest of the post, and the answer is not a clean
+yes.
 
 The single most telling point is at **step 0**, where the grey curve's
 `bit_wise/logprob_diff/abs_mean` is **exactly 0**. At step 0 nothing is stale yet, so
@@ -256,9 +258,10 @@ decode to the recurrent kernel**. For training, use the **recurrent kernel for t
 forward pass and the chunked kernel for the backward pass** — only the forward
 computation needs to be batch-invariant.
 
-Going all-recurrent on the forward costs less than it sounds: in an RL step the
-trainer is the cheap part anyway, so trading the chunked forward for a recurrent one
-barely moves the wall clock.
+Going all-recurrent on the forward is the sensible direction for the trade, rather
+than a free one: in a normal RL step the trainer is not the bottleneck — generation is
+— so the trainer is the right side to spend on. What it actually costs in trainer
+throughput we measure in §4.2 (Finding 3).
 
 The rest is the easy part: **disable split-K in attention, and patch in Thinking
 Machines' batch-invariant GEMM.**
@@ -498,14 +501,14 @@ unambiguous — but the metric that matters moves within noise. Whatever the sur
 was struggling with at these off-policy windows, it apparently was not the numerical
 term.
 
-**Finding 3 — BI costs about half the trainer throughput. The unified model itself
-costs nothing.**
+**Finding 3 — BI costs 2–3× trainer throughput. The unified model costs nothing — if
+anything it is faster.**
 
 <div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;" markdown="1">
 
 <div style="flex: 1 1 0; min-width: 0;" markdown="1">
 
-![Trainer tokens per second at off-policy 4: the BI run (orange) sits near 9,000 to 10,000 while vLLM (blue) and the unified model without BI (green) overlap each other near 16,000 to 19,000, both sagging slowly over training](../asset/ti-mismatch-dapo-perf-off4.png)
+![Trainer tokens per second per full step at off-policy 4: the unified model without BI (green) runs highest around 11,000 to 15,000 and sags over training, vLLM (blue) sits below it around 9,000 to 12,500, and the BI run (orange) is far lower and violently spiky, swinging between near zero and 9,000](../asset/ti-mismatch-dapo-perf-off4.png)
 
 *`offpolicy = 4`*
 
@@ -513,7 +516,7 @@ costs nothing.**
 
 <div style="flex: 1 1 0; min-width: 0;" markdown="1">
 
-![Trainer tokens per second at off-policy 12: the BI run (grey) is flat near 9,700 while vLLM native (red) and the unified model without BI (brown) overlap near 19,000 and stay flat](../asset/ti-mismatch-dapo-perf-off12.png)
+![Trainer tokens per second per full step at off-policy 12: the unified model without BI (brown) is highest and flat near 14,500, vLLM native (red) sits below it near 12,200, and the BI run (grey) is flat near 8,400 with a few sharp dips](../asset/ti-mismatch-dapo-perf-off12.png)
 
 *`offpolicy = 12`*
 
@@ -521,29 +524,33 @@ costs nothing.**
 
 </div>
 
-*`perf/trainer/tokens_per_second_fwd_bwd` — the trainer's own forward+backward
-throughput.*
+*`perf/trainer/tokens_per_second_full_step` — the same metric we report for the other
+two workloads below, so the numbers are comparable across all three.*
 
 Three things fall out.
 
-**BI costs roughly 2×.** The BI runs sit at ~9–10k tokens/s against ~16–20k without —
-call it half the throughput. That is the recurrent forward, split-K disabled, and the
-batch-invariant GEMM, all of which trade occupancy for a fixed reduction order.
+**BI costs 2–3×.** At `offpolicy = 12` the BI run holds ~8.4k tokens/s against ~14.5k
+without. At `offpolicy = 4` it is worse and much spikier, averaging roughly ~4k against
+~12k. That is the recurrent forward, split-K disabled, and the batch-invariant GEMM,
+all of which trade occupancy for a fixed reduction order. Note that the penalty is not
+a constant — it depends on how much work is in flight to hide the slower kernels
+behind.
 
-**The unified model is free.** vLLM native and the unified model without BI lie on top
-of each other at both windows. Sharing one model definition between trainer and
-generator — the §3.1 half of the story — costs nothing measurable. The entire bill is
-the aligned *kernels*.
+**The unified model is free — slightly better than free.** vLLM native actually runs
+*below* the unified model without BI (~12.2k against ~14.5k at `offpolicy = 12`). So
+sharing one model definition between trainer and generator — the §3.1 half of the
+story — costs nothing, and on this workload it pays a little. **The entire bill is the
+aligned *kernels*.**
 
-**A wider window raises throughput.** At `offpolicy = 4` every curve sags over
-training (~19k → ~16.5k); at `offpolicy = 12` they are flat near ~19k. More rollouts
-in flight means less time waiting for the tail — which is exactly why anyone wants a
-wide window in the first place.
+**A wider window raises throughput, and BI needs it most.** Every curve is higher and
+flatter at `12` than at `4`. BI gains the most from the wider window (~4k → ~8.4k):
+being slower per step, it has more latency to hide, and a wider window is what gives
+it enough in-flight rollouts to hide it behind.
 
 Put the three findings together and the trade is explicit: **BI buys a provably zero
-mismatch and a logprob gap that will not explode, at about half the trainer throughput
-and no clear accuracy gain.** We are not going to tell you which side of that to pick.
-The numbers are on the table.
+mismatch and a logprob gap that will not explode, at 2–3× the trainer throughput and
+no clear accuracy gain.** We are not going to tell you which side of that to pick. The
+numbers are on the table.
 
 <!-- TODO: MoE — Qwen3.5-30B-A3B. Same three alignment levels and the same
 offpolicy = 4 / 12 / 32 sweep, to check whether expert routing makes the mismatch
@@ -655,7 +662,9 @@ steps, then the BI curve sits a little above from ~55 to ~80, and both finish ar
 something — and it is still small enough that one seed cannot settle it.
 
 **Throughput:** and here is the bill. The BI arm runs at ~1.5–2k tokens/s against
-~7.5–10k without — a heavier penalty than the ~2× on MATH.
+~7.5–10k without — roughly 5×, against the 2–3× on MATH, and measured in the same
+metric. Long episodes are where the recurrent decode hurts most: a 64K context means
+far more tokens walked one at a time.
 
 Which is the trade in its sharpest form: the workload where bitwise parity finally
 looks like it helps is also the one where it costs the most.
@@ -674,8 +683,8 @@ policy and stops exploding at wide off-policy windows. On reward and final accur
 the payoff is real but small — a slight edge on the terminal agent, nothing separable
 from noise on math or search. The best case for it is the async-tolerance argument:
 with the numerical term gone, a wider off-policy window becomes safer to run. But
-**that comes at more than 2× overhead**, and at that price the cost/benefit does not
-close for a production run.
+**that comes at 2–3× trainer throughput on math and search, and ~5× on the terminal
+agent**, and at that price the cost/benefit does not close for a production run.
 
 So we would put it somewhere else in the workflow: **as a debugging tool.** When a
 post-training run misbehaves, turning BI on for 20 on-policy steps tells you something
@@ -693,9 +702,10 @@ run.
    optimizer. Methods built for staleness — [IcePop](https://arxiv.org/abs/2510.24788)
    and relatives — might interact with a zero-mismatch engine quite differently, since
    they are trying to solve the same problem from the algorithm side.
-3. **Making BI cheap.** The 2× is not a law of nature; it is the cost of the specific
-   kernels we wrote. If someone optimizes the recurrent forward and the batch-invariant
-   GEMM hard enough, the trade changes on its own — and then the answer above flips.
+3. **Making BI cheap.** The 2–5× is not a law of nature; it is the cost of the
+   specific kernels we wrote. If someone optimizes the recurrent forward and the
+   batch-invariant GEMM hard enough, the trade changes on its own — and then the answer
+   above flips.
 
 This post covers a narrow slice of a large problem, and we would rather be corrected
 than agreed with. If you have data that points the other way, or a workload where this
