@@ -269,21 +269,444 @@ Machines' batch-invariant GEMM.**
 
 ## 4. Results: async RL without the train/inference mismatch — performance or illusion?
 
-### 4.1 Why production is async (and why that changes everything)
+### 4.1 A recap of async RL
 
-### 4.2 Batch invariance meets async: the guarantee quietly stops mattering
+Sync RL puts a barrier between generation and training, and it costs twice: each
+side **idles while the other works**, and the generator's step time is set by its
+*slowest* sequence, so **long-tail requests bottleneck the whole batch**. Async RL
+drops the barrier — the two overlap, and a straggler just lands in a later batch.
 
-### 4.3 Experiments: three workloads, async, BI vs non-BI
+The price is that the weights that produced a rollout are no longer the weights being
+updated. That lag is the **off-policy window** (`offpolicy = 12` above means a rollout
+can be up to 12 steps stale), and it is corrected with the **importance sampling
+ratio** — for a token sampled under the generator's old policy `μ` and re-evaluated
+under the trainer's current policy `π`:
+
+```
+r = π(a|s) / μ(a|s) = exp(π_logprob − μ_logprob)
+```
+
+`r` keeps the gradient approximately unbiased under the policy actually being
+updated, and PPO/GRPO's clipped surrogate bounds how far it may drift. Under async RL
+`r ≠ 1` by design.
+
+One wrinkle before that: **`μ` for a single rollout need not come from a single
+weight version.** A sequence that is still decoding when a weight update lands
+straddles two policies. AReaL's answer is to drop the KV cache at the pause and
+recompute it after the swap; ours is to **keep the cache and simply continue decoding
+with the new weights**. That reuses the prefix cache instead of paying to rebuild it,
+and it makes the importance sampling more honest: each token's `μ` is logged under
+the weights that actually produced *that* token, rather than being retconned to a
+version the earlier tokens never saw.
+
+![Async RL timeline across three generation engines. Rollouts decode continuously; at a pause the new weights are loaded and decoding resumes immediately on the existing KV cache, with no recompute step. Sequences that straddle the pause (s5, s7, s6) are outlined: their early tokens are generated under the old weights and their later tokens under the new ones.](../asset/ti-mismatch-async-timeline.png)
+
+*Sequences that straddle a weight swap (outlined) carry tokens from two versions. We
+keep the KV cache across the pause — no recompute — so each token's `μ` belongs to
+the weights that generated it.*
+
+The catch: **we want `r` to be about weight versions and nothing else** — but `μ`
+comes from the generator and `π` from the trainer, so in a stock stack `exp(π − μ)`
+is staleness *plus* numerical mismatch. Zero the mismatch and the ratio becomes a
+clean statement about how stale the sample is.
+
+Hence the hypothesis everyone holds and nobody has tested: a mismatch-free engine
+should **tolerate a wider off-policy window**, or **train more stably at the same
+one**. Does it?
+
+### 4.2 Evaluation and analysis: async RL with zero train/inference mismatch
+
+We evaluate on three workloads, picked to span the two axes an RL system actually
+feels — how many turns, and how long each generation is:
+
+| Workload | Shape | Setup |
+|---|---|---|
+| **MATH** | single-turn, long generation | DAPO-Math-17k |
+| **Search agent** | multi-turn, short generation | Search-R1 |
+| **Terminal agent** | multi-turn, long generation | Terminal-Bench, sandboxed |
+
+For each we sweep the **off-policy window** and the **model size**, run with and
+without BI, and report the effect on **training reward** and on **efficiency**.
+
+#### 4.2.1 MATH: single-turn, long generation
+
+Qwen3.5-9B-Base trained on DAPO-Math-17k, 40 GPUs, trainer and generators fully
+disaggregated, and `TP = 1` on both sides — so none of the mismatch below comes from
+cross-GPU reduction order. DP and FSDP do not reduce along the batch axis, which
+leaves only the kernels to blame.
+
+<details markdown="1">
+<summary>Full setup</summary>
+
+| | |
+|---|---|
+| **Trainer** | 8-way FSDP, `TP = 1`, no PP/CP; FullAC |
+| **Generators** | 4 × vLLM replicas, `DP = 8`, `TP = 1`; prefix caching on |
+| **Batch** | 8 prompts × 16 rollouts = 128 sequences/step; 8K response cap in a 10K packed context |
+| **Optimizer** | AdamW, constant lr 1e-6; DAPO loss, clip `(0.2, 0.28)` |
+| **Precision** | FP32 master weights + BF16 forward + FP32 reduction; FP32 LM head and FP32 GDN state cache |
+| **Sampling** | temperature 1.0, top-p 1.0 |
+| **Eval** | AIME2025, 30 samples, every 10 steps; 200 train steps |
+
+</details>
+
+**Case study at `offpolicy = 12`: three levels of alignment.** Start with one window
+and three runs that differ only in how hard they try to make the two engines agree:
+
+| Run | Model definition | Kernels |
+|---|---|---|
+| 🔴 **vLLM native** | vLLM's own implementation, trainer weights loaded into it | whatever vLLM ships |
+| 🟤 **Titan unified, w/o BI** | one shared definition (§3.1) | stock — split-K attention on, chunked forward, stock GEMM |
+| ⚪ **Titan unified, w/ BI** | one shared definition | aligned (§3.2) — split-K off, batch-invariant GEMM, recurrent forward on both sides |
+
+The first is what most stacks do: take the trainer's weights and load them into
+vLLM's model. The *weights* match, but op for op it is a **different
+implementation**, so precision differs all over. The second fixes that — trainer and
+generator run one model definition — but leaves the **kernels unaligned**: attention
+still splits K, the GEMMs are stock, and the trainer's chunked forward is not the
+generator's recurrent one. The third aligns those too.
+
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;" markdown="1">
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Train/inference logprob abs mean for the three runs at off-policy 12: vLLM native (red) is highest and spikiest, unified without BI (brown) is in the middle, unified with BI (grey) is lowest, and the BI curve is exactly 0 at step 0](../asset/ti-mismatch-dapo-logprob-diff.png)
+
+*logprob gap — lower is better*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Rollout average train reward for the three runs at off-policy 12: with BI ends highest near 0.7, without BI slightly below, vLLM native lowest near 0.6](../asset/ti-mismatch-dapo-reward.png)
+
+*train reward — higher is better*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Validation reward sum for the three runs at off-policy 12: with BI reaches the highest peak around 17 at step 170 and tracks at or above the other two for most of the run, while vLLM native trails early](../asset/ti-mismatch-dapo-val-sum-off12.png)
+
+*validation reward (AIME2025) — higher is better*
+
+</div>
+
+</div>
+
+The three runs form a ladder of strictness, and the metrics respect it. On the
+logprob gap the order is clean: red above brown above grey, with grey at **exactly
+0 at step 0** (circled) — no mismatch before staleness enters. Train reward follows
+the same order in reverse: grey finishes highest, brown just under, red last.
+Validation reward is noisier, as validation always is, but grey reaches the highest
+peak (~17 at step 170) and spends most of the run at or above the others.
+
+So **the stricter the alignment, the better every metric looks** — at this window.
+The obvious next question is whether that survives when the window moves, so we swept
+it — `offpolicy = 4`, `12`, `32`, now with just the two unified runs, with and without
+BI.
+
+**Finding 1 — BI holds the logprob gap down at every off-policy window, and keeps it
+from exploding at large ones.**
+
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;" markdown="1">
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Train/inference logprob abs mean at off-policy 4: the run without BI (green) sits slightly above the BI run (orange) throughout and spikes higher, both drifting from about 0.004 to 0.006 over 200 steps](../asset/ti-mismatch-dapo-diff-off4.png)
+
+*`offpolicy = 4`*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Train/inference logprob abs mean at off-policy 12: the run without BI (brown) climbs to about 0.011 while the BI run (grey) stays around 0.009, with the gap opening after step 100](../asset/ti-mismatch-dapo-diff-off12.png)
+
+*`offpolicy = 12`*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Train/inference logprob abs mean at off-policy 32: after step 100 the run without BI (purple) runs away to about 0.065 while the BI run (pink) only reaches about 0.035](../asset/ti-mismatch-dapo-diff-off32.png)
+
+*`offpolicy = 32`*
+
+</div>
+
+</div>
+
+*`bit_wise/logprob_diff/abs_mean` under three off-policy windows. Note the y-axis
+changes: 0.008 on the left, 0.012 in the middle, 0.07 on the right.*
+
+At `offpolicy = 4` the separation is real but modest: the run without BI rides
+slightly above BI the whole way and spikes higher, but both stay in the same band. At
+`12` the gap is steadier, with BI holding ~0.009 against ~0.011. At `32` the run
+without BI **runs away** — it leaves the shared trajectory around step 100 and
+reaches ~0.065 by step 200, while BI tops out near ~0.035, roughly half.
+
+So the benefit is not uniform. BI lowers the gap everywhere, but what it really buys
+is **protection against the blow-up** — and the wider you push the off-policy window,
+the more there is to protect.
+
+**Finding 2 — that cleaner signal does not turn into validation accuracy.**
+
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;" markdown="1">
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Validation reward mean at off-policy 4: the BI run (orange) and the no-BI run (green) are interleaved for the whole 200 steps, both plateauing around 0.43 to 0.47](../asset/ti-mismatch-dapo-val-off4.png)
+
+*`offpolicy = 4`*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Validation reward mean at off-policy 12: the BI run (grey) spends most of steps 70 to 170 above the no-BI run (brown) and peaks higher at about 0.57, but the two cross repeatedly and no-BI finishes higher at step 200](../asset/ti-mismatch-dapo-val-off12.png)
+
+*`offpolicy = 12`*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Validation reward mean at off-policy 32: both the BI run (pink) and the no-BI run (purple) swing violently between 0 and 0.4 for the whole run, with no separation between them and a much lower ceiling than the narrower windows](../asset/ti-mismatch-dapo-val-off32.png)
+
+*`offpolicy = 32`*
+
+</div>
+
+</div>
+
+*`validation_reward_mean` on AIME2025 (30 samples, every 10 steps). Both runs are the
+same recipe, differing only in BI. Note the y-axis: 0.5 on the left two, 0.4 on the
+right.*
+
+At `offpolicy = 4` the two curves are interleaved for the entire run — you could swap
+the labels and not notice. At `offpolicy = 12` BI does look better for a stretch: it
+sits above from roughly step 70 to 170 and peaks higher (~0.57 vs ~0.53). But the
+curves cross repeatedly, and no-BI ends the run on top. At `offpolicy = 32` both runs
+degenerate into noise, swinging between 0 and 0.4 with no separation and a ceiling
+well below the narrower windows — the window itself has become the problem, and BI
+does nothing about it.
+
+That is the honest read: **zero train/inference mismatch does not buy a clear
+accuracy gain under async RL.** It reliably cleans up `logprob_diff` — Finding 1 is
+unambiguous — but the metric that matters moves within noise. Whatever the surrogate
+was struggling with at these off-policy windows, it apparently was not the numerical
+term.
+
+**Finding 3 — BI costs about half the trainer throughput. The unified model itself
+costs nothing.**
+
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;" markdown="1">
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Trainer tokens per second at off-policy 4: the BI run (orange) sits near 9,000 to 10,000 while vLLM (blue) and the unified model without BI (green) overlap each other near 16,000 to 19,000, both sagging slowly over training](../asset/ti-mismatch-dapo-perf-off4.png)
+
+*`offpolicy = 4`*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Trainer tokens per second at off-policy 12: the BI run (grey) is flat near 9,700 while vLLM native (red) and the unified model without BI (brown) overlap near 19,000 and stay flat](../asset/ti-mismatch-dapo-perf-off12.png)
+
+*`offpolicy = 12`*
+
+</div>
+
+</div>
+
+*`perf/trainer/tokens_per_second_fwd_bwd` — the trainer's own forward+backward
+throughput.*
+
+Three things fall out.
+
+**BI costs roughly 2×.** The BI runs sit at ~9–10k tokens/s against ~16–20k without —
+call it half the throughput. That is the recurrent forward, split-K disabled, and the
+batch-invariant GEMM, all of which trade occupancy for a fixed reduction order.
+
+**The unified model is free.** vLLM native and the unified model without BI lie on top
+of each other at both windows. Sharing one model definition between trainer and
+generator — the §3.1 half of the story — costs nothing measurable. The entire bill is
+the aligned *kernels*.
+
+**A wider window raises throughput.** At `offpolicy = 4` every curve sags over
+training (~19k → ~16.5k); at `offpolicy = 12` they are flat near ~19k. More rollouts
+in flight means less time waiting for the tail — which is exactly why anyone wants a
+wide window in the first place.
+
+Put the three findings together and the trade is explicit: **BI buys a provably zero
+mismatch and a logprob gap that will not explode, at about half the trainer throughput
+and no clear accuracy gain.** We are not going to tell you which side of that to pick.
+The numbers are on the table.
+
+<!-- TODO: MoE — Qwen3.5-30B-A3B. Same three alignment levels and the same
+offpolicy = 4 / 12 / 32 sweep, to check whether expert routing makes the mismatch
+behave differently (routing is itself a top-k over a batch-variant GEMM, so the
+argmax can flip between the two engines). -->
+
+#### 4.2.2 Search-R1: multi-turn, short generation
+
+The workload is the opposite shape from MATH. The model answers a question by
+**searching Wikipedia**: it issues a query, reads the retrieved passages, decides
+whether it knows enough, and queries again — several turns per episode, each
+generation short (a query, or a final answer). So an episode is many small calls
+rather than one long one, and the reward is exact match against the gold answer.
+
+Qwen3.5-9B, `offpolicy window = 4`, 500 steps, two arms: the unified model with and
+without BI.
+
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;" markdown="1">
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Rollout exact-match reward on Search-R1 over 500 steps: the BI arm (orange) and the non-BI arm (purple) both rise to about 0.6 by step 100 and then stay interleaved for the rest of the run](../asset/ti-mismatch-search-reward.png)
+
+*train reward (exact match)*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Validation exact-match reward on Search-R1: the two arms lie on top of each other for the whole run, both between about 0.49 and 0.56 after step 50](../asset/ti-mismatch-search-val.png)
+
+*validation reward (exact match)*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Trainer tokens per second per full step on Search-R1: the non-BI arm (purple) runs well above the BI arm (orange) for the entire run, both spiky because multi-turn step cost varies](../asset/ti-mismatch-search-perf.png)
+
+*throughput (full step)*
+
+</div>
+
+</div>
+
+Same verdict, arrived at more cleanly. **Train reward:** both arms reach ~0.6 by step
+100 and stay interleaved for the next 400 steps. **Validation:** the two curves are
+indistinguishable — genuinely on top of each other, not merely close. **Throughput:**
+the BI arm runs below the non-BI arm for the entire run.
+
+So flipping the workload shape — many short turns instead of one long generation —
+does not change the answer. **No measurable accuracy gain, and you pay for it in
+throughput.**
+
+#### 4.2.3 TMax: multi-turn, long generation (terminal agent)
+
+The hardest of the three, and the one closest to how agents are actually trained
+today. Each episode is a real terminal session: the model is dropped into a fresh
+sandbox with a task description and a single `bash` tool, and works the problem for up
+to **64 turns** inside a **64K context**. There is no partial credit — at the end the
+task's own test script runs and the reward is binary. Many turns *and* long
+generations, both at once.
+
+The data is [`allenai/tmax-15k-open-instruct`](https://huggingface.co/datasets/allenai/tmax-15k-open-instruct)
+— ~14.5K tasks after a 64-task holdout, each one a Docker image plus an instruction
+and a verifier.
+
+<details markdown="1">
+<summary>Full setup</summary>
+
+| | |
+|---|---|
+| **Model** | Qwen3.5-9B TMax policy checkpoint |
+| **Episode** | ≤ 64 `bash` turns, 64K context, ≤ 16K tokens/turn; 120 s per command, 600 s verifier |
+| **Sandbox** | fresh Daytona sandbox per rollout from the task's Docker image (2 vCPU / 4 GiB / 10 GiB); one `bash` tool, persistent shell; binary reward from `tests/test.sh` |
+| **Trainer** | 8-way FSDP, `TP = 1`, FullAC; packed `seq_len` 65,536 |
+| **Generators** | 6 × vLLM hosts at `DP = 8`, `TP = 1` → 48 engines; prefix cache salted per group on weight sync |
+| **Batch** | 32 prompt groups × 8 rollouts = 256 rollouts/step; 100 steps |
+| **Optimizer** | AdamW, constant lr 1e-6; DPPO loss with a TV trust region (threshold 0.1), 32 loss chunks |
+| **Precision** | FP32 master weights + BF16 forward + FP32 reduction; FP32 LM head and FP32 GDN state cache |
+| **Sampling** | temperature 1.0, top-p 1.0; `offpolicy window = 4` |
+| **Hardware** | 56 GPUs (7 × 8), trainer and generators disaggregated |
+
+</details>
+
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;" markdown="1">
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![TMax binary task reward over 100 steps: the BI arm (teal) and the non-BI arm (orange) track each other closely, with the BI smoothed curve sitting slightly above between roughly steps 55 and 80, and both finishing near 0.65](../asset/ti-mismatch-tmax-reward.png)
+
+*task reward — BI slightly ahead*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Trainer tokens per second per full step on TMax: the non-BI arm (orange) runs between about 7,500 and 10,000 while the BI arm (teal) stays near 1,500 to 2,000 for the whole run](../asset/ti-mismatch-tmax-perf.png)
+
+*throughput — BI several times slower*
+
+</div>
+
+</div>
+
+**Reward:** here BI is *slightly* ahead. The two arms are entangled for the first 50
+steps, then the BI curve sits a little above from ~55 to ~80, and both finish around
+0.65. It is the first workload where the alignment looks like it might be buying
+something — and it is still small enough that one seed cannot settle it.
+
+**Throughput:** and here is the bill. The BI arm runs at ~1.5–2k tokens/s against
+~7.5–10k without — a heavier penalty than the ~2× on MATH.
+
+Which is the trade in its sharpest form: the workload where bitwise parity finally
+looks like it helps is also the one where it costs the most.
+
+
 
 ---
 
-## 5. Conclusion: bitwise parity is the ceiling, not the recipe
+## 5. Conclusion: a debugging tool, not a production default
+
+After all that, here is where we land.
+
+**Bitwise parity works, and it is worth less than we hoped.** Across three workloads
+it does what it promises: the train/inference logprob gap goes to exactly zero on
+policy and stops exploding at wide off-policy windows. On reward and final accuracy
+the payoff is real but small — a slight edge on the terminal agent, nothing separable
+from noise on math or search. The best case for it is the async-tolerance argument:
+with the numerical term gone, a wider off-policy window becomes safer to run. But
+**that comes at more than 2× overhead**, and at that price the cost/benefit does not
+close for a production run.
+
+So we would put it somewhere else in the workflow: **as a debugging tool.** When a
+post-training run misbehaves, turning BI on for 20 on-policy steps tells you something
+you cannot otherwise learn — if the logprob gap is zero and the run is still broken,
+the infra is exonerated and the problem is in your data or your algorithm. That is a
+genuinely useful thing to be able to prove, and it costs 20 steps rather than a whole
+run.
+
+**Where this could change.** Three directions we think are worth pushing:
+
+1. **More benchmarks.** Three workloads and mostly one seed each. The terminal-agent
+   result is the one most likely to be real, and it is also the one we have the least
+   of.
+2. **Async-stable policy optimization.** Our conclusion is entangled with the
+   optimizer. Methods built for staleness — [IcePop](https://arxiv.org/abs/2510.24788)
+   and relatives — might interact with a zero-mismatch engine quite differently, since
+   they are trying to solve the same problem from the algorithm side.
+3. **Making BI cheap.** The 2× is not a law of nature; it is the cost of the specific
+   kernels we wrote. If someone optimizes the recurrent forward and the batch-invariant
+   GEMM hard enough, the trade changes on its own — and then the answer above flips.
+
+This post covers a narrow slice of a large problem, and we would rather be corrected
+than agreed with. If you have data that points the other way, or a workload where this
+matters more than it did for us, email
+**[yichuan_wang@berkeley.edu](mailto:yichuan_wang@berkeley.edu)**.
 
 ---
 
 ## Acknowledgements
 
-This work was mainly done by Yichuan Wang, with the help of the TorchTitan team. Thanks also to [Charlie Ruan](https://www.charlieruan.com/), [Han Zhang](https://zhhhhahahaha.github.io/), [Yilong Zhao](TODO), and [Alexander Jiang](TODO) for the helpful discussions.
+This work was mainly done by Yichuan Wang, with the help of the TorchTitan team. Thanks also to [Charlie Ruan](https://www.charlieruan.com/), [Han Zhang](https://zhhhhahahaha.github.io/), [Yilong Zhao](https://ylzhao.me/), and [Alexander Jiang](https://openreview.net/profile?id=~Alexander_Jiang1) for the helpful discussions.
 
 ---
 
