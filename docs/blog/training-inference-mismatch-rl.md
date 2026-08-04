@@ -630,7 +630,7 @@ and a verifier.
 
 | | |
 |---|---|
-| **Model** | Qwen3.5-9B TMax policy checkpoint |
+| **Model** | Qwen3.5-9B |
 | **Episode** | ≤ 64 `bash` turns, 64K context, ≤ 16K tokens/turn; 120 s per command, 600 s verifier |
 | **Sandbox** | fresh Daytona sandbox per rollout from the task's Docker image (2 vCPU / 4 GiB / 10 GiB); one `bash` tool, persistent shell; binary reward from `tests/test.sh` |
 | **Trainer** | 8-way FSDP, `TP = 1`, FullAC; packed `seq_len` 65,536 |
