@@ -38,10 +38,10 @@ and the shorthand we use for the rest of the post:
 
 Three lines in both plots:
 
-- 🔴 **red** — vLLM native engine serving (the standard two-engine setup);
-- 🟤 **brown** — TorchTitan **unified model**: trainer and generator share one model
+- **red** — vLLM native engine serving (the standard two-engine setup);
+- **brown** — TorchTitan **unified model**: trainer and generator share one model
   definition, but with stock kernels;
-- ⚪ **grey** — the same unified model, **plus batch-invariant kernels** (BI).
+- **grey** — the same unified model, **plus batch-invariant kernels** (BI).
 
 The ordering is the same on both sides: grey has the **lowest** logprob gap and the
 **highest** reward. **In this configuration**, closing the numerical mismatch does
@@ -294,7 +294,7 @@ r = π(a|s) / μ(a|s) = exp(π_logprob − μ_logprob)
 updated, and PPO/GRPO's clipped surrogate bounds how far it may drift. Under async RL
 `r ≠ 1` by design.
 
-One wrinkle before that: **`μ` for a single rollout need not come from a single
+One wrinkle in that picture: **`μ` for a single rollout need not come from a single
 weight version.** A sequence that is still decoding when a weight update lands
 straddles two policies. AReaL's answer is to drop the KV cache at the pause and
 recompute it after the swap; ours is to **keep the cache and simply continue decoding
@@ -329,8 +329,8 @@ feels — how many turns, and how long each generation is:
 | **Search-R1** (§4.2.2) | multi-turn, short generation | Wikipedia search, exact-match reward |
 | **TMax terminal agent** (§4.2.3) | multi-turn, long generation | `allenai/tmax-15k-open-instruct`, sandboxed |
 
-For each we sweep the **off-policy window** and the **model size**, run with and
-without BI, and report the effect on **training reward** and on **efficiency**.
+For each we run with and without BI and report the effect on **training reward** and
+on **efficiency**; on MATH we also sweep the **off-policy window**.
 
 #### 4.2.1 MATH: single-turn, long generation
 
@@ -359,9 +359,9 @@ and three runs that differ only in how hard they try to make the two engines agr
 
 | Run | Model definition | Kernels |
 |---|---|---|
-| 🔴 **vLLM native** | vLLM's own implementation, trainer weights loaded into it | whatever vLLM ships |
-| 🟤 **Titan unified, w/o BI** | one shared definition (§3.1) | stock — split-K attention on, chunked forward, stock GEMM |
-| ⚪ **Titan unified, w/ BI** | one shared definition | aligned (§3.2) — split-K off, batch-invariant GEMM, recurrent forward on both sides |
+| **vLLM native** (red) | vLLM's own implementation, trainer weights loaded into it | whatever vLLM ships |
+| **Titan unified, w/o BI** (brown) | one shared definition (§3.1) | stock — split-K attention on, chunked forward, stock GEMM |
+| **Titan unified, w/ BI** (grey) | one shared definition | aligned (§3.2) — split-K off, batch-invariant GEMM, recurrent forward on both sides |
 
 The first is what most stacks do: take the trainer's weights and load them into
 vLLM's model. The *weights* match, but op for op it is a **different
@@ -676,8 +676,6 @@ far more tokens walked one at a time.
 Which is the trade in its sharpest form: the workload where bitwise parity finally
 looks like it helps is also the one where it costs the most.
 
-
-
 ---
 
 ## 5. Conclusion: a debugging tool, not a production default
@@ -706,9 +704,9 @@ run.
    result is the one most likely to be real, and it is also the one we have the least
    of.
 2. **Async-stable policy optimization.** Our conclusion is entangled with the
-   optimizer. Methods built for staleness — [IcePop](https://arxiv.org/abs/2510.24788)
-   and relatives — might interact with a zero-mismatch engine quite differently, since
-   they are trying to solve the same problem from the algorithm side.
+   optimizer. Methods built for staleness — IcePop and relatives — might interact with
+   a zero-mismatch engine quite differently, since they are trying to solve the same
+   problem from the algorithm side.
 3. **Making BI cheap.** The 2–5× is not a law of nature; it is the cost of the
    specific kernels we wrote. If someone optimizes the recurrent forward and the
    batch-invariant GEMM hard enough, the trade changes on its own — and then the answer
