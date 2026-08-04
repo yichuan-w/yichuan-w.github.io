@@ -61,7 +61,7 @@ The rest of the post is how we got there, and what it does (and does not) buy yo
 
 ---
 
-## Intro
+## 1. Intro
 
 Reinforcement learning on LLMs runs on **two different engines**. Training happens
 in one stack (Megatron, or PyTorch FSDP); rollout generation in another (SGLang,
@@ -114,9 +114,10 @@ So we wrote this post. You will see:
    **trainer/generator bitwise parity** — what the train/inference mismatch really
    is, and what the open-source stack already handles (which ops have
    batch-invariant kernels);
-2. how we push it further — closing the mismatch at the **RL-engine level** and the
-   **special-op level** (linear attention, etc.), driving the numerical difference
-   between trainer and generator to zero, a.k.a. **batch invariance**;
+2. how we push it further — closing the mismatch at the **RL-engine level** (one
+   model definition for both sides) and then at the **operator level** (linear
+   attention, etc., where **batch invariance** is what we need), driving the numerical
+   difference between trainer and generator to zero;
 3. what happens when *zero mismatch* meets **async RL**, across three regimes —
    **long math reasoning**, **multi-turn single-agent** (search agent), and
    **multi-turn complex-agent** training (terminal agent): does bit-exact parity
@@ -190,7 +191,7 @@ to handle newer architectures — **MoE**, and **linear attention** — is uncle
 
 ---
 
-## 3. How to defend batch-invariance — especially for a linear-attention model
+## 3. How we close the mismatch: one model definition, then batch-invariant kernels
 
 We answer this at two levels at once: the **RL-engine level** and the **operator
 level**.
@@ -322,11 +323,11 @@ one**. Does it?
 We evaluate on three workloads, picked to span the two axes an RL system actually
 feels — how many turns, and how long each generation is:
 
-| Workload | Shape | Setup |
+| Workload | Shape | Data |
 |---|---|---|
-| **MATH** | single-turn, long generation | DAPO-Math-17k |
-| **Search agent** | multi-turn, short generation | Search-R1 |
-| **Terminal agent** | multi-turn, long generation | Terminal-Bench, sandboxed |
+| **MATH** (§4.2.1) | single-turn, long generation | DAPO-Math-17k |
+| **Search-R1** (§4.2.2) | multi-turn, short generation | Wikipedia search, exact-match reward |
+| **TMax terminal agent** (§4.2.3) | multi-turn, long generation | `allenai/tmax-15k-open-instruct`, sandboxed |
 
 For each we sweep the **off-policy window** and the **model size**, run with and
 without BI, and report the effect on **training reward** and on **efficiency**.
@@ -501,8 +502,7 @@ unambiguous — but the metric that matters moves within noise. Whatever the sur
 was struggling with at these off-policy windows, it apparently was not the numerical
 term.
 
-**Finding 3 — BI costs 2–3× trainer throughput. The unified model costs nothing — if
-anything it is faster.**
+**Finding 3 — BI costs 2–3× trainer throughput. The unified model costs nothing.**
 
 <div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;" markdown="1">
 
@@ -536,16 +536,23 @@ all of which trade occupancy for a fixed reduction order. Note that the penalty 
 a constant — it depends on how much work is in flight to hide the slower kernels
 behind.
 
-**The unified model is free — slightly better than free.** vLLM native actually runs
-*below* the unified model without BI (~12.2k against ~14.5k at `offpolicy = 12`). So
-sharing one model definition between trainer and generator — the §3.1 half of the
-story — costs nothing, and on this workload it pays a little. **The entire bill is the
-aligned *kernels*.**
+**The unified model is free.** vLLM native and the unified model without BI sit in the
+same band (~12.2k against ~14.5k at `offpolicy = 12`) — sharing one model definition
+between trainer and generator, the §3.1 half of the story, carries no throughput
+penalty. **The entire bill is the aligned *kernels*.**
 
 **A wider window raises throughput, and BI needs it most.** Every curve is higher and
 flatter at `12` than at `4`. BI gains the most from the wider window (~4k → ~8.4k):
 being slower per step, it has more latency to hide, and a wider window is what gives
 it enough in-flight rollouts to hide it behind.
+
+**So — can we push the off-policy window wider?** That was the question at the end of
+§4.1, and `offpolicy = 32` is where to look for the answer. On the numerical axis, yes:
+without BI the logprob gap runs away past 0.06, while BI holds it near half that. In
+that narrow sense a mismatch-free engine *does* tolerate more staleness — it stays in
+a regime the stock stack has already left. But the accuracy plots at `32` are noise for
+both arms, so the wider window is not usable either way. **BI removes the numerical
+obstacle to a wider window; it does not remove whatever else is in the way.**
 
 Put the three findings together and the trade is explicit: **BI buys a provably zero
 mismatch and a logprob gap that will not explode, at 2–3× the trainer throughput and
