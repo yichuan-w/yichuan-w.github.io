@@ -12,9 +12,10 @@ comments: true
 
 **Qwen3.5-9B-Base** trained on
 [DAPO-Math-17k](https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k),
-async RL at `offpolicy = 12`. Three setups, same data, same recipe. **BI** in the
-legends is short for **batch invariance** — the property we spend section 3 building,
-and the shorthand we use for the rest of the post:
+async RL at `offpolicy = 12` (rollouts can be up to 12 steps stale — §4.1 unpacks
+this). Three setups, same data, same recipe. **BI** in the legends is short for
+**batch invariance** — the property we spend section 3 building, and the shorthand we
+use for the rest of the post:
 
 <div class="fig-row" style="display: flex; gap: 1rem; align-items: flex-start;" markdown="1">
 
@@ -290,10 +291,6 @@ under the trainer's current policy `π`:
 r = π(a|s) / μ(a|s) = exp(π_logprob − μ_logprob)
 ```
 
-`r` keeps the gradient approximately unbiased under the policy actually being
-updated, and PPO/GRPO's clipped surrogate bounds how far it may drift. Under async RL
-`r ≠ 1` by design.
-
 One wrinkle in that picture: **`μ` for a single rollout need not come from a single
 weight version.** A sequence that is still decoding when a weight update lands
 straddles two policies. AReaL's answer is to drop the KV cache at the pause and
@@ -308,6 +305,10 @@ version the earlier tokens never saw.
 *Sequences that straddle a weight swap (outlined) carry tokens from two versions. We
 keep the KV cache across the pause — no recompute — so each token's `μ` belongs to
 the weights that generated it.*
+
+`r` keeps the gradient approximately unbiased under the policy actually being
+updated, and PPO/GRPO's clipped surrogate bounds how far it may drift. Under async RL
+`r ≠ 1` by design.
 
 The catch: **we want `r` to be about weight versions and nothing else** — but `μ`
 comes from the generator and `π` from the trainer, so in a stock stack `exp(π − μ)`
@@ -579,6 +580,14 @@ without BI.
 
 <div style="flex: 1 1 0; min-width: 0;" markdown="1">
 
+![Train/inference logprob abs mean on Search-R1: both arms start at 0, spike above 0.03 in the first few steps, then decay; over the last 100 steps the BI arm (orange) settles near 0.002 while the non-BI arm (purple) stays near 0.005](../asset/ti-mismatch-search-diff.png)
+
+*logprob gap*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
 ![Rollout exact-match reward on Search-R1 over 500 steps: the BI arm (orange) and the non-BI arm (purple) both rise to about 0.6 by step 100 and then stay interleaved for the rest of the run](../asset/ti-mismatch-search-reward.png)
 
 *train reward (exact match)*
@@ -603,8 +612,10 @@ without BI.
 
 </div>
 
-Same verdict, arrived at more cleanly. **Train reward:** both arms reach ~0.6 by step
-100 and stay interleaved for the next 400 steps. **Validation:** the two curves are
+Same verdict, arrived at more cleanly. **Logprob gap:** BI starts at exactly 0 at step
+0 here too, and over the last 100 steps it settles near ~0.002 against ~0.005 without —
+so the mechanism is working. **Train reward:** both arms reach ~0.6 by step 100 and
+stay interleaved for the next 400 steps. **Validation:** the two curves are
 indistinguishable — genuinely on top of each other, not merely close. **Throughput:**
 the BI arm runs below the non-BI arm for the entire run.
 
@@ -647,6 +658,14 @@ and a verifier.
 
 <div style="flex: 1 1 0; min-width: 0;" markdown="1">
 
+![Train/inference logprob abs mean on TMax over 100 steps: the BI arm (green) starts at exactly 0 and then tracks the unified non-BI arm (yellow) closely, both drifting between about 0.004 and 0.006 with no separation](../asset/ti-mismatch-tmax-diff.png)
+
+*logprob gap — green is BI, yellow is the unified model without it*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
 ![TMax binary task reward over 100 steps: the BI arm (teal) and the non-BI arm (orange) track each other closely, with the BI smoothed curve sitting slightly above between roughly steps 55 and 80, and both finishing near 0.65](../asset/ti-mismatch-tmax-reward.png)
 
 *task reward — BI slightly ahead*
@@ -663,10 +682,16 @@ and a verifier.
 
 </div>
 
-**Reward:** here BI is *slightly* ahead. The two arms are entangled for the first 50
-steps, then the BI curve sits a little above from ~55 to ~80, and both finish around
-0.65. It is the first workload where the alignment looks like it might be buying
-something — and it is still small enough that one seed cannot settle it.
+**Logprob gap:** BI is exactly 0 at step 0, as everywhere else — but after that the
+two arms are *indistinguishable*, both drifting between ~0.004 and ~0.006. This is the
+one workload where BI does not visibly lower the running gap. With 64 turns of
+sandboxed tool output in a 64K context, the staleness term dwarfs the numerical one.
+
+**Reward:** and yet here BI is *slightly* ahead. The two arms are entangled for the
+first 50 steps, then the BI curve sits a little above from ~55 to ~80, and both finish
+around 0.65 (this is training reward — no held-out eval was run for this
+configuration). It is the first workload where the alignment looks like it might be
+buying something — and it is still small enough that one seed cannot settle it.
 
 **Throughput:** and here is the bill. The BI arm runs at ~1.5–2k tokens/s against
 ~7.5–10k without — roughly 5×, against the 2–3× on MATH, and measured in the same
@@ -682,9 +707,11 @@ looks like it helps is also the one where it costs the most.
 
 After all that, here is where we land.
 
-**Bitwise parity works, and it is worth less than we hoped.** Across three workloads
-it does what it promises: the train/inference logprob gap goes to exactly zero on
-policy and stops exploding at wide off-policy windows. On reward and final accuracy
+**Bitwise parity works, and it is worth less than we hoped.** On all three workloads
+the logprob gap is exactly zero at step 0, which is the thing we set out to build. It
+also stops the gap exploding at a wide off-policy window — though we only pushed the
+window that far on math, and on the terminal agent BI does not visibly lower the
+running gap at all. On reward and final accuracy
 the payoff is real but small — a slight edge on the terminal agent, nothing separable
 from noise on math or search. The best case for it is the async-tolerance argument:
 with the numerical term gone, a wider off-policy window becomes safer to run. But
