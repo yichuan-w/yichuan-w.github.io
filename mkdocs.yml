@@ -30,6 +30,7 @@ nav:
           - Exploring Orak - A Benchmark for LLM Agents in Games: blog/game_eval.md
       - Misc:
           - Opportunities in the Open-Source Agentic RL Landscape: blog/summer-plan.md
+          - Defending Against the Training-Inference Numeric Mismatch in RL (Especially Linear Attention) — and How It Fares Under Async RL: blog/training-inference-mismatch-rl.md
 
 plugins:
   []

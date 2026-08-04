@@ -39,6 +39,7 @@ Notes and takeaways from papers I have read.
 Longer running logs and notes that do not fit the buckets above.
 
 - [Opportunities in the Open-Source Agentic RL Landscape](summer-plan.md) — June 2026. The missing end-to-end open-source pipeline: domain-specialized RL plus on-policy distillation, and where the highest-impact contributions are.
+- [Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and How It Fares Under Async RL](training-inference-mismatch-rl.md) — August 2026. Making trainer/generator log-probs bit-exact for Gated DeltaNet, and why the guarantee quietly stops mattering under async RL.
 
 ## About
 

@@ -2,6 +2,51 @@
   max-width: 1280px; 
 }
 
+/* Side-by-side figure row: each child div is one column. */
+.fig-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.fig-row > div {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.fig-row img {
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .fig-row { flex-direction: column; }
+}
+
+/* Floated figure: body text wraps around it. */
+.fig-float {
+  float: right;
+  width: 42%;
+  margin: 0.2rem 0 1rem 1.6rem;
+}
+
+.fig-float img {
+  width: 100%;
+}
+
+.fig-float em {
+  display: block;
+  font-size: 0.75em;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 800px) {
+  .fig-float {
+    float: none;
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
 .md-content {
   --md-typeset-color:                  hsla(272, 91%, 29%, 1);
   --md-typeset-a-color:                hsla(272, 91%, 29%, 1);
