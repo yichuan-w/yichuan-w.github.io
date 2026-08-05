@@ -24,6 +24,7 @@ Hands-on lessons, reproduction logs, and tuning recipes from building real syste
 
 - [Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems](How-to-build-diskANN-perfectly.md) — Dec 11, 2025. Compression rates, hidden distance-metric traps, and tuning recipes from LEANN and DS-serve.
 - [Lessons Learned in Development — LEANN Project](lessons_learned_in_dev_leann.md) — Chunk overlap strategies, data format choices, and embedding model comparisons for RAG.
+- [Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL](GDN-train-inference-mismatch-asyncRL.md) — August 2026. Making trainer/generator log-probs bit-exact for Gated DeltaNet, and why the guarantee quietly stops mattering under async RL.
 
 ## Paper Reads
 
@@ -39,7 +40,6 @@ Notes and takeaways from papers I have read.
 Longer running logs and notes that do not fit the buckets above.
 
 - [Opportunities in the Open-Source Agentic RL Landscape](summer-plan.md) — June 2026. The missing end-to-end open-source pipeline: domain-specialized RL plus on-policy distillation, and where the highest-impact contributions are.
-- [Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL](GDN-train-inference-mismatch-asyncRL.md) — August 2026. Making trainer/generator log-probs bit-exact for Gated DeltaNet, and why the guarantee quietly stops mattering under async RL.
 
 ## About
 

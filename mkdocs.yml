@@ -23,6 +23,7 @@ nav:
       - Tech Development Experience:
           - Mastering DiskANN - Practical Lessons from Large-Scale Vector Search: blog/How-to-build-diskANN-perfectly.md
           - Lessons Learned in Development - LEANN Project: blog/lessons_learned_in_dev_leann.md
+          - Defending Against the Training-Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL: blog/GDN-train-inference-mismatch-asyncRL.md
       - Paper Reads:
           - Finally, a Retriever That Can Actually Reason (ReasonIR): blog/reasonir.md
           - Qwen3 Embedding: blog/qwen3embedding.md
@@ -30,7 +31,6 @@ nav:
           - Exploring Orak - A Benchmark for LLM Agents in Games: blog/game_eval.md
       - Misc:
           - Opportunities in the Open-Source Agentic RL Landscape: blog/summer-plan.md
-          - Defending Against the Training-Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL: blog/GDN-train-inference-mismatch-asyncRL.md
 
 plugins:
   []
