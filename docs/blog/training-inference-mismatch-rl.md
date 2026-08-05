@@ -6,7 +6,7 @@ comments: true
 
 # Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL
 
-*Yichuan Wang in collaboration with the [TorchTitan team](https://github.com/pytorch/torchtitan) · August 2026*
+*Yichuan Wang in collaboration with the TorchTitan team · August 2026*
 
 ## The result, up front
 
