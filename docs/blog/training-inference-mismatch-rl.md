@@ -273,6 +273,15 @@ decode to the recurrent kernel**. For training, use the **recurrent kernel for t
 forward pass and the chunked kernel for the backward pass** — only the forward
 computation needs to be batch-invariant.
 
+And that is it — the change is smaller than the problem sounds. We **reuse vLLM's
+linear-cache management as is**: its `mamba_ssm_cache` and conv state, and its state
+snapshotting under `--mamba-cache-mode align`, which means **prefix caching keeps
+working** rather than having to be rebuilt around our kernels. We also **never touch
+the inside of the FLA kernels**, because the recurrent kernel is *intrinsically*
+batch-invariant: it reads only that sequence's own state and walks that sequence's
+tokens in a fixed order. There are no reductions or atomics across sequences, so
+there is no batch axis left to reduce along.
+
 Going all-recurrent on the forward is the sensible direction for the trade, rather
 than a free one: in a normal RL step the trainer is not the bottleneck — generation is
 — so the trainer is the right side to spend on. What it actually costs in trainer
