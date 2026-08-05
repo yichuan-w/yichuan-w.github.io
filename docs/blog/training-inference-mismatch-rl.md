@@ -626,9 +626,11 @@ taken, against 400 for the two completed arms.
 **And there is no reward gain.** All three arms are interleaved from the start,
 climbing together from ~0.6 to ~0.8.
 
-MoE needed one extra kernel that the dense model did not. The router's gate matmul
-lowers to `bmm` in the generator but `mm` in the trainer, and `bmm` is not in the
-batch-invariant set, so we patch in a **batch-invariant `bmm`** too. It matters more
+MoE needed one extra kernel that the dense model did not. The router's gate is a
+matmul, and the same matmul ends up calling **different ops on the two sides** — `bmm`
+in the generator, `mm` in the trainer — because the generator hands it a 3-D batch of
+activations and the trainer a 2-D one. `bmm` is not in the batch-invariant set, so we
+patch in a **batch-invariant `bmm`** too. It matters more
 than the usual low-bit drift: if the gate scores disagree between the two sides, a
 token can be routed to a **different expert** entirely.
 
