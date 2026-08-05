@@ -797,8 +797,8 @@ on the other two workloads. Part of it has to be queueing (a step that waits on
 rollouts scores lower than one whose batch was ready), but we do not have a
 measurement that pins it down.
 
-This is our first agent-training result on this stack rather than our last. **Stay
-tuned for more agent training recipes.**
+**Stay tuned for more agentic training recipes, which we will release over the coming
+month.**
 
 ---
 
