@@ -252,7 +252,7 @@ invariance does not matter.*
 </div>
 
 TML gives us GEMM, attention, and RMSNorm, and for an older model like Qwen3 that is
-enough. For the new ones (Qwen3.5 / Qwen3.8, Kimi 3) it is not: we additionally
+enough. For the new ones (Qwen3.5, Kimi 3) it is not: we additionally
 have to handle **linear attention**, plus its **state cache management** and its
 **prefix caching**.
 
@@ -318,15 +318,18 @@ experiment below, so it is worth stating before the results: **`μ` for a single
 rollout need not come from a single weight version.** A sequence that is still
 decoding when a weight update lands straddles two policies. AReaL's answer is to drop
 the KV cache at the pause and recompute it after the swap; ours is to **keep the cache
-and simply continue decoding with the new weights**. That reuses the prefix cache
-instead of paying to rebuild it, and it makes the importance sampling more honest:
-each token's `μ` is logged under the weights that actually produced *that* token,
-rather than being retconned to a version the earlier tokens never saw.
+and simply continue decoding with the new weights**.
+
+Neither choice is more faithful than the other, and it is worth being precise about
+why. Recompute means each token's `μ` belongs to a genuine historical weight version.
+Keeping the cache means the policy that actually did the sampling is a **hybrid** that
+exists in no single weight version at all. Both are equally honest accounts of
+something slightly awkward. What keeping the cache buys is practical: **importance
+sampling still works out of the box**, and **system efficiency is much higher**,
+because nothing has to be re-prefilled.
 
 Every run in §4.2 uses this policy. We did not run the recompute variant, so we cannot
-say for certain, but we expect it would not change the conclusions below, because
-each token is already attributed to the weight version that produced it, so the
-importance ratio is already correct token by token.
+say for certain whether it would change the conclusions below.
 
 ![Async RL timeline across three generation engines. Rollouts decode continuously; at a pause the new weights are loaded and decoding resumes immediately on the existing KV cache, with no recompute step. Sequences that straddle the pause (s5, s7, s6) are outlined: their early tokens are generated under the old weights and their later tokens under the new ones.](../asset/ti-mismatch-async-timeline.png)
 
@@ -713,7 +716,8 @@ throughput.**
 
 The hardest of the three, and the one closest to how agents are actually trained
 today. Each episode is a real terminal session: the model is dropped into a fresh
-sandbox with a task description and a single `bash` tool, and works the problem for up
+[Daytona](https://www.daytona.io/) sandbox with a task description and a single `bash`
+tool, and works the problem for up
 to **64 turns** inside a **64K context**. There is no partial credit: at the end the
 task's own test script runs and the reward is binary. Many turns *and* long
 generations, both at once.
@@ -787,6 +791,15 @@ far more tokens walked one at a time.
 Which is the trade in its sharpest form: the workload where bitwise parity finally
 looks like it helps is also the one where it costs the most.
 
+One thing we cannot explain, and would rather say so than leave you wondering: the
+throughput curves swing a lot, and how much they swing differs between arms, here and
+on the other two workloads. Part of it has to be queueing (a step that waits on
+rollouts scores lower than one whose batch was ready), but we do not have a
+measurement that pins it down.
+
+This is our first agent-training result on this stack rather than our last. **Stay
+tuned for more agent training recipes.**
+
 ---
 
 ## 5. Conclusion: a debugging tool, not a production default
@@ -834,7 +847,9 @@ matters more than it did for us, email
 
 ## Acknowledgements
 
-This work was mainly done by Yichuan Wang, with the help of the TorchTitan team. Thanks also to [Charlie Ruan](https://www.charlieruan.com/), [Han Zhang](https://zhhhhahahaha.github.io/), [Yilong Zhao](https://ylzhao.me/), and [Alexander Jiang](https://openreview.net/profile?id=~Alexander_Jiang1) for the helpful discussions.
+This work was mainly done by Yichuan Wang, with the help of the TorchTitan team. Thanks also to [Charlie Ruan](https://www.charlieruan.com/), [Han Zhang](https://zhhhhahahaha.github.io/), [Yilong Zhao](https://ylzhao.me/), and [Alexander Jiang](https://openreview.net/profile?id=~Alexander_Jiang1) for the helpful discussions. The terminal-agent experiments run on
+[Daytona](https://www.daytona.io/) sandboxes, one per rollout, and would not have been
+practical without them.
 
 ---
 
