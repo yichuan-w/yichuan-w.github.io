@@ -302,7 +302,10 @@ each token's `μ` is logged under the weights that actually produced *that* toke
 rather than being retconned to a version the earlier tokens never saw.
 
 Every run in §4.2 uses this policy. We did not run the recompute variant, so we cannot
-say whether it would change any of the conclusions below.
+say for certain — but we expect it would not change the conclusions below, because
+each token is already attributed to the weight version that produced it, so the
+importance ratio is already correct token by token. Recomputing the cache buys
+consistency we have not given up.
 
 ![Async RL timeline across three generation engines. Rollouts decode continuously; at a pause the new weights are loaded and decoding resumes immediately on the existing KV cache, with no recompute step. Sequences that straddle the pause (s5, s7, s6) are outlined: their early tokens are generated under the old weights and their later tokens under the new ones.](../asset/ti-mismatch-async-timeline.png)
 
