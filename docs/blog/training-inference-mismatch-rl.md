@@ -302,9 +302,7 @@ each token's `μ` is logged under the weights that actually produced *that* toke
 rather than being retconned to a version the earlier tokens never saw.
 
 Every run in §4.2 uses this policy. We did not run the recompute variant, so we cannot
-say from data whether it would change any of the conclusions. What we expect is that
-it changes *which weight version each token gets recorded under*, not how large the
-numerical mismatch actually is.
+say whether it would change any of the conclusions below.
 
 ![Async RL timeline across three generation engines. Rollouts decode continuously; at a pause the new weights are loaded and decoding resumes immediately on the existing KV cache, with no recompute step. Sequences that straddle the pause (s5, s7, s6) are outlined: their early tokens are generated under the old weights and their later tokens under the new ones.](../asset/ti-mismatch-async-timeline.png)
 
