@@ -626,14 +626,11 @@ taken, against 400 for the two completed arms.
 **And there is no reward gain.** All three arms are interleaved from the start,
 climbing together from ~0.6 to ~0.8.
 
-Why BI adds so little here is worth naming. Our MoE-specific patch covers the
-**router**: the gate matmul lowers to `bmm` in the generator but `mm` in the trainer,
-and left alone the gate scores drift enough to **flip top-k expert routing** — a token
-taking a different expert is a far larger error than a wrong low bit. But the experts'
-**grouped GEMM** (`torch._grouped_mm`) is *not* batch-invariant in our stack. So the
-MoE arm never reaches the bitwise parity the dense 9B arm does. That is the most
-likely reason these curves sit on top of each other, and it is the obvious next thing
-to fix.
+MoE needed one extra kernel that the dense model did not. The router's gate matmul
+lowers to `bmm` in the generator but `mm` in the trainer, and `bmm` is not in the
+batch-invariant set, so we patch in a **batch-invariant `bmm`** too. It matters more
+than the usual low-bit drift: if the gate scores disagree between the two sides, a
+token can be routed to a **different expert** entirely.
 
 | | |
 |---|---|
