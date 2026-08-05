@@ -847,9 +847,15 @@ matters more than it did for us, email
 
 ## Acknowledgements
 
-This work was mainly done by Yichuan Wang, with the help of the TorchTitan team. Thanks also to [Charlie Ruan](https://www.charlieruan.com/), [Han Zhang](https://zhhhhahahaha.github.io/), [Yilong Zhao](https://ylzhao.me/), and [Alexander Jiang](https://openreview.net/profile?id=~Alexander_Jiang1) for the helpful discussions. The terminal-agent experiments run on
-[Daytona](https://www.daytona.io/) sandboxes, one per rollout, and would not have been
-practical without them.
+This work was mainly done by Yichuan Wang, with the help of the TorchTitan team. Thanks also to [Charlie Ruan](https://www.charlieruan.com/), [Han Zhang](https://zhhhhahahaha.github.io/), [Yilong Zhao](https://ylzhao.me/), [Alexander Jiang](https://openreview.net/profile?id=~Alexander_Jiang1), [Shang Yang](https://hanlab.mit.edu/team/shang-yang), and Zhichen Zeng for the helpful discussions.
+
+Two open-source repos carry a lot of this work: [FLA](https://github.com/fla-org/flash-linear-attention),
+whose Gated DeltaNet kernels we build on directly, and Thinking Machines'
+[`batch_invariant_ops`](https://github.com/thinking-machines-lab/batch_invariant_ops),
+which gave us both the batch-invariant GEMM and the framing for everything above.
+
+The terminal-agent experiments run on [Daytona](https://www.daytona.io/) sandboxes, one
+per rollout, and would not have been practical without them.
 
 ---
 
