@@ -109,6 +109,19 @@ async RL more stable — clean out the numerical mismatch, and the off-policy wi
 can be pushed wider. It is a plausible story, but there is **little open evidence
 for it either way**.
 
+**Before we dive in: TorchTitan and TorchTitan RL.** Everything below is built on
+[TorchTitan](https://github.com/pytorch/torchtitan), PyTorch's own training framework.
+It is torch-native, deliberately clean and small enough to read end to end — which
+also makes it unusually friendly to coding agents — and it supports the parallelisms a
+serious pretraining stack needs: **FSDP, TP, CP, and EP**.
+
+**TorchTitan RL** is a feature the TorchTitan team brought up this year: an RL stack
+built on that trainer, with **async RL**, **hackability**, and — the part that carries
+this post — **one unified model definition shared by the trainer and the generator**
+(§3.1 is where you will see why that is worth having). The bet behind it is simple:
+TorchTitan has done well as a pretraining framework, so an RL platform that *owns its
+own trainer*, rather than gluing two independent stacks together, is worth building.
+
 So we wrote this post. You will see:
 
 1. a quick recap of the key notions — **determinism**, **batch invariance**, and
