@@ -1,10 +1,10 @@
 ---
-title: "Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and How It Fares Under Async RL"
+title: "Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL"
 date: 2026-08-01
 comments: true
 ---
 
-# Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and How It Fares Under Async RL
+# Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL
 
 *Yichuan Wang in collaboration with the TorchTitan team · August 2026*
 
@@ -291,14 +291,20 @@ under the trainer's current policy `π`:
 r = π(a|s) / μ(a|s) = exp(π_logprob − μ_logprob)
 ```
 
-One wrinkle in that picture: **`μ` for a single rollout need not come from a single
-weight version.** A sequence that is still decoding when a weight update lands
-straddles two policies. AReaL's answer is to drop the KV cache at the pause and
-recompute it after the swap; ours is to **keep the cache and simply continue decoding
-with the new weights**. That reuses the prefix cache instead of paying to rebuild it,
-and it makes the importance sampling more honest: each token's `μ` is logged under
-the weights that actually produced *that* token, rather than being retconned to a
-version the earlier tokens never saw.
+**How we manage the KV cache across a weight swap.** One design decision shapes every
+experiment below, so it is worth stating before the results: **`μ` for a single
+rollout need not come from a single weight version.** A sequence that is still
+decoding when a weight update lands straddles two policies. AReaL's answer is to drop
+the KV cache at the pause and recompute it after the swap; ours is to **keep the cache
+and simply continue decoding with the new weights**. That reuses the prefix cache
+instead of paying to rebuild it, and it makes the importance sampling more honest:
+each token's `μ` is logged under the weights that actually produced *that* token,
+rather than being retconned to a version the earlier tokens never saw.
+
+Every run in §4.2 uses this policy. We did not run the recompute variant, so we cannot
+say from data whether it would change any of the conclusions; our expectation is that
+it mostly moves the *bookkeeping* — which weight version a token is attributed to —
+rather than the size of the numerical mismatch itself.
 
 ![Async RL timeline across three generation engines. Rollouts decode continuously; at a pause the new weights are loaded and decoding resumes immediately on the existing KV cache, with no recompute step. Sequences that straddle the pause (s5, s7, s6) are outlined: their early tokens are generated under the old weights and their later tokens under the new ones.](../asset/ti-mismatch-async-timeline.png)
 
@@ -756,7 +762,7 @@ This work was mainly done by Yichuan Wang, with the help of the TorchTitan team.
 
 ```bibtex
 @misc{wang2026traininginferencemismatch,
-  title  = {Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and How It Fares Under Async RL},
+  title  = {Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL},
   author = {Wang, Yichuan and the TorchTitan team},
   year   = {2026},
   month  = {August},
