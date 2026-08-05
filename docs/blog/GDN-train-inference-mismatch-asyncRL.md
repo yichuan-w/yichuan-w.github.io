@@ -867,6 +867,6 @@ per rollout, and would not have been practical without them.
   author = {Wang, Yichuan and the TorchTitan team},
   year   = {2026},
   month  = {August},
-  url    = {https://yichuan-w.github.io/blog/training-inference-mismatch-rl/}
+  url    = {https://yichuan-w.github.io/blog/GDN-train-inference-mismatch-asyncRL/}
 }
 ```
