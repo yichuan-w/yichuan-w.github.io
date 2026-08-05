@@ -588,10 +588,69 @@ mismatch and a logprob gap that will not explode, at 2–3× the trainer through
 no clear accuracy gain.** We are not going to tell you which side of that to pick. The
 numbers are on the table.
 
-<!-- TODO: MoE — Qwen3.5-30B-A3B. Same three alignment levels and the same
-offpolicy = 4 / 12 / 32 sweep, to check whether expert routing makes the mismatch
-behave differently (routing is itself a top-k over a batch-variant GEMM, so the
-argmax can flip between the two engines). -->
+**Curious about MoE?** We ran the same three-arm comparison on **Qwen3.5-35B-A3B**.
+
+<details markdown="1">
+<summary>MoE: Qwen3.5-35B-A3B on the same MATH recipe</summary>
+
+Same DAPO-Math data, same `offpolicy = 12`, same three arms — vLLM native, the unified
+model without BI, and the unified model with BI. Two things to report, and they point
+in different directions.
+
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;" markdown="1">
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Train/inference logprob abs mean for Qwen3.5-35B-A3B: vLLM native (green) sits clearly highest around 0.017 to 0.02 for the whole run, while the unified model without BI (blue) and with BI (purple) overlap each other near 0.014](../asset/ti-mismatch-moe-diff.png)
+
+*logprob gap*
+
+</div>
+
+<div style="flex: 1 1 0; min-width: 0;" markdown="1">
+
+![Rollout average train reward for Qwen3.5-35B-A3B: all three arms are interleaved for the whole run, climbing together from about 0.6 to about 0.8](../asset/ti-mismatch-moe-reward.png)
+
+*train reward*
+
+</div>
+
+</div>
+
+**The logprob gap does come down — but from the unified model, not from BI.** vLLM
+native (green) sits clearly above the other two throughout. The unified model with BI
+(purple) and without (blue) lie on top of each other over the range where both are
+running. Note the BI arm is the shorter curve: it was around step 200 when these were
+taken, against 400 for the two completed arms.
+
+**And there is no reward gain.** All three arms are interleaved from the start,
+climbing together from ~0.6 to ~0.8.
+
+Why BI adds so little here is worth naming. Our MoE-specific patch covers the
+**router**: the gate matmul lowers to `bmm` in the generator but `mm` in the trainer,
+and left alone the gate scores drift enough to **flip top-k expert routing** — a token
+taking a different expert is a far larger error than a wrong low bit. But the experts'
+**grouped GEMM** (`torch._grouped_mm`) is *not* batch-invariant in our stack. So the
+MoE arm never reaches the bitwise parity the dense 9B arm does. That is the most
+likely reason these curves sit on top of each other, and it is the obvious next thing
+to fix.
+
+| | |
+|---|---|
+| **Model** | Qwen3.5-35B-A3B-Base — 40 layers, 256 routed experts, top-8 + 1 shared, hybrid attention (10 full / 30 Gated DeltaNet) |
+| **Trainer** | 16-way FSDP, `TP = 1`, **`EP = 1`**, FullAC; packed `seq_len` 10,240 |
+| **Generators** | 4 × vLLM replicas, `DP = 8`, `TP = 1`, `EP = 1`; prefix caching with a per-group salt on weight sync |
+| **Batch** | 8 prompts × 16 rollouts = 128 sequences/step; 8K response cap; 400 steps |
+| **Optimizer** | AdamW, constant lr 1e-6; DAPO loss, clip `(0.2, 0.28)`; aux-loss-free load balancing with an FP32 expert bias |
+| **Precision** | FP32 master weights + BF16 forward + FP32 reduction; FP32 LM head and FP32 GDN state cache |
+| **Eval** | AIME2025, 30 samples, every 10 steps |
+| **Hardware** | 48 GPUs doing model work (16 trainer + 4 × 8 generator), disaggregated |
+
+`EP = 1` on both sides is deliberate: with expert parallelism off there is no MoE
+all-to-all, so this comparison isolates the kernels from cross-GPU dispatch, the same
+way `TP = 1` does for the dense runs.
+
+</details>
 
 #### 4.2.2 Search-R1: multi-turn, short generation
 
