@@ -143,7 +143,7 @@ So we wrote this post. You will see:
 
 ## 2. Background: determinism, batch invariance, and bitwise parity
 
-Three notions we lean on throughout the post:
+Three notions we lean on throughout the post, each one a step up from the last:
 
 - **Determinism**: the same input batch produces the same result run-to-run. Rerun
   the identical forward on the identical batch, get identical bits.
@@ -155,6 +155,11 @@ Three notions we lean on throughout the post:
 - **Trainer/generator bitwise parity**. The end-to-end goal: the trainer's
   recomputed logprob `π` equals the generator's rollout logprob `μ` bit for bit.
   This is what "**train/inference zero logp difference**" means in practice.
+
+So it is a ladder. Determinism means don't contradict yourself; batch invariance means
+don't be influenced by your neighbours; parity means two different engines agree. And
+each rung needs the one below it: parity requires batch invariance on both sides, which
+requires determinism.
 
 The culprit underneath all of this is floating-point non-associativity:
 
