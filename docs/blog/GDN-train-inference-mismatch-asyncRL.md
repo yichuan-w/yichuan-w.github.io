@@ -788,6 +788,13 @@ buying something, and it is still small enough that one seed cannot settle it.
 metric. Long episodes are where the recurrent decode hurts most: a 64K context means
 far more tokens walked one at a time.
 
+One operational consequence, since it is easy to get bitten by: **the agent's
+wall-clock budgets have to be scaled with the slowdown** — we widened the timeout
+windows by roughly the same ~5× when turning BI on. Skip that and rollouts which would
+have finished get killed for running long, and in this workload an unsubmitted rollout
+scores 0. The slowdown would then show up as a *reward* regression rather than a
+throughput one, which is a genuinely confusing way to debug.
+
 Which is the trade in its sharpest form: the workload where bitwise parity finally
 looks like it helps is also the one where it costs the most.
 
