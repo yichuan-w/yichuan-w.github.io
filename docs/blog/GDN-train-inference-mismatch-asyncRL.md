@@ -274,9 +274,12 @@ so they do not agree bit for bit. Note what this means: the gap here is not a
 mistuned kernel, it is **two different algorithms** on the two sides of the RL loop.
 
 **Solution.** Continue using the vLLM SSM state, but switch **both prefill and
-decode to the recurrent kernel**. For training, use the **recurrent kernel for the
-forward pass and the chunked kernel for the backward pass**. Only the forward
-computation needs to be batch-invariant.
+decode to the recurrent kernel**
+([generator code](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/main/torchtitan/experiments/rl/models/gdn_vllm_unified.py#L254)).
+For training, use the **recurrent kernel for the forward pass and the chunked kernel
+for the backward pass**
+([trainer code](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/main/torchtitan/models/qwen3_5/model.py#L217)).
+Only the forward computation needs to be batch-invariant.
 
 And that is it. The change is smaller than the problem sounds. We **reuse vLLM's
 linear-cache management as is**: its `mamba_ssm_cache` and conv state, and its state
