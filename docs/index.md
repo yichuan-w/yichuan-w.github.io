@@ -32,6 +32,8 @@ I also maintain [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub R
 </span>
 
 ## News
+[06/2026] Excited to release [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/PixelRAG?style=social), a next-generation search assistant for LLMs: it retrieves directly over web *screenshots* instead of extracted text, keeping the layout, tables and figures that text-only pipelines throw away. Try it in the [live playground](https://pixelrag.ai/)!
+
 [05/25/2026] I joined the Meta MSL Infra PyTorch team as a Research Scientist Intern, working on post-training infrastructure.
 
 [05/20/2026] LEANN received the **MLSys 2026 Best Paper Award**!
