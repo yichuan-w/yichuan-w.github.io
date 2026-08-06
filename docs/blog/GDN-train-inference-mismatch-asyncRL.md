@@ -873,6 +873,12 @@ than agreed with. If you have data that points the other way, or a workload wher
 matters more than it did for us, email
 **[yichuan_wang@berkeley.edu](mailto:yichuan_wang@berkeley.edu)**.
 
+The code behind these runs lives at
+[torchtitan-batch-invarient-GDN](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN).
+Fair warning: it is a research branch, not a library. It is not especially structured
+or polished, and it is not a drop-in anything. Read it as a reference for what we
+actually ran.
+
 ---
 
 ## Acknowledgements
