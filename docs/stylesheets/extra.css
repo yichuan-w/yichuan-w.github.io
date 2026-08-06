@@ -1,5 +1,5 @@
 .md-grid {
-  max-width: 1280px; 
+  max-width: 1700px; 
 }
 
 /* Side-by-side figure row: each child div is one column. */
@@ -45,6 +45,19 @@
     width: 100%;
     margin: 1rem 0;
   }
+}
+
+/* Wide grid for figures and tables, but keep prose at a readable line length. */
+.md-typeset > p,
+.md-typeset > ul,
+.md-typeset > ol,
+.md-typeset > blockquote,
+.md-typeset > pre,
+.md-typeset > h1,
+.md-typeset > h2,
+.md-typeset > h3,
+.md-typeset > h4 {
+  max-width: 40rem;
 }
 
 .md-content {
