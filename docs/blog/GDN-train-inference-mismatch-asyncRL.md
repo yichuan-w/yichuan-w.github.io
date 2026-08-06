@@ -275,7 +275,7 @@ mistuned kernel, it is **two different algorithms** on the two sides of the RL l
 
 **Solution.** Continue using the vLLM SSM state, but switch **both prefill and
 decode to the recurrent kernel**
-([generator code](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/main/torchtitan/experiments/rl/models/gdn_vllm_unified.py#L254)).
+([generator code](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/main/torchtitan/experiments/rl/models/gdn_vllm_unified.py#L267)).
 For training, use the **recurrent kernel for the forward pass and the chunked kernel
 for the backward pass**
 ([trainer code](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/main/torchtitan/models/qwen3_5/model.py#L217)).
@@ -883,7 +883,7 @@ or polished, and it is not a drop-in anything. Read it as a reference for what w
 actually ran. The two ends of the parity story are
 [the trainer's GDN forward](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/main/torchtitan/models/qwen3_5/model.py#L217)
 and
-[the generator's](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/main/torchtitan/experiments/rl/models/gdn_vllm_unified.py#L254).
+[the generator's](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/main/torchtitan/experiments/rl/models/gdn_vllm_unified.py#L267).
 
 ---
 
