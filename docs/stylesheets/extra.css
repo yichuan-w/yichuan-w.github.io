@@ -47,6 +47,23 @@
   }
 }
 
+/* On phones the drawer opens already drilled into the current section, and the
+   header shows the page title rather than the site name, so there is no obvious way
+   home. Material hides the logo button below its `screen` breakpoint; show it, so
+   the logo doubles as a home button. */
+@media screen and (max-width: 76.1875em) {
+  .md-header__button.md-logo {
+    display: inline-flex;
+    padding: 0 0.2rem;
+  }
+
+  .md-header__button.md-logo img,
+  .md-header__button.md-logo svg {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+}
+
 /* This post's title is long enough that the absolutely-positioned header topic
    sticks out past the viewport on phones, giving the whole page a horizontal
    scroll. Clip it at the container Material already provides for that. */
