@@ -841,7 +841,10 @@ run.
     One concrete piece of that, for anyone who reads this far: **a faster
     batch-invariant attention.** We currently buy invariance with `num_splits = 1`,
     which is the bluntest possible instrument — it throws away split-KV parallelism
-    entirely. The reason it is blunt rather than clever is that a split-KV kernel has
+    entirely. And nobody has published a fast one: Thinking Machines' kernel buys
+    attention invariance the same blunt way (§2), so as far as we know **a fast
+    batch-invariant attention does not exist yet, from anyone.** The reason it is blunt
+    rather than clever is that a split-KV kernel has
     to handle the attention mask *in step with* the reduction chunk size, and getting
     that pair right is fiddly. But a GEMM does not give up its tiling to be
     batch-invariant; it just fixes the reduction partition. Attention may well be the
