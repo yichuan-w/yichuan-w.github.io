@@ -877,7 +877,10 @@ The code behind these runs lives at
 [torchtitan-batch-invarient-GDN](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN).
 Fair warning: it is a research branch, not a library. It is not especially structured
 or polished, and it is not a drop-in anything. Read it as a reference for what we
-actually ran.
+actually ran. The two ends of the parity story are
+[the trainer's GDN forward](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/main/torchtitan/models/qwen3_5/model.py#L217)
+and
+[the generator's](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/main/torchtitan/experiments/rl/models/gdn_vllm_unified.py#L254).
 
 ---
 
