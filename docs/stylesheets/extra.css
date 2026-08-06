@@ -47,6 +47,19 @@
   }
 }
 
+/* Wide grid for figures and tables, but keep prose at a readable line length. */
+.md-typeset > p,
+.md-typeset > ul,
+.md-typeset > ol,
+.md-typeset > blockquote,
+.md-typeset > pre,
+.md-typeset > h1,
+.md-typeset > h2,
+.md-typeset > h3,
+.md-typeset > h4 {
+  max-width: 40rem;
+}
+
 .md-content {
   --md-typeset-color:                  hsla(272, 91%, 29%, 1);
   --md-typeset-a-color:                hsla(272, 91%, 29%, 1);
