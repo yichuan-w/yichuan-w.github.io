@@ -187,7 +187,7 @@ attention:
 | Op | Why it is batch-variant by default | Fix |
 |---|---|---|
 | **RMSNorm** (`mean.dim`) | with few rows, the kernel splits the reduction across the batch axis to fill the GPU | don't reduce along the batch-size axis |
-| **GEMM** (`mm` / `addmm`) | tile size and split-K are picked per shape | don't reduce along the batch-size axis |
+| **GEMM** (`mm` / `addmm`) | tile size and split-K are picked per shape | each output element uses the same reduction partition and reduction order, independent of the batch size or of the other rows present in the GEMM |
 | **attention** | flash-decoding splits the KV dimension, and the split count depends on `max_k`, i.e. on the batch | disable split-K, which achieves the same effect |
 
 There is also work on the *cross-GPU* version of the problem: [Zhang et
