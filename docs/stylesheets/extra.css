@@ -47,17 +47,16 @@
   }
 }
 
-/* Wide grid for figures and tables, but keep prose at a readable line length. */
-.md-typeset > p,
-.md-typeset > ul,
-.md-typeset > ol,
-.md-typeset > blockquote,
-.md-typeset > pre,
-.md-typeset > h1,
-.md-typeset > h2,
-.md-typeset > h3,
-.md-typeset > h4 {
-  max-width: 40rem;
+/* This post's title is long enough that the absolutely-positioned header topic
+   sticks out past the viewport on phones, giving the whole page a horizontal
+   scroll. Clip it at the container Material already provides for that. */
+.md-header__ellipsis {
+  overflow: hidden;
+}
+
+.md-header__title,
+.md-header__topic {
+  min-width: 0;
 }
 
 .md-content {
