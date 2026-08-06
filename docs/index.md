@@ -180,6 +180,7 @@ Here are my thoughts and comments on various research papers and topics in syste
 ### Tech Development Experience
 - [Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems](/blog/How-to-build-diskANN-perfectly) - Practical recipes for configuring DiskANN, from optimal compression rates to avoiding hidden metric pitfalls, based on experience building LEANN and DS-serve.
 - [Lessons Learned in Development - LEANN Project](/blog/lessons_learned_in_dev_leann) - Practical insights from building RAG systems, including chunk overlap strategies, data format optimization, and embedding model comparisons
+- [Defending Against the Training-Inference Numeric Mismatch in RL (Especially Linear Attention)](/blog/GDN-train-inference-mismatch-asyncRL) - Aug 2026. Driving the trainer/generator logprob gap to exactly zero for a Gated DeltaNet model on TorchTitan RL + vLLM, and measuring what that is actually worth under async off-policy RL.
 
 <details markdown="1">
 <summary><strong>Misc</strong></summary>
