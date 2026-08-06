@@ -188,7 +188,7 @@ attention:
 |---|---|---|
 | **RMSNorm** (`mean.dim`) | with few rows, the kernel splits the reduction across the batch axis to fill the GPU | don't reduce along the batch-size axis |
 | **GEMM** (`mm` / `addmm`) | tile size and split-K are picked per shape | each output element uses the same reduction partition and reduction order, independent of the batch size or of the other rows present in the GEMM |
-| **attention** | flash-decoding splits the KV dimension, and the split count depends on `max_k`, i.e. on the batch | disable split-K, which achieves the same effect |
+| **attention** | flash-decoding splits the KV dimension, and the split count depends on `max_k`, i.e. on the batch | set `num_splits = 1`, which disables split-KV and so fixes the reduction order |
 
 There is also work on the *cross-GPU* version of the problem: [Zhang et
 al.](https://arxiv.org/abs/2511.17826) use tree-based TP (one unified hierarchical
@@ -287,7 +287,7 @@ than a free one: in a normal RL step the trainer is not the bottleneck, generati
 so the trainer is the right side to spend on. What it actually costs in trainer
 throughput we measure in §4.2 (Finding 3).
 
-The rest is the easy part: **disable split-K in attention, and patch in Thinking
+The rest is the easy part: **`num_splits = 1` on the attention path, and patch in Thinking
 Machines' batch-invariant GEMM.**
 
 <div style="clear: both;"></div>
