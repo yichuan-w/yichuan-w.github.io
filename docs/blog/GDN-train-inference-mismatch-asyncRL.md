@@ -188,7 +188,7 @@ attention:
 |---|---|---|
 | **RMSNorm** (`mean.dim`) | with few rows, the kernel splits the reduction across the batch axis to fill the GPU | don't reduce along the batch-size axis |
 | **GEMM** (`mm` / `addmm`) | tile size and split-K are picked per shape | each output element uses the same reduction partition and reduction order, independent of the batch size or of the other rows present in the GEMM |
-| **attention** | flash-decoding splits the KV dimension, and the split count depends on `max_k`, i.e. on the batch | set `num_splits = 1`, which disables split-KV and so fixes the reduction order |
+| **attention** | flash-decoding splits the KV dimension, and the split count depends on `max_k`, i.e. on the batch | set `num_splits = 1`, which disables split-KV and so fixes the reduction order. Leaving splits on is not just a reduction-order problem: at inference the attention mask has to be handled in step with the reduction chunk size, and that chunk count is itself a function of the batch |
 
 There is also work on the *cross-GPU* version of the problem: [Zhang et
 al.](https://arxiv.org/abs/2511.17826) use tree-based TP (one unified hierarchical
@@ -837,6 +837,17 @@ run.
    specific kernels we wrote. If someone optimizes the recurrent forward and the
    batch-invariant GEMM hard enough, the trade changes on its own, and then the answer
    above flips.
+
+    One concrete piece of that, for anyone who reads this far: **a faster
+    batch-invariant attention.** We currently buy invariance with `num_splits = 1`,
+    which is the bluntest possible instrument — it throws away split-KV parallelism
+    entirely. The reason it is blunt rather than clever is that a split-KV kernel has
+    to handle the attention mask *in step with* the reduction chunk size, and getting
+    that pair right is fiddly. But a GEMM does not give up its tiling to be
+    batch-invariant; it just fixes the reduction partition. Attention may well be the
+    same: pick a **fixed** reduction chunk size, independent of `max_k`, and handle the
+    mask against that fixed grid. If that is enough, most of the attention half of the
+    2–5× goes away. We have not tried it.
 
 This post covers a narrow slice of a large problem, and we would rather be corrected
 than agreed with. If you have data that points the other way, or a workload where this
