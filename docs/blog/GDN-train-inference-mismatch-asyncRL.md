@@ -813,16 +813,20 @@ month.**
 
 After all that, here is where we land.
 
-**Bitwise parity works, and it is worth less than we hoped.** On all three workloads
-the logprob gap is exactly zero at step 0, which is the thing we set out to build. It
-also stops the gap exploding at a wide off-policy window, though we only pushed the
-window that far on math, and on the terminal agent BI does not visibly lower the
-running gap at all. On reward and final accuracy
-the payoff is real but small: a slight edge on the terminal agent, nothing separable
-from noise on math or search. The best case for it is the async-tolerance argument:
-with the numerical term gone, a wider off-policy window becomes safer to run. But
-**that comes at 2–3× trainer throughput on math and search, and ~5× on the terminal
-agent**, and at that price the cost/benefit does not close for a production run.
+**Bitwise parity works. It helps in some places and does very little in most.** On all
+three workloads the logprob gap is exactly zero at step 0, which is the thing we set
+out to build, and it stops the gap exploding as the off-policy window widens.
+
+Where it pays: **math at `offpolicy = 12`**, the configuration we led this post with,
+where the BI run holds the lowest gap, the highest train reward and the highest
+held-out peak; and the **terminal agent**, where it is slightly ahead. Where it does
+not: search, where the two arms are indistinguishable, and the other math windows,
+where reward and accuracy move within noise. So the answer really is
+configuration-dependent, and most configurations we tried are in the second group.
+
+Against that, **2–3× trainer throughput on math and search and ~5× on the terminal
+agent** — and, on the agent, wall-clock budgets that have to be widened to match. At
+that price the cost/benefit does not close for a production run.
 
 So we would put it somewhere else in the workflow: **as a debugging tool.** When a
 post-training run misbehaves, turning BI on for 20 on-policy steps tells you something
