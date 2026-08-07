@@ -1,0 +1,2244 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yichuan Wang">
+      
+      
+      
+        <link rel="prev" href="../lessons_learned_in_dev_leann/">
+      
+      
+        <link rel="next" href="../reasonir/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL - Yichuan Wang's Homepage</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-KBQPT9Q9MJ"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-KBQPT9Q9MJ",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-KBQPT9Q9MJ",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#defending-against-the-traininginference-numeric-mismatch-in-rl-especially-linear-attention-and-whether-it-helps-async-rl" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-header__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Yichuan Wang's Homepage
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Yichuan Wang&#39;s Homepage" class="md-nav__button md-logo" aria-label="Yichuan Wang's Homepage" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5 12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+
+    </a>
+    Yichuan Wang's Homepage
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research Vision
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research Vision
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-search-engine-for-AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking the Search Stack for the AI Era
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production & Entrepreneurship Thoughts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production & Entrepreneurship Thoughts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rethinking-rl-as-a-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rethinking RL as a Service and the Position of RL Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tech Development Experience
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tech Development Experience
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../How-to-build-diskANN-perfectly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mastering DiskANN - Practical Lessons from Large-Scale Vector Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lessons_learned_in_dev_leann/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons Learned in Development - LEANN Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Defending Against the Training-Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Defending Against the Training-Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-result-up-front" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The result, up front
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Intro
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-background-determinism-batch-invariance-and-bitwise-parity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Background: determinism, batch invariance, and bitwise parity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Background: determinism, batch invariance, and bitwise parity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-open-source-stack-already-covers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the open-source stack already covers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-how-we-close-the-mismatch-one-model-definition-then-batch-invariant-kernels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. How we close the mismatch: one model definition, then batch-invariant kernels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. How we close the mismatch: one model definition, then batch-invariant kernels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-rl-engine-level-one-model-definition-for-both-sides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 RL-engine level: one model definition for both sides
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-operator-level-linear-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Operator level: linear attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-results-async-rl-without-the-traininference-mismatch-performance-or-illusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Results: async RL without the train/inference mismatch — performance or illusion?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Results: async RL without the train/inference mismatch — performance or illusion?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-a-recap-of-async-rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 A recap of async RL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-evaluation-and-analysis-async-rl-with-zero-traininference-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Evaluation and analysis: async RL with zero train/inference mismatch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Evaluation and analysis: async RL with zero train/inference mismatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-math-single-turn-long-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.1 MATH: single-turn, long generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-search-r1-multi-turn-short-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.2 Search-R1: multi-turn, short generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-tmax-multi-turn-long-generation-terminal-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.3 TMax: multi-turn, long generation (terminal agent)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-conclusion-a-debugging-tool-not-a-production-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Conclusion: a debugging tool, not a production default
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledgements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paper Reads
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Paper Reads
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reasonir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finally, a Retriever That Can Actually Reason (ReasonIR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qwen3embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qwen3 Embedding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ragcache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    My Thoughts on RAGCache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game_eval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploring Orak - A Benchmark for LLM Agents in Games
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summer-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opportunities in the Open-Source Agentic RL Landscape
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-result-up-front" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The result, up front
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Intro
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-background-determinism-batch-invariance-and-bitwise-parity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Background: determinism, batch invariance, and bitwise parity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Background: determinism, batch invariance, and bitwise parity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-open-source-stack-already-covers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the open-source stack already covers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-how-we-close-the-mismatch-one-model-definition-then-batch-invariant-kernels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. How we close the mismatch: one model definition, then batch-invariant kernels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. How we close the mismatch: one model definition, then batch-invariant kernels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-rl-engine-level-one-model-definition-for-both-sides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 RL-engine level: one model definition for both sides
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-operator-level-linear-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Operator level: linear attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-results-async-rl-without-the-traininference-mismatch-performance-or-illusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Results: async RL without the train/inference mismatch — performance or illusion?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Results: async RL without the train/inference mismatch — performance or illusion?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-a-recap-of-async-rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 A recap of async RL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-evaluation-and-analysis-async-rl-with-zero-traininference-mismatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Evaluation and analysis: async RL with zero train/inference mismatch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Evaluation and analysis: async RL with zero train/inference mismatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-math-single-turn-long-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.1 MATH: single-turn, long generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-search-r1-multi-turn-short-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.2 Search-R1: multi-turn, short generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-tmax-multi-turn-long-generation-terminal-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.3 TMax: multi-turn, long generation (terminal agent)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-conclusion-a-debugging-tool-not-a-production-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Conclusion: a debugging tool, not a production default
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledgements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="defending-against-the-traininginference-numeric-mismatch-in-rl-especially-linear-attention-and-whether-it-helps-async-rl">Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL</h1>
+<p><em>Yichuan Wang in collaboration with the TorchTitan team · August 2026</em></p>
+<h2 id="the-result-up-front">The result, up front</h2>
+<p><strong>Qwen3.5-9B-Base</strong> trained on
+<a href="https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k">DAPO-Math-17k</a>,
+async RL at <code>offpolicy = 12</code> (rollouts can be up to 12 steps stale; §4.1 unpacks
+this). Three setups, same data, same recipe. <strong>BI</strong> in the legends is short for
+<strong>batch invariance</strong>, the property we spend section 3 building, and the shorthand we
+use for the rest of the post:</p>
+<div class="fig-row" style="display: flex; gap: 1rem; align-items: flex-start;">
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Train/inference logprob difference (abs mean) across 200 steps: vLLM native engine is highest and spikiest, TorchTitan unified model without BI is in the middle, TorchTitan unified model with batch-invariant kernels is consistently lowest; the origin at step 0 is circled, where the BI curve is exactly 0" src="../../asset/ti-mismatch-dapo-logprob-diff.png" /></p>
+<p><em>Train/inference logprob gap (lower is better).</em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Rollout average train reward across 200 steps: the TorchTitan unified model with BI ends highest (~0.7), without BI slightly below, vLLM native engine lowest (~0.6)" src="../../asset/ti-mismatch-dapo-reward.png" /></p>
+<p><em>Training reward (higher is better).</em></p>
+</div>
+</div>
+<p>Three lines in both plots:</p>
+<ul>
+<li><strong>red</strong>: vLLM native engine serving (the standard two-engine setup);</li>
+<li><strong>brown</strong>: TorchTitan <strong>unified model</strong>: trainer and generator share one model
+  definition, but with stock kernels;</li>
+<li><strong>grey</strong>: the same unified model, <strong>plus batch-invariant kernels</strong> (BI).</li>
+</ul>
+<p>The ordering is the same on both sides: grey has the <strong>lowest</strong> logprob gap and the
+<strong>highest</strong> reward. <strong>In this configuration</strong>, closing the numerical mismatch does
+show a reward gain. Whether it holds up across other off-policy windows and other
+workloads, and what it costs, is the rest of the post, and the answer is not a clean
+yes.</p>
+<p>The single most telling point is at <strong>step 0</strong>, where the grey curve's
+<code>bit_wise/logprob_diff/abs_mean</code> is <strong>exactly 0</strong>. At step 0 nothing is stale yet, so
+this is the clean measurement: with BI kernels, our system has <strong>no train/inference
+mismatch at all</strong>: bitwise parity between trainer and generator. Every nonzero value
+after that is <em>off-policy staleness</em>, not precision noise. That separation is the
+whole point: once the infra term is provably zero, whatever gap remains is genuinely
+algorithmic, and you can reason about it.</p>
+<p>The rest of the post is how we got there, and what it does (and does not) buy you.</p>
+<hr />
+<h2 id="1-intro">1. Intro</h2>
+<p>Reinforcement learning on LLMs runs on <strong>two different engines</strong>. Training happens
+in one stack (Megatron, TorchTitan, or PyTorch FSDP); rollout generation in another
+(SGLang, vLLM). They are tuned for opposite goals (the trainer for throughput, the
+generator for latency), so under the hood they run <strong>different kernels</strong>: different
+matmul tilings, attention implementations, and reduction orders.</p>
+<p>That is fine until you recall what RL asks of them. The generator samples a token
+and reports its log-prob <code>μ</code>; the trainer later recomputes the log-prob <code>π</code> of that
+<em>same</em> token under (nominally) the same weights. Different kernels, plus
+non-associative floating-point (<a href="https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/">Thinking Machines, <em>Defeating Nondeterminism in
+LLM Inference</em></a>),
+mean <strong>the same token comes back with a different logprob from each engine.</strong> That
+gap is pure infrastructure (no policy actually changed), yet it leaks into the RL
+signal as <strong>numerical noise</strong>. This is the <strong>train/inference mismatch</strong>: an infra
+artifact masquerading as an algorithmic one. So when an RL run misbehaves, <em>"is this just infra precision?"</em> is
+a suspect you can never quite rule out. The goal we want is simple to state:
+<strong>infra-level numerical error should not leak into the algorithm.</strong></p>
+<p>And by 2026, across the open-source landscape, it is only getting harder, for two
+reasons.</p>
+<ol>
+<li><strong>Architectures keep getting fancier, and holding the mismatch at zero gets
+   harder with them.</strong> The frontier open-source models no longer ship plain
+   quadratic attention: linear attention in the latest Qwen and Kimi,
+   sliding-window attention in Inkling, sparse attention in DeepSeek. Take linear
+   attention as the example: instead of keeping an explicit KV cache, it
+   compresses the entire context into a fixed-size <strong>recurrent state</strong>. It is
+   genuinely unclear whether squeezing global information into so small a state
+   makes the numerics <em>more</em> sensitive, and as far as we know, <strong>no open-source
+   stack has hit train/inference KL = 0 for linear attention</strong> yet.</li>
+<li><strong>Async RL is going mainstream.</strong> To overlap the trainer and the generator,
+   async RL lets the generator run several steps behind the live policy, so <code>μ</code> is
+   a genuinely <em>older</em> policy than <code>π</code>, and the ratio <code>exp(π − μ)</code> is <em>supposed</em> to
+   be ≠ 1 (that's what the clipped surrogate is for). But the popular open-source
+   loops (slime, open-instruct) compute that ratio from raw <code>μ</code> and <code>π</code> directly,
+   which <strong>conflates two very different mismatches</strong>: the <em>algorithmic</em> one from
+   staleness (which the surrogate is designed to absorb) and the <em>numerical</em> one
+   from precision (which it is not). When something breaks, you cannot tell whether
+   the culprit is async or infra.</li>
+</ol>
+<p>The folk wisdom here is that driving the train/inference KL to zero should make
+async RL more stable: clean out the numerical mismatch, and the off-policy window
+can be pushed wider. It is a plausible story, but there is <strong>little open evidence
+for it either way</strong>.</p>
+<p><strong>Before we dive in: TorchTitan and TorchTitan RL.</strong> Everything below is built on
+<a href="https://github.com/pytorch/torchtitan">TorchTitan</a>, PyTorch's own training framework.
+It is torch-native, deliberately clean and small enough to read end to end (which
+also makes it unusually friendly to coding agents), and it supports the parallelisms a
+serious pretraining stack needs: <strong>FSDP, TP, CP, and EP</strong>.</p>
+<p><strong>TorchTitan RL</strong> is a feature the TorchTitan team brought up this year: an RL stack
+built on that trainer, with <strong>async RL</strong>, <strong>hackability</strong>, and the one that carries
+this post: <strong>one unified model definition shared by the trainer and the generator</strong>
+(§3.1 is where you will see why that is worth having). The bet behind it is simple:
+TorchTitan has done well as a pretraining framework, so an RL platform that <em>owns its
+own trainer</em>, rather than gluing two independent stacks together, is worth building.</p>
+<p>So we wrote this post. You will see:</p>
+<ol>
+<li>a quick recap of the key notions (<strong>determinism</strong>, <strong>batch invariance</strong>, and
+   <strong>trainer/generator bitwise parity</strong>): what the train/inference mismatch really
+   is, and what the open-source stack already handles (which ops have
+   batch-invariant kernels);</li>
+<li>how we push it further, closing the mismatch at the <strong>RL-engine level</strong> (one
+   model definition for both sides) and then at the <strong>operator level</strong> (linear
+   attention, etc., where <strong>batch invariance</strong> is what we need), driving the numerical
+   difference between trainer and generator to zero;</li>
+<li>what happens when <em>zero mismatch</em> meets <strong>async RL</strong>, across three regimes:
+   <strong>long math reasoning</strong>, <strong>multi-turn single-agent</strong> (search agent), and
+   <strong>multi-turn complex-agent</strong> training (terminal agent): does bit-exact parity
+   actually let us push the async off-policy window wider?;</li>
+<li>the bottom line, whether closing this mismatch is actually worth it: the costs,
+   and the benefits.</li>
+</ol>
+<hr />
+<h2 id="2-background-determinism-batch-invariance-and-bitwise-parity">2. Background: determinism, batch invariance, and bitwise parity</h2>
+<p>Three notions we lean on throughout the post, each one a step up from the last:</p>
+<ul>
+<li><strong>Determinism</strong>: the same input batch produces the same result run-to-run. Rerun
+  the identical forward on the identical batch, get identical bits.</li>
+<li><strong>Batch invariance</strong>: a <em>single sample</em> produces the same result regardless of
+  which other samples share its batch. This is strictly stronger than determinism: a
+  kernel can be perfectly deterministic (stable for a fixed batch) yet still
+  batch-<em>variant</em>: its output for one row shifts the moment the batch's shape or
+  composition changes.</li>
+<li><strong>Trainer/generator bitwise parity</strong>. The end-to-end goal: the trainer's
+  recomputed logprob <code>π</code> equals the generator's rollout logprob <code>μ</code> bit for bit.
+  This is what "<strong>train/inference zero logp difference</strong>" means in practice.</li>
+</ul>
+<p>So it is a ladder. Determinism means don't contradict yourself; batch invariance means
+don't be influenced by your neighbours; parity means two different engines agree. And
+each rung needs the one below it: parity requires batch invariance on both sides, which
+requires determinism.</p>
+<p>The culprit underneath all of this is floating-point non-associativity:</p>
+<div class="highlight"><pre><span></span><code>(a + b) + c  ≠  a + (b + c)
+</code></pre></div>
+<p>Every kernel that sums something has to pick an order to fold the partials together,
+and a high-performance kernel picks that order <em>per shape</em>, to maximize occupancy on
+the tensor it happens to be handed. So the reduction order is a property of the
+shape, not of the math: change the batch, and the summation order changes with it.
+Same math, different low bits. That is what breaks <code>π = μ</code>.</p>
+<p>Batch invariance, then, comes down to one thing: <strong>a reduction somewhere is happening
+along the batch-size axis.</strong> (The full kernel-level derivation is in the TML blog;
+we only recap enough to build on it.)</p>
+<p>So the recipe for parity falls out: make every op <strong>batch-invariant</strong> (a fixed
+reduction order, independent of the batch), run both engines <strong>deterministically</strong>,
+and the two logprob streams collapse onto each other: zero mismatch.</p>
+<h3 id="what-the-open-source-stack-already-covers">What the open-source stack already covers</h3>
+<p>The first people to attack batch invariance and determinism in the open were
+Thinking Machines, in the blog above plus its
+<a href="https://github.com/thinking-machines-lab/batch_invariant_ops"><code>batch_invariant_ops</code></a>
+repo. That repo gives batch-invariant kernels for <strong>three ops</strong>: RMSNorm, GEMM, and
+attention:</p>
+<table>
+<thead>
+<tr>
+<th>Op</th>
+<th>Why it is batch-variant by default</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RMSNorm</strong> (<code>mean.dim</code>)</td>
+<td>with few rows, the kernel splits the reduction across the batch axis to fill the GPU</td>
+<td>don't reduce along the batch-size axis</td>
+</tr>
+<tr>
+<td><strong>GEMM</strong> (<code>mm</code> / <code>addmm</code>)</td>
+<td>tile size and split-K are picked per shape</td>
+<td>each output element uses the same reduction partition and reduction order, independent of the batch size or of the other rows present in the GEMM</td>
+</tr>
+<tr>
+<td><strong>attention</strong></td>
+<td>flash-decoding splits the KV dimension, and the split count depends on <code>max_k</code>, i.e. on the batch</td>
+<td>set <code>num_splits = 1</code>, which disables split-KV and so fixes the reduction order. Leaving splits on is not just a reduction-order problem: at inference the attention mask has to be handled in step with the reduction chunk size, and that chunk count is itself a function of the batch</td>
+</tr>
+</tbody>
+</table>
+<p>There is also work on the <em>cross-GPU</em> version of the problem: <a href="https://arxiv.org/abs/2511.17826">Zhang et
+al.</a> use tree-based TP (one unified hierarchical
+binary reduction tree within and across GPUs) to get no train/inference mismatch
+even when the trainer runs FSDP at <code>TP = 1</code> and the generator runs multi-GPU TP. It
+works, but it greatly sacrifices speed.</p>
+<p>Worth noting: <strong>DP at inference time, and DP/FSDP at training time, cause no extra
+mismatch</strong>, because neither reduces along the batch-size axis.</p>
+<p>That is where the open-source coverage stops. It is enough for the architecture of
+2023, and it is exactly the set of ops the newest models are moving <em>away</em> from. How
+to handle newer architectures, <strong>MoE</strong> and <strong>linear attention</strong>, is unclear.</p>
+<hr />
+<h2 id="3-how-we-close-the-mismatch-one-model-definition-then-batch-invariant-kernels">3. How we close the mismatch: one model definition, then batch-invariant kernels</h2>
+<p>We answer this at two levels at once: the <strong>RL-engine level</strong> and the <strong>operator
+level</strong>.</p>
+<h3 id="31-rl-engine-level-one-model-definition-for-both-sides">3.1 RL-engine level: one model definition for both sides</h3>
+<p>As we said at the top, the training engine and the serving engine are developed
+independently, so the two sides carry <strong>two different model definitions</strong>. That is
+not just a code-duplication annoyance; it is a numerical one. Some op inside a layer
+runs in fp32 on the training side and not on the serving side, and nobody notices
+until the logprobs disagree. Then somebody has to go fix it by hand: see, for
+example, <a href="https://github.com/radixark/miles/pull/975">miles #975</a>, which keeps
+Qwen3.5's <code>A_log</code> in fp32 all the way through Megatron's bf16 wrapping so that
+Megatron and SGLang agree again. Multiply that by every op in the model and you get
+the real cost: <strong>a lot of human effort spent aligning Megatron's and SGLang's
+precision</strong>, op by op, forever.</p>
+<p>vLLM's <a href="https://vllm.ai/blog/2025-11-10-bitwise-consistent-train-inference">bitwise-consistent training and inference</a>
+post attacks this by <strong>patching the same kernels into both engines</strong>: they import
+vLLM's forward ops into the trainer (writing backward passes for them, since
+inference kernels carry no gradients) and audit every kernel invocation in the
+forward pass. It gets to bitwise parity, but the patching has to be done on both
+sides, and, as they note themselves, there are still two copies of the model code,
+which is "fragile for long-term maintenance."</p>
+<p>Our approach gets this for free from <strong>TorchTitan's unified model abstraction</strong>:
+both frameworks enjoy the <em>same</em> model definition, the TorchTitan model. The
+serving side keeps only vLLM's <strong>KV-cache management</strong> (paged attention, prefix
+caching), but every per-layer op it runs is the trainer's op. So a forward pass is a
+forward pass: trainer and generator execute the same code, at the same precision,
+and the whole alignment problem above simply does not arise.</p>
+<h3 id="32-operator-level-linear-attention">3.2 Operator level: linear attention</h3>
+<div class="fig-float" style="float: right; width: 42%; margin: 0.2rem 0 1rem 1.6rem;">
+<p><img alt="Dataflow of Qwen3.5 batch-invariant mode. Left, TRAINER: training tokens go through a RECURRENT forward to activations/logits and the loss; the backward pass uses the CHUNKED kernel to produce gradients. Right, INFERENCE/GENERATOR: prompt tokens go through a RECURRENT prefill into the recurrent state, and RECURRENT decode reads and updates that state to emit the next token. Dashed arrows link the trainer's recurrent forward to both the generator's prefill and decode, marking the ops that are bitwise identical across the two engines." src="../../asset/ti-mismatch-qwen35-bi-dataflow.png" /></p>
+<p><em>The recurrent kernel (green) is shared by the trainer's forward, the generator's
+prefill, and the generator's decode. Those are the three places that must agree.
+The chunked kernel (orange) survives only in the backward pass, where batch
+invariance does not matter.</em></p>
+</div>
+<p>TML gives us GEMM, attention, and RMSNorm, and for an older model like Qwen3 that is
+enough. For the new ones (Qwen3.5, Kimi 3) it is not: we additionally
+have to handle <strong>linear attention</strong>, plus its <strong>state cache management</strong> and its
+<strong>prefix caching</strong>.</p>
+<p><strong>Background.</strong> For GDN (Gated DeltaNet), most open-source implementations (e.g.
+<a href="https://github.com/fla-org/flash-linear-attention">FLA</a>) use a
+<a href="https://github.com/fla-org/flash-linear-attention/blob/main/fla/ops/gated_delta_rule/chunk.py"><strong>chunked</strong></a>
+kernel for training and prefill, and a
+<a href="https://github.com/fla-org/flash-linear-attention/blob/main/fla/ops/gated_delta_rule/fused_recurrent.py"><strong>recurrent</strong></a>
+kernel only for decode. The chunked
+kernel slices the sequence into fixed-size chunks, computes each chunk in matrix
+form, and carries the state across chunk boundaries; the recurrent kernel walks the
+sequence token by token. The two compute the same function in a <em>different order</em>,
+so they do not agree bit for bit. Note what this means: the gap here is not a
+mistuned kernel, it is <strong>two different algorithms</strong> on the two sides of the RL loop.</p>
+<p><strong>Solution.</strong> Continue using the vLLM SSM state, but switch <strong>both prefill and
+decode to the recurrent kernel</strong>. For training, use the <strong>recurrent kernel for the
+forward pass and the chunked kernel for the backward pass</strong>. Only the forward
+computation needs to be batch-invariant.</p>
+<p>And that is it. The change is smaller than the problem sounds. We <strong>reuse vLLM's
+linear-cache management as is</strong>: its <code>mamba_ssm_cache</code> and conv state, and its state
+snapshotting under <code>--mamba-cache-mode align</code>, which means <strong>prefix caching keeps
+working</strong> rather than having to be rebuilt around our kernels. We also <strong>never touch
+the inside of the FLA kernels</strong>, because the recurrent kernel is <em>intrinsically</em>
+batch-invariant: it reads only that sequence's own state and walks that sequence's
+tokens in a fixed order. There are no reductions or atomics across sequences, so
+there is no batch axis left to reduce along.</p>
+<p>Going all-recurrent on the forward is the sensible direction for the trade, rather
+than a free one: in a normal RL step the trainer is not the bottleneck, generation is,
+so the trainer is the right side to spend on. What it actually costs in trainer
+throughput we measure in §4.2 (Finding 3).</p>
+<p>The rest is the easy part: <strong><code>num_splits = 1</code> on the attention path, and patch in Thinking
+Machines' batch-invariant GEMM.</strong></p>
+<div style="clear: both;"></div>
+
+<hr />
+<h2 id="4-results-async-rl-without-the-traininference-mismatch-performance-or-illusion">4. Results: async RL without the train/inference mismatch — performance or illusion?</h2>
+<h3 id="41-a-recap-of-async-rl">4.1 A recap of async RL</h3>
+<p>Sync RL puts a barrier between generation and training, and it costs twice: each
+side <strong>idles while the other works</strong>, and the generator's step time is set by its
+<em>slowest</em> sequence, so <strong>long-tail requests bottleneck the whole batch</strong>. Async RL
+drops the barrier: the two overlap, and a straggler just lands in a later batch.</p>
+<p>The price is that the weights that produced a rollout are no longer the weights being
+updated. That lag is the <strong>off-policy window</strong> (<code>offpolicy = 12</code> above means a rollout
+can be up to 12 steps stale), and it is corrected with the <strong>importance sampling
+ratio</strong>. For a token sampled under the generator's old policy <code>μ</code> and re-evaluated
+under the trainer's current policy <code>π</code>:</p>
+<div class="highlight"><pre><span></span><code>r = π(a|s) / μ(a|s) = exp(π_logprob − μ_logprob)
+</code></pre></div>
+<p><strong>How we manage the KV cache across a weight swap.</strong> One design decision shapes every
+experiment below, so it is worth stating before the results: <strong><code>μ</code> for a single
+rollout need not come from a single weight version.</strong> A sequence that is still
+decoding when a weight update lands straddles two policies. AReaL's answer is to drop
+the KV cache at the pause and recompute it after the swap; ours is to <strong>keep the cache
+and simply continue decoding with the new weights</strong>.</p>
+<p>Neither choice is more faithful than the other, and it is worth being precise about
+why. Recompute means each token's <code>μ</code> belongs to a genuine historical weight version.
+Keeping the cache means the policy that actually did the sampling is a <strong>hybrid</strong> that
+exists in no single weight version at all. Both are equally honest accounts of
+something slightly awkward. What keeping the cache buys is practical: <strong>importance
+sampling still works out of the box</strong>, and <strong>system efficiency is much higher</strong>,
+because nothing has to be re-prefilled.</p>
+<p>Every run in §4.2 uses this policy. We did not run the recompute variant, so we cannot
+say for certain whether it would change the conclusions below.</p>
+<p><img alt="Async RL timeline across three generation engines. Rollouts decode continuously; at a pause the new weights are loaded and decoding resumes immediately on the existing KV cache, with no recompute step. Sequences that straddle the pause (s5, s7, s6) are outlined: their early tokens are generated under the old weights and their later tokens under the new ones." src="../../asset/ti-mismatch-async-timeline.png" /></p>
+<p><em>Sequences that straddle a weight swap (outlined) carry tokens from two versions. We
+keep the KV cache across the pause (no recompute), so each token's <code>μ</code> belongs to
+the weights that generated it.</em></p>
+<p><code>r</code> keeps the gradient approximately unbiased under the policy actually being
+updated, and PPO/GRPO's clipped surrogate bounds how far it may drift. Under async RL
+<code>r ≠ 1</code> by design.</p>
+<p>The catch: <strong>we want <code>r</code> to be about weight versions and nothing else</strong>. But <code>μ</code>
+comes from the generator and <code>π</code> from the trainer, so in a stock stack <code>exp(π − μ)</code>
+is staleness <em>plus</em> numerical mismatch. Zero the mismatch and the ratio becomes a
+clean statement about how stale the sample is.</p>
+<p>Hence the hypothesis everyone holds and nobody has tested: a mismatch-free engine
+should <strong>tolerate a wider off-policy window</strong>, or <strong>train more stably at the same
+one</strong>. Does it?</p>
+<h3 id="42-evaluation-and-analysis-async-rl-with-zero-traininference-mismatch">4.2 Evaluation and analysis: async RL with zero train/inference mismatch</h3>
+<p>We evaluate on three workloads, picked to span the two axes an RL system actually
+feels: how many turns, and how long each generation is:</p>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>Shape</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MATH</strong> (§4.2.1)</td>
+<td>single-turn, long generation</td>
+<td>DAPO-Math-17k</td>
+</tr>
+<tr>
+<td><strong>Search-R1</strong> (§4.2.2)</td>
+<td>multi-turn, short generation</td>
+<td>Wikipedia search, exact-match reward</td>
+</tr>
+<tr>
+<td><strong>TMax terminal agent</strong> (§4.2.3)</td>
+<td>multi-turn, long generation</td>
+<td><code>allenai/tmax-15k-open-instruct</code>, sandboxed</td>
+</tr>
+</tbody>
+</table>
+<p>For each we run with and without BI and report the effect on <strong>training reward</strong> and
+on <strong>efficiency</strong>; on MATH we also sweep the <strong>off-policy window</strong>.</p>
+<h4 id="421-math-single-turn-long-generation">4.2.1 MATH: single-turn, long generation</h4>
+<p>Qwen3.5-9B-Base trained on DAPO-Math-17k, 40 GPUs, trainer and generators fully
+disaggregated, and <code>TP = 1</code> on both sides, so none of the mismatch below comes from
+cross-GPU reduction order. DP and FSDP do not reduce along the batch axis, which
+leaves only the kernels to blame.</p>
+<details>
+<summary>Full setup</summary>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trainer</strong></td>
+<td>8-way FSDP, <code>TP = 1</code>, no PP/CP; FullAC</td>
+</tr>
+<tr>
+<td><strong>Generators</strong></td>
+<td>4 × vLLM replicas, <code>DP = 8</code>, <code>TP = 1</code>; prefix caching on</td>
+</tr>
+<tr>
+<td><strong>Batch</strong></td>
+<td>8 prompts × 16 rollouts = 128 sequences/step; 8K response cap in a 10K packed context</td>
+</tr>
+<tr>
+<td><strong>Optimizer</strong></td>
+<td>AdamW, constant lr 1e-6; DAPO loss, clip <code>(0.2, 0.28)</code></td>
+</tr>
+<tr>
+<td><strong>Precision</strong></td>
+<td>FP32 master weights + BF16 forward + FP32 reduction; FP32 LM head and FP32 GDN state cache</td>
+</tr>
+<tr>
+<td><strong>Sampling</strong></td>
+<td>temperature 1.0, top-p 1.0</td>
+</tr>
+<tr>
+<td><strong>Eval</strong></td>
+<td>AIME2025, 30 samples, every 10 steps; 200 train steps</td>
+</tr>
+</tbody>
+</table>
+</details>
+<p><strong>Case study at <code>offpolicy = 12</code>: three levels of alignment.</strong> Start with one window
+and three runs that differ only in how hard they try to make the two engines agree:</p>
+<table>
+<thead>
+<tr>
+<th>Run</th>
+<th>Model definition</th>
+<th>Kernels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>vLLM native</strong> (red)</td>
+<td>vLLM's own implementation, trainer weights loaded into it</td>
+<td>whatever vLLM ships</td>
+</tr>
+<tr>
+<td><strong>Titan unified, w/o BI</strong> (brown)</td>
+<td>one shared definition (§3.1)</td>
+<td>stock: split-K attention on, chunked forward, stock GEMM</td>
+</tr>
+<tr>
+<td><strong>Titan unified, w/ BI</strong> (grey)</td>
+<td>one shared definition</td>
+<td>aligned (§3.2): split-K off, batch-invariant GEMM, recurrent forward on both sides</td>
+</tr>
+</tbody>
+</table>
+<p>The first is what most stacks do: take the trainer's weights and load them into
+vLLM's model. The <em>weights</em> match, but op for op it is a <strong>different
+implementation</strong>, so precision differs all over. The second fixes that (trainer and
+generator run one model definition) but leaves the <strong>kernels unaligned</strong>: attention
+still splits K, the GEMMs are stock, and the trainer's chunked forward is not the
+generator's recurrent one. The third aligns those too.</p>
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;">
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Train/inference logprob abs mean for the three runs at off-policy 12: vLLM native (red) is highest and spikiest, unified without BI (brown) is in the middle, unified with BI (grey) is lowest, and the BI curve is exactly 0 at step 0" src="../../asset/ti-mismatch-dapo-logprob-diff.png" /></p>
+<p><em>logprob gap (lower is better)</em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Rollout average train reward for the three runs at off-policy 12: with BI ends highest near 0.7, without BI slightly below, vLLM native lowest near 0.6" src="../../asset/ti-mismatch-dapo-reward.png" /></p>
+<p><em>train reward (higher is better)</em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Validation reward sum for the three runs at off-policy 12: with BI reaches the highest peak around 17 at step 170 and tracks at or above the other two for most of the run, while vLLM native trails early" src="../../asset/ti-mismatch-dapo-val-sum-off12.png" /></p>
+<p><em>validation reward, AIME2025 (higher is better)</em></p>
+</div>
+</div>
+<p>The three runs form a ladder of strictness, and the metrics respect it. On the
+logprob gap the order is clean: red above brown above grey, with grey at <strong>exactly
+0 at step 0</strong> (circled): no mismatch before staleness enters. Train reward follows
+the same order in reverse: grey finishes highest, brown just under, red last.
+Validation reward is noisier, as validation always is, but grey reaches the highest
+peak (~17 at step 170) and spends most of the run at or above the others.</p>
+<p>So <strong>the stricter the alignment, the better every metric looks</strong>, at this window.
+The obvious next question is whether that survives when the window moves, so we swept
+it: <code>offpolicy = 4</code>, <code>12</code>, <code>32</code>, now with just the two unified runs, with and without
+BI.</p>
+<p><strong>Finding 1. BI holds the logprob gap down at every off-policy window, and keeps it
+from exploding at large ones.</strong></p>
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;">
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Train/inference logprob abs mean at off-policy 4: the run without BI (green) sits slightly above the BI run (orange) throughout and spikes higher, both drifting from about 0.004 to 0.006 over 200 steps" src="../../asset/ti-mismatch-dapo-diff-off4.png" /></p>
+<p><em><code>offpolicy = 4</code></em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Train/inference logprob abs mean at off-policy 12: the run without BI (brown) climbs to about 0.011 while the BI run (grey) stays around 0.009, with the gap opening after step 100" src="../../asset/ti-mismatch-dapo-diff-off12.png" /></p>
+<p><em><code>offpolicy = 12</code></em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Train/inference logprob abs mean at off-policy 32: after step 100 the run without BI (purple) runs away to about 0.065 while the BI run (pink) only reaches about 0.035" src="../../asset/ti-mismatch-dapo-diff-off32.png" /></p>
+<p><em><code>offpolicy = 32</code></em></p>
+</div>
+</div>
+<p><em><code>bit_wise/logprob_diff/abs_mean</code> under three off-policy windows. Note the y-axis
+changes: 0.008 on the left, 0.012 in the middle, 0.07 on the right.</em></p>
+<p>At <code>offpolicy = 4</code> the separation is real but modest: the run without BI rides
+slightly above BI the whole way and spikes higher, but both stay in the same band. At
+<code>12</code> the gap is steadier, with BI holding ~0.009 against ~0.011. At <code>32</code> the run
+without BI <strong>runs away</strong>: it leaves the shared trajectory around step 100 and
+reaches ~0.065 by step 200, while BI tops out near ~0.035, roughly half.</p>
+<p>So the benefit is not uniform. BI lowers the gap everywhere, but what it really buys
+is <strong>protection against the blow-up</strong>, and the wider you push the off-policy window,
+the more there is to protect.</p>
+<p><strong>Finding 2. That cleaner signal does not turn into validation accuracy.</strong></p>
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;">
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Validation reward mean at off-policy 4: the BI run (orange) and the no-BI run (green) are interleaved for the whole 200 steps, both plateauing around 0.43 to 0.47" src="../../asset/ti-mismatch-dapo-val-off4.png" /></p>
+<p><em><code>offpolicy = 4</code></em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Validation reward mean at off-policy 12: the BI run (grey) spends most of steps 70 to 170 above the no-BI run (brown) and peaks higher at about 0.57, but the two cross repeatedly and no-BI finishes higher at step 200" src="../../asset/ti-mismatch-dapo-val-off12.png" /></p>
+<p><em><code>offpolicy = 12</code></em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Validation reward mean at off-policy 32: both the BI run (pink) and the no-BI run (purple) swing violently between 0 and 0.4 for the whole run, with no separation between them and a much lower ceiling than the narrower windows" src="../../asset/ti-mismatch-dapo-val-off32.png" /></p>
+<p><em><code>offpolicy = 32</code></em></p>
+</div>
+</div>
+<p><em><code>validation_reward_mean</code> on AIME2025 (30 samples, every 10 steps). Both runs are the
+same recipe, differing only in BI. Note the y-axis: 0.5 on the left two, 0.4 on the
+right.</em></p>
+<p>At <code>offpolicy = 4</code> the two curves are interleaved for the entire run; you could swap
+the labels and not notice. At <code>offpolicy = 12</code> BI does look better for a stretch: it
+sits above from roughly step 70 to 170 and peaks higher (~0.57 vs ~0.53). But the
+curves cross repeatedly, and no-BI ends the run on top. At <code>offpolicy = 32</code> both runs
+degenerate into noise, swinging between 0 and 0.4 with no separation and a ceiling
+well below the narrower windows. The window itself has become the problem, and BI
+does nothing about it.</p>
+<p>That is the honest read: <strong>zero train/inference mismatch does not buy a clear
+accuracy gain under async RL.</strong> It reliably cleans up <code>logprob_diff</code> (Finding 1 is
+unambiguous), but the metric that matters moves within noise. Whatever the surrogate
+was struggling with at these off-policy windows, it apparently was not the numerical
+term.</p>
+<p><strong>Finding 3. BI costs 2–3× trainer throughput. The unified model costs nothing.</strong></p>
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;">
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Trainer tokens per second per full step at off-policy 4: the unified model without BI (green) runs highest around 11,000 to 15,000 and sags over training, vLLM (blue) sits below it around 9,000 to 12,500, and the BI run (orange) is far lower and violently spiky, swinging between near zero and 9,000" src="../../asset/ti-mismatch-dapo-perf-off4.png" /></p>
+<p><em><code>offpolicy = 4</code></em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Trainer tokens per second per full step at off-policy 12: the unified model without BI (brown) is highest and flat near 14,500, vLLM native (red) sits below it near 12,200, and the BI run (grey) is flat near 8,400 with a few sharp dips" src="../../asset/ti-mismatch-dapo-perf-off12.png" /></p>
+<p><em><code>offpolicy = 12</code></em></p>
+</div>
+</div>
+<p><em><code>perf/trainer/tokens_per_second_full_step</code>, the same metric we report for the other
+two workloads below, so the numbers are comparable across all three.</em></p>
+<p>Three things fall out.</p>
+<p><strong>BI costs 2–3×.</strong> At <code>offpolicy = 12</code> the BI run holds ~8.4k tokens/s against ~14.5k
+without. At <code>offpolicy = 4</code> it is worse and much spikier, averaging roughly ~4k against
+~12k. That is the recurrent forward, split-K disabled, and the batch-invariant GEMM,
+all of which trade occupancy for a fixed reduction order. Note that the penalty is not
+a constant: it depends on how much work is in flight to hide the slower kernels
+behind.</p>
+<p><strong>The unified model is free.</strong> vLLM native and the unified model without BI sit in the
+same band (~12.2k against ~14.5k at <code>offpolicy = 12</code>). Sharing one model definition
+between trainer and generator, the §3.1 half of the story, carries no throughput
+penalty. <strong>The entire bill is the aligned <em>kernels</em>.</strong></p>
+<p><strong>A wider window raises throughput, and BI needs it most.</strong> Every curve is higher and
+flatter at <code>12</code> than at <code>4</code>. BI gains the most from the wider window (~4k → ~8.4k):
+being slower per step, it has more latency to hide, and a wider window is what gives
+it enough in-flight rollouts to hide it behind.</p>
+<p><strong>So, can we push the off-policy window wider?</strong> That was the question at the end of
+§4.1, and <code>offpolicy = 32</code> is where to look for the answer. On the numerical axis, yes:
+without BI the logprob gap runs away past 0.06, while BI holds it near half that. In
+that narrow sense a mismatch-free engine <em>does</em> tolerate more staleness: it stays in
+a regime the stock stack has already left. But the accuracy plots at <code>32</code> are noise for
+both arms, so the wider window is not usable either way. <strong>BI removes the numerical
+obstacle to a wider window; it does not remove whatever else is in the way.</strong></p>
+<p>Put the three findings together and the trade is explicit: <strong>BI buys a provably zero
+mismatch and a logprob gap that will not explode, at 2–3× the trainer throughput and
+no clear accuracy gain.</strong> We are not going to tell you which side of that to pick. The
+numbers are on the table.</p>
+<p><strong>Curious about MoE?</strong> We ran the same three-arm comparison on <strong>Qwen3.5-35B-A3B</strong>.</p>
+<details>
+<summary>MoE: Qwen3.5-35B-A3B on the same MATH recipe</summary>
+<p>Same DAPO-Math data, same <code>offpolicy = 12</code>, same three arms: vLLM native, the unified
+model without BI, and the unified model with BI. Two things to report, and they point
+in different directions.</p>
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;">
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Train/inference logprob abs mean for Qwen3.5-35B-A3B: vLLM native (green) sits clearly highest around 0.017 to 0.02 for the whole run, while the unified model without BI (blue) and with BI (purple) overlap each other near 0.014" src="../../asset/ti-mismatch-moe-diff.png" /></p>
+<p><em>logprob gap</em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Rollout average train reward for Qwen3.5-35B-A3B: all three arms are interleaved for the whole run, climbing together from about 0.6 to about 0.8" src="../../asset/ti-mismatch-moe-reward.png" /></p>
+<p><em>train reward</em></p>
+</div>
+</div>
+<p><strong>The logprob gap does come down, but from the unified model, not from BI.</strong> vLLM
+native (green) sits clearly above the other two throughout. The unified model with BI
+(purple) and without (blue) lie on top of each other over the range where both are
+running. Note the BI arm is the shorter curve: it was around step 200 when these were
+taken, against 400 for the two completed arms.</p>
+<p><strong>And there is no reward gain.</strong> All three arms are interleaved from the start,
+climbing together from ~0.6 to ~0.8.</p>
+<p>MoE needed one extra kernel that the dense model did not. The router's gate is a
+matmul, and the same matmul ends up calling <strong>different ops on the two sides</strong> (<code>bmm</code>
+in the generator, <code>mm</code> in the trainer) because the generator hands it a 3-D batch of
+activations and the trainer a 2-D one. <code>bmm</code> is not in the batch-invariant set, so we
+patch in a <strong>batch-invariant <code>bmm</code></strong> too. It matters more
+than the usual low-bit drift: if the gate scores disagree between the two sides, a
+token can be routed to a <strong>different expert</strong> entirely.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model</strong></td>
+<td>Qwen3.5-35B-A3B-Base. 40 layers, 256 routed experts, top-8 + 1 shared, hybrid attention (10 full / 30 Gated DeltaNet)</td>
+</tr>
+<tr>
+<td><strong>Trainer</strong></td>
+<td>16-way FSDP, <code>TP = 1</code>, <strong><code>EP = 1</code></strong>, FullAC; packed <code>seq_len</code> 10,240</td>
+</tr>
+<tr>
+<td><strong>Generators</strong></td>
+<td>4 × vLLM replicas, <code>DP = 8</code>, <code>TP = 1</code>, <code>EP = 1</code>; prefix caching with a per-group salt on weight sync</td>
+</tr>
+<tr>
+<td><strong>Batch</strong></td>
+<td>8 prompts × 16 rollouts = 128 sequences/step; 8K response cap; 400 steps</td>
+</tr>
+<tr>
+<td><strong>Optimizer</strong></td>
+<td>AdamW, constant lr 1e-6; DAPO loss, clip <code>(0.2, 0.28)</code>; aux-loss-free load balancing with an FP32 expert bias</td>
+</tr>
+<tr>
+<td><strong>Precision</strong></td>
+<td>FP32 master weights + BF16 forward + FP32 reduction; FP32 LM head and FP32 GDN state cache</td>
+</tr>
+<tr>
+<td><strong>Eval</strong></td>
+<td>AIME2025, 30 samples, every 10 steps</td>
+</tr>
+<tr>
+<td><strong>Hardware</strong></td>
+<td>48 GPUs doing model work (16 trainer + 4 × 8 generator), disaggregated</td>
+</tr>
+</tbody>
+</table>
+<p><code>EP = 1</code> on both sides is deliberate: with expert parallelism off there is no MoE
+all-to-all, so this comparison isolates the kernels from cross-GPU dispatch, the same
+way <code>TP = 1</code> does for the dense runs.</p>
+</details>
+<h4 id="422-search-r1-multi-turn-short-generation">4.2.2 Search-R1: multi-turn, short generation</h4>
+<p>The workload is the opposite shape from MATH. The model answers a question by
+<strong>searching Wikipedia</strong>: it issues a query, reads the retrieved passages, decides
+whether it knows enough, and queries again. Several turns per episode, each
+generation short (a query, or a final answer). So an episode is many small calls
+rather than one long one, and the reward is exact match against the gold answer.</p>
+<p>Qwen3.5-9B, <code>offpolicy window = 4</code>, 500 steps, two arms: the unified model with and
+without BI.</p>
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;">
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Train/inference logprob abs mean on Search-R1: both arms start at 0, spike above 0.03 in the first few steps, then decay; over the last 100 steps the BI arm (orange) settles near 0.002 while the non-BI arm (purple) stays near 0.005" src="../../asset/ti-mismatch-search-diff.png" /></p>
+<p><em>logprob gap</em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Rollout exact-match reward on Search-R1 over 500 steps: the BI arm (orange) and the non-BI arm (purple) both rise to about 0.6 by step 100 and then stay interleaved for the rest of the run" src="../../asset/ti-mismatch-search-reward.png" /></p>
+<p><em>train reward (exact match)</em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Validation exact-match reward on Search-R1: the two arms lie on top of each other for the whole run, both between about 0.49 and 0.56 after step 50" src="../../asset/ti-mismatch-search-val.png" /></p>
+<p><em>validation reward (exact match)</em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Trainer tokens per second per full step on Search-R1: the non-BI arm (purple) runs well above the BI arm (orange) for the entire run, both spiky because multi-turn step cost varies" src="../../asset/ti-mismatch-search-perf.png" /></p>
+<p><em>throughput (full step)</em></p>
+</div>
+</div>
+<p>Same verdict, arrived at more cleanly. <strong>Logprob gap:</strong> BI starts at exactly 0 at step
+0 here too, and over the last 100 steps it settles near ~0.002 against ~0.005 without,
+so the mechanism is working. <strong>Train reward:</strong> both arms reach ~0.6 by step 100 and
+stay interleaved for the next 400 steps. <strong>Validation:</strong> the two curves are
+indistinguishable: genuinely on top of each other, not merely close. <strong>Throughput:</strong>
+the BI arm runs below the non-BI arm for the entire run.</p>
+<p>So flipping the workload shape (many short turns instead of one long generation)
+does not change the answer. <strong>No measurable accuracy gain, and you pay for it in
+throughput.</strong></p>
+<h4 id="423-tmax-multi-turn-long-generation-terminal-agent">4.2.3 TMax: multi-turn, long generation (terminal agent)</h4>
+<p>The hardest of the three, and the one closest to how agents are actually trained
+today. Each episode is a real terminal session: the model is dropped into a fresh
+<a href="https://www.daytona.io/">Daytona</a> sandbox with a task description and a single <code>bash</code>
+tool, and works the problem for up
+to <strong>64 turns</strong> inside a <strong>64K context</strong>. There is no partial credit: at the end the
+task's own test script runs and the reward is binary. Many turns <em>and</em> long
+generations, both at once.</p>
+<p>The data is <a href="https://huggingface.co/datasets/allenai/tmax-15k-open-instruct"><code>allenai/tmax-15k-open-instruct</code></a>
+(~14.5K tasks after a 64-task holdout, each one a Docker image plus an instruction
+and a verifier).</p>
+<details>
+<summary>Full setup</summary>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model</strong></td>
+<td>Qwen3.5-9B</td>
+</tr>
+<tr>
+<td><strong>Episode</strong></td>
+<td>≤ 64 <code>bash</code> turns, 64K context, ≤ 16K tokens/turn; 120 s per command, 600 s verifier</td>
+</tr>
+<tr>
+<td><strong>Sandbox</strong></td>
+<td>fresh Daytona sandbox per rollout from the task's Docker image (2 vCPU / 4 GiB / 10 GiB); one <code>bash</code> tool, persistent shell; binary reward from <code>tests/test.sh</code></td>
+</tr>
+<tr>
+<td><strong>Trainer</strong></td>
+<td>8-way FSDP, <code>TP = 1</code>, FullAC; packed <code>seq_len</code> 65,536</td>
+</tr>
+<tr>
+<td><strong>Generators</strong></td>
+<td>6 × vLLM hosts at <code>DP = 8</code>, <code>TP = 1</code> → 48 engines; prefix cache salted per group on weight sync</td>
+</tr>
+<tr>
+<td><strong>Batch</strong></td>
+<td>32 prompt groups × 8 rollouts = 256 rollouts/step; 100 steps</td>
+</tr>
+<tr>
+<td><strong>Optimizer</strong></td>
+<td>AdamW, constant lr 1e-6; DPPO loss with a TV trust region (threshold 0.1), 32 loss chunks</td>
+</tr>
+<tr>
+<td><strong>Precision</strong></td>
+<td>FP32 master weights + BF16 forward + FP32 reduction; FP32 LM head and FP32 GDN state cache</td>
+</tr>
+<tr>
+<td><strong>Sampling</strong></td>
+<td>temperature 1.0, top-p 1.0; <code>offpolicy window = 4</code></td>
+</tr>
+<tr>
+<td><strong>Hardware</strong></td>
+<td>56 GPUs (7 × 8), trainer and generators disaggregated</td>
+</tr>
+</tbody>
+</table>
+</details>
+<div class="fig-row" style="display: flex; gap: 0.8rem; align-items: flex-start;">
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Train/inference logprob abs mean on TMax over 100 steps: the BI arm (green) starts at exactly 0 and then tracks the unified non-BI arm (yellow) closely, both drifting between about 0.004 and 0.006 with no separation" src="../../asset/ti-mismatch-tmax-diff.png" /></p>
+<p><em>logprob gap. Green is BI, yellow the unified model without it</em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="TMax binary task reward over 100 steps: the BI arm (teal) and the non-BI arm (orange) track each other closely, with the BI smoothed curve sitting slightly above between roughly steps 55 and 80, and both finishing near 0.65" src="../../asset/ti-mismatch-tmax-reward.png" /></p>
+<p><em>task reward: BI slightly ahead</em></p>
+</div>
+<div style="flex: 1 1 0; min-width: 0;">
+<p><img alt="Trainer tokens per second per full step on TMax: the non-BI arm (orange) runs between about 7,500 and 10,000 while the BI arm (teal) stays near 1,500 to 2,000 for the whole run" src="../../asset/ti-mismatch-tmax-perf.png" /></p>
+<p><em>throughput: BI several times slower</em></p>
+</div>
+</div>
+<p><strong>Logprob gap:</strong> BI is exactly 0 at step 0, as everywhere else, but after that the
+two arms are <em>indistinguishable</em>, both drifting between ~0.004 and ~0.006. This is the
+one workload where BI does not visibly lower the running gap. With 64 turns of
+sandboxed tool output in a 64K context, the staleness term dwarfs the numerical one.</p>
+<p><strong>Reward:</strong> and yet here BI is <em>slightly</em> ahead. The two arms are entangled for the
+first 50 steps, then the BI curve sits a little above from ~55 to ~80, and both finish
+around 0.65 (this is training reward; no held-out eval was run for this
+configuration). It is the first workload where the alignment looks like it might be
+buying something, and it is still small enough that one seed cannot settle it.</p>
+<p><strong>Throughput:</strong> and here is the bill. The BI arm runs at ~1.5–2k tokens/s against
+~7.5–10k without, roughly 5× against the 2–3× on MATH, and measured in the same
+metric. Long episodes are where the recurrent decode hurts most: a 64K context means
+far more tokens walked one at a time.</p>
+<p>One operational consequence, since it is easy to get bitten by: <strong>the agent's
+wall-clock budgets have to be scaled with the slowdown</strong> — we widened the timeout
+windows by roughly the same ~5× when turning BI on. Skip that and rollouts which would
+have finished get killed for running long, and in this workload an unsubmitted rollout
+scores 0. The slowdown would then show up as a <em>reward</em> regression rather than a
+throughput one, which is a genuinely confusing way to debug.</p>
+<p>Which is the trade in its sharpest form: the workload where bitwise parity finally
+looks like it helps is also the one where it costs the most.</p>
+<p>One thing we cannot explain, and would rather say so than leave you wondering: the
+throughput curves swing a lot, and how much they swing differs between arms, here and
+on the other two workloads. Part of it has to be queueing (a step that waits on
+rollouts scores lower than one whose batch was ready), but we do not have a
+measurement that pins it down.</p>
+<p><strong>Stay tuned for more agentic training recipes, which we will release over the coming
+month.</strong></p>
+<hr />
+<h2 id="5-conclusion-a-debugging-tool-not-a-production-default">5. Conclusion: a debugging tool, not a production default</h2>
+<p>After all that, here is where we land.</p>
+<p><strong>Bitwise parity works. It helps in some places and does very little in most.</strong> On all
+three workloads the logprob gap is exactly zero at step 0, which is the thing we set
+out to build, and it stops the gap exploding as the off-policy window widens.</p>
+<p>Where it pays: <strong>math at <code>offpolicy = 12</code></strong>, the configuration we led this post with,
+where the BI run holds the lowest gap, the highest train reward and the highest
+held-out peak; and the <strong>terminal agent</strong>, where it is slightly ahead. Where it does
+not: search, where the two arms are indistinguishable, and the other math windows,
+where reward and accuracy move within noise. So the answer really is
+configuration-dependent, and most configurations we tried are in the second group.</p>
+<p>Against that, <strong>2–3× trainer throughput on math and search and ~5× on the terminal
+agent</strong> — and, on the agent, wall-clock budgets that have to be widened to match. At
+that price the cost/benefit does not close for a production run.</p>
+<p>So we would put it somewhere else in the workflow: <strong>as a debugging tool.</strong> When a
+post-training run misbehaves, turning BI on for 20 on-policy steps tells you something
+you cannot otherwise learn: if the logprob gap is zero and the run is still broken,
+the infra is exonerated and the problem is in your data or your algorithm. That is a
+genuinely useful thing to be able to prove, and it costs 20 steps rather than a whole
+run.</p>
+<p><strong>Where this could change.</strong> Three directions we think are worth pushing:</p>
+<ol>
+<li><strong>More benchmarks.</strong> Three workloads and mostly one seed each. The terminal-agent
+   result is the one most likely to be real, and it is also the one we have the least
+   of.</li>
+<li><strong>Async-stable policy optimization.</strong> Our conclusion is entangled with the
+   optimizer. Methods built for staleness (IcePop and relatives) might interact with
+   a zero-mismatch engine quite differently, since they are trying to solve the same
+   problem from the algorithm side.</li>
+<li>
+<p><strong>Making BI cheap.</strong> The 2–5× is not a law of nature; it is the cost of the
+   specific kernels we wrote. If someone optimizes the recurrent forward and the
+   batch-invariant GEMM hard enough, the trade changes on its own, and then the answer
+   above flips.</p>
+<p>One concrete piece of that, for anyone who reads this far: <strong>a faster
+batch-invariant attention.</strong> We currently buy invariance with <code>num_splits = 1</code>,
+which is the bluntest possible instrument — it throws away split-KV parallelism
+entirely. And nobody has published a fast one: Thinking Machines' kernel buys
+attention invariance the same blunt way (§2), so as far as we know <strong>a fast
+batch-invariant attention does not exist yet, from anyone.</strong> The reason it is blunt
+rather than clever is that a split-KV kernel has
+to handle the attention mask <em>in step with</em> the reduction chunk size, and getting
+that pair right is fiddly. But a GEMM does not give up its tiling to be
+batch-invariant; it just fixes the reduction partition. Attention may well be the
+same: pick a <strong>fixed</strong> reduction chunk size, independent of <code>max_k</code>, and handle the
+mask against that fixed grid. If that is enough, most of the attention half of the
+2–5× goes away. We have not tried it.</p>
+</li>
+</ol>
+<p>This post covers a narrow slice of a large problem, and we would rather be corrected
+than agreed with. If you have data that points the other way, or a workload where this
+matters more than it did for us, email
+<strong><a href="mailto:yichuan_wang@berkeley.edu">yichuan_wang@berkeley.edu</a></strong>.</p>
+<hr />
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>This work was mainly done by Yichuan Wang, with the help of the <a href="https://github.com/pytorch/torchtitan">TorchTitan team</a>. Thanks also to <a href="https://www.charlieruan.com/">Charlie Ruan</a>, <a href="https://zhhhhahahaha.github.io/">Han Zhang</a>, <a href="https://ylzhao.me/">Yilong Zhao</a>, <a href="https://openreview.net/profile?id=~Alexander_Jiang1">Alexander Jiang</a>, <a href="https://hanlab.mit.edu/team/shang-yang">Shang Yang</a>, and <a href="https://zhichenzzz.github.io/">Zhichen Zeng</a> for the helpful discussions.</p>
+<p>Two open-source repos carry a lot of this work: <a href="https://github.com/fla-org/flash-linear-attention">FLA</a>,
+whose Gated DeltaNet kernels we build on directly, and Thinking Machines'
+<a href="https://github.com/thinking-machines-lab/batch_invariant_ops"><code>batch_invariant_ops</code></a>,
+which gave us both the batch-invariant GEMM and the framing for everything above.</p>
+<p>The terminal-agent experiments run on <a href="https://www.daytona.io/">Daytona</a> sandboxes, one
+per rollout, and would not have been practical without them.</p>
+<hr />
+<h2 id="cite">Cite</h2>
+<div class="highlight"><pre><span></span><code><span class="nc">@misc</span><span class="p">{</span><span class="nl">wang2026traininginferencemismatch</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{Defending Against the Training–Inference Numeric Mismatch in RL (Especially Linear Attention) — and Whether It Helps Async RL}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Wang, Yichuan and the TorchTitan team}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{2026}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">month</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">{August}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">url</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{https://yichuan-w.github.io/blog/GDN-train-inference-mismatch-asyncRL/}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2022-2023 Yichuan Wang
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
