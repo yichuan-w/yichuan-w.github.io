@@ -274,9 +274,12 @@ so they do not agree bit for bit. Note what this means: the gap here is not a
 mistuned kernel, it is **two different algorithms** on the two sides of the RL loop.
 
 **Solution.** Continue using the vLLM SSM state, but switch **both prefill and
-decode to the recurrent kernel**. For training, use the **recurrent kernel for the
-forward pass and the chunked kernel for the backward pass**. Only the forward
-computation needs to be batch-invariant.
+decode to the recurrent kernel**
+([generator code](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/c19c19d2b113a443265388ba66609fc39d5c12f0/torchtitan/experiments/rl/models/gdn_vllm_unified.py#L267)).
+For training, use the **recurrent kernel for the forward pass and the chunked kernel
+for the backward pass**
+([trainer code](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/c19c19d2b113a443265388ba66609fc39d5c12f0/torchtitan/models/qwen3_5/model.py#L217)).
+Only the forward computation needs to be batch-invariant.
 
 And that is it. The change is smaller than the problem sounds. We **reuse vLLM's
 linear-cache management as is**: its `mamba_ssm_cache` and conv state, and its state
@@ -872,6 +875,16 @@ This post covers a narrow slice of a large problem, and we would rather be corre
 than agreed with. If you have data that points the other way, or a workload where this
 matters more than it did for us, email
 **[yichuan_wang@berkeley.edu](mailto:yichuan_wang@berkeley.edu)**.
+
+**Code is available at
+[torchtitan-batch-invarient-GDN](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN)**,
+built on [TorchTitan](https://github.com/pytorch/torchtitan). One caveat: this is
+research-level code, the branch we actually ran the experiments on. It is not
+especially structured or polished, and it is not a drop-in anything. Read it as a
+record of what we ran rather than as a library. The two ends of the parity story are
+[the trainer's GDN forward](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/c19c19d2b113a443265388ba66609fc39d5c12f0/torchtitan/models/qwen3_5/model.py#L217)
+and
+[the generator's](https://github.com/yichuan-w/torchtitan-batch-invarient-GDN/blob/c19c19d2b113a443265388ba66609fc39d5c12f0/torchtitan/experiments/rl/models/gdn_vllm_unified.py#L267).
 
 ---
 
