@@ -182,6 +182,8 @@ Here are my thoughts and comments on various research papers and topics in syste
 - [Rethinking RL as a Service and the Position of RL Infrastructure](/blog/rethinking-rl-as-a-service) - Why RL infrastructure is a compelling systems direction, but RL as a generic enterprise service is still a difficult business in May 2026.
 
 ### Tech Development Experience
+
+- [Bag of Tricks in Open Source RL Infra](/blog/bag-of-tricks-in-open-source-rl-infra/) - To be finished. Rollout concurrency, GPU utilization, and load balancing across DP ranks.
 - [Mastering DiskANN: Practical Lessons from Building Large-Scale Vector Search Systems](/blog/How-to-build-diskANN-perfectly) - Practical recipes for configuring DiskANN, from optimal compression rates to avoiding hidden metric pitfalls, based on experience building LEANN and DS-serve.
 - [Lessons Learned in Development - LEANN Project](/blog/lessons_learned_in_dev_leann) - Practical insights from building RAG systems, including chunk overlap strategies, data format optimization, and embedding model comparisons
 - [Defending Against the Training-Inference Numeric Mismatch in RL (Especially Linear Attention)](/blog/GDN-train-inference-mismatch-asyncRL) - Aug 2026. Driving the trainer/generator logprob gap to exactly zero for a Gated DeltaNet model on TorchTitan RL + vLLM, and measuring what that is actually worth under async off-policy RL.
@@ -204,6 +206,5 @@ Here are my thoughts and comments on various research papers and topics in syste
 </details>
 
 *[See all blog posts →](/blog)*
-
 
 
