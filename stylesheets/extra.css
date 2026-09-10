@@ -1,0 +1,82 @@
+.md-grid {
+  max-width: 1700px; 
+}
+
+/* Side-by-side figure row: each child div is one column. */
+.fig-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.fig-row > div {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.fig-row img {
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .fig-row { flex-direction: column; }
+}
+
+/* Floated figure: body text wraps around it. */
+.fig-float {
+  float: right;
+  width: 42%;
+  margin: 0.2rem 0 1rem 1.6rem;
+}
+
+.fig-float img {
+  width: 100%;
+}
+
+.fig-float em {
+  display: block;
+  font-size: 0.75em;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 800px) {
+  .fig-float {
+    float: none;
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
+/* On phones the drawer opens already drilled into the current section, and the
+   header shows the page title rather than the site name, so there is no obvious way
+   home. Material hides the logo button below its `screen` breakpoint; show it, so
+   the logo doubles as a home button. */
+@media screen and (max-width: 76.1875em) {
+  .md-header__button.md-logo {
+    display: inline-flex;
+    padding: 0 0.2rem;
+  }
+
+  .md-header__button.md-logo img,
+  .md-header__button.md-logo svg {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+}
+
+/* This post's title is long enough that the absolutely-positioned header topic
+   sticks out past the viewport on phones, giving the whole page a horizontal
+   scroll. Clip it at the container Material already provides for that. */
+.md-header__ellipsis {
+  overflow: hidden;
+}
+
+.md-header__title,
+.md-header__topic {
+  min-width: 0;
+}
+
+.md-content {
+  --md-typeset-color:                  hsla(272, 91%, 29%, 1);
+  --md-typeset-a-color:                hsla(272, 91%, 29%, 1);
+}

@@ -1,0 +1,86 @@
+.md-content { --md-typeset-color: #1f2430; --md-typeset-a-color: #2563eb; }
+.md-grid { max-width: 1600px; }
+
+.apt-wrap h1 { font-size: 1.5rem; }
+.apt-wrap h2 { margin-top: 2em; font-size: 1.1rem; border-bottom: 1px solid #e6eaf0; padding-bottom: 6px; }
+
+/* ---- toolbar ---- */
+.apt-toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0; }
+.apt-toolbar input[type=text] { flex: 1; min-width: 200px; padding: 6px 10px; border: 1px solid #d3d8e0; border-radius: 6px; font-size: .78rem; }
+.apt-toolbar select,
+.apt-toolbar button { padding: 6px 11px; border: 1px solid #d3d8e0; border-radius: 6px; background: #fff; font-size: .74rem; cursor: pointer; color: #334155; }
+.apt-toolbar button:hover { background: #f1f5f9; }
+.apt-toolbar button.on { background: #2563eb; border-color: #2563eb; color: #fff; }
+
+/* ---- stats ---- */
+.apt-stats { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px; }
+.apt-stat { background: #f6f8fb; border: 1px solid #e6eaf0; border-radius: 8px; padding: 8px 16px; }
+.apt-stat.booked { background: #ecfdf5; border-color: #a7f3d0; }
+.apt-stat.booked b { color: #15803d; }
+.apt-stat b { display: block; font-size: 1.2rem; color: #0f172a; line-height: 1.2; }
+.apt-stat span { font-size: .64rem; color: #64748b; text-transform: uppercase; letter-spacing: .05em; }
+
+/* ---- table ---- */
+.tablewrap { overflow-x: auto; border: 1px solid #dbe1e9; border-radius: 8px; }
+table.apt { width: 100%; border-collapse: collapse; font-size: .73rem; line-height: 1.35; }
+table.apt th { background: #eef2f7; text-align: left; padding: 8px; border-bottom: 1px solid #dbe1e9; font-weight: 600; white-space: nowrap; position: sticky; top: 0; z-index: 2; }
+table.apt td { padding: 7px 8px; border-top: 1px solid #edf1f6; vertical-align: top; }
+table.apt tbody tr:hover { background: #f4f8ff; }
+table.apt tr.done { opacity: .4; }
+table.apt tr.detail td { background: #fffbeb; font-size: .72rem; color: #422006; padding: 9px 12px; border-top: none; }
+
+.apt-name { font-weight: 600; }
+.star { color: #f59e0b; margin-right: 3px; }
+.addr { color: #475569; }
+.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.num sup { color: #94a3b8; }
+.ask { color: #94a3b8; font-style: italic; }
+.w { color: #94a3b8; font-size: .68rem; }
+.good { color: #15803d; }
+.bad { color: #94a3b8; }
+.tel { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.info { border: 1px solid #d3d8e0; background: #fff; color: #64748b; border-radius: 50%; width: 16px; height: 16px; line-height: 1; font-size: .62rem; font-weight: 700; cursor: pointer; padding: 0; margin-left: 4px; vertical-align: middle; }
+.info:hover { background: #fef3c7; border-color: #f59e0b; color: #b45309; }
+
+.apt-note { width: 100%; min-width: 90px; border: 1px solid transparent; background: transparent; border-radius: 4px; padding: 3px; font-size: .7rem; font-family: inherit; resize: vertical; min-height: 30px; }
+.apt-note:focus { border-color: #93c5fd; background: #fff; outline: none; }
+.apt-status { border: 1px solid #d3d8e0; border-radius: 4px; padding: 2px 3px; font-size: .68rem; max-width: 92px; }
+
+.fine { font-size: .7rem; color: #64748b; margin-top: 8px; }
+
+/* ---- pills ---- */
+.pill { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: .62rem; font-weight: 600; white-space: nowrap; }
+.p-emv { background: #dbeafe; color: #1d4ed8; }
+.p-bky { background: #dcfce7; color: #15803d; }
+.p-oak { background: #fef3c7; color: #b45309; }
+.p-booked { background: #dcfce7; color: #15803d; }
+.p-callme { background: #fee2e2; color: #b91c1c; }
+.p-walkin { background: #e0e7ff; color: #4338ca; }
+.p-na { background: #f1f5f9; color: #94a3b8; }
+.p-elc { background: #fae8ff; color: #a21caf; }
+.p-online { background: #cffafe; color: #0e7490; }
+.booklink { font-size: .66rem; font-weight: 600; }
+
+/* ---- schedule ---- */
+.sched { border-left: 2px solid #dbe1e9; margin: 16px 0 16px 10px; padding-left: 0; list-style: none; }
+.sched li { position: relative; padding: 0 0 18px 24px; font-size: .78rem; }
+.sched li::before { content: ''; position: absolute; left: -7px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: #2563eb; border: 2px solid #fff; }
+.sched li.tentative::before { background: #f59e0b; }
+.sched li.drive::before { background: #cbd5e1; width: 8px; height: 8px; left: -5px; top: 7px; }
+.sched .t { font-weight: 700; color: #0f172a; font-variant-numeric: tabular-nums; margin-right: 4px; }
+.sched .w { color: #64748b; font-size: .74rem; }
+
+/* ---- call cards ---- */
+.callcard { border: 1px solid #e3e8ef; border-left: 3px solid #ef4444; border-radius: 6px; padding: 11px 14px; margin: 10px 0; background: #fff; }
+.callcard.ok { border-left-color: #64748b; }
+.callcard.struck { opacity: .45; }
+.callcard h4 { margin: 0 0 6px; font-size: .84rem; }
+.callcard h4 label { cursor: pointer; }
+.callcard p { margin: 3px 0; font-size: .75rem; color: #475569; }
+.callcard .script { background: #f8fafc; border-radius: 4px; padding: 7px 10px; margin-top: 8px; font-size: .74rem; font-style: italic; color: #334155; }
+
+.caveats { font-size: .76rem; color: #475569; }
+.caveats li { margin-bottom: 7px; }
+
+@media (max-width: 900px) { table.apt { font-size: .66rem; } }
