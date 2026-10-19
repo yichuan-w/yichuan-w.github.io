@@ -74,3 +74,43 @@ The interesting question is how to define "least loaded":
 An eviction-based metric needs a precise denominator: `1 - evictable_ratio` is not automatically the same as active KV utilization, especially when free blocks are counted separately.
 
 Sticky sessions trade some freedom to rebalance ongoing work for cache locality, so this policy does not guarantee perfect balance. Still, it looks like a useful baseline. Which load metric performs best—and how it should interact with the concurrency limit—needs further measurement.
+
+## 2. Beating Format Errors: End the Episode on the First Error
+
+The second trick is about format errors in multi-turn agent RL. I'll use [Terminus 2](https://www.tbench.ai/) as the running example: each turn, the model must reply in a fixed XML format (a `<response>` block containing `<commands>`), and a parser turns that reply into terminal actions.
+
+### The problem: rescued format errors get rewarded
+
+During training, I kept seeing episodes where a turn had a format error, yet the episode still ended with the correct reward. When the parser rejects a turn, that turn is wasted, but the agent can spend a few more turns making up for it. The final reward only checks the outcome, so the broken turn gets credited along with everything else.
+
+This rewards the wrong behavior. Consider a GRPO group of 12 rollouts for a hard task where only one succeeds, and that one is missing the opening `<response>` tag but recovers. Its advantage is strongly positive, so RL pushes up every token in that trajectory, including the malformed turn. The model learns that skipping `<response>` is fine, or even good. After training, the error becomes more common: the model stops emitting the opening `<response>` on future turns, and the problem compounds.
+
+Here is what this looked like in one of my lenient training runs:
+
+![Mean format errors per rollout: near zero for the first ~100 steps, then a sharp rise between steps ~105 and ~130, plateauing around 1.2](bag-of-tricks-assets/format-errors-mean.png)
+
+![Mean opening streak of format errors: exactly 0 until step ~110, then climbing to 1.0 by step ~132 and staying flat at 1.0](bag-of-tricks-assets/format-error-opening-streak.png)
+
+- **For the first ~100 steps, format errors are rare.** The mean number of format errors per rollout stays around 0.05–0.1, apart from a small bump around steps 45–65 that goes away on its own.
+- **Then it flips within ~30 steps.** Between steps ~105 and ~130, the mean jumps to about 1.3–1.4, then settles around 1.2 for the rest of training. It never comes back down.
+- **The opening streak shows what the model learned.** `format_error_opening_streak` counts consecutive format errors at the start of an episode. It is exactly 0 until step ~110, climbs to 1.0 by step ~132, and then stays flat at 1.0 with almost no variance. Essentially every rollout now opens with exactly one broken turn, then recovers and continues normally.
+- **Most of the format errors are that first turn.** With the opening streak at 1.0 and total format errors around 1.2, the "break the first turn, then recover" pattern accounts for nearly all of them.
+
+The model did not drift into random noise. It converged on a stable, deterministic habit: waste the first turn, then do the task. Under lenient handling, this habit costs nothing whenever the recovery succeeds, so RL locks it in.
+
+### The fix: end the episode immediately, with zero reward
+
+The solution is blunt: as soon as a format error happens, end the episode and give it zero reward. A rescued trajectory should never receive a positive advantage. I control this with two switches, both **on by default for training**:
+
+- **`SWE_STRICT_FORMAT=1`**: if the parser rejects any turn (missing opening `<response>`, plain text with no XML, or missing `<commands>`), the episode ends immediately. It is not graded, and the reward is 0.
+- **`SWE_STRICT_TRUNCATION=1`**: if a single turn fills the full 16,384-token limit, the episode also ends immediately with reward 0. Terminus does not get to salvage the truncated output, and the model is not asked to rewrite it.
+
+A few details matter:
+
+- **Empty commands and silent no-ops only produce warnings.** They do not end the episode. They are wasteful, but they are not broken output.
+- **Hitting the context limit for the whole conversation is unchanged.** That was already handled as no submission and a score of 0.
+- **Eval stays lenient by default** (`SWE_EVAL_STRICT_FORMAT=0`, `SWE_EVAL_STRICT_TRUNCATION=0`), so TB2.1 scores remain comparable to public results. To make eval strict as well, turn both switches on.
+
+The takeaway: in outcome-reward RL, any bad behavior that can be "rescued" later in a trajectory will be reinforced whenever the rescue succeeds. If you do not want the model to learn a behavior, make sure that behavior can never appear in a positively rewarded trajectory.
+
+<!-- TODO(figure 2): training reward / TB2.1 eval score over steps, lenient vs strict. -->
