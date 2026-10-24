@@ -177,6 +177,10 @@ Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wan
 - [07/2025] **SIGMOD 2025** - [DiskGNN: Bridging I/O Efficiency and Model Accuracy for Out-of-Core GNN Training](https://docs.google.com/presentation/d/1QBVBRG2H1SIQPHLdntPPqw8rfbBgbNgnkqxfUW4kGSQ/edit?slide=id.g3aed71a66f8_2_75#slide=id.g3aed71a66f8_2_75)
 - [01/2025] **LMsys** - [SGLang-FLPM](https://docs.google.com/presentation/d/1VYXJoLwn1V1zxNnZol_bbAbPD4YAHcjZOUd0_UdrXko/edit?slide=id.g32e771aa8e9_0_0#slide=id.g32e771aa8e9_0_0) [[Video]](https://www.youtube.com/watch?v=KwCrPPiRwso)
 
+## Tutorials
+- [Dissecting the Training-Inference Mismatch in RL](https://docs.google.com/presentation/d/1N5llh1tzHnqsUPk68GAkr1bAk56F9P6XM-tdhEQKoig/edit?slide=id.p#slide=id.p) - A layer-by-layer breakdown of where trainer/generator logprob gaps come from: floating point → kernels → inference engine → RL algorithm.
+- [Training Long-Horizon Agents the PyTorch-Native Way](https://docs.google.com/presentation/d/1_piCF9R9qRiJJiTaWOZmYTSrrVePJQLsVuYauwLbrRk/edit?slide=id.h4fd9cd576a5494a9_3_16#slide=id.h4fd9cd576a5494a9_3_16) - How to train long-horizon agents with RL using a PyTorch-native stack.
+
 ## Mentorship
 - [Zhifei Li](https://zhifei.li/) → Princeton CS PhD
 - Jinjian Liu → UIUC MSCS
