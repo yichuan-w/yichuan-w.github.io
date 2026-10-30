@@ -178,6 +178,7 @@ Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wan
 - [01/2025] **LMsys** - [SGLang-FLPM](https://docs.google.com/presentation/d/1VYXJoLwn1V1zxNnZol_bbAbPD4YAHcjZOUd0_UdrXko/edit?slide=id.g32e771aa8e9_0_0#slide=id.g32e771aa8e9_0_0) [[Video]](https://www.youtube.com/watch?v=KwCrPPiRwso)
 
 ## Tutorials
+- [From REINFORCE to Score Centering](asset/talks/rl-reinforce-to-score-centering.html) [[PPTX]](asset/talks/rl-reinforce-to-score-centering.pptx) - A 30-minute walk through policy gradient: REINFORCE → Actor-Critic → TRPO → PPO → GRPO → train-inference mismatch → score centering.
 - [Dissecting the Training-Inference Mismatch in RL](https://docs.google.com/presentation/d/1N5llh1tzHnqsUPk68GAkr1bAk56F9P6XM-tdhEQKoig/edit?slide=id.p#slide=id.p) - A layer-by-layer breakdown of where trainer/generator logprob gaps come from: floating point → kernels → inference engine → RL algorithm.
 - [Training Long-Horizon Agents the PyTorch-Native Way](https://docs.google.com/presentation/d/1_piCF9R9qRiJJiTaWOZmYTSrrVePJQLsVuYauwLbrRk/edit?slide=id.h4fd9cd576a5494a9_3_16#slide=id.h4fd9cd576a5494a9_3_16) - How to train long-horizon agents with RL using a PyTorch-native stack.
 
