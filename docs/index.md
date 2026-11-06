@@ -36,7 +36,7 @@ I also maintain [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub R
 
 [08/2026] We wrote a [blog post](/blog/GDN-train-inference-mismatch-asyncRL) on killing the training-inference numeric mismatch in RL for linear attention, and on whether it actually helps async RL. There is also a [thread](https://x.com/YichuanM/status/2085463113189802207) on it.
 
-[06/2026] Excited to release [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/PixelRAG?style=social), a next-generation search assistant for LLMs: it retrieves directly over web *screenshots* instead of extracted text, keeping the layout, tables and figures that text-only pipelines throw away. Read the [paper](https://arxiv.org/abs/2505.20411), or try it in the [live playground](https://pixelrag.ai/)!
+[06/2026] Excited to release [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/PixelRAG?style=social), a next-generation search assistant for LLMs: it retrieves directly over web *screenshots* instead of extracted text, keeping the layout, tables and figures that text-only pipelines throw away. Read the [paper](https://arxiv.org/abs/2606.28344), or try it in the [live playground](https://pixelrag.ai/)!
 
 [05/25/2026] I joined the Meta MSL Infra PyTorch team as a Research Scientist Intern, working on post-training infrastructure.
 
@@ -85,14 +85,19 @@ I also maintain [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub R
 
 ## Publications
 
+Full list on [Google Scholar](https://scholar.google.com/citations?user=N96BY7AAAAAJ&hl=en).
+
+### Selected Publications
+
+*First, co-first, and second-author papers.*
+
 1.**LEANN: A Low-Storage Vector Index** [pdf](asset/leann_paper.pdf) [poster](asset/leann_poster.pdf) [repo](https://github.com/yichuan-w/LEANN) ![GitHub Repo stars](https://img.shields.io/github/stars/yichuan-w/LEANN?style=social)
 
 **Yichuan Wang**, Zhifei Li, Shu Liu, Yongji Wu, Ziming Mao, Yilong Zhao, Xiao Yan, Zhiying Xu, Yang Zhou, Ion Stoica, Sewon Min, Matei Zaharia, Joseph E. Gonzalez
 
 **[MLSys 2026, Best Paper Award](https://mlsys.org/media/mlsys-2026/best-papers/Best-Research-Paper-LEANN.pdf)** (Short version in [VecDB@ICML2025](https://openreview.net/pdf?id=iVYBpQWGhq))
 
-2.**PIXELRAG: Web Screenshots Beat Text for
-Retrieval-Augmented Generation** [pdf](https://arxiv.org/pdf/2505.20411) [repo](https://github.com/StarTrail-org/PixelRAG) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/PixelRAG?style=social) [playground](https://pixelrag.ai/)
+2.**PIXELRAG: Web Screenshots Beat Text for Retrieval-Augmented Generation** [pdf](https://arxiv.org/pdf/2606.28344) [repo](https://github.com/StarTrail-org/PixelRAG) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/PixelRAG?style=social) [playground](https://pixelrag.ai/)
 
 **Yichuan Wang\***, Zhifei Li\*, Zirui Wang, Paul Teiletche, Lesheng Jin, Matei Zaharia<sup>†</sup>, Joseph E. Gonzalez<sup>†</sup>, Sewon Min<sup>†</sup>
 
@@ -100,17 +105,19 @@ Retrieval-Augmented Generation** [pdf](https://arxiv.org/pdf/2505.20411) [repo](
 
 **Preprint** (Short version accepted by [EMM-QA@ICML2026](https://qanta-org.github.io/competition/2026/icml/): Efficient Multimodal Question Answering)
 
-3.**FrontierCS: Evolving Challenges for Evolving Intelligence** [pdf](https://arxiv.org/abs/2512.15699) [repo](https://github.com/FrontierCS/Frontier-CS) ![GitHub Repo stars](https://img.shields.io/github/stars/FrontierCS/Frontier-CS?style=social)
+3.**GeoGuesser Bench: Benchmarking Vision-Language Agents on Interactive Geolocation** [pdf](https://arxiv.org/pdf/2611.02698)
 
-FrontierCS Team
+Huanzhi Mao\*, **Yichuan Wang\***, Michael Koo, Wenyuan Huang, Huy Doan, Jinghan Xia, Ziyao Wang, Joseph E. Gonzalez
 
-**Accepted by ICML 2026**
+\*indicates equal contribution
 
-4.**FrontierSmith: Synthesizing Open-Ended Coding Problems at Scale** [pdf](https://arxiv.org/abs/2605.14445) [repo](https://github.com/FrontierCS/FrontierSmith)
+**Preprint**
 
-FrontierCS Team
+4.**DR Pixel: Page-Native Deep Research with Vision-Language Models** [pdf](https://arxiv.org/pdf/2611.03097) [repo](https://github.com/StarTrail-org/DRPixel) ![GitHub Repo stars](https://img.shields.io/github/stars/StarTrail-org/DRPixel?style=social) [data](https://huggingface.co/datasets/HughieHu/drpixel-bench)
 
-**Accepted by NeurIPS 2026 (Spotlight)**
+Tiansheng Hu, **Yichuan Wang**, James V. Talwar, Nicholas Tomlin, Chen Zhao, Sewon Min
+
+**Preprint**
 
 5.**DS SERVE: A Framework for Efficient and Scalable Neural Retrieval** [pdf](https://berkeley-large-rag.github.io/RAG-DS-Serve/assets/DS_SERVE_Camera_Ready.pdf) [website](https://berkeley-large-rag.github.io/RAG-DS-Serve/) [poster](asset/AAAI_Poster_Draft.pdf) [repo](https://github.com/Berkeley-Large-RAG/RAG-DS-Serve) ![GitHub Repo stars](https://img.shields.io/github/stars/Berkeley-Large-RAG/RAG-DS-Serve?style=social)
 
@@ -136,29 +143,61 @@ Renjie Liu\*, **Yichuan Wang\***, Xiao Yan, Zhenkun Cai, Minjie Wang, Haitian Ji
 
 **Accepted by SIGMOD 2025(Oral)**
 
-8.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
+### Other Publications
 
-Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
+1.**FrontierCS 2: A Benchmark for Computer Science R&D** [pdf](https://arxiv.org/abs/2610.29932) [website](https://frontier-cs.org) [repo](https://github.com/FrontierCS/FrontierCS-2)
 
-**Accepted by OSDI 2023** 
+FrontierCS Team
 
-9.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
+**Preprint**
 
-Haitian Jiang, Renjie Liu, Zengfeng Huang, **Yichuan Wang**, Xiao Yan, Zhenkun Cai, Minjie Wang, David Wipf
+2.**EasyPPO: Stabilizing the Critic Is Key** [pdf](https://arxiv.org/abs/2609.36802)
 
-**Accepted by ICLR 2025** 
+Xuanyi Zhou, Qiuyang Mang, Huanzhi Mao, Dacheng Li, Wenhao Chai, Mayank Mishra, **Yichuan Wang**, Karthik Narasimhan, Alvin Cheung, Joseph E. Gonzalez
 
-10.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
+**Preprint**
+
+3.**Token Latency Fairness: Performance Isolation for Multi-Tenant LLM Serving** [pdf](https://arxiv.org/abs/2609.18112)
+
+Dev Bali, Soujanya Ponnapalli, **Yichuan Wang**, Natacha Crooks, Scott Shenker, Matei Zaharia
+
+**Preprint**
+
+4.**FrontierSmith: Synthesizing Open-Ended Coding Problems at Scale** [pdf](https://arxiv.org/abs/2605.14445) [repo](https://github.com/FrontierCS/FrontierSmith)
+
+FrontierCS Team
+
+**Accepted by NeurIPS 2026 (Spotlight)**
+
+5.**FrontierCS: Evolving Challenges for Evolving Intelligence** [pdf](https://arxiv.org/abs/2512.15699) [repo](https://github.com/FrontierCS/Frontier-CS) ![GitHub Repo stars](https://img.shields.io/github/stars/FrontierCS/Frontier-CS?style=social)
+
+FrontierCS Team
+
+**Accepted by ICML 2026**
+
+6.**Autellix: An Efficient Serving Engine for LLM Agents as General Programs** [pdf](https://arxiv.org/abs/2502.13965)
+
+Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wang**, Chi Wang, Yanping Huang, Zhifeng Chen, Joseph E. Gonzalez, Ion Stoica
+
+**Accepted by NSDI 2026**
+
+7.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
 
 Alejandro Cuadron, Dacheng Li, Wenjie Ma, Xingyao Wang, **Yichuan Wang**, Siyuan Zhuang, Shu Liu, Luis Gaspar Schroeder, Tian Xia, Huanzhi Mao, Nicholas Thumiger, Aditya Desai, Ion Stoica, Ana Klimovic, Graham Neubig, Joseph E. Gonzalez
 
 **Preprint**
 
-11.**Autellix: An Efficient Serving Engine for LLM Agents as General Programs** [pdf](https://arxiv.org/abs/2502.13965)
+8.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
 
-Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wang**, Chi Wang, Yanping Huang, Zhifeng Chen, Joseph E. Gonzalez, Ion Stoica
+Haitian Jiang, Renjie Liu, Zengfeng Huang, **Yichuan Wang**, Xiao Yan, Zhenkun Cai, Minjie Wang, David Wipf
 
-**Accepted by NSDI 2026**
+**Accepted by ICLR 2025**
+
+9.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
+
+Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
+
+**Accepted by OSDI 2023**
 
 ## Services
 - [2026] ACM CAIS 2026 Workshop AID-Wild Reviewer
