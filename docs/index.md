@@ -32,6 +32,8 @@ I also maintain [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub R
 </span>
 
 ## News
+[11/2026] Two new preprints on vision-language agents! [GeoGuesser Bench](https://arxiv.org/abs/2611.02698) benchmarks VLM agents on interactive geolocation (co-first with Huanzhi Mao), and [DR Pixel](https://arxiv.org/abs/2611.03097) ([code](https://github.com/StarTrail-org/DRPixel)) does page-native deep research with vision-language models.
+
 [10/2026] Passed my qualifying exam and became a PhD candidate!
 
 [08/2026] We wrote a [blog post](/blog/GDN-train-inference-mismatch-asyncRL) on killing the training-inference numeric mismatch in RL for linear attention, and on whether it actually helps async RL. There is also a [thread](https://x.com/YichuanM/status/2085463113189802207) on it.
