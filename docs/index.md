@@ -151,49 +151,61 @@ FrontierCS Team
 
 **Preprint**
 
-2.**EasyPPO: Stabilizing the Critic Is Key** [pdf](https://arxiv.org/abs/2609.36802)
+2.**StreamEval: Evaluating Interactive Streaming Video Generation Models** [pdf](https://arxiv.org/abs/2610.28402) [leaderboard](https://streameval.ai)
+
+StreamEval Team
+
+**Preprint**
+
+3.**EasyPPO: Stabilizing the Critic Is Key** [pdf](https://arxiv.org/abs/2609.36802)
 
 Xuanyi Zhou, Qiuyang Mang, Huanzhi Mao, Dacheng Li, Wenhao Chai, Mayank Mishra, **Yichuan Wang**, Karthik Narasimhan, Alvin Cheung, Joseph E. Gonzalez
 
 **Preprint**
 
-3.**Token Latency Fairness: Performance Isolation for Multi-Tenant LLM Serving** [pdf](https://arxiv.org/abs/2609.18112)
+4.**Token Latency Fairness: Performance Isolation for Multi-Tenant LLM Serving** [pdf](https://arxiv.org/abs/2609.18112)
 
 Dev Bali, Soujanya Ponnapalli, **Yichuan Wang**, Natacha Crooks, Scott Shenker, Matei Zaharia
 
 **Preprint**
 
-4.**FrontierSmith: Synthesizing Open-Ended Coding Problems at Scale** [pdf](https://arxiv.org/abs/2605.14445) [repo](https://github.com/FrontierCS/FrontierSmith)
+5.**What Does Better Retrieval Buy Coding Agents? A Cross-Level Study of Retrieval, Context Acquisition, and Issue Resolution** [workshop](https://realm-workshop.github.io/accepted_papers/)
+
+Jingzhuo Hu, Aakash Suresh, Zhifei Li, Hanchen Li, **Yichuan Wang**
+
+**EMNLP 2026 Workshop REALM** (non-archival poster)
+
+6.**FrontierSmith: Synthesizing Open-Ended Coding Problems at Scale** [pdf](https://arxiv.org/abs/2605.14445) [repo](https://github.com/FrontierCS/FrontierSmith)
 
 FrontierCS Team
 
 **Accepted by NeurIPS 2026 (Spotlight)**
 
-5.**FrontierCS: Evolving Challenges for Evolving Intelligence** [pdf](https://arxiv.org/abs/2512.15699) [repo](https://github.com/FrontierCS/Frontier-CS) ![GitHub Repo stars](https://img.shields.io/github/stars/FrontierCS/Frontier-CS?style=social)
+7.**FrontierCS: Evolving Challenges for Evolving Intelligence** [pdf](https://arxiv.org/abs/2512.15699) [repo](https://github.com/FrontierCS/Frontier-CS) ![GitHub Repo stars](https://img.shields.io/github/stars/FrontierCS/Frontier-CS?style=social)
 
 FrontierCS Team
 
 **Accepted by ICML 2026**
 
-6.**Autellix: An Efficient Serving Engine for LLM Agents as General Programs** [pdf](https://arxiv.org/abs/2502.13965)
+8.**Autellix: An Efficient Serving Engine for LLM Agents as General Programs** [pdf](https://arxiv.org/abs/2502.13965)
 
 Michael Luo, Xiaoxiang Shi, Colin Cai, Tianjun Zhang, Justin Wong, **Yichuan Wang**, Chi Wang, Yanping Huang, Zhifeng Chen, Joseph E. Gonzalez, Ion Stoica
 
 **Accepted by NSDI 2026**
 
-7.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
+9.**The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks** [pdf](https://www.arxiv.org/abs/2502.08235)
 
 Alejandro Cuadron, Dacheng Li, Wenjie Ma, Xingyao Wang, **Yichuan Wang**, Siyuan Zhuang, Shu Liu, Luis Gaspar Schroeder, Tian Xia, Huanzhi Mao, Nicholas Thumiger, Aditya Desai, Ion Stoica, Ana Klimovic, Graham Neubig, Joseph E. Gonzalez
 
 **Preprint**
 
-8.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
+10.**Forming Scalable, Convergent GNN Layers that Minimize a Sampling-Based Energy** [pdf](https://arxiv.org/abs/2310.12457)
 
 Haitian Jiang, Renjie Liu, Zengfeng Huang, **Yichuan Wang**, Xiao Yan, Zhenkun Cai, Minjie Wang, David Wipf
 
 **Accepted by ICLR 2025**
 
-9.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
+11.**Optimizing Dynamic Neural Networks with Brainstorm**  [pdf](https://www.usenix.org/system/files/osdi23-cui.pdf)
 
 Weihao Cui, Zhenhua Han, Lingji Ouyang, **Yichuan Wang**, Ningxin Zheng, Lingxiao Ma, Yuqing Yang, Fan Yang, Jilong Xue, Lili Qiu, Lidong Zhou, Quan Chen, Haisheng Tan, Minyi Guo. 
 
