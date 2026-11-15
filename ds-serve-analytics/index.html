@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DS Serve Query Analytics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f6fa; color: #333; }
+  header { background: #1a1a2e; color: #fff; padding: 28px 40px; }
+  header h1 { font-size: 22px; font-weight: 600; letter-spacing: 0.3px; }
+  header p { margin-top: 6px; font-size: 13px; opacity: 0.6; }
+  .stats-row { display: flex; gap: 16px; padding: 24px 40px 0; flex-wrap: wrap; }
+  .stat { background: #fff; border-radius: 10px; padding: 20px 24px; flex: 1; min-width: 140px;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+  .stat .val { font-size: 28px; font-weight: 700; color: #1a1a2e; }
+  .stat .lbl { font-size: 12px; color: #888; margin-top: 4px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 24px 40px; }
+  .grid.wide { grid-template-columns: 1fr; }
+  .card { background: #fff; border-radius: 10px; padding: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+  .card h2 { font-size: 14px; font-weight: 600; color: #555; text-transform: uppercase;
+             letter-spacing: 0.5px; margin-bottom: 20px; }
+  .chart-wrap { position: relative; }
+  @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } .stats-row { padding: 16px; } .grid { padding: 8px 16px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>DS Serve — Query Analytics</h1>
+  <p>17,792 queries &nbsp;·&nbsp; Dec 12, 2025 – Jul 27, 2026 &nbsp;·&nbsp; CompactDS (1.5B passages)</p>
+</header>
+
+<div class="stats-row">
+  <div class="stat"><div class="val">17,792</div><div class="lbl">Total Queries</div></div>
+  <div class="stat"><div class="val">448 ms</div><div class="lbl">Median Latency</div></div>
+  <div class="stat"><div class="val">1,317 ms</div><div class="lbl">p95 Latency</div></div>
+  <div class="stat"><div class="val">99.7%</div><div class="lbl">DiskANN Backend</div></div>
+  <div class="stat"><div class="val">77</div><div class="lbl">Active Days</div></div>
+  <div class="stat"><div class="val">49</div><div class="lbl">User Votes</div></div>
+</div>
+
+<div class="grid wide" style="padding-top:20px;">
+  <div class="card">
+    <h2>Daily Query Volume</h2>
+    <div class="chart-wrap"><canvas id="dailyChart" height="90"></canvas></div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h2>Monthly Volume</h2>
+    <div class="chart-wrap"><canvas id="monthlyChart"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>Query Type Distribution</h2>
+    <div class="chart-wrap"><canvas id="typeChart"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>Latency Distribution</h2>
+    <div class="chart-wrap"><canvas id="latencyChart"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>n_docs Distribution</h2>
+    <div class="chart-wrap"><canvas id="ndocsChart"></canvas></div>
+  </div>
+</div>
+
+<div style="padding: 0 40px 40px; font-size: 12px; color: #aaa;">
+  Generated Jul 27, 2026 &nbsp;·&nbsp; DS Serve / CompactDS
+</div>
+
+<script>
+const BLUE  = '#4361ee';
+const TEAL  = '#4cc9f0';
+const GRAY  = '#e2e8f0';
+const colors = ['#4361ee','#4cc9f0','#f72585','#7209b7','#3a0ca3','#4895ef'];
+
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+Chart.defaults.font.size = 12;
+
+// ── Daily chart ──────────────────────────────────────────────
+const dailyLabels = ["2025-12-12","2025-12-13","2025-12-14","2025-12-15","2025-12-17","2025-12-19","2025-12-20","2025-12-21","2025-12-22","2025-12-23","2025-12-24","2025-12-25","2025-12-26","2025-12-28","2025-12-31","2026-01-01","2026-01-05","2026-01-06","2026-01-07","2026-01-08","2026-01-09","2026-01-11","2026-01-12","2026-01-15","2026-01-19","2026-01-20","2026-01-21","2026-01-22","2026-01-23","2026-01-24","2026-01-25","2026-01-26","2026-01-28","2026-01-29","2026-01-30","2026-01-31","2026-02-01","2026-02-03","2026-02-04","2026-02-05","2026-02-06","2026-02-07","2026-02-09","2026-02-11","2026-02-13","2026-02-19","2026-02-21","2026-02-26","2026-03-01","2026-03-02","2026-03-04","2026-03-05","2026-03-09","2026-03-17","2026-03-18","2026-03-22","2026-03-31","2026-04-02","2026-04-06","2026-04-09","2026-04-10","2026-04-15","2026-04-17","2026-04-18","2026-04-22","2026-04-23","2026-04-24","2026-04-27","2026-04-29","2026-04-30","2026-05-01","2026-05-02","2026-05-03","2026-05-04","2026-05-16","2026-05-18","2026-07-27"];
+const dailyData  = [539,73,40,6,9,2,2,4,12,2,2,1,6,7,1,1,17,1,1,3,5,4,2,4,1,1,23,1,2,2,2976,2,28,2,6,1,2,3,11,2,1,1,17,1,1,4,2,3,4,3,1,6,1,25,1,1,773,14,2,15,13,6,1,5,14,715,1,2256,28,20,83,4,4,9951,1,1,6];
+
+new Chart(document.getElementById('dailyChart'), {
+  type: 'bar',
+  data: {
+    labels: dailyLabels,
+    datasets: [{
+      data: dailyData,
+      backgroundColor: BLUE,
+      borderRadius: 2,
+      barPercentage: 0.8,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, tooltip: { callbacks: {
+      title: ctx => ctx[0].label,
+      label: ctx => ` ${ctx.raw.toLocaleString()} queries`
+    }}},
+    scales: {
+      x: { display: false },
+      y: { grid: { color: GRAY }, ticks: { color: '#888' },
+           title: { display: true, text: 'Queries', color: '#888', font: { size: 11 } } }
+    }
+  }
+});
+
+// ── Monthly chart ─────────────────────────────────────────────
+new Chart(document.getElementById('monthlyChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26','Jul 26'],
+    datasets: [{
+      label: 'Queries',
+      data: [706, 3083, 48, 815, 3090, 10044, 6],
+      backgroundColor: [BLUE,BLUE,BLUE,BLUE,BLUE,BLUE,BLUE],
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, tooltip: { callbacks: {
+      label: ctx => ` ${ctx.raw.toLocaleString()} queries`
+    }}},
+    scales: {
+      x: { grid: { display: false }, ticks: { color: '#888' } },
+      y: { grid: { color: GRAY }, ticks: { color: '#888' } }
+    }
+  }
+});
+
+// ── Query type donut ──────────────────────────────────────────
+new Chart(document.getElementById('typeChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Wikipedia-style retrieval','Factual Q&A','Other compound queries','MCQ / Benchmark','Short general','Code / Math problems'],
+    datasets: [{
+      data: [43.8, 17.7, 26.9, 4.7, 3.7, 2.1 + 1.1],
+      backgroundColor: colors,
+      borderWidth: 2,
+      borderColor: '#fff',
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '60%',
+    plugins: {
+      legend: { position: 'right', labels: { boxWidth: 12, padding: 10, font: { size: 11 }, color: '#555' } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}%` } }
+    }
+  }
+});
+
+// ── Latency distribution ──────────────────────────────────────
+new Chart(document.getElementById('latencyChart'), {
+  type: 'bar',
+  data: {
+    labels: ['< 100ms','100–300ms','300–500ms','500ms–1s','1–2s','2–5s','> 5s'],
+    datasets: [{
+      label: 'Queries',
+      data: [3067, 2746, 4143, 5093, 2058, 683, 1],
+      backgroundColor: [TEAL, TEAL, TEAL, '#4361ee', '#f72585', '#7209b7', '#3a0ca3'],
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, tooltip: { callbacks: {
+      label: ctx => ` ${ctx.raw.toLocaleString()} queries`
+    }}},
+    scales: {
+      x: { grid: { display: false }, ticks: { color: '#555', font: { size: 11 } } },
+      y: { grid: { color: GRAY }, ticks: { color: '#888' } }
+    }
+  }
+});
+
+// ── n_docs distribution ───────────────────────────────────────
+new Chart(document.getElementById('ndocsChart'), {
+  type: 'bar',
+  data: {
+    labels: ['1','2','3','5','10','20','25','50','other'],
+    datasets: [{
+      label: 'Queries',
+      data: [8, 6, 14, 109, 16148, 716, 10, 771, 10],
+      backgroundColor: BLUE,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, tooltip: { callbacks: {
+      label: ctx => ` ${ctx.raw.toLocaleString()} queries`
+    }}},
+    scales: {
+      x: { grid: { display: false }, ticks: { color: '#555' } },
+      y: { grid: { color: GRAY }, ticks: { color: '#888' },
+           type: 'logarithmic', title: { display: true, text: 'Queries (log)', color: '#888', font: { size: 11 } } }
+    }
+  }
+});
+</script>
+</body>
+</html>
