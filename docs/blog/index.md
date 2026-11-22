@@ -12,6 +12,12 @@ Where I think the field is going, and what is worth building.
 
 - [Rethinking the Search Stack for the AI Era](build-search-engine-for-AI.md) — Why we need to move beyond traditional search APIs and build retrieval stacks native to LLM agents and deep research.
 
+## RL Algorithms
+
+Research posts on RL algorithms for LLM post-training.
+
+- [Beyond Score Centering: What Else Can We Optimize in Async RL?](https://sky-posttrain.github.io/score-centering-async-rl/) — November 2026, with Qiuyang Mang ([code](https://github.com/yichuan-w/Async-RL-Science)). Our first study of how RL algorithms behave under async training: a state-level KL mask and an age-scheduled KL penalty on top of score centering, and random sampling from the rollout buffer instead of oldest-first.
+
 ## Production & Entrepreneurship Thoughts
 
 Business and productization angles on ML systems.

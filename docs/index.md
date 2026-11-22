@@ -32,6 +32,8 @@ I also maintain [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub R
 </span>
 
 ## News
+[11/2026] Released a blog post on RL algorithms with Qiuyang Mang: [Beyond Score Centering: What Else Can We Optimize in Async RL?](https://sky-posttrain.github.io/score-centering-async-rl/) ([code](https://github.com/yichuan-w/Async-RL-Science)). It is our first study of how RL algorithms behave under async training: what to add on top of score centering (a state-level KL mask and an age-scheduled KL penalty), and why sampling the rollout buffer at random beats oldest-first. The code, the runs and the plotting scripts behind every figure are open source.
+
 [11/2026] Two new preprints on vision-language agents! [GeoGuesser Bench](https://arxiv.org/abs/2611.02698) benchmarks VLM agents on interactive geolocation (co-first with Huanzhi Mao), and [DR Pixel](https://arxiv.org/abs/2611.03097) ([code](https://github.com/StarTrail-org/DRPixel)) does page-native deep research with vision-language models.
 
 [10/2026] Passed my qualifying exam and became a PhD candidate!
