@@ -32,9 +32,9 @@ I also maintain [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub R
 </span>
 
 ## News
-[11/2026] Released a blog post on RL algorithms with Qiuyang Mang: [Beyond Score Centering: What Else Can We Optimize in Async RL?](https://sky-posttrain.github.io/score-centering-async-rl/) ([code](https://github.com/yichuan-w/Async-RL-Science)). It is our first study of how RL algorithms behave under async training: what to add on top of score centering (a state-level KL mask and an age-scheduled KL penalty), and why sampling the rollout buffer at random beats oldest-first. The code, the runs and the plotting scripts behind every figure are open source.
+[11/2026] Released a blog post on RL algorithms: [Beyond Score Centering: What Else Can We Optimize in Async RL?](https://sky-posttrain.github.io/score-centering-async-rl/) ([code](https://github.com/yichuan-w/Async-RL-Science)). It is our first study of how RL algorithms behave under async training: what to add on top of score centering (a state-level KL mask and an age-scheduled KL penalty), and why sampling the rollout buffer at random beats oldest-first. The code, the runs and the plotting scripts behind every figure are open source.
 
-[11/2026] Two new preprints on vision-language agents! [GeoGuesser Bench](https://arxiv.org/abs/2611.02698) benchmarks VLM agents on interactive geolocation (co-first with Huanzhi Mao), and [DR Pixel](https://arxiv.org/abs/2611.03097) ([code](https://github.com/StarTrail-org/DRPixel)) does page-native deep research with vision-language models.
+[11/2026] Two new preprints on vision-language agents! [GeoGuesser Bench](https://arxiv.org/abs/2611.02698) benchmarks VLM agents on interactive geolocation, and [DR Pixel](https://arxiv.org/abs/2611.03097) ([code](https://github.com/StarTrail-org/DRPixel)) does page-native deep research with vision-language models.
 
 [10/2026] Passed my qualifying exam and became a PhD candidate!
 
@@ -48,7 +48,7 @@ I also maintain [PixelRAG](https://github.com/StarTrail-org/PixelRAG) ![GitHub R
 
 [01/26/2026] LEANN is accepted in MLSys, see you in Bellevue!
 
-[12/12/2025] Happy to release [DS SERVE](https://berkeley-large-rag.github.io/RAG-DS-Serve/), a framework for efficient and scalable neural retrieval and the largest open vector store over pre-trained data. Check out our [live demo](http://api.ds-serve.org:30888/ui)! Fun fact: Jinjian is the first undergraduate I mentored at Berkeley—it was a wonderful collaboration!
+[12/12/2025] Happy to release [DS SERVE](https://berkeley-large-rag.github.io/RAG-DS-Serve/), a framework for efficient and scalable neural retrieval and the largest open vector store over pre-trained data. Check out our [live demo](http://api.ds-serve.org:30888/ui)!
 
 [09/22/2025] DLPM is verified to work on real workload at [Yandex LLM serving stack](https://github.com/tazjin/sglang/pull/1)!
 
